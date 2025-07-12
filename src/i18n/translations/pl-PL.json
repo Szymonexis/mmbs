@@ -1,0 +1,200 @@
+{
+	"header": {
+		"aboutUs": "O nas",
+		"services": "Oferta",
+		"portfolio": "Portfolio",
+		"faq": "FAQ",
+		"contactUs": "Kontakt"
+	},
+
+	"404": {
+		"message": "Ups... Wygląda na to, że zbłądziłeś bardzo, bardzo daleko",
+		"cta": "Wróć"
+	},
+
+	"language": {
+		"polish": "Polski",
+		"english": "Angielski"
+	},
+
+	"footer": {
+		"contact": "Kontakt",
+		"phoneNumber": "tel: +48 794 03 03 63",
+		"email": "email: szymonkaszubagalka.innovio@gmail.com"
+	},
+
+	"contactForm": {
+		"title": "Skontaktuj się z nami",
+		"button": "Wyślij",
+		"form": {
+			"name": {
+				"label": "Imię",
+				"placeholder": "Twoje imię",
+				"errors": {
+					"required": "Imię jest wymagane."
+				}
+			},
+			"companyName": {
+				"label": "Nazwa firmy",
+				"placeholder": "Twoja firma",
+				"errors": {
+					"required": "Nazwa firmy jest wymagana."
+				}
+			},
+			"email": {
+				"label": "Email",
+				"placeholder": "email@przyklad.com",
+				"errors": {
+					"required": "Adres email jest wymagany.",
+					"invalid": "Wprowadź poprawny adres email."
+				}
+			},
+			"phone": {
+				"label": "Numer telefonu",
+				"placeholder": "000-000-00-00",
+				"errors": {
+					"required": "Numer telefonu jest wymagany.",
+					"invalid": "Numer telefonu może zawierać tylko cyfry, spacje, + i -."
+				}
+			},
+			"message": {
+				"label": "Opisz, czego potrzebujesz",
+				"placeholder": "Twoja wiadomość",
+				"errors": {
+					"required": "Wiadomość jest wymagana."
+				}
+			}
+		}
+	},
+
+	"aboutUs": {
+		"hero": {
+			"top": "Stworzymy",
+			"bottom": "specjalnie dla Ciebie",
+			"carousel": ["Aplikację", "Sklep", "Stronę www", "Logo", "Projekt", "SEO/SEM"]
+		},
+
+		"process": {
+			"title": "Darmowa konsultacja",
+			"steps": [
+				{
+					"title": "Skontaktuj się z nami",
+					"description": "Napisz tutaj, na Facebooku lub zadzwoń — jak Ci wygodnie. Opisz swój pomysł! Razem rozważymy najlepsze rozwiązania dopasowane do Ciebie. Na tym etapie otrzymasz także wstępną wycenę i termin realizacji."
+				},
+				{
+					"title": "Projektowanie",
+					"description": "Nasz grafik zabłyśnie na tym etapie, przygotowując koncepcje i wizualizacje, które oddają charakter Twojej firmy i preferencje Twoich odbiorców."
+				},
+				{
+					"title": "Kodowanie",
+					"description": "Czas przenieść Twój pomysł do świata cyfrowego. Nasi mistrzowie kodu zadbają o to, by produkt był funkcjonalny i responsywny."
+				},
+				{
+					"title": "Gotowy produkt",
+					"description": "Teraz możesz cieszyć się gotowym produktem i liczyć na nasze dalsze wsparcie."
+				}
+			]
+		},
+
+		"outTeam": {
+			"title": "Nasz zespół",
+			"members": [
+				{
+					"name": "maja",
+					"description": ""
+				},
+				{
+					"name": "szymon",
+					"description": ""
+				},
+				{
+					"name": "maciej",
+					"description": ""
+				},
+				{
+					"name": "bartek",
+					"description": ""
+				}
+			]
+		},
+
+		"faq": [
+			{
+				"question": "Ile kosztuje stworzenie strony lub aplikacji?",
+				"answer": "Koszt zależy od zakresu projektu — jego funkcji, złożoności i potrzeb graficznych. Po krótkiej rozmowie przygotujemy darmową, indywidualną wycenę."
+			},
+			{
+				"question": "Ile trwa realizacja projektu?",
+				"answer": "Prosty projekt zajmuje około 2–3 tygodni; bardziej złożone wdrożenia od 4 tygodni wzwyż. Dokładny termin ustalamy indywidualnie."
+			},
+			{
+				"question": "Czy po realizacji mogę samodzielnie edytować treści na stronie?",
+				"answer": "Tak! Tworzymy strony w systemach umożliwiających łatwą edycję bez znajomości kodowania. Zapewniamy również krótkie szkolenie lub instrukcję."
+			},
+			{
+				"question": "Czy pomagacie w konfiguracji domeny i hostingu?",
+				"answer": "Tak — pomagamy na każdym etapie, w tym w wyborze i konfiguracji domeny, hostingu oraz firmowego adresu e-mail."
+			},
+			{
+				"question": "Czy oferujecie wsparcie po zakończeniu projektu?",
+				"answer": "Tak. Po wdrożeniu jesteśmy dostępni do aktualizacji, poprawek lub dalszego rozwoju — zawsze możesz na nas liczyć."
+			},
+			{
+				"question": "Czy mogę zlecić sam projekt graficzny bez kodowania?",
+				"answer": "Tak, oferujemy także samodzielne projekty graficzne — np. do przekazania Twojemu zespołowi developerskiemu."
+			},
+			{
+				"question": "Czy tworzycie sklepy internetowe i aplikacje mobilne?",
+				"answer": "Tak. Tworzymy sklepy internetowe, aplikacje webowe i mobilne — dopasowane do Twojej branży i klientów."
+			},
+			{
+				"question": "Czy pomagacie z SEO i marketingiem?",
+				"answer": "Tak. Wspieramy w optymalizacji SEO i podstawowych działaniach SEM, a także w zakresie identyfikacji wizualnej."
+			}
+		]
+	},
+
+	"services": {
+		"howItWorks": {
+			"title": "Jak to działa",
+			"steps": [
+				{
+					"title": "Kontakt",
+					"description": "Napisz do nas, opowiedz o swoim pomyśle i potrzebach."
+				},
+				{
+					"title": "Brief",
+					"description": "Wspólnie zbieramy wszystkie potrzebne informacje do realizacji projektu."
+				},
+				{
+					"title": "Analiza",
+					"description": "Badamy rynek, Twoją branżę i grupę docelową."
+				},
+				{
+					"title": "Koncepcja",
+					"description": "Tworzymy wstępny pomysł na wygląd i funkcjonalność."
+				},
+				{
+					"title": "Projekt graficzny",
+					"description": "Przygotowujemy przemyślany i estetyczny projekt."
+				},
+				{
+					"title": "Prototyp",
+					"description": "Tworzymy klikalny podgląd, który możesz przetestować."
+				},
+				{
+					"title": "Kodowanie",
+					"description": "Wdrażamy stronę lub aplikację zgodnie z projektem."
+				},
+				{
+					"title": "Testy i poprawki",
+					"description": "Sprawdzamy działanie i wprowadzamy ewentualne poprawki."
+				},
+				{
+					"title": "Publikacja",
+					"description": "Publikujemy gotowy produkt i wspieramy Cię po wdrożeniu."
+				}
+			]
+		}
+	}
+}

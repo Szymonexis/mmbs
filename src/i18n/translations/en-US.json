@@ -1,0 +1,200 @@
+{
+	"header": {
+		"aboutUs": "About Us",
+		"services": "Services",
+		"portfolio": "Portfolio",
+		"faq": "FAQ",
+		"contactUs": "Contact Us"
+	},
+
+	"404": {
+		"message": "Oops... Seems like you have wondered far, far away",
+		"cta": "Go back"
+	},
+
+	"language": {
+		"polish": "Polski",
+		"english": "English"
+	},
+
+	"footer": {
+		"contact": "Contact",
+		"phoneNumber": "tel: +48 794 03 03 63",
+		"email": "email: szymonkaszubagalka.innovio@gmail.com"
+	},
+
+	"contactForm": {
+		"title": "Contact Us",
+		"button": "Send",
+		"form": {
+			"name": {
+				"label": "Name",
+				"placeholder": "Your name",
+				"errors": {
+					"required": "Name is required."
+				}
+			},
+			"companyName": {
+				"label": "Company Name",
+				"placeholder": "Your company",
+				"errors": {
+					"required": "Company name is required."
+				}
+			},
+			"email": {
+				"label": "Email",
+				"placeholder": "email@example.com",
+				"errors": {
+					"required": "Email is required.",
+					"invalid": "Please enter a valid email address."
+				}
+			},
+			"phone": {
+				"label": "Phone Number",
+				"placeholder": "000-000-00-00",
+				"errors": {
+					"required": "Phone number is required.",
+					"invalid": "Phone number can only contain numbers, spaces, + and -."
+				}
+			},
+			"message": {
+				"label": "Describe what you need",
+				"placeholder": "Your message",
+				"errors": {
+					"required": "Message is required."
+				}
+			}
+		}
+	},
+
+	"aboutUs": {
+		"hero": {
+			"top": "We will create",
+			"bottom": "just for you",
+			"carousel": ["Application", "Store", "Website", "Logo", "Design", "SEO/SEM"]
+		},
+
+		"process": {
+			"title": "Free Consultation",
+			"steps": [
+				{
+					"title": "Contact Us",
+					"description": "Send a message here, on Facebook, or give us a call — whatever suits you best. Describe your idea! Together we’ll consider the best solutions tailored to you. At this stage, you’ll also receive a preliminary estimate and timeline."
+				},
+				{
+					"title": "Design",
+					"description": "Our graphic designer will shine at this stage, preparing concepts and visualizations that reflect your company’s character and your target audience’s preferences."
+				},
+				{
+					"title": "Coding",
+					"description": "Time to bring your idea into the digital space. Our code masters will ensure your product is as functional and responsive as possible."
+				},
+				{
+					"title": "Finished Product",
+					"description": "Now you can enjoy your completed product and count on our ongoing support."
+				}
+			]
+		},
+
+		"outTeam": {
+			"title": "Our Team",
+			"members": [
+				{
+					"name": "maja",
+					"description": ""
+				},
+				{
+					"name": "szymon",
+					"description": ""
+				},
+				{
+					"name": "maciej",
+					"description": ""
+				},
+				{
+					"name": "bartek",
+					"description": ""
+				}
+			]
+		},
+
+		"faq": [
+			{
+				"question": "How much does it cost to build a website or app?",
+				"answer": "The cost depends on the project scope — its features, complexity, and graphic needs. After a brief conversation, we’ll prepare a free, tailored quote."
+			},
+			{
+				"question": "How long does it take to complete a project?",
+				"answer": "A simple project takes about 2–3 weeks; more complex implementations start from 4 weeks. The exact timeline is agreed individually."
+			},
+			{
+				"question": "Can I edit the content on the site myself after it's done?",
+				"answer": "Yes! We build sites on systems that allow easy content editing without coding knowledge. We also provide short training or instructions."
+			},
+			{
+				"question": "Do you help with domain and hosting setup?",
+				"answer": "Yes — we can assist at every stage, including selecting and configuring a domain, hosting, and company email."
+			},
+			{
+				"question": "Do you offer support after project completion?",
+				"answer": "Yes. After deployment, we’re available for updates, fixes, or further development — you can always count on us."
+			},
+			{
+				"question": "Can I commission only the design without coding?",
+				"answer": "Yes, we also offer standalone graphic designs — for example, to pass on to your own development team."
+			},
+			{
+				"question": "Do you also build online stores and mobile apps?",
+				"answer": "Yes. We create online stores, web apps, and mobile apps — tailored to your industry and customers."
+			},
+			{
+				"question": "Can you help with SEO and marketing?",
+				"answer": "Yes. We provide support in SEO optimization and basic SEM activities as well as visual identity."
+			}
+		]
+	},
+
+	"services": {
+		"howItWorks": {
+			"title": "How It Works",
+			"steps": [
+				{
+					"title": "Contact",
+					"description": "Write to us, tell us about your idea and needs."
+				},
+				{
+					"title": "Brief",
+					"description": "Together we gather all the information needed for the project."
+				},
+				{
+					"title": "Analysis",
+					"description": "We research the market, your industry, and your target audience."
+				},
+				{
+					"title": "Concept",
+					"description": "We create an initial idea for the look and functionality."
+				},
+				{
+					"title": "Graphic Design",
+					"description": "We develop a thoughtful and aesthetically pleasing design."
+				},
+				{
+					"title": "Prototype",
+					"description": "We prepare a clickable preview you can test."
+				},
+				{
+					"title": "Coding",
+					"description": "We develop the website or app according to the design."
+				},
+				{
+					"title": "Testing and Revisions",
+					"description": "We check the functionality and make any necessary changes."
+				},
+				{
+					"title": "Launch",
+					"description": "We publish the finished product and support you after launch."
+				}
+			]
+		}
+	}
+}

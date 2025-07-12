@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+.rethinkSans {
+	font-family: 'Rethink Sans';
+}
+
+.unbounded {
+	font-family: 'Unbounded';
+}
+
+.bg-light {
+	background-color: #fcfdf7;
+}
+
+body,
+html {
+	font-family: 'Rethink Sans';
+	background-color: #fcfdf7;
+}
