@@ -51,7 +51,10 @@
 	});
 </script>
 
-<form class="h-min rounded-md border-2 border-blue-800 px-8 py-6" onsubmit={handleSubmit}>
+<form
+	class="h-min w-full rounded-md border-2 border-blue-800 px-8 py-6 shadow-md"
+	onsubmit={handleSubmit}
+>
 	<span class="unbounded text-2xl text-blue-800">
 		{$translate('contactForm.title')}
 	</span>

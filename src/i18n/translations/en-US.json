@@ -6,23 +6,19 @@
 		"faq": "FAQ",
 		"contactUs": "Contact Us"
 	},
-
 	"404": {
 		"message": "Oops... Seems like you have wondered far, far away",
 		"cta": "Go back"
 	},
-
 	"language": {
 		"polish": "Polski",
 		"english": "English"
 	},
-
 	"footer": {
 		"contact": "Contact",
 		"phoneNumber": "tel: +48 794 03 03 63",
 		"email": "email: szymonkaszubagalka.innovio@gmail.com"
 	},
-
 	"contactForm": {
 		"title": "Contact Us",
 		"button": "Send",
@@ -54,7 +50,7 @@
 				"placeholder": "000-000-00-00",
 				"errors": {
 					"required": "Phone number is required.",
-					"invalid": "Phone number can only contain numbers, spaces, + and -."
+					"invalid": "Phone number can only contain numbers, spaces, '+' and '-'."
 				}
 			},
 			"message": {
@@ -66,14 +62,12 @@
 			}
 		}
 	},
-
 	"aboutUs": {
 		"hero": {
 			"top": "We will create",
 			"bottom": "just for you",
 			"carousel": ["Application", "Store", "Website", "Logo", "Design", "SEO/SEM"]
 		},
-
 		"process": {
 			"title": "Free Consultation",
 			"steps": [
@@ -95,65 +89,83 @@
 				}
 			]
 		},
-
-		"outTeam": {
+		"ourTeam": {
 			"title": "Our Team",
-			"members": [
+			"togetherPhotoAlt": "MMBS team",
+			"members": {
+				"maja": {
+					"name": "Maja",
+					"position": "Graphic Designer",
+					"descriptionParts": [
+						"I am a graphic design graduate from the University of Social Sciences, with extensive experience in designing visual communication. My portfolio includes projects for renowned brands such as 'Lola Bianka', 'Just Unique', 'Marylin', 'Qiosque', and 'Naoko'.",
+						"At Innovio, I am responsible for creating designs that combine high aesthetics, intuitiveness, and full alignment with the client's strategic goals. My priority is to create coherent and functional visual solutions that effectively engage audiences and strengthen brand identity."
+					]
+				},
+				"szymon": {
+					"name": "Szymon",
+					"position": "Software Developer",
+					"descriptionParts": [
+						"I have many years of experience in the IT industry, specializing in technologies such as TypeScript, Golang, and the design and optimization of SQL and NoSQL databases. I am passionate about creating advanced and intuitive solutions that precisely meet user needs and achieve business goals.",
+						"As a graduate of the Faculty of Mathematics and Computer Science at the University of Lodz, I constantly strive to develop my skills and seek new technological challenges. I am ready to leverage my experience to support the realization of your projects."
+					]
+				},
+				"maciej": {
+					"name": "Maciej",
+					"position": "Software Developer",
+					"descriptionParts": [
+						"My interest in programming, which began in high school with a fascination for algorithms, has evolved towards designing intuitive user interfaces and creating complex business applications. I combine analytical thinking skills with a focus on the end-user experience.",
+						"For years, I have specialized in creating and implementing ERP-class systems, delivering efficient and reliable solutions for businesses. For me, programming is not just a job but above all a passion, which I pursue by participating in diverse and challenging projects."
+					]
+				},
+				"bartek": {
+					"name": "Bartek",
+					"position": "Project Manager & Business Analyst",
+					"descriptionParts": [
+						"As an entrepreneur and strategist with a passion for innovation, at Innovio I am responsible for business development, building relationships with key clients, and developing growth strategies. Concurrently, as an HR Business Partner at 'Wyciskarka Potencjału', I manage HR operations and talent development.",
+						"The experience gained from hackathons, industry conferences, and mentoring programs motivates me to initiate groundbreaking projects and build lasting and valuable business partnerships."
+					]
+				}
+			}
+		},
+		"faq": {
+			"title": "Frequently asked quiestions",
+			"whyUsAlt": "Why us?",
+			"items": [
 				{
-					"name": "maja",
-					"description": ""
+					"question": "How much does it cost to build a website or app?",
+					"answer": "The cost depends on the project scope — its features, complexity, and graphic needs. After a brief conversation, we’ll prepare a free, tailored quote."
 				},
 				{
-					"name": "szymon",
-					"description": ""
+					"question": "How long does it take to complete a project?",
+					"answer": "A simple project takes about 2-3 weeks; more complex implementations start from 4 weeks. The exact timeline is agreed individually."
 				},
 				{
-					"name": "maciej",
-					"description": ""
+					"question": "Can I edit the content on the site myself after it's done?",
+					"answer": "Yes! We build sites on systems that allow easy content editing without coding knowledge. We also provide short training or instructions."
 				},
 				{
-					"name": "bartek",
-					"description": ""
+					"question": "Do you help with domain and hosting setup?",
+					"answer": "Yes — we can assist at every stage, including selecting and configuring a domain, hosting, and company email."
+				},
+				{
+					"question": "Do you offer support after project completion?",
+					"answer": "Yes. After deployment, we’re available for updates, fixes, or further development — you can always count on us."
+				},
+				{
+					"question": "Can I commission only the design without coding?",
+					"answer": "Yes, we also offer standalone graphic designs — for example, to pass on to your own development team."
+				},
+				{
+					"question": "Do you also build online stores and mobile apps?",
+					"answer": "Yes. We create online stores, web apps, and mobile apps — tailored to your industry and customers."
+				},
+				{
+					"question": "Can you help with SEO and marketing?",
+					"answer": "Yes. We provide support in SEO optimization and basic SEM activities as well as visual identity."
 				}
 			]
-		},
-
-		"faq": [
-			{
-				"question": "How much does it cost to build a website or app?",
-				"answer": "The cost depends on the project scope — its features, complexity, and graphic needs. After a brief conversation, we’ll prepare a free, tailored quote."
-			},
-			{
-				"question": "How long does it take to complete a project?",
-				"answer": "A simple project takes about 2–3 weeks; more complex implementations start from 4 weeks. The exact timeline is agreed individually."
-			},
-			{
-				"question": "Can I edit the content on the site myself after it's done?",
-				"answer": "Yes! We build sites on systems that allow easy content editing without coding knowledge. We also provide short training or instructions."
-			},
-			{
-				"question": "Do you help with domain and hosting setup?",
-				"answer": "Yes — we can assist at every stage, including selecting and configuring a domain, hosting, and company email."
-			},
-			{
-				"question": "Do you offer support after project completion?",
-				"answer": "Yes. After deployment, we’re available for updates, fixes, or further development — you can always count on us."
-			},
-			{
-				"question": "Can I commission only the design without coding?",
-				"answer": "Yes, we also offer standalone graphic designs — for example, to pass on to your own development team."
-			},
-			{
-				"question": "Do you also build online stores and mobile apps?",
-				"answer": "Yes. We create online stores, web apps, and mobile apps — tailored to your industry and customers."
-			},
-			{
-				"question": "Can you help with SEO and marketing?",
-				"answer": "Yes. We provide support in SEO optimization and basic SEM activities as well as visual identity."
-			}
-		]
+		}
 	},
-
 	"services": {
 		"howItWorks": {
 			"title": "How It Works",

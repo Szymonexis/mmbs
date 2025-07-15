@@ -6,23 +6,19 @@
 		"faq": "FAQ",
 		"contactUs": "Kontakt"
 	},
-
 	"404": {
 		"message": "Ups... Wygląda na to, że zbłądziłeś bardzo, bardzo daleko",
 		"cta": "Wróć"
 	},
-
 	"language": {
 		"polish": "Polski",
 		"english": "Angielski"
 	},
-
 	"footer": {
 		"contact": "Kontakt",
 		"phoneNumber": "tel: +48 794 03 03 63",
 		"email": "email: szymonkaszubagalka.innovio@gmail.com"
 	},
-
 	"contactForm": {
 		"title": "Skontaktuj się z nami",
 		"button": "Wyślij",
@@ -54,7 +50,7 @@
 				"placeholder": "000-000-00-00",
 				"errors": {
 					"required": "Numer telefonu jest wymagany.",
-					"invalid": "Numer telefonu może zawierać tylko cyfry, spacje, + i -."
+					"invalid": "Numer telefonu może zawierać tylko cyfry, spacje, '+' i '-'."
 				}
 			},
 			"message": {
@@ -66,14 +62,12 @@
 			}
 		}
 	},
-
 	"aboutUs": {
 		"hero": {
 			"top": "Stworzymy",
 			"bottom": "specjalnie dla Ciebie",
 			"carousel": ["Aplikację", "Sklep", "Stronę www", "Logo", "Projekt", "SEO/SEM"]
 		},
-
 		"process": {
 			"title": "Darmowa konsultacja",
 			"steps": [
@@ -95,65 +89,83 @@
 				}
 			]
 		},
-
-		"outTeam": {
+		"ourTeam": {
 			"title": "Nasz zespół",
-			"members": [
+			"togetherPhotoAlt": "Zespół MMBS",
+			"members": {
+				"maja": {
+					"name": "Maja",
+					"position": "Projektant Graficzny",
+					"descriptionParts": [
+						"Jestem absolwentką kierunku grafika w Społecznej Akademii Nauk, z bogatym doświadczeniem w projektowaniu komunikacji wizualnej. Moje portfolio obejmuje realizacje dla renomowanych marek, takich jak 'Lola Bianka', 'Just Unique', 'Marylin', 'Qiosque' oraz 'Naoko'.",
+						"W Innovio odpowiadam za kreację projektów, które łączą w sobie wysoką estetykę, intuicyjność i pełną zgodność z celami strategicznymi klienta. Moim priorytetem jest tworzenie spójnych i funkcjonalnych rozwiązań wizualnych, które skutecznie angażują odbiorców i wzmacniają tożsamość marki."
+					]
+				},
+				"szymon": {
+					"name": "Szymon",
+					"position": "Software Developer",
+					"descriptionParts": [
+						"Posiadam wieloletnie doświadczenie w branży IT, specjalizując się w technologiach takich jak TypeScript, Golang oraz w projektowaniu i optymalizacji baz danych SQL i NoSQL. Moją pasją jest tworzenie zaawansowanych i intuicyjnych rozwiązań, które precyzyjnie odpowiadają na potrzeby użytkowników i realizują cele biznesowe.",
+						"Jako absolwent Wydziału Matematyki i Informatyki Uniwersytetu Łódzkiego, nieustannie dążę do rozwoju swoich kompetencji i poszukuję nowych wyzwań technologicznych. Jestem gotów wykorzystać moje doświadczenie, aby wesprzeć realizację Państwa projektów."
+					]
+				},
+				"maciej": {
+					"name": "Maciej",
+					"position": "Software Developer",
+					"descriptionParts": [
+						"Moje zainteresowanie programowaniem, zapoczątkowane w liceum przez fascynację algorytmiką, ewoluowało w kierunku projektowania intuicyjnych interfejsów użytkownika oraz tworzenia złożonych aplikacji biznesowych. Łączę umiejętności analitycznego myślenia z dbałością o doświadczenia użytkownika końcowego.",
+						"Od lat specjalizuję się w tworzeniu i wdrażaniu systemów klasy ERP, dostarczając wydajne i niezawodne rozwiązania dla przedsiębiorstw. Programowanie to dla mnie nie tylko praca, ale przede wszystkim pasja, którą realizuję poprzez udział w różnorodnych i wymagających projektach."
+					]
+				},
+				"bartek": {
+					"name": "Bartek",
+					"position": "Project Manager & Analityk Biznesowy",
+					"descriptionParts": [
+						"Jako przedsiębiorca i strateg z pasją do innowacji, w Innovio odpowiadam za rozwój biznesu, budowanie relacji z kluczowymi klientami oraz opracowywanie strategii wzrostu. Równolegle, jako HR Business Partner w 'Wyciskarka Potencjału', zarządzam operacjami HR i rozwojem talentów.",
+						"Doświadczenie zdobyte podczas hackathonów, konferencji branżowych i w programach mentoringowych motywuje mnie do inicjowania przełomowych projektów oraz budowania trwałych i wartościowych partnerstw biznesowych."
+					]
+				}
+			}
+		},
+		"faq": {
+			"title": "Częste pytania",
+			"whyUsAlt": "Dlaczego my?",
+			"items": [
 				{
-					"name": "maja",
-					"description": ""
+					"question": "Ile kosztuje stworzenie strony lub aplikacji?",
+					"answer": "Koszt zależy od zakresu projektu — jego funkcji, złożoności i potrzeb graficznych. Po krótkiej rozmowie przygotujemy darmową, indywidualną wycenę."
 				},
 				{
-					"name": "szymon",
-					"description": ""
+					"question": "Ile trwa realizacja projektu?",
+					"answer": "Prosty projekt zajmuje około 2-3 tygodni; bardziej złożone wdrożenia od 4 tygodni wzwyż. Dokładny termin ustalamy indywidualnie."
 				},
 				{
-					"name": "maciej",
-					"description": ""
+					"question": "Czy po realizacji mogę samodzielnie edytować treści na stronie?",
+					"answer": "Tak! Tworzymy strony w systemach umożliwiających łatwą edycję bez znajomości kodowania. Zapewniamy również krótkie szkolenie lub instrukcję."
 				},
 				{
-					"name": "bartek",
-					"description": ""
+					"question": "Czy pomagacie w konfiguracji domeny i hostingu?",
+					"answer": "Tak — pomagamy na każdym etapie, w tym w wyborze i konfiguracji domeny, hostingu oraz firmowego adresu e-mail."
+				},
+				{
+					"question": "Czy oferujecie wsparcie po zakończeniu projektu?",
+					"answer": "Tak. Po wdrożeniu jesteśmy dostępni do aktualizacji, poprawek lub dalszego rozwoju — zawsze możesz na nas liczyć."
+				},
+				{
+					"question": "Czy mogę zlecić sam projekt graficzny bez kodowania?",
+					"answer": "Tak, oferujemy także samodzielne projekty graficzne — np. do przekazania Twojemu zespołowi developerskiemu."
+				},
+				{
+					"question": "Czy tworzycie sklepy internetowe i aplikacje mobilne?",
+					"answer": "Tak. Tworzymy sklepy internetowe, aplikacje webowe i mobilne — dopasowane do Twojej branży i klientów."
+				},
+				{
+					"question": "Czy pomagacie z SEO i marketingiem?",
+					"answer": "Tak. Wspieramy w optymalizacji SEO i podstawowych działaniach SEM, a także w zakresie identyfikacji wizualnej."
 				}
 			]
-		},
-
-		"faq": [
-			{
-				"question": "Ile kosztuje stworzenie strony lub aplikacji?",
-				"answer": "Koszt zależy od zakresu projektu — jego funkcji, złożoności i potrzeb graficznych. Po krótkiej rozmowie przygotujemy darmową, indywidualną wycenę."
-			},
-			{
-				"question": "Ile trwa realizacja projektu?",
-				"answer": "Prosty projekt zajmuje około 2–3 tygodni; bardziej złożone wdrożenia od 4 tygodni wzwyż. Dokładny termin ustalamy indywidualnie."
-			},
-			{
-				"question": "Czy po realizacji mogę samodzielnie edytować treści na stronie?",
-				"answer": "Tak! Tworzymy strony w systemach umożliwiających łatwą edycję bez znajomości kodowania. Zapewniamy również krótkie szkolenie lub instrukcję."
-			},
-			{
-				"question": "Czy pomagacie w konfiguracji domeny i hostingu?",
-				"answer": "Tak — pomagamy na każdym etapie, w tym w wyborze i konfiguracji domeny, hostingu oraz firmowego adresu e-mail."
-			},
-			{
-				"question": "Czy oferujecie wsparcie po zakończeniu projektu?",
-				"answer": "Tak. Po wdrożeniu jesteśmy dostępni do aktualizacji, poprawek lub dalszego rozwoju — zawsze możesz na nas liczyć."
-			},
-			{
-				"question": "Czy mogę zlecić sam projekt graficzny bez kodowania?",
-				"answer": "Tak, oferujemy także samodzielne projekty graficzne — np. do przekazania Twojemu zespołowi developerskiemu."
-			},
-			{
-				"question": "Czy tworzycie sklepy internetowe i aplikacje mobilne?",
-				"answer": "Tak. Tworzymy sklepy internetowe, aplikacje webowe i mobilne — dopasowane do Twojej branży i klientów."
-			},
-			{
-				"question": "Czy pomagacie z SEO i marketingiem?",
-				"answer": "Tak. Wspieramy w optymalizacji SEO i podstawowych działaniach SEM, a także w zakresie identyfikacji wizualnej."
-			}
-		]
+		}
 	},
-
 	"services": {
 		"howItWorks": {
 			"title": "Jak to działa",

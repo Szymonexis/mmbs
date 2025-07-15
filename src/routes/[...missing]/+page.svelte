@@ -9,7 +9,7 @@
 	</div>
 
 	<button
-		class="w-fit cursor-pointer rounded-md bg-blue-800 py-2 px-4 font-bold text-white"
+		class="w-fit cursor-pointer rounded-md bg-blue-800 px-4 py-2 font-bold text-white decoration-1 underline-offset-4 hover:underline"
 		onclick={() => goto('/')}
 	>
 		{$translate('404.cta')}

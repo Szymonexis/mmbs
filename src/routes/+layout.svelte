@@ -42,7 +42,7 @@
 <Header />
 
 <div class="content flex flex-col items-center p-6 pt-24 pb-0">
-	<div class="max-w-7xl">
+	<div class="my-12 w-full max-w-7xl">
 		{@render children()}
 	</div>
 </div>
