@@ -5,7 +5,7 @@
 	const headerItems = [
 		{ label: 'aboutUs', href: '/', inverted: false },
 		{ label: 'services', href: '/services', inverted: false },
-		{ label: 'portfolio', href: '/portfolio', inverted: false },
+		// { label: 'portfolio', href: '/portfolio', inverted: false },
 		{ label: 'faq', href: '/faq', inverted: false },
 		{ label: 'contactUs', href: '/contact-us', inverted: true }
 	];

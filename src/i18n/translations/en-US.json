@@ -10,10 +10,6 @@
 		"message": "Oops... Seems like you have wondered far, far away",
 		"cta": "Go back"
 	},
-	"language": {
-		"polish": "Polski",
-		"english": "English"
-	},
 	"footer": {
 		"contact": "Contact",
 		"phoneNumber": "tel: +48 794 03 03 63",
@@ -128,8 +124,11 @@
 			}
 		},
 		"faq": {
-			"title": "Frequently asked quiestions",
-			"whyUsAlt": "Why us?",
+			"title": "Frequently asked questions",
+			"whyUsImage": {
+				"src": "/about-us/why-us_en-US.png",
+				"alt": "Why us?"
+			},
 			"items": [
 				{
 					"question": "How much does it cost to build a website or app?",
@@ -167,6 +166,50 @@
 		}
 	},
 	"services": {
+		"cards": [
+			{
+				"title": "Websites",
+				"description": "We create modern, responsive, and aesthetic websites tailored to your needs. We ensure intuitive navigation, clarity, and functionality so your clients will enjoy coming back to your site.",
+				"image": {
+					"alt": "Websites"
+				}
+			},
+			{
+				"title": "Online Stores",
+				"description": "We design functional and easy-to-use online stores that support your sales and business growth. An intuitive interface, security, and full responsiveness are our standard.",
+				"image": {
+					"alt": "Online Stores"
+				}
+			},
+			{
+				"title": "SEO / SEM",
+				"description": "We take care of your brand's visibility online. With effective SEO and SEM campaigns, you’ll attract more customers and boost sales—right where they’re looking for your offer.",
+				"image": {
+					"alt": "SEO / SEM"
+				}
+			},
+			{
+				"title": "Logo and Visual Identity",
+				"description": "We create cohesive and memorable visual identities that reflect the character of your brand. From logo to colors and typography—everything refined with your audience in mind.",
+				"image": {
+					"alt": "Logo and Visual Identity"
+				}
+			},
+			{
+				"title": "Design",
+				"description": "We design aesthetic and functional interfaces that grab attention and enhance usability. We focus on clarity, detail, and user experience.",
+				"image": {
+					"alt": "Design"
+				}
+			},
+			{
+				"title": "App Development",
+				"description": "We design and develop modern mobile and web applications—intuitive, efficient, and tailored to your business goals. From idea to deployment.",
+				"image": {
+					"alt": "App Development"
+				}
+			}
+		],
 		"howItWorks": {
 			"title": "How It Works",
 			"steps": [

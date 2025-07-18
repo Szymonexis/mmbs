@@ -5,11 +5,11 @@ export enum Locale {
 
 export const LOCALES_MAP = {
 	[Locale.enUS]: {
-		label: 'language.english',
+		label: 'English',
 		flag: '🇺🇸'
 	},
 	[Locale.plPL]: {
-		label: 'language.polish',
+		label: 'Polski',
 		flag: '🇵🇱'
 	}
 } as const;

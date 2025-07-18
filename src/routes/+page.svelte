@@ -88,6 +88,8 @@
 <div class="my-12">
 	<span class="unbounded text-4xl text-blue-800">{$translate('aboutUs.process.title')}</span>
 
+	<hr class="mt-1 border-1 text-blue-800" />
+
 	<div class="my-6 grid grid-cols-[1fr_auto] gap-6">
 		<div>
 			{#each processItems as { index, title, description, icon }}
@@ -126,6 +128,8 @@
 			{$translate('aboutUs.ourTeam.title')}
 		</div>
 
+		<hr class="mt-1 border-1 text-blue-800" />
+
 		{#each MEMBERS as member, i}
 			<div
 				class="my-6 flex items-stretch gap-6"
@@ -133,11 +137,11 @@
 				class:flex-row-reverse={i % 2 === 1}
 			>
 				<div class="flex flex-auto flex-col gap-4">
-					<div class="unbounded text-5xl text-blue-800">
+					<div class="unbounded text-4xl text-blue-800">
 						{$translate(member.name)}
 					</div>
 
-					<div class="unbounded text-2xl text-blue-800">
+					<div class="unbounded text-lg text-blue-800">
 						{$translate(member.position)}
 					</div>
 
@@ -152,10 +156,6 @@
 					alt={$translate(member.name)}
 				/>
 			</div>
-
-			{#if i + 1 < MEMBERS.length}
-				<hr class="border-2 text-blue-800" />
-			{/if}
 		{/each}
 	</div>
 </div>
@@ -165,7 +165,9 @@
 		{$translate('aboutUs.faq.title')}
 	</div>
 
-	<div class="my-6 grid grid-cols-[2fr_1.5fr] gap-6">
+	<hr class="mt-1 border-1 text-blue-800" />
+
+	<div class="my-6 block lg:grid lg:grid-cols-[2fr_1.5fr] lg:gap-6">
 		<div class="flex flex-auto flex-col gap-4" bind:this={faqContainer}>
 			{#each FAQ_ITEMS as faqItem, i}
 				<div class="w-full">
@@ -197,8 +199,8 @@
 		<div class="flex items-center">
 			<img
 				class="hidden object-contain lg:block"
-				src="/about-us/why-us.png"
-				alt={$translate('aboutUs.faq.whyUsAlt')}
+				src={$translate("aboutUs.faq.whyUsImage.src")}
+				alt={$translate('aboutUs.faq.whyUsImage.alt')}
 			/>
 		</div>
 	</div>

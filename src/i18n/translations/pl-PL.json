@@ -10,10 +10,6 @@
 		"message": "Ups... Wygląda na to, że zbłądziłeś bardzo, bardzo daleko",
 		"cta": "Wróć"
 	},
-	"language": {
-		"polish": "Polski",
-		"english": "Angielski"
-	},
 	"footer": {
 		"contact": "Kontakt",
 		"phoneNumber": "tel: +48 794 03 03 63",
@@ -129,7 +125,10 @@
 		},
 		"faq": {
 			"title": "Częste pytania",
-			"whyUsAlt": "Dlaczego my?",
+			"whyUsImage": {
+				"src": "/about-us/why-us_pl-PL.png",
+				"alt": "Dlaczego my?"
+			},
 			"items": [
 				{
 					"question": "Ile kosztuje stworzenie strony lub aplikacji?",
@@ -167,6 +166,50 @@
 		}
 	},
 	"services": {
+		"cards": [
+			{
+				"title": "Strony internetowe",
+				"description": "Tworzymy nowoczesne responsywne i estetyczne strony internetowe dopasowane do Twoich potrzeb. Dbamy o intuicyjną nawigację, przejrzystość i funkcjonalność, by Twoi klienci z przyjemnością wracali na Twoją stronę.",
+				"image": {
+					"alt": "Strony internetowe"
+				}
+			},
+			{
+				"title": "Sklepy internetowe",
+				"description": "Projektujemy funkcjonalne i wygodne w obsłudze sklepy online, które wspierają sprzedaż i rozwój Twojego biznesu. Intuicyjny interfejs, bezpieczeństwo i pełna responsywność to u nas standard.",
+				"image": {
+					"alt": "Sklepy internetowe"
+				}
+			},
+			{
+				"title": "SEO / SEM",
+				"description": "Zadbamy o widoczność Twojej marki w internecie. Dzięki skutecznemu SEO i kampaniom SEM przyciągniesz więcej klientów i zwiększysz sprzedaż - dokładnie tam, gdzie szukają Twojej oferty.",
+				"image": {
+					"alt": "SEO / SEM"
+				}
+			},
+			{
+				"title": "Logo i identyfikacja wizualna",
+				"description": "Tworzymy spójne i zapadające w pamięć identyfikacje wizualne, które oddają charakter Twojej marki. Od logotypu po kolory i typografię - wszystko dopracowane z myślą o Twoich odbiorcach.",
+				"image": {
+					"alt": "Logo i identyfikacja wizualna"
+				}
+			},
+			{
+				"title": "Design",
+				"description": "Projektujemy estetyczne i funkcjonalne interfejsy, które przyciągają uwagę i ułatwiają korzystanie z produktu. Stawiamy na przejrzystość, detale i doświadczenie użytkownika.",
+				"image": {
+					"alt": "Design"
+				}
+			},
+			{
+				"title": "Tworzenie aplikacji",
+				"description": "Projektujemy i rozwijamy nowoczesne aplikacje mobilne i webowe - intuicyjne, wydajne i dopasowane do Twoich celów biznesowych. Od pomysłu po wdrożenie.",
+				"image": {
+					"alt": "Tworzenie aplikacji"
+				}
+			}
+		],
 		"howItWorks": {
 			"title": "Jak to działa",
 			"steps": [
