@@ -61,17 +61,17 @@
 
 	:root {
 		--animation-duration: 20s;
-		--image-size: 4rem;
-		--image-margin: 1rem;
-		--image-amount: 15;
-		--image-aspect-ratio: 1;
+		--carousel-image-size: 4rem;
+		--carousel-image-margin: 1rem;
+		--carousel-image-amount: 15;
+		--carousel-image-aspect-ratio: 1;
 	}
 
 	.footer__slider {
 		overflow: hidden;
 		position: relative;
 		white-space: nowrap;
-		height: var(--image-size);
+		height: var(--carousel-image-size);
 		width: auto;
 	}
 
@@ -81,15 +81,15 @@
 		align-items: center;
 		flex-wrap: nowrap;
 		flex-direction: row;
-		width: calc((var(--image-size) + var(--image-margin)) * var(--image-amount));
-		height: var(--image-size);
+		width: calc((var(--carousel-image-size) + var(--carousel-image-margin)) * var(--carousel-image-amount));
+		height: var(--carousel-image-size);
 	}
 
 	.footer__slider__slide img {
 		object-fit: contain;
-		width: var(--image-size);
-		aspect-ratio: var(--image-aspect-ratio);
-		margin-right: var(--image-margin);
+		width: var(--carousel-image-size);
+		aspect-ratio: var(--carousel-image-aspect-ratio);
+		margin-right: var(--carousel-image-margin);
 		cursor: pointer;
 	}
 

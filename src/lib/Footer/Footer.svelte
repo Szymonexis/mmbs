@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { translate } from '$i18n';
+	import { TechnologiesCarousel } from '$lib';
 </script>
+
+<div class="my-6">
+	<TechnologiesCarousel />
+</div>
 
 <div class="flex h-24 items-center gap-6 bg-blue-800 p-6 text-white">
 	<img

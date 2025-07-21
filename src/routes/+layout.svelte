@@ -42,15 +42,15 @@
 <Header />
 
 <div class="content flex flex-col items-center p-6 pt-24 pb-0">
-	<div class="my-12 w-full max-w-7xl">
+	<div class="w-full max-w-7xl">
 		{@render children()}
 	</div>
 </div>
 
 <Footer />
 
-<style lang="postcss">
+<style lang="css">
 	.content {
-		min-height: calc(100dvh - var(--spacing) * 24);
+		min-height: calc(100dvh - var(--spacing) * 36 - var(--carousel-image-size));
 	}
 </style>
