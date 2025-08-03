@@ -69,7 +69,7 @@
 
 	<hr class="mt-1 border-1 text-blue-800" />
 
-	<div class="my-6 grid grid-cols-[1fr_auto] gap-6">
+	<div class="my-6 block grid-cols-[1fr_auto] gap-6 md:grid">
 		<div>
 			{#each processItems as { index, title, description, icon }}
 				<div class="my-6 flex items-center gap-4">
