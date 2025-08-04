@@ -33,9 +33,9 @@
 						wordsCarouselStopIndex = wordsCarouselItems.length - 1;
 					}
 					startCarousel();
-				}, 1500);
+				}, 1000);
 			}
-		}, 150);
+		}, 100);
 	}
 
 	onMount(() => {
@@ -48,9 +48,9 @@
 	});
 </script>
 
-<div class="my-6 grid grid-cols-2">
+<div class="my-6 md:grid md:grid-cols-2">
 	<div
-		class="unbounded flex flex-col items-center justify-center text-center text-5xl leading-[135%] text-blue-800"
+		class="unbounded flex flex-col items-center justify-center text-center text-5xl leading-[135%] text-blue-800 max-sm:text-4xl"
 	>
 		<div>{$translate('aboutUs.hero.top')}</div>
 
@@ -65,7 +65,9 @@
 </div>
 
 <div class="my-12">
-	<span class="unbounded text-4xl text-blue-800">{$translate('aboutUs.process.title')}</span>
+	<span class="unbounded text-4xl text-blue-800 max-sm:text-3xl"
+		>{$translate('aboutUs.process.title')}</span
+	>
 
 	<hr class="mt-1 border-1 text-blue-800" />
 
@@ -74,7 +76,7 @@
 			{#each processItems as { index, title, description, icon }}
 				<div class="my-6 flex items-center gap-4">
 					<img
-						class="aspect-square w-20 object-contain"
+						class="aspect-square w-20 object-contain max-sm:hidden"
 						src={icon}
 						alt={$translate(title) + ' icon'}
 					/>
@@ -89,7 +91,7 @@
 							{$translate(title)}
 						</div>
 
-						<p class="ml-4">
+						<p class="ml-2 max-sm:ml-0">
 							{$translate(description)}
 						</p>
 					</div>
@@ -103,7 +105,7 @@
 
 <div class="my-12">
 	<div>
-		<div class="unbounded text-4xl text-blue-800">
+		<div class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
 			{$translate('aboutUs.ourTeam.title')}
 		</div>
 
@@ -111,12 +113,12 @@
 
 		{#each MEMBERS as member, i}
 			<div
-				class="my-6 flex items-stretch gap-6"
+				class="my-6 flex items-stretch gap-6 max-sm:flex-col-reverse"
 				class:flex-row={i % 2 === 0}
 				class:flex-row-reverse={i % 2 === 1}
 			>
 				<div class="flex flex-auto flex-col gap-4">
-					<div class="unbounded text-4xl text-blue-800">
+					<div class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
 						{$translate(member.name)}
 					</div>
 
@@ -130,7 +132,7 @@
 				</div>
 
 				<img
-					class="w-full max-w-60 rounded-md object-cover"
+					class="w-full rounded-md object-cover max-sm:max-h-60 sm:max-w-60"
 					src={member.image}
 					alt={$translate(member.name)}
 				/>

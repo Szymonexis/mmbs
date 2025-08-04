@@ -7,9 +7,9 @@
 	<TechnologiesCarousel />
 </div>
 
-<div class="flex h-24 items-center gap-6 bg-blue-800 p-6 text-white">
+<div class="flex h-full min-h-24 items-center gap-6 bg-blue-800 p-6 text-white max-sm:flex-wrap">
 	<img
-		class="h-full object-contain brightness-[100] saturate-0"
+		class="h-12 object-contain brightness-[100] saturate-0 max-sm:hidden"
 		src="/other/mmbs-logo.png"
 		alt="MMBS Logo"
 	/>
@@ -20,7 +20,7 @@
 		<span class="text-xs">REGON: 524884230</span>
 	</div>
 
-	<span class="flex-auto"></span>
+	<span class="flex-auto max-sm:hidden"></span>
 
 	<div class="flex flex-col justify-center">
 		<span class="text-xs">{$translate('footer.contact')}</span>

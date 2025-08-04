@@ -44,7 +44,7 @@
 	</div>
 
 	<div class="my-12">
-		<div class="unbounded my-12 text-center text-4xl text-blue-800">
+		<div class="unbounded my-12 text-center text-4xl text-blue-800 max-sm:text-3xl">
 			{$translate('services.howItWorks.title')}
 		</div>
 

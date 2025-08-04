@@ -4,7 +4,7 @@
 </script>
 
 <div class="flex h-full flex-col items-center justify-center gap-6">
-	<div class="max-w-96 text-center text-3xl">
+	<div class="max-w-96 text-center text-3xl max-sm:text-2xl">
 		{$translate('404.message')}
 	</div>
 

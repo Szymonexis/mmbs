@@ -30,7 +30,7 @@
 
 {#if !IS_GT_MD}
 	<div
-		class="absolute top-0 right-0 bottom-0 left-0 z-1001 h-dvh w-dvw backdrop-blur-lg"
+		class="fixed top-0 right-0 bottom-0 left-0 z-1001 h-dvh w-dvw backdrop-blur-lg"
 		class:hidden={!isMobileMenuOpen}
 	>
 		<button
@@ -73,6 +73,15 @@
 					</a>
 				{/if}
 			{/each}
+
+			<select class="w-fit rounded-md border-2 border-blue-800" bind:value={$currentLocale}>
+				{#each Object.values(Locale) as locale}
+					<option value={locale}>
+						{$translate(LOCALES_MAP[locale].label)}
+						{LOCALES_MAP[locale].flag}
+					</option>
+				{/each}
+			</select>
 		</div>
 	</div>
 {/if}
