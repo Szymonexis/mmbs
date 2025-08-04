@@ -14,8 +14,11 @@
 </script>
 
 <div class="my-6">
-	<div class="flex flex-col items-center">
-		<div class="mb-12 grid max-w-190 grid-cols-2 gap-6 lg:max-w-full lg:grid-cols-3">
+	<!-- bigger than or equal to sm -->
+	<div class="flex flex-col items-center max-sm:hidden">
+		<div
+			class="mb-12 gap-6 max-lg:max-w-190 max-sm:flex max-sm:flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3"
+		>
 			{#each SERVICE_CARDS as { title, description, image: { src, alt } }, index}
 				<button
 					onclick={() => toggleCardSelection(index)}
@@ -41,6 +44,29 @@
 				</button>
 			{/each}
 		</div>
+	</div>
+
+	<!-- smaller than sm -->
+	<div class="flex w-full flex-col gap-8 sm:hidden">
+		{#each SERVICE_CARDS as { title, description, image: { src, alt } }, index}
+			<div
+				class="flex items-center gap-4"
+				class:flex-row={index % 2 === 0}
+				class:flex-row-reverse={index % 2 === 1}
+			>
+				<img class="aspect-square h-full min-w-32 object-contain" {src} {alt} />
+
+				<div class="flex flex-col gap-4">
+					<div class="unbounded text-xl text-blue-800">
+						{$translate(title)}
+					</div>
+
+					<div class="text-md">
+						{$translate(description)}
+					</div>
+				</div>
+			</div>
+		{/each}
 	</div>
 
 	<div class="my-12">

@@ -169,14 +169,14 @@
 		"cards": [
 			{
 				"title": "Strony internetowe",
-				"description": "Tworzymy nowoczesne responsywne i estetyczne strony internetowe dopasowane do Twoich potrzeb. Dbamy o intuicyjną nawigację, przejrzystość i funkcjonalność, by Twoi klienci z przyjemnością wracali na Twoją stronę.",
+				"description": "Tworzymy nowoczesne, responsywne strony internetowe dopasowane do Twoich potrzeb – estetyczne, intuicyjne i funkcjonalne, by klienci chętnie wracali.",
 				"image": {
 					"alt": "Strony internetowe"
 				}
 			},
 			{
 				"title": "Sklepy internetowe",
-				"description": "Projektujemy funkcjonalne i wygodne w obsłudze sklepy online, które wspierają sprzedaż i rozwój Twojego biznesu. Intuicyjny interfejs, bezpieczeństwo i pełna responsywność to u nas standard.",
+				"description": "Projektujemy wygodne, funkcjonalne sklepy online wspierające sprzedaż i rozwój biznesu. Intuicyjny interfejs, bezpieczeństwo i responsywność to standard.",
 				"image": {
 					"alt": "Sklepy internetowe"
 				}
@@ -189,10 +189,10 @@
 				}
 			},
 			{
-				"title": "Logo i identyfikacja wizualna",
+				"title": "Logo i branding",
 				"description": "Tworzymy spójne i zapadające w pamięć identyfikacje wizualne, które oddają charakter Twojej marki. Od logotypu po kolory i typografię - wszystko dopracowane z myślą o Twoich odbiorcach.",
 				"image": {
-					"alt": "Logo i identyfikacja wizualna"
+					"alt": "Logo i branding"
 				}
 			},
 			{
