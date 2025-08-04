@@ -51,7 +51,9 @@
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] gap-12">
 			{#each HOW_IT_WORKS_STEPS as { title, description }, index}
 				<div class="flex items-center gap-2">
-					<div class="unbounded w-[1em] text-right text-7xl text-blue-800">
+					<div
+						class="unbounded w-[1em] shrink-0 grow-0 basis-[1em] text-right text-7xl text-blue-800"
+					>
 						{index + 1}
 					</div>
 

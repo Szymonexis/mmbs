@@ -118,7 +118,7 @@
 						class:decoration-2={page.url.pathname === href}
 						{href}
 					>
-						{$translate('header.contactUs')}
+						{$translate(`header.${label}`)}
 					</a>
 				{/if}
 			{/each}

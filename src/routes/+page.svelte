@@ -129,6 +129,14 @@
 					{#each member.descriptionParts as descriptionPart}
 						<p>{$translate(descriptionPart)}</p>
 					{/each}
+
+					<div class="flex gap-4">
+						{#each member.links as { href, name, icon }}
+							<a class="cursor-pointer" {href} target="_blank">
+								<img src={icon} alt={name} class="h-8 object-contain" />
+							</a>
+						{/each}
+					</div>
 				</div>
 
 				<img
