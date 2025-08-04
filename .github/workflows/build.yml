@@ -26,6 +26,13 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Create .env file
+        run: |
+          echo "PUBLIC_APP_HASH=${{ vars.PUBLIC_APP_HASH }}" >> .env
+          echo "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" >> .env
+          echo "EMAIL_SENDER=${{ secrets.EMAIL_SENDER }}" >> .env
+        shell: bash
+
       - name: Install dependencies
         run: npm ci
 
