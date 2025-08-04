@@ -7,7 +7,11 @@ const config = {
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build',
+			fallback: null
+		}),
 		alias: {
 			$services: './src/services',
 			$shared: './src/shared',
