@@ -39,9 +39,6 @@ jobs:
       - name: Build Svelte site
         run: npm run build
 
-      - name: check
-        run: ls -la
-
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
