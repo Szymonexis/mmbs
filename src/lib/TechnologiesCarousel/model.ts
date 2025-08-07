@@ -6,6 +6,11 @@ export const LOGOS = [
 		href: 'https://angular.dev/'
 	},
 	{
+		src: `${srcPrefix}/photoshop.svg`,
+		alt: 'Photoshop logo',
+		href: 'https://www.adobe.com/products/photoshop.html'
+	},
+	{
 		src: `${srcPrefix}/react.svg`,
 		alt: 'React logo',
 		href: 'https://react.dev/'
@@ -14,6 +19,11 @@ export const LOGOS = [
 		src: `${srcPrefix}/svelte.svg`,
 		alt: 'Svelte logo',
 		href: 'https://svelte.dev/'
+	},
+	{
+		src: `${srcPrefix}/after-effects.svg`,
+		alt: 'After Effects logo',
+		href: 'https://www.adobe.com/products/aftereffects.html'
 	},
 	{
 		src: `${srcPrefix}/expo.svg`,
@@ -56,11 +66,6 @@ export const LOGOS = [
 		href: 'https://www.java.com/'
 	},
 	{
-		src: `${srcPrefix}/after-effects.svg`,
-		alt: 'After Effects logo',
-		href: 'https://www.adobe.com/products/aftereffects.html'
-	},
-	{
 		src: `${srcPrefix}/figma.svg`,
 		alt: 'Figma logo',
 		href: 'https://www.figma.com/'
@@ -69,10 +74,5 @@ export const LOGOS = [
 		src: `${srcPrefix}/indesign.svg`,
 		alt: 'InDesign logo',
 		href: 'https://www.adobe.com/products/indesign.html'
-	},
-	{
-		src: `${srcPrefix}/photoshop.svg`,
-		alt: 'Photoshop logo',
-		href: 'https://www.adobe.com/products/photoshop.html'
 	}
 ] as const;

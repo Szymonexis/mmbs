@@ -1,31 +1,19 @@
 <script lang="ts">
 	import { LOGOS } from './model';
+
+	const sliderNames = ['first', 'second', 'third', 'fourth'];
 </script>
 
 <div class="footer__slider">
-	<div class="footer__slider__slide footer__slider__slide--first">
-		{#each LOGOS as { href, src, alt }}
-			<a {href} target="_blank">
-				<img {src} {alt} />
-			</a>
-		{/each}
-	</div>
-
-	<div class="footer__slider__slide footer__slider__slide--second">
-		{#each LOGOS as { href, src, alt }}
-			<a {href} target="_blank">
-				<img {src} {alt} />
-			</a>
-		{/each}
-	</div>
-
-	<div class="footer__slider__slide footer__slider__slide--third">
-		{#each LOGOS as { href, src, alt }}
-			<a {href} target="_blank">
-				<img {src} {alt} />
-			</a>
-		{/each}
-	</div>
+	{#each sliderNames as sliderName}
+		<div class={`footer__slider__slide footer__slider__slide--${sliderName}`}>
+			{#each LOGOS as { href, src, alt }}
+				<a {href} target="_blank">
+					<img {src} {alt} />
+				</a>
+			{/each}
+		</div>
+	{/each}
 </div>
 
 <style lang="css">
@@ -59,6 +47,16 @@
 		}
 	}
 
+	@keyframes slideFourth {
+		from {
+			transform: translateX(300%);
+		}
+
+		to {
+			transform: translateX(200%);
+		}
+	}
+
 	:root {
 		--animation-duration: 20s;
 		--carousel-image-size: 4rem;
@@ -81,7 +79,9 @@
 		align-items: center;
 		flex-wrap: nowrap;
 		flex-direction: row;
-		width: calc((var(--carousel-image-size) + var(--carousel-image-margin)) * var(--carousel-image-amount));
+		width: calc(
+			(var(--carousel-image-size) + var(--carousel-image-margin)) * var(--carousel-image-amount)
+		);
 		height: var(--carousel-image-size);
 	}
 
@@ -103,5 +103,9 @@
 
 	.footer__slider__slide--third {
 		animation: var(--animation-duration) slideThird infinite linear;
+	}
+
+	.footer__slider__slide--fourth {
+		animation: var(--animation-duration) slideFourth infinite linear;
 	}
 </style>
