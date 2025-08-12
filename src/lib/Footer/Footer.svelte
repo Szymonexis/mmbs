@@ -13,7 +13,7 @@
 	>
 		<img
 			class="h-12 object-contain brightness-[100] saturate-0 max-sm:hidden"
-			src="/other/mmbs-logo.png"
+			src="/other/mmbs-logo.webp"
 			alt="MMBS Logo"
 		/>
 

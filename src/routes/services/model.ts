@@ -1,11 +1,11 @@
 const serviceCardImageSrcPrefix = '/services';
 const serviceCardImageSrcs = [
-	`${serviceCardImageSrcPrefix}/web-design.png`,
-	`${serviceCardImageSrcPrefix}/ecommerce.png`,
-	`${serviceCardImageSrcPrefix}/seo-sem.png`,
-	`${serviceCardImageSrcPrefix}/identification.png`,
-	`${serviceCardImageSrcPrefix}/design.png`,
-	`${serviceCardImageSrcPrefix}/apps.png`
+	`${serviceCardImageSrcPrefix}/web-design.webp`,
+	`${serviceCardImageSrcPrefix}/ecommerce.webp`,
+	`${serviceCardImageSrcPrefix}/seo-sem.webp`,
+	`${serviceCardImageSrcPrefix}/identification.webp`,
+	`${serviceCardImageSrcPrefix}/design.webp`,
+	`${serviceCardImageSrcPrefix}/apps.webp`
 ] as const;
 
 const serviceCardTranslationPrefix = 'services.cards';

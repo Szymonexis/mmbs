@@ -2,7 +2,7 @@ const memberTranslationPrefix = 'aboutUs.ourTeam.members';
 const membersOrder = [
 	{
 		key: 'maciej',
-		image: 'maciej.jpeg',
+		image: 'maciej.webp',
 		descriptionPartsAmount: 2,
 		links: [
 			{
@@ -19,7 +19,7 @@ const membersOrder = [
 	},
 	{
 		key: 'maja',
-		image: 'maja.jpeg',
+		image: 'maja.webp',
 		descriptionPartsAmount: 2,
 		links: [
 			{
@@ -36,7 +36,7 @@ const membersOrder = [
 	},
 	{
 		key: 'bartek',
-		image: 'bartek.jpeg',
+		image: 'bartek.webp',
 		descriptionPartsAmount: 2,
 		links: [
 			{
@@ -48,7 +48,7 @@ const membersOrder = [
 	},
 	{
 		key: 'szymon',
-		image: 'szymon.jpeg',
+		image: 'szymon.webp',
 		descriptionPartsAmount: 2,
 		links: [
 			{

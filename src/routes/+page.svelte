@@ -7,7 +7,7 @@
 	const wordsCarouselItems = new Array(6).fill(0).map((_, i) => `aboutUs.hero.carousel.${i}`);
 	const processItemPrefix = 'aboutUs.process.steps';
 	const processItems = new Array(4).fill(0).map((_, i) => ({
-		icon: `/about-us/process-${i}.png`,
+		icon: `/about-us/process-${i}.webp`,
 		index: `${i + 1}`,
 		title: `${processItemPrefix}.${i}.title`,
 		description: `${processItemPrefix}.${i}.description`
@@ -61,7 +61,7 @@
 		<div>{$translate('aboutUs.hero.bottom')}</div>
 	</div>
 
-	<img src="/about-us/hero.png" alt="hero" />
+	<img src="/about-us/hero.webp" alt="hero" />
 </div>
 
 <div class="my-12">

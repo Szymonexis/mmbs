@@ -173,7 +173,7 @@
 
 			<img
 				class="aspect-square w-16 object-contain"
-				src="/contact-form/send.png"
+				src="/contact-form/send.webp"
 				alt="contact form send icon"
 			/>
 		</button>
