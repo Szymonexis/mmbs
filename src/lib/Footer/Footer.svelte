@@ -15,6 +15,8 @@
 			class="h-12 object-contain brightness-[100] saturate-0 max-sm:hidden"
 			src="/other/mmbs-logo.webp"
 			alt="MMBS Logo"
+			loading="lazy"
+			fetchpriority="low"
 		/>
 
 		<div class="flex flex-col justify-center">

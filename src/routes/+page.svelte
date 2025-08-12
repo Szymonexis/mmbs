@@ -61,7 +61,7 @@
 		<div>{$translate('aboutUs.hero.bottom')}</div>
 	</div>
 
-	<img src="/about-us/hero.webp" alt="hero" />
+	<img src="/about-us/hero.webp" alt="hero" fetchpriority="high" />
 </div>
 
 <div class="my-12">
@@ -79,6 +79,8 @@
 						class="aspect-square w-20 object-contain max-sm:hidden"
 						src={icon}
 						alt={$translate(title) + ' icon'}
+						loading="lazy"
+						fetchpriority="low"
 					/>
 
 					<div class="flex flex-col gap-4">
@@ -133,7 +135,13 @@
 					<div class="flex gap-4">
 						{#each member.links as { href, name, icon }}
 							<a class="cursor-pointer" {href} target="_blank">
-								<img src={icon} alt={name} class="h-8 object-contain" />
+								<img
+									src={icon}
+									alt={name}
+									class="h-8 object-contain"
+									loading="lazy"
+									fetchpriority="low"
+								/>
 							</a>
 						{/each}
 					</div>
@@ -143,6 +151,8 @@
 					class="w-full rounded-md object-cover max-sm:max-h-60 sm:max-w-60"
 					src={member.image}
 					alt={$translate(member.name)}
+					loading="lazy"
+					fetchpriority="low"
 				/>
 			</div>
 		{/each}

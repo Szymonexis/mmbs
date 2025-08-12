@@ -88,7 +88,11 @@
 
 <div class="bg-light fixed z-1000 flex h-24 w-full justify-center shadow-md">
 	<div class="flex h-full w-full max-w-7xl items-center gap-6 p-6">
-		<img class="h-full object-contain" src="/other/mmbs-logo.webp" alt="MMBS Logo" />
+		<img
+			class="h-full object-contain"
+			src="/other/mmbs-logo.webp"
+			alt="MMBS Logo"
+		/>
 
 		<div class="flex-auto"></div>
 

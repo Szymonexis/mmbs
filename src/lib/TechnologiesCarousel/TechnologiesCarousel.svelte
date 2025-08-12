@@ -9,7 +9,7 @@
 		<div class={`footer__slider__slide footer__slider__slide--${sliderName}`}>
 			{#each LOGOS as { href, src, alt }}
 				<a {href} target="_blank">
-					<img {src} {alt} />
+					<img {src} {alt} loading="lazy" fetchpriority="low" />
 				</a>
 			{/each}
 		</div>

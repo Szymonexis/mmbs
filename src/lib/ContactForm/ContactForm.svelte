@@ -175,6 +175,8 @@
 				class="aspect-square w-16 object-contain"
 				src="/contact-form/send.webp"
 				alt="contact form send icon"
+				loading="lazy"
+				fetchpriority="low"
 			/>
 		</button>
 	</div>
