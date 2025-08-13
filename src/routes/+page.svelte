@@ -61,7 +61,7 @@
 		<div>{$translate('aboutUs.hero.bottom')}</div>
 	</div>
 
-	<img src="/about-us/hero.webp" alt="hero" />
+	<img src="/about-us/hero.webp" alt="hero" width="535px" height="535px"/>
 </div>
 
 <div class="my-12">

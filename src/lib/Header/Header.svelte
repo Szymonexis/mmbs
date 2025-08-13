@@ -92,6 +92,8 @@
 			class="h-full object-contain"
 			src="/other/mmbs-logo.webp"
 			alt="MMBS Logo"
+			width="93px"
+			height="48px"
 		/>
 
 		<div class="flex-auto"></div>
