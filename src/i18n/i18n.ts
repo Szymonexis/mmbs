@@ -16,7 +16,7 @@ const translations = {
 function parseTranslation(locale: Locale, key: string, vars?: Record<string, string>) {
 	const translationFile = translations[locale];
 
-	if (isNil(translationFile)) {
+	if (isNil(translationFile) || isNil(key)) {
 		return key;
 	}
 
