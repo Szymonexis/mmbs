@@ -8,7 +8,9 @@ export async function POST({ request }) {
 	const reqBody = (await request.json()) as ContactFormValue;
 
 	const transporter = createTransport({
-		service: 'gmail',
+		host: 'mail.mmbs.pl',
+		port: 465,
+		secure: true,
 		auth: {
 			user: EMAIL_SENDER,
 			pass: EMAIL_PASSWORD
@@ -19,7 +21,7 @@ export async function POST({ request }) {
 
 	await transporter.sendMail({
 		to: EMAIL_SENDER,
-		subject: `[INNOVIO CLIENT MESSAGE] ${name}`,
+		subject: `[MMBS CLIENT MESSAGE] ${name}`,
 		html: getEmailRequestContent(JSON.stringify({ name, ...rest }), message)
 	});
 
