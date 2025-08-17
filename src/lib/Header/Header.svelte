@@ -2,18 +2,26 @@
 	import { currentLocale, Locale, LOCALES_MAP, translate } from '$i18n';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+	import { onDestroy, onMount } from 'svelte';
+	import { isNil } from 'lodash-es';
 
 	const headerItems = [
 		{ label: 'aboutUs', href: '/', inverted: false },
 		{ label: 'services', href: '/services', inverted: false },
-		// { label: 'portfolio', href: '/portfolio', inverted: false },
+		{ label: 'portfolio', href: '/portfolio', inverted: false },
 		{ label: 'faq', href: '/faq', inverted: false },
 		{ label: 'contactUs', href: '/contact-us', inverted: true }
 	];
 
+	let disconnectObserver: () => void;
+
+	const BREAKPOINT_PX = 780;
+
+	let remSize = $state(16);
 	let windowWidth = $state(0);
-	const MD_BREAKPOINT = 768;
-	const IS_GT_MD = $derived(windowWidth >= MD_BREAKPOINT);
+	let breakpoint = $derived(BREAKPOINT_PX / remSize);
+	let remWindowWidth = $derived(windowWidth / remSize);
+	let isBiggerThanBreakpoint = $derived(remWindowWidth >= breakpoint);
 
 	let isMobileMenuOpen = $state(false);
 
@@ -24,11 +32,35 @@
 	function onCloseMobileMenu() {
 		isMobileMenuOpen = false;
 	}
+
+	function observeRootFontSize() {
+		const root = document.documentElement;
+
+		remSize = parseFloat(getComputedStyle(root).fontSize);
+
+		const resizeObserver = new ResizeObserver(() => {
+			remSize = parseFloat(getComputedStyle(root).fontSize);
+		});
+
+		resizeObserver.observe(root);
+
+		return () => resizeObserver.disconnect();
+	}
+
+	onMount(() => {
+		disconnectObserver = observeRootFontSize();
+	});
+
+	onDestroy(() => {
+		if (!isNil(disconnectObserver)) {
+			disconnectObserver();
+		}
+	});
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-{#if !IS_GT_MD}
+{#if !isBiggerThanBreakpoint}
 	<div
 		class="fixed top-0 right-0 bottom-0 left-0 z-1001 h-dvh w-dvw backdrop-blur-lg"
 		class:hidden={!isMobileMenuOpen}
@@ -90,7 +122,7 @@
 	<div class="flex h-full w-full max-w-7xl items-center gap-6 p-6">
 		<img
 			class="h-full object-contain"
-			src="/other/mmbs-logo.webp"
+			src="/mmbs-logo.webp"
 			alt="MMBS Logo"
 			width="93px"
 			height="48px"
@@ -98,13 +130,13 @@
 
 		<div class="flex-auto"></div>
 
-		{#if !IS_GT_MD}
+		{#if !isBiggerThanBreakpoint}
 			<button onclick={onOpenMobileMenu} aria-label="open mobile menu">
 				<i class="fa-xl fa-solid fa-bars text-blue-800"></i>
 			</button>
 		{/if}
 
-		{#if IS_GT_MD}
+		{#if isBiggerThanBreakpoint}
 			{#each headerItems as { href, label, inverted }}
 				{#if !inverted}
 					<a

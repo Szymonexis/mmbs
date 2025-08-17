@@ -251,5 +251,30 @@
 				}
 			]
 		}
+	},
+	"portfolio": {
+		"label": {
+			"client": "Client project",
+			"inHouse": "In-House project",
+			"openSource": "Open Source"
+		},
+		"powerivanchukova": {
+			"title": "Power Ivanchukova",
+			"shortDescription": "A site for Yevheniia Ivanchukova, a fitness coach, with some light shop capabilities and automations",
+			"description": [
+				"Built with Svelte + Skeleton UI, the platform delivers a fast, lightweight, and highly responsive experience with a modern design. We placed strong emphasis on performance and accessibility – every media file is loaded dynamically with Skeleton placeholders, ensuring smooth interactions even on slower connections. The website also complies with WCAG standards, making it inclusive and user-friendly across different devices and audiences.",
+				"Integrated with Stripe as a secure and flexible payment gateway, the system automates critical processes for the client. It generates invoices for every transaction, manages automated paychecks, handles taxes, and keeps a complete purchase history for end users. This allows the business owner to focus entirely on content and product updates without worrying about the financial and administrative side.",
+				"To further improve usability, the application automatically detects a user’s location and adjusts the interface language accordingly, supporting English, Polish, and Ukrainian. This feature makes the website accessible to a broader, multilingual audience while maintaining a personalized experience.",
+				"The solution was deployed on Netlify, ensuring free hosting and minimal operating costs, while Google Cloud handles backend integrations. Together, this stack guarantees scalability, reliability, and smooth delivery of resources. From day one after launch, the platform received positive client feedback, proving both its technical efficiency and its business value."
+			]
+		},
+		"ngxMetaPixel": {
+			"title": "ngx-meta-pixel",
+			"shortDescription": "An Angular package designed to simplify the integration of Meta Pixel into projects",
+			"description": [
+				"This Meta Pixel integration package streamlines embedding Meta Pixel into Angular applications, supporting versions 16 through 20. With a simple install (npm install ngx-meta-pixel), you can configure tracking by importing the module for module-based apps or using provideNgxMetaPixel in standalone component architectures. The package handles script injection automatically, requiring only that you place the modified Meta Pixel HTML with designated id attributes in your assets directory or host it elsewhere. This setup removes repetitive boilerplate and minimizes integration errors, allowing you to focus on building your application.",
+				"Once integrated, tracking becomes straightforward: use NgxMetaPixelService.track(eventName, properties) for standard events like \"PageView\", or trackCustom(eventName, properties) for custom events. The pixel can also be disabled entirely with remove(), which is especially useful for GDPR-compliant flows—by initializing it with enabled: false and activating it only after user consent. This makes the package a versatile, efficient, and reliable solution for modern Angular development."
+			]
+		}
 	}
 }

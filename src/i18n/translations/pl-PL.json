@@ -251,5 +251,30 @@
 				}
 			]
 		}
+	},
+	"portfolio": {
+		"label": {
+			"client": "Projekt dla klienta",
+			"inHouse": "Projekt wewnętrzny",
+			"openSource": "Open Source"
+		},
+		"powerivanchukova": {
+			"title": "Power Ivanchukova",
+			"shortDescription": "Strona dla Yevhenii Ivanchukovej, trenerki fitness, z lekkimi funkcjami sklepu i automatyzacjami",
+			"description": [
+				"Zbudowana w oparciu o Svelte + Skeleton UI, platforma zapewnia szybkie, lekkie i wysoce responsywne doświadczenie z nowoczesnym designem. Położyliśmy duży nacisk na wydajność i dostępność – każdy plik multimedialny ładowany jest dynamicznie z placeholderami Skeleton, co gwarantuje płynne interakcje nawet przy wolniejszych łączach. Strona spełnia również standardy WCAG, dzięki czemu jest inkluzywna i przyjazna użytkownikom na różnych urządzeniach i dla różnych grup odbiorców.",
+				"Zintegrowana ze Stripe jako bezpieczną i elastyczną bramką płatności, aplikacja automatyzuje kluczowe procesy dla klienta. Generuje faktury dla każdej transakcji, zarządza automatycznymi wypłatami, obsługuje podatki i przechowuje pełną historię zakupów użytkowników końcowych. Dzięki temu właścicielka biznesu może w pełni skupić się na treściach i aktualizacjach produktów, nie martwiąc się o stronę finansową czy administracyjną.",
+				"Aby dodatkowo poprawić użyteczność, aplikacja automatycznie wykrywa lokalizację użytkownika i dostosowuje język interfejsu, obsługując angielski, polski i ukraiński. Funkcja ta sprawia, że strona jest dostępna dla szerszej, wielojęzycznej grupy odbiorców, a jednocześnie zapewnia spersonalizowane doświadczenie.",
+				"Rozwiązanie zostało wdrożone na Netlify, co zapewnia darmowy hosting i minimalne koszty operacyjne, podczas gdy Google Cloud obsługuje integracje backendowe. Razem ten stack gwarantuje skalowalność, niezawodność i płynne dostarczanie zasobów. Już od pierwszego dnia po uruchomieniu platforma spotkała się z pozytywnym odbiorem klientki, potwierdzając zarówno jej efektywność techniczną, jak i wartość biznesową."
+			]
+		},
+		"ngxMetaPixel": {
+			"title": "ngx-meta-pixel",
+			"shortDescription": "Pakiet Angular stworzony, aby uprościć integrację Meta Pixel w projektach",
+			"description": [
+				"Ten pakiet integracyjny Meta Pixel upraszcza osadzanie Meta Pixel w aplikacjach Angular, obsługując wersje od 16 do 20. Dzięki prostej instalacji (npm install ngx-meta-pixel) możesz skonfigurować śledzenie poprzez import modułu w aplikacjach modułowych lub użycie provideNgxMetaPixel w architekturach opartych na komponentach standalone. Pakiet automatycznie obsługuje wstrzykiwanie skryptu, wymagając jedynie umieszczenia zmodyfikowanego kodu HTML Meta Pixel z przypisanymi atrybutami id w katalogu assets lub hostowanie go gdzie indziej. To rozwiązanie eliminuje powtarzalny boilerplate i minimalizuje błędy integracji, pozwalając Ci skupić się na tworzeniu aplikacji.",
+				"Po zintegrowaniu śledzenie staje się proste: użyj NgxMetaPixelService.track(eventName, properties) dla standardowych zdarzeń, takich jak \"PageView\", lub trackCustom(eventName, properties) dla zdarzeń niestandardowych. Piksel można także całkowicie wyłączyć za pomocą remove(), co jest szczególnie przydatne w procesach zgodnych z RODO — poprzez inicjalizację z enabled: false i aktywację dopiero po wyrażeniu zgody przez użytkownika. To sprawia, że pakiet jest wszechstronnym, wydajnym i niezawodnym rozwiązaniem dla nowoczesnego rozwoju w Angularze."
+			]
+		}
 	}
 }

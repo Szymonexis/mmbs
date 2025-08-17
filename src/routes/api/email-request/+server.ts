@@ -1,11 +1,20 @@
 import { createTransport } from 'nodemailer';
 import { json } from '@sveltejs/kit';
 import { EMAIL_PASSWORD, EMAIL_SENDER } from '$env/static/private';
-import type { ContactFormValue } from '$lib/ContactForm/model.js';
 import { getEmailRequestContent } from '$shared/get-email-request-content';
+import { validateBody } from '$shared/server/validate-body.server.js';
+import { ContactFormRequest } from './model';
+import { HttpStatus } from '$shared/http-status';
 
 export async function POST({ request }) {
-	const reqBody = (await request.json()) as ContactFormValue;
+	const body = await request.json();
+
+	const validationResult = await validateBody(body, ContactFormRequest);
+	if (validationResult.type === 'error') {
+		return validationResult.response;
+	}
+
+	const { dto } = validationResult;
 
 	const transporter = createTransport({
 		host: 'mail.mmbs.pl',
@@ -17,13 +26,13 @@ export async function POST({ request }) {
 		}
 	});
 
-	const { name, message, ...rest } = reqBody;
+	const { name, message, ...rest } = dto;
 
 	await transporter.sendMail({
 		to: EMAIL_SENDER,
 		subject: `[MMBS CLIENT MESSAGE] ${name}`,
-		html: getEmailRequestContent(JSON.stringify({ name, ...rest }), message)
+		html: getEmailRequestContent(JSON.stringify({ name, ...rest }, null, 2), message)
 	});
 
-	return json({ status: 'ok' });
+	return json({}, { status: HttpStatus.OK });
 }

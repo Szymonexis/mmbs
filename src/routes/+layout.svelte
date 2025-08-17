@@ -50,7 +50,8 @@
 <Footer />
 
 <style lang="css">
+	/* TODO: Remember to change this value when footer height changes */
 	.content {
-		min-height: calc(100dvh - var(--spacing) * 36 - var(--carousel-image-size));
+		min-height: calc(100dvh - var(--spacing) * 38 - var(--carousel-image-size));
 	}
 </style>
