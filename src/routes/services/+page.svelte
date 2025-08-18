@@ -30,8 +30,7 @@
             {src}
             alt={$translate(alt)}
             draggable="false"
-            loading="lazy"
-            fetchpriority="low"
+            fetchpriority="high"
           />
 
           {#if selectedIndex === index}
