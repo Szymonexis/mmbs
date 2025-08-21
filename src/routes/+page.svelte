@@ -33,9 +33,9 @@
 						wordsCarouselStopIndex = wordsCarouselItems.length - 1;
 					}
 					startCarousel();
-				}, 1000);
+				}, 1500);
 			}
-		}, 100);
+		}, 150);
 	}
 
 	onMount(() => {

@@ -43,7 +43,7 @@
 			},
 			"phone": {
 				"label": "Phone Number",
-				"placeholder": "000-000-00-00",
+				"placeholder": "(+XX) XXX XXX XXXX",
 				"errors": {
 					"required": "Phone number is required.",
 					"invalid": "Phone number can only contain numbers, spaces, '+' and '-'."
