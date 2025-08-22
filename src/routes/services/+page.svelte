@@ -6,9 +6,9 @@
 
 	let selectedIndex: number | null = $state(null);
 	let fastIntervalCleared = $state(false);
-	let timeoutRef: NodeJS.Timeout | null = null;
-	let fastIntervalRef: NodeJS.Timeout | null = null;
-	let slowIntervalRef: NodeJS.Timeout | null = null;
+	let timeoutRef: ReturnType<typeof setTimeout> | null = null;
+	let fastIntervalRef: ReturnType<typeof setInterval> | null = null;
+	let slowIntervalRef: ReturnType<typeof setInterval> | null = null;
 
 	function toggleCardSelection(index: number) {
 		selectedIndex = selectedIndex === index ? null : index;
