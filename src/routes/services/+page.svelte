@@ -172,13 +172,23 @@
 <style>
 	.perspective {
 		perspective: 1000px;
+		-webkit-perspective: 1000px;
+		-moz-perspective: 1000px;
+		-ms-perspective: 1000px;
 	}
 
 	.transform-style-preserve-3d {
 		transform-style: preserve-3d;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
 	}
 
 	.rotate-y-180 {
 		transform: rotateY(180deg);
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+		-ms-transform: rotateY(180deg);
+		-o-transform: rotateY(180deg);
 	}
 </style>
