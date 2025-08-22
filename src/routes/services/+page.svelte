@@ -1,36 +1,59 @@
 <script lang="ts">
 	import { translate } from '$i18n';
-	import { onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { HOW_IT_WORKS_STEPS, SERVICE_CARDS } from './model';
 	import { isNil } from 'lodash-es';
 
 	let selectedIndex: number | null = $state(null);
+	let fastIntervalCleared = $state(false);
 	let timeoutRef: NodeJS.Timeout | null = null;
-	let intervalRef: NodeJS.Timeout | null = null;
+	let fastIntervalRef: NodeJS.Timeout | null = null;
+	let slowIntervalRef: NodeJS.Timeout | null = null;
 
 	function toggleCardSelection(index: number) {
 		selectedIndex = selectedIndex === index ? null : index;
 	}
 
 	function cardClick(index: number) {
-		if (!isNil(intervalRef)) {
-			clearInterval(intervalRef);
-		}
+		if (!isNil(timeoutRef)) clearTimeout(timeoutRef);
+		if (!isNil(fastIntervalRef)) clearInterval(fastIntervalRef);
+		if (!isNil(slowIntervalRef)) clearInterval(slowIntervalRef);
 
 		toggleCardSelection(index);
 	}
 
-	timeoutRef = setTimeout(() => {
-		toggleCardSelection(0);
+	$effect(() => {
+		if (fastIntervalCleared) {
+			slowIntervalRef = setInterval(() => {
+				const nextIndex = isNil(selectedIndex) ? 0 : (selectedIndex + 1) % SERVICE_CARDS.length;
+				toggleCardSelection(nextIndex);
+			}, 2500);
+		}
+	});
 
-		intervalRef = setInterval(() => {
-			const nextIndex = isNil(selectedIndex) ? 0 : (selectedIndex + 1) % SERVICE_CARDS.length;
-			toggleCardSelection(nextIndex);
-		}, 2000);
-	}, 1000);
+	onMount(() => {
+		timeoutRef = setTimeout(() => {
+			toggleCardSelection(0);
+
+			fastIntervalRef = setInterval(() => {
+				const nextIndex = isNil(selectedIndex) ? 0 : (selectedIndex + 1) % SERVICE_CARDS.length;
+				let markedForClear = false;
+				if (selectedIndex === SERVICE_CARDS.length - 1) {
+					markedForClear = true;
+				}
+
+				toggleCardSelection(nextIndex);
+
+				if (markedForClear && !isNil(fastIntervalRef)) {
+					clearInterval(fastIntervalRef);
+					fastIntervalCleared = true;
+				}
+			}, 500);
+		}, 250);
+	});
 
 	onDestroy(() => {
-		if (!isNil(intervalRef)) clearInterval(intervalRef);
+		if (!isNil(fastIntervalRef)) clearInterval(fastIntervalRef);
 		if (!isNil(timeoutRef)) clearTimeout(timeoutRef);
 	});
 </script>
