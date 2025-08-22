@@ -47,10 +47,8 @@
 
 		<div class="flex flex-col justify-center">
 			<span class="text-xs">{$translate('footer.contact')}</span>
-			<span class="text-xs">{$translate('footer.phoneNumber')}</span>
-			<a class="text-xs" href="mailto:szymonkaszubagalka.innovio@gmail.com">
-				{$translate('footer.email')}
-			</a>
+			<a class="text-xs" href="tel:+48794030363"> Tel: +48 794 03 03 63</a>
+			<a class="text-xs" href="mailto:contact@mmbs.pl"> E-mail: contact@mmbs.pl </a>
 		</div>
 
 		<div class="grid grid-cols-2 grid-rows-2 gap-2">

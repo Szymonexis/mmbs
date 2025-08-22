@@ -1,6 +1,6 @@
 {
 	"header": {
-		"aboutUs": "About Us",
+		"aboutUs": "Home",
 		"services": "Services",
 		"portfolio": "Portfolio",
 		"faq": "FAQ",
@@ -11,24 +11,22 @@
 		"cta": "Go back"
 	},
 	"footer": {
-		"contact": "Contact",
-		"phoneNumber": "tel: +48 794 03 03 63",
-		"email": "email: szymonkaszubagalka.innovio@gmail.com"
+		"contact": "Contact"
 	},
 	"contactForm": {
 		"title": "Contact Us",
 		"button": "Send",
 		"form": {
 			"name": {
-				"label": "Name",
-				"placeholder": "Your name",
+				"label": "Your name",
+				"placeholder": "Jane Doe",
 				"errors": {
 					"required": "Name is required."
 				}
 			},
 			"companyName": {
-				"label": "Company Name",
-				"placeholder": "Your company",
+				"label": "Your company name",
+				"placeholder": "Company Ltd.",
 				"errors": {
 					"required": "Company name is required."
 				}
@@ -50,8 +48,8 @@
 				}
 			},
 			"message": {
-				"label": "Describe what you need",
-				"placeholder": "Your message",
+				"label": "Your message",
+				"placeholder": "Describe what you need",
 				"errors": {
 					"required": "Message is required."
 				}

@@ -17,3 +17,29 @@ export const SCHEMA = yup.object().shape({
 });
 
 export type ContactFormValue = yup.InferType<typeof SCHEMA>;
+
+export const FORM_FIELDS: {
+	key: keyof ContactFormValue;
+	type: 'input' | 'textarea';
+}[] = [
+	{
+		key: 'name',
+		type: 'input'
+	},
+	{
+		key: 'companyName',
+		type: 'input'
+	},
+	{
+		key: 'email',
+		type: 'input'
+	},
+	{
+		key: 'phone',
+		type: 'input'
+	},
+	{
+		key: 'message',
+		type: 'input'
+	}
+];

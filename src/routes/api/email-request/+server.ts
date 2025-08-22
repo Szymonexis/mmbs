@@ -1,6 +1,6 @@
 import { createTransport } from 'nodemailer';
 import { json } from '@sveltejs/kit';
-import { EMAIL_PASSWORD, EMAIL_SENDER } from '$env/static/private';
+import { EMAIL_PASSWORD, EMAIL_RECIEVER, EMAIL_SENDER } from '$env/static/private';
 import { getEmailRequestContent } from '$shared/get-email-request-content';
 import { validateBody } from '$shared/server/validate-body.server.js';
 import { ContactFormRequest } from './model';
@@ -29,7 +29,8 @@ export async function POST({ request }) {
 	const { name, message, ...rest } = dto;
 
 	await transporter.sendMail({
-		to: EMAIL_SENDER,
+		from: EMAIL_SENDER,
+		to: EMAIL_RECIEVER,
 		subject: `[MMBS CLIENT MESSAGE] ${name}`,
 		html: getEmailRequestContent(JSON.stringify({ name, ...rest }, null, 2), message)
 	});

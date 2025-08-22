@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { translate } from '$i18n';
 	import { createForm } from 'svelte-forms-lib';
-	import { SCHEMA, type ContactFormValue } from './model';
+	import { FORM_FIELDS, SCHEMA, type ContactFormValue } from './model';
 	import { isEmpty, isNil } from 'lodash-es';
 	import { onDestroy } from 'svelte';
 	import { getDefaultHeaders } from '$shared/get-default-headers';
 
 	let isValid = $state(false);
+	let isLoading = $state(false);
 
 	const formInitialValue: ContactFormValue = {
 		name: '',
@@ -27,11 +28,13 @@
 		initialValues: formInitialValue,
 		validationSchema: SCHEMA,
 		onSubmit: async function (value) {
+			isLoading = true;
 			await fetch('/api/email-request', {
 				method: 'POST',
 				headers: getDefaultHeaders(),
 				body: JSON.stringify(value)
 			});
+			isLoading = false;
 
 			form.set(formInitialValue);
 			touched.set({} as any);
@@ -52,112 +55,74 @@
 </script>
 
 <form
-	class="h-min w-full rounded-md border-2 border-blue-800 px-8 py-6 shadow-md"
+	class="h-min w-full min-w-80 rounded-md border-2 border-blue-800 px-8 py-6 shadow-md"
 	onsubmit={handleSubmit}
 >
 	<span class="unbounded text-2xl text-blue-800 max-sm:text-xl">
 		{$translate('contactForm.title')}
 	</span>
 
-	<!-- name -->
-	<div class="my-4 flex flex-col gap-2">
-		<input
-			class="bg-light border-0 border-b-2 border-blue-800 focus:ring-0"
-			type="text"
-			name="name"
-			placeholder={$translate('contactForm.form.name.placeholder')}
-			required
-			onchange={handleChange}
-			onblur={handleChange}
-			bind:value={$form.name}
-		/>
+	{#each FORM_FIELDS as { key, type }}
+		{#if type === 'input'}
+			<div class="relative my-6">
+				<input
+					id={key}
+					name={key}
+					type="text"
+					required
+					placeholder={$translate(`contactForm.form.${key}.placeholder`)}
+					bind:value={$form[key]}
+					onchange={handleChange}
+					onblur={handleChange}
+					class="peer bg-light w-full border-0 border-b-2 border-blue-800 placeholder-transparent focus:border-blue-600 focus:ring-0"
+				/>
 
-		{#if $errors.name !== ''}
-			<small class="text-red-500">
-				{$translate($errors.name)}
-			</small>
+				<label
+					for={key}
+					class="absolute -top-3.5 left-0 text-sm text-gray-600 transition-all
+                       peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400
+                       peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-blue-800"
+				>
+					{$translate(`contactForm.form.${key}.label`)}
+				</label>
+
+				{#if $errors[key] !== ''}
+					<small class="text-red-500">
+						{$translate($errors[key])}
+					</small>
+				{/if}
+			</div>
+		{:else if type === 'textarea'}
+			<div class="relative my-6">
+				<textarea
+					id={key}
+					name={key}
+					rows="5"
+					required
+					placeholder={$translate(`contactForm.form.${key}.placeholder`)}
+					bind:value={$form[key]}
+					onchange={handleChange}
+					onblur={handleChange}
+					class="peer bg-light w-full resize-none border-0 border-b-2 border-blue-800 placeholder-transparent focus:border-blue-600 focus:ring-0"
+				></textarea>
+
+				<label
+					for={key}
+					class="absolute -top-3.5 left-0 text-sm text-gray-600 transition-all
+                       peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400
+                       peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-blue-800"
+				>
+					{$translate(`contactForm.form.${key}.label`)}
+				</label>
+
+				{#if $errors[key] !== ''}
+					<small class="text-red-500">
+						{$translate($errors[key])}
+					</small>
+				{/if}
+			</div>
 		{/if}
-	</div>
-
-	<!-- companyName -->
-	<div class="my-4 flex flex-col gap-2">
-		<input
-			class="bg-light border-0 border-b-2 border-blue-800 focus:ring-0"
-			type="text"
-			name="companyName"
-			placeholder={$translate('contactForm.form.companyName.placeholder')}
-			required
-			onchange={handleChange}
-			onblur={handleChange}
-			bind:value={$form.companyName}
-		/>
-
-		{#if $errors.companyName !== ''}
-			<small class="text-red-500">
-				{$translate($errors.companyName)}
-			</small>
-		{/if}
-	</div>
-
-	<!-- email -->
-	<div class="my-4 flex flex-col gap-2">
-		<input
-			class="bg-light border-0 border-b-2 border-blue-800 focus:ring-0"
-			type="email"
-			name="email"
-			placeholder={$translate('contactForm.form.email.placeholder')}
-			required
-			onchange={handleChange}
-			onblur={handleChange}
-			bind:value={$form.email}
-		/>
-
-		{#if $errors.email !== ''}
-			<small class="text-red-500">
-				{$translate($errors.email)}
-			</small>
-		{/if}
-	</div>
-
-	<!-- phone -->
-	<div class="my-4 flex flex-col gap-2">
-		<input
-			class="bg-light border-0 border-b-2 border-blue-800 focus:ring-0"
-			type="tel"
-			name="phone"
-			placeholder={$translate('contactForm.form.phone.placeholder')}
-			required
-			onchange={handleChange}
-			onblur={handleChange}
-			bind:value={$form.phone}
-		/>
-
-		{#if $errors.phone !== ''}
-			<small class="text-red-500">
-				{$translate($errors.phone)}
-			</small>
-		{/if}
-	</div>
-
-	<!-- message -->
-	<div class="my-4 flex flex-col gap-2">
-		<textarea
-			class="bg-light w-full resize-none overflow-auto border-0 border-b-2 border-blue-800 focus:ring-0"
-			rows="5"
-			name="message"
-			placeholder={$translate('contactForm.form.message.placeholder')}
-			required
-			onchange={handleChange}
-			onblur={handleChange}
-			bind:value={$form.message}
-		></textarea>
-
-		{#if $errors.message !== ''}
-			<small class="text-red-500">
-				{$translate($errors.message)}
-			</small>
-		{/if}
-	</div>
+	{/each}
 
 	<div class="flex">
 		<span class="flex-auto"></span>
@@ -165,19 +130,25 @@
 		<button
 			class="unbounded flex items-center text-lg text-blue-800"
 			class:grayscale={!isValid}
-			class:cursor-not-allowed={!isValid}
-			class:cursor-pointer={isValid}
+			class:cursor-not-allowed={!isValid || isLoading}
+			class:cursor-pointer={isValid && !isLoading}
 			type="submit"
+			disabled={!isValid || isLoading}
 		>
-			{$translate('contactForm.button')}
-
-			<img
-				class="aspect-square w-16 object-contain"
-				src="/contact-form/send.webp"
-				alt="contact form send icon"
-				loading="lazy"
-				fetchpriority="low"
-			/>
+			{#if isLoading}
+				<div
+					class="mr-2 h-16 w-16 animate-spin rounded-full border-8 border-blue-800 border-t-transparent"
+				></div>
+			{:else}
+				<span>{$translate('contactForm.button')}</span>
+				<img
+					class="aspect-square w-16 object-contain"
+					src="/contact-form/send.webp"
+					alt="contact form send icon"
+					loading="lazy"
+					fetchpriority="low"
+				/>
+			{/if}
 		</button>
 	</div>
 </form>

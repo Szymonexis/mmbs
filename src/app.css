@@ -18,4 +18,5 @@ body,
 html {
 	font-family: 'Rethink Sans';
 	background-color: #fcfdf7;
+	scroll-behavior: smooth;
 }

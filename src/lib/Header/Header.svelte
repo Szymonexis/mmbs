@@ -4,18 +4,11 @@
 	import { goto } from '$app/navigation';
 	import { onDestroy, onMount } from 'svelte';
 	import { isNil } from 'lodash-es';
-
-	const headerItems = [
-		{ label: 'aboutUs', href: '/', inverted: false },
-		{ label: 'services', href: '/services', inverted: false },
-		{ label: 'portfolio', href: '/portfolio', inverted: false },
-		{ label: 'faq', href: '/faq', inverted: false },
-		{ label: 'contactUs', href: '/contact-us', inverted: true }
-	];
+	import { HEADER_ITEMS } from './model';
 
 	let disconnectObserver: () => void;
 
-	const BREAKPOINT_PX = 780;
+	const BREAKPOINT_PX = 796;
 
 	let remSize = $state(16);
 	let windowWidth = $state(0);
@@ -47,6 +40,12 @@
 		return () => resizeObserver.disconnect();
 	}
 
+	$effect(() => {
+		if (isBiggerThanBreakpoint) {
+			isMobileMenuOpen = false;
+		}
+	});
+
 	onMount(() => {
 		disconnectObserver = observeRootFontSize();
 	});
@@ -62,7 +61,7 @@
 
 {#if !isBiggerThanBreakpoint}
 	<div
-		class="fixed top-0 right-0 bottom-0 left-0 z-1001 h-dvh w-dvw backdrop-blur-lg"
+		class="fixed top-0 right-0 bottom-0 left-0 z-1001 h-dvh w-dvw bg-[#fcfdf793] backdrop-blur-lg"
 		class:hidden={!isMobileMenuOpen}
 	>
 		<button
@@ -74,10 +73,10 @@
 		</button>
 
 		<div class="flex h-full flex-col items-center justify-center gap-6">
-			{#each headerItems as { href, label, inverted }}
+			{#each HEADER_ITEMS as { href, label, inverted }}
 				{#if !inverted}
 					<a
-						class="decoration-blue-800 decoration-1 underline-offset-4 hover:underline"
+						class="text-lg decoration-blue-800 decoration-1 underline-offset-4 hover:underline"
 						class:underline={page.url.pathname === href}
 						class:decoration-2={page.url.pathname === href}
 						onclick={() => {
@@ -92,7 +91,7 @@
 
 				{#if inverted}
 					<a
-						class="cursor-pointer rounded-md bg-blue-800 px-4 py-2 font-bold text-white decoration-1 underline-offset-4 hover:underline"
+						class="cursor-pointer rounded-md bg-blue-800 px-4 py-2 text-lg text-white decoration-1 underline-offset-4 hover:underline"
 						class:underline={page.url.pathname === href}
 						class:decoration-2={page.url.pathname === href}
 						onclick={() => {
@@ -139,12 +138,12 @@
 		{/if}
 
 		{#if isBiggerThanBreakpoint}
-			{#each headerItems as { href, label, inverted }}
+			{#each HEADER_ITEMS as { href, label, inverted, underline }}
 				{#if !inverted}
 					<a
-						class="decoration-blue-800 decoration-1 underline-offset-4 hover:underline"
-						class:underline={page.url.pathname === href}
-						class:decoration-2={page.url.pathname === href}
+						class="text-center decoration-blue-800 decoration-1 underline-offset-4 hover:underline"
+						class:underline={underline && page.url.pathname === href}
+						class:decoration-2={underline && page.url.pathname === href}
 						{href}
 					>
 						{$translate(`header.${label}`)}
@@ -153,9 +152,9 @@
 
 				{#if inverted}
 					<a
-						class="cursor-pointer rounded-md bg-blue-800 px-4 py-2 font-bold text-white decoration-1 underline-offset-4 hover:underline"
-						class:underline={page.url.pathname === href}
-						class:decoration-2={page.url.pathname === href}
+						class="cursor-pointer rounded-md bg-blue-800 px-4 py-2 text-center font-bold text-white decoration-1 underline-offset-4 hover:underline"
+						class:underline={underline && page.url.pathname === href}
+						class:decoration-2={underline && page.url.pathname === href}
 						{href}
 					>
 						{$translate(`header.${label}`)}

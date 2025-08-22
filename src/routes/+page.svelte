@@ -33,9 +33,9 @@
 						wordsCarouselStopIndex = wordsCarouselItems.length - 1;
 					}
 					startCarousel();
-				}, 1500);
+				}, 2000);
 			}
-		}, 150);
+		}, 100);
 	}
 
 	onMount(() => {
@@ -61,7 +61,7 @@
 		<div>{$translate('aboutUs.hero.bottom')}</div>
 	</div>
 
-	<img src="/about-us/hero.webp" alt="hero" width="535px" height="535px"/>
+	<img src="/about-us/hero.webp" alt="hero" width="535px" height="535px" />
 </div>
 
 <div class="my-12">
@@ -71,7 +71,7 @@
 
 	<hr class="mt-1 border-1 text-blue-800" />
 
-	<div class="my-6 block grid-cols-[1fr_auto] gap-6 md:grid">
+	<div class="my-6 block grid-cols-[auto_1fr] gap-6 md:grid">
 		<div>
 			{#each processItems as { index, title, description, icon }}
 				<div class="my-6 flex items-center gap-4">
@@ -101,7 +101,9 @@
 			{/each}
 		</div>
 
-		<ContactForm />
+		<section id="contactUs" aria-labelledby="contactUs-form" class="scroll-mt-30">
+			<ContactForm />
+		</section>
 	</div>
 </div>
 

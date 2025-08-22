@@ -1,6 +1,6 @@
 {
 	"header": {
-		"aboutUs": "O nas",
+		"aboutUs": "Strona Główna",
 		"services": "Oferta",
 		"portfolio": "Portfolio",
 		"faq": "FAQ",
@@ -11,24 +11,22 @@
 		"cta": "Wróć"
 	},
 	"footer": {
-		"contact": "Kontakt",
-		"phoneNumber": "tel: +48 794 03 03 63",
-		"email": "email: szymonkaszubagalka.innovio@gmail.com"
+		"contact": "Kontakt"
 	},
 	"contactForm": {
 		"title": "Skontaktuj się z nami",
 		"button": "Wyślij",
 		"form": {
 			"name": {
-				"label": "Imię",
-				"placeholder": "Twoje imię",
+				"label": "Twoje imię",
+				"placeholder": "Joanna Kowalska",
 				"errors": {
 					"required": "Imię jest wymagane."
 				}
 			},
 			"companyName": {
-				"label": "Nazwa firmy",
-				"placeholder": "Twoja firma",
+				"label": "Nazwa twojej firmy",
+				"placeholder": "Firma sp. z o.o.",
 				"errors": {
 					"required": "Nazwa firmy jest wymagana."
 				}
@@ -42,7 +40,7 @@
 				}
 			},
 			"phone": {
-				"label": "Numer telefonu",
+				"label": "Twój numer telefonu",
 				"placeholder": "(+XX) XXX XXX XXX",
 				"errors": {
 					"required": "Numer telefonu jest wymagany.",
@@ -50,8 +48,8 @@
 				}
 			},
 			"message": {
-				"label": "Opisz, czego potrzebujesz",
-				"placeholder": "Twoja wiadomość",
+				"label": "Twoja wiadomość",
+				"placeholder": "Opisz, czego potrzebujesz",
 				"errors": {
 					"required": "Wiadomość jest wymagana."
 				}
