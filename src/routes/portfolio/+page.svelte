@@ -134,7 +134,7 @@
 					</div>
 
 					<div class="my-4">
-						<div class="my-4">Related media</div>
+						<div class="my-4">{$translate('portfolio.relatedAssets')}</div>
 
 						<div class="flex flex-wrap gap-4">
 							{#each mediaList as { type, alt, src }}

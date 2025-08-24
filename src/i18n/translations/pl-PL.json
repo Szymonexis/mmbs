@@ -253,6 +253,7 @@
 	"portfolio": {
 		"readLess": "Zamknij pełny opis",
 		"readMore": "Pokaż pełny opis",
+		"relatedAssets": "Powiązane zasoby",
 		"label": {
 			"client": "Projekt dla klienta",
 			"inHouse": "Projekt wewnętrzny",

@@ -253,6 +253,7 @@
 	"portfolio": {
 		"readLess": "Close full description",
 		"readMore": "Show full description",
+		"relatedAssets": "Related assets",
 		"label": {
 			"client": "Client project",
 			"inHouse": "In-House project",
