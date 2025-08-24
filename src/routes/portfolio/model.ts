@@ -11,10 +11,19 @@ export enum Label {
 	OPEN_SOURCE
 }
 
-export const LABEL_TEXT_MAP: Record<Label, string> = {
-	[Label.CLIENT]: `portfolio.label.client`,
-	[Label.IN_HOUSE]: 'portfolio.label.inHouse',
-	[Label.OPEN_SOURCE]: 'portfolio.label.openSource'
+export const LABEL_TO_PROPERTY_MAP: Record<Label, { text: string; backgroundClass: string }> = {
+	[Label.CLIENT]: {
+		text: `portfolio.label.client`,
+		backgroundClass: 'bg-green-600'
+	},
+	[Label.IN_HOUSE]: {
+		text: 'portfolio.label.inHouse',
+		backgroundClass: 'bg-amber-500'
+	},
+	[Label.OPEN_SOURCE]: {
+		text: 'portfolio.label.openSource',
+		backgroundClass: 'bg-purple-600'
+	}
 };
 
 type MediaItem = {
@@ -30,6 +39,7 @@ export type PortfolioBaseItem = {
 	date: Date;
 	descriptionLength: number;
 	mediaList: MediaItem[];
+	ogImageReplacement?: string;
 };
 
 const portfolioListBase: PortfolioBaseItem[] = [
@@ -38,7 +48,7 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		key: 'powerivanchukova',
 		labels: [Label.CLIENT],
 		date: new Date(2025, 7, 16),
-		descriptionLength: 1,
+		descriptionLength: 4,
 		mediaList: [
 			{
 				type: 'video',
@@ -52,46 +62,51 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		key: 'ngxMetaPixel',
 		labels: [Label.IN_HOUSE, Label.OPEN_SOURCE],
 		date: new Date(2025, 1, 17),
-		descriptionLength: 1,
+		descriptionLength: 2,
 		mediaList: []
+	},
+	{
+		url: 'https://zuzannalucinska.pl/',
+		key: 'zuzannaLucinska',
+		labels: [Label.CLIENT],
+		date: new Date(2025, 5, 1),
+		descriptionLength: 0,
+		mediaList: [],
+		ogImageReplacement: '/portfolio/zuzanna-lucinska/og-image-replacement.png'
 	}
 ];
-
-export const PORTFOLIO_LENGTH = portfolioListBase.length;
 
 const sortedPortfolioListBase = portfolioListBase.sort(
 	(a, b) => b.date.getTime() - a.date.getTime()
 );
 
 export async function getCompletePortfolioItems() {
-	return await Promise.all(
-		sortedPortfolioListBase.map(async ({ descriptionLength, key, ...val }) => {
-			const newVal = {
-				...val,
-				descriptionParts: Array.from({ length: descriptionLength }).map(
-					(_, i) => `portfolio.${key}.description.${i}`
-				),
-				shortDescription: `portfolio.${key}.shortDescription`,
-				title: `portfolio.${key}.title`
-			};
+	return sortedPortfolioListBase.map(async ({ descriptionLength, key, ...val }) => {
+		const newVal = {
+			...val,
+			descriptionParts: Array.from({ length: descriptionLength }).map(
+				(_, i) => `portfolio.${key}.description.${i}`
+			),
+			shortDescription: `portfolio.${key}.shortDescription`,
+			title: `portfolio.${key}.title`
+		};
 
-			const body = { url: val.url } satisfies OpenGraphScraperRequest;
+		const body = { url: val.url } satisfies OpenGraphScraperRequest;
 
-			const response = await fetch('/api/open-graph-scraper', {
-				method: 'POST',
-				headers: getDefaultHeaders(),
-				body: JSON.stringify(body)
-			});
+		const response = await fetch('/api/open-graph-scraper', {
+			method: 'POST',
+			headers: getDefaultHeaders(),
+			body: JSON.stringify(body)
+		});
 
-			if (response.status !== HttpStatus.OK) {
-				return { ...newVal, ogImage: null };
-			}
+		if (response.status !== HttpStatus.OK) {
+			return { ...newVal, ogImage: null };
+		}
 
-			const { image } = (await response.json()) as OpenGraphScraperResponse;
+		const { image } = (await response.json()) as OpenGraphScraperResponse;
 
-			return { ...newVal, ogImage: image };
-		})
-	);
+		return { ...newVal, ogImage: image };
+	});
 }
 
 export type PortfolioList = Awaited<ReturnType<typeof getCompletePortfolioItems>>;

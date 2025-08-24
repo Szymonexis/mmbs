@@ -92,7 +92,7 @@
 					"position": "Graphic Designer",
 					"descriptionParts": [
 						"I am a graphic design graduate from the University of Social Sciences, with extensive experience in designing visual communication. My portfolio includes projects for renowned brands such as 'Lola Bianka', 'Just Unique', 'Marylin', 'Qiosque', and 'Naoko'.",
-						"At Innovio, I am responsible for creating designs that combine high aesthetics, intuitiveness, and full alignment with the client's strategic goals. My priority is to create coherent and functional visual solutions that effectively engage audiences and strengthen brand identity."
+						"At MMBS, I am responsible for creating designs that combine high aesthetics, intuitiveness, and full alignment with the client's strategic goals. My priority is to create coherent and functional visual solutions that effectively engage audiences and strengthen brand identity."
 					]
 				},
 				"szymon": {
@@ -115,7 +115,7 @@
 					"name": "Bartek",
 					"position": "Project Manager & Business Analyst",
 					"descriptionParts": [
-						"As an entrepreneur and strategist with a passion for innovation, at Innovio I am responsible for business development, building relationships with key clients, and developing growth strategies. Concurrently, as an HR Business Partner at 'Wyciskarka Potencjału', I manage HR operations and talent development.",
+						"As an entrepreneur and strategist with a passion for innovation, at MMBS I am responsible for business development, building relationships with key clients, and developing growth strategies. Concurrently, as an HR Business Partner at 'Wyciskarka Potencjału', I manage HR operations and talent development.",
 						"The experience gained from hackathons, industry conferences, and mentoring programs motivates me to initiate groundbreaking projects and build lasting and valuable business partnerships."
 					]
 				}
@@ -251,6 +251,8 @@
 		}
 	},
 	"portfolio": {
+		"readLess": "Close full description",
+		"readMore": "Show full description",
 		"label": {
 			"client": "Client project",
 			"inHouse": "In-House project",
@@ -273,6 +275,11 @@
 				"This Meta Pixel integration package streamlines embedding Meta Pixel into Angular applications, supporting versions 16 through 20. With a simple install (npm install ngx-meta-pixel), you can configure tracking by importing the module for module-based apps or using provideNgxMetaPixel in standalone component architectures. The package handles script injection automatically, requiring only that you place the modified Meta Pixel HTML with designated id attributes in your assets directory or host it elsewhere. This setup removes repetitive boilerplate and minimizes integration errors, allowing you to focus on building your application.",
 				"Once integrated, tracking becomes straightforward: use NgxMetaPixelService.track(eventName, properties) for standard events like \"PageView\", or trackCustom(eventName, properties) for custom events. The pixel can also be disabled entirely with remove(), which is especially useful for GDPR-compliant flows—by initializing it with enabled: false and activating it only after user consent. This makes the package a versatile, efficient, and reliable solution for modern Angular development."
 			]
+		},
+		"zuzannaLucinska": {
+			"title": "Zuzanna Lucińska",
+			"shortDescription": "A site for Zuzanna Lucińska, a notary, serving as her business card website",
+			"description": []
 		}
 	}
 }

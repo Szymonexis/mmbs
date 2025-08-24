@@ -1,24 +1,7 @@
 <script lang="ts">
 	import { translate } from '$i18n';
 	import { TechnologiesCarousel } from '$lib';
-
-	const SOCIAL_MEDIA_LINKS = [
-		{
-			href: 'https://github.com/MMBS-Studio',
-			src: '/links/github.svg',
-			alt: 'MMBS Studio Github'
-		},
-		{
-			href: 'https://www.instagram.com/mmbs_studio/',
-			src: '/links/instagram.svg',
-			alt: 'MMBS Studio Instagram'
-		},
-		{
-			href: 'https://www.linkedin.com/company/mmbs-studio',
-			src: '/links/linkedin.svg',
-			alt: 'MMBS Studio Linkedin'
-		}
-	];
+	import { SOCIAL_MEDIA_LINKS } from './model';
 </script>
 
 <div class="m-auto my-6 max-w-7xl">

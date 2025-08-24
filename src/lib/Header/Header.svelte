@@ -152,7 +152,7 @@
 
 				{#if inverted}
 					<a
-						class="cursor-pointer rounded-md bg-blue-800 px-4 py-2 text-center font-bold text-white decoration-1 underline-offset-4 hover:underline"
+						class="cursor-pointer rounded-md bg-blue-800 px-4 py-2 text-center font-bold text-white"
 						class:underline={underline && page.url.pathname === href}
 						class:decoration-2={underline && page.url.pathname === href}
 						{href}

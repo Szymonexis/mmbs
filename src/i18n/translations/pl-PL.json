@@ -92,7 +92,7 @@
 					"position": "Projektant Graficzny",
 					"descriptionParts": [
 						"Jestem absolwentką kierunku grafika w Społecznej Akademii Nauk, z bogatym doświadczeniem w projektowaniu komunikacji wizualnej. Moje portfolio obejmuje realizacje dla renomowanych marek, takich jak 'Lola Bianka', 'Just Unique', 'Marylin', 'Qiosque' oraz 'Naoko'.",
-						"W Innovio odpowiadam za kreację projektów, które łączą w sobie wysoką estetykę, intuicyjność i pełną zgodność z celami strategicznymi klienta. Moim priorytetem jest tworzenie spójnych i funkcjonalnych rozwiązań wizualnych, które skutecznie angażują odbiorców i wzmacniają tożsamość marki."
+						"W MMBS odpowiadam za kreację projektów, które łączą w sobie wysoką estetykę, intuicyjność i pełną zgodność z celami strategicznymi klienta. Moim priorytetem jest tworzenie spójnych i funkcjonalnych rozwiązań wizualnych, które skutecznie angażują odbiorców i wzmacniają tożsamość marki."
 					]
 				},
 				"szymon": {
@@ -115,7 +115,7 @@
 					"name": "Bartek",
 					"position": "Project Manager & Analityk Biznesowy",
 					"descriptionParts": [
-						"Jako przedsiębiorca i strateg z pasją do innowacji, w Innovio odpowiadam za rozwój biznesu, budowanie relacji z kluczowymi klientami oraz opracowywanie strategii wzrostu. Równolegle, jako HR Business Partner w 'Wyciskarka Potencjału', zarządzam operacjami HR i rozwojem talentów.",
+						"Jako przedsiębiorca i strateg z pasją do innowacji, w MMBS odpowiadam za rozwój biznesu, budowanie relacji z kluczowymi klientami oraz opracowywanie strategii wzrostu. Równolegle, jako HR Business Partner w 'Wyciskarka Potencjału', zarządzam operacjami HR i rozwojem talentów.",
 						"Doświadczenie zdobyte podczas hackathonów, konferencji branżowych i w programach mentoringowych motywuje mnie do inicjowania przełomowych projektów oraz budowania trwałych i wartościowych partnerstw biznesowych."
 					]
 				}
@@ -251,6 +251,8 @@
 		}
 	},
 	"portfolio": {
+		"readLess": "Zamknij pełny opis",
+		"readMore": "Pokaż pełny opis",
 		"label": {
 			"client": "Projekt dla klienta",
 			"inHouse": "Projekt wewnętrzny",
@@ -273,6 +275,11 @@
 				"Ten pakiet integracyjny Meta Pixel upraszcza osadzanie Meta Pixel w aplikacjach Angular, obsługując wersje od 16 do 20. Dzięki prostej instalacji (npm install ngx-meta-pixel) możesz skonfigurować śledzenie poprzez import modułu w aplikacjach modułowych lub użycie provideNgxMetaPixel w architekturach opartych na komponentach standalone. Pakiet automatycznie obsługuje wstrzykiwanie skryptu, wymagając jedynie umieszczenia zmodyfikowanego kodu HTML Meta Pixel z przypisanymi atrybutami id w katalogu assets lub hostowanie go gdzie indziej. To rozwiązanie eliminuje powtarzalny boilerplate i minimalizuje błędy integracji, pozwalając Ci skupić się na tworzeniu aplikacji.",
 				"Po zintegrowaniu śledzenie staje się proste: użyj NgxMetaPixelService.track(eventName, properties) dla standardowych zdarzeń, takich jak \"PageView\", lub trackCustom(eventName, properties) dla zdarzeń niestandardowych. Piksel można także całkowicie wyłączyć za pomocą remove(), co jest szczególnie przydatne w procesach zgodnych z RODO — poprzez inicjalizację z enabled: false i aktywację dopiero po wyrażeniu zgody przez użytkownika. To sprawia, że pakiet jest wszechstronnym, wydajnym i niezawodnym rozwiązaniem dla nowoczesnego rozwoju w Angularze."
 			]
+		},
+		"zuzannaLucinska": {
+			"title": "Zuzanna Lucińska",
+			"shortDescription": "Strona internetowa Zuzanny Lucińskiej, notariusza, pełniąca rolę strony-wizytówki",
+			"description": []
 		}
 	}
 }

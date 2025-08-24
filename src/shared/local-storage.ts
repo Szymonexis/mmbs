@@ -5,9 +5,9 @@ export enum LocalStorageKey {
 }
 
 export function readValueFromLocalStorage(key: LocalStorageKey) {
-	return localStorage.getItem(`innovio-${PUBLIC_APP_HASH}-${key}`);
+	return localStorage.getItem(`mmbs-${PUBLIC_APP_HASH}-${key}`);
 }
 
 export function setValueInLocalStorage(key: LocalStorageKey, value: string) {
-	localStorage.setItem(`innovio-${PUBLIC_APP_HASH}-${key}`, value);
+	localStorage.setItem(`mmbs-${PUBLIC_APP_HASH}-${key}`, value);
 }
