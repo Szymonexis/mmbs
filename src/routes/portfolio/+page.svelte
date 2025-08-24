@@ -124,15 +124,29 @@
 			{/await}
 		</div>
 
-		{#await portfolioItem then { descriptionParts }}
+		{#await portfolioItem then { descriptionParts, mediaList }}
 			{#if openedIndex === index}
-				<div
-					class="flex flex-col gap-4 rounded-lg border-2 border-blue-800 p-4"
-					transition:slide={{ duration: 300, easing: quintOut }}
-				>
-					{#each descriptionParts as part}
-						<p>{$translate(part)}</p>
-					{/each}
+				<div transition:slide={{ duration: 300, easing: quintOut }}>
+					<div class="flex flex-col gap-4 rounded-lg border-2 border-blue-800 p-4">
+						{#each descriptionParts as part}
+							<p>{$translate(part)}</p>
+						{/each}
+					</div>
+
+					<div class="my-4">
+						<div class="my-4">Related media</div>
+
+						<div class="flex flex-wrap gap-4">
+							{#each mediaList as { type, alt, src }}
+								{#if type === 'image'}
+									<img {src} {alt} class="aspect-video w-60 rounded-lg object-contain" />
+								{:else if type === 'video'}
+									<!-- svelte-ignore a11y_media_has_caption -->
+									<video {src} controls class="aspect-video w-60 rounded-lg object-contain"></video>
+								{/if}
+							{/each}
+						</div>
+					</div>
 				</div>
 			{/if}
 		{/await}
