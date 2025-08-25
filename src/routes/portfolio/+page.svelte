@@ -112,7 +112,7 @@
 
 					{#if awaitedportfolioItem.descriptionParts.length > 0}
 						<button
-							class="my-4 cursor-pointer rounded-md bg-blue-800 px-4 py-2 text-center font-bold text-white"
+							class="mt-4 cursor-pointer rounded-md bg-blue-800 px-4 py-2 text-center font-bold text-white"
 							onclick={() => onOpenFullDescription(index)}
 						>
 							{openedIndex === index
@@ -150,7 +150,7 @@
 		{/await}
 
 		{#if index < portfolioList.length - 1}
-			<div class="my-12"></div>
+			<div class="h-12"></div>
 		{/if}
 	{/each}
 </div>
