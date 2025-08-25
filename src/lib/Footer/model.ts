@@ -24,5 +24,10 @@ export const SOCIAL_MEDIA_LINKS: SocialMediaLink[] = [
 		href: 'https://www.trustpilot.com/review/mmbs.pl',
 		src: '/links/trustpilot.svg',
 		alt: 'MMBS Studio Trustpilot'
+	},
+	{
+		href: 'https://www.facebook.com/profile.php?id=61579865160584',
+		src: '/links/facebook.svg',
+		alt: 'MMBS Studio Facebook'
 	}
 ];
