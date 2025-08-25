@@ -26,10 +26,9 @@ export const LABEL_TO_PROPERTY_MAP: Record<Label, { text: string; backgroundClas
 	}
 };
 
-type MediaItem = {
-	type: 'video' | 'image';
-	src: string;
-	alt: string;
+export type MediaItem = {
+	url: string;
+	label: string;
 };
 
 export type PortfolioBaseItem = {
@@ -51,9 +50,8 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		descriptionLength: 4,
 		mediaList: [
 			{
-				type: 'video',
-				alt: 'Client instagram story',
-				src: '/portfolio/powerivanchukova/story.mp4'
+				url: '/portfolio/powerivanchukova/story.mp4',
+				label: 'story'
 			}
 		]
 	},
@@ -81,14 +79,18 @@ const sortedPortfolioListBase = portfolioListBase.sort(
 );
 
 export async function getCompletePortfolioItems() {
-	return sortedPortfolioListBase.map(async ({ descriptionLength, key, ...val }) => {
+	return sortedPortfolioListBase.map(async ({ descriptionLength, key, mediaList, ...val }) => {
 		const newVal = {
 			...val,
 			descriptionParts: Array.from({ length: descriptionLength }).map(
 				(_, i) => `portfolio.${key}.description.${i}`
 			),
 			shortDescription: `portfolio.${key}.shortDescription`,
-			title: `portfolio.${key}.title`
+			title: `portfolio.${key}.title`,
+			mediaList: mediaList.map(({ url, label }) => ({
+				url,
+				label: `portfolio.${key}.mediaList.${label}`
+			}))
 		};
 
 		const body = { url: val.url } satisfies OpenGraphScraperRequest;
@@ -110,3 +112,5 @@ export async function getCompletePortfolioItems() {
 }
 
 export type PortfolioList = Awaited<ReturnType<typeof getCompletePortfolioItems>>;
+
+export type PortfolioItem = Awaited<PortfolioList[number]>;

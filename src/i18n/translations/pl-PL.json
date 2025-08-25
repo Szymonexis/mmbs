@@ -262,6 +262,9 @@
 		"powerivanchukova": {
 			"title": "Power Ivanchukova",
 			"shortDescription": "Strona dla Yevhenii Ivanchukovej, trenerki fitness, z lekkimi funkcjami sklepu i automatyzacjami",
+			"mediaList": {
+				"story": "Story ze strony Power Ivanchukova na Instagramie polecające MMBS Studio"
+			},
 			"description": [
 				"Zbudowana w oparciu o Svelte + Skeleton UI, platforma zapewnia szybkie, lekkie i wysoce responsywne doświadczenie z nowoczesnym designem. Położyliśmy duży nacisk na wydajność i dostępność – każdy plik multimedialny ładowany jest dynamicznie z placeholderami Skeleton, co gwarantuje płynne interakcje nawet przy wolniejszych łączach. Strona spełnia również standardy WCAG, dzięki czemu jest inkluzywna i przyjazna użytkownikom na różnych urządzeniach i dla różnych grup odbiorców.",
 				"Zintegrowana ze Stripe jako bezpieczną i elastyczną bramką płatności, aplikacja automatyzuje kluczowe procesy dla klienta. Generuje faktury dla każdej transakcji, zarządza automatycznymi wypłatami, obsługuje podatki i przechowuje pełną historię zakupów użytkowników końcowych. Dzięki temu właścicielka biznesu może w pełni skupić się na treściach i aktualizacjach produktów, nie martwiąc się o stronę finansową czy administracyjną.",

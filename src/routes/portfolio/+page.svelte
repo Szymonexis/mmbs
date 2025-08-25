@@ -131,21 +131,19 @@
 						{#each descriptionParts as part}
 							<p>{$translate(part)}</p>
 						{/each}
-					</div>
 
-					<div class="my-4">
-						<div class="my-4">{$translate('portfolio.relatedAssets')}</div>
+						{#if mediaList.length > 0}
+							<span class="text-lg font-bold text-blue-800">
+								{$translate('portfolio.relatedAssets')}:
+							</span>
 
-						<div class="flex flex-wrap gap-4">
-							{#each mediaList as { type, alt, src }}
-								{#if type === 'image'}
-									<img {src} {alt} class="aspect-video w-60 rounded-lg object-contain" />
-								{:else if type === 'video'}
-									<!-- svelte-ignore a11y_media_has_caption -->
-									<video {src} controls class="aspect-video w-60 rounded-lg object-contain"></video>
-								{/if}
+							{#each mediaList as { url, label }}
+								<span class="decoration-black decoration-2 hover:underline">
+									<i class="fa-solid fa-link"></i>
+									<a href={url} target="_blank">{$translate(label)}</a>
+								</span>
 							{/each}
-						</div>
+						{/if}
 					</div>
 				</div>
 			{/if}

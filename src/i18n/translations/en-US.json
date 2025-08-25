@@ -262,6 +262,9 @@
 		"powerivanchukova": {
 			"title": "Power Ivanchukova",
 			"shortDescription": "A site for Yevheniia Ivanchukova, a fitness coach, with some light shop capabilities and automations",
+			"mediaList": {
+				"story": "Story from Power Ivanchukova Instagram page, recommending MMBS Studio"
+			},
 			"description": [
 				"Built with Svelte + Skeleton UI, the platform delivers a fast, lightweight, and highly responsive experience with a modern design. We placed strong emphasis on performance and accessibility – every media file is loaded dynamically with Skeleton placeholders, ensuring smooth interactions even on slower connections. The website also complies with WCAG standards, making it inclusive and user-friendly across different devices and audiences.",
 				"Integrated with Stripe as a secure and flexible payment gateway, the system automates critical processes for the client. It generates invoices for every transaction, manages automated paychecks, handles taxes, and keeps a complete purchase history for end users. This allows the business owner to focus entirely on content and product updates without worrying about the financial and administrative side.",
