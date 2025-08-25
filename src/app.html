@@ -52,6 +52,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
 	</head>
+
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "MMBS Studio",
+			"url": "https://mmbs.pl",
+			"logo": "https://mmbs.pl/mmbs-logo.webp",
+			"sameAs": ["https://www.linkedin.com/company/mmbs-studio", "https://github.com/MMBS-Studio"],
+			"description": "MMBS offers professional software development, custom web solutions, and IT consulting."
+		}
+	</script>
+
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
