@@ -126,7 +126,7 @@
 
 		{#await portfolioItem then { descriptionParts, mediaList }}
 			{#if openedIndex === index}
-				<div class="mt-4" transition:slide={{ duration: 300, easing: quintOut }}>
+				<div class="mt-4" transition:slide={{ duration: 500, easing: quintOut }}>
 					<div class="flex flex-col gap-4 rounded-lg border-2 border-blue-800 p-4">
 						{#each descriptionParts as part}
 							<p>{$translate(part)}</p>

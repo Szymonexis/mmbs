@@ -1,4 +1,4 @@
-const memberTranslationPrefix = 'aboutUs.ourTeam.members';
+const memberTranslationPrefix = 'home.ourTeam.members';
 const membersOrder = [
 	{
 		key: 'maciej',

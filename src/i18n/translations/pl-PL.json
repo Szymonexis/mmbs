@@ -1,6 +1,6 @@
 {
 	"header": {
-		"aboutUs": "Strona Główna",
+		"home": "Strona Główna",
 		"services": "Oferta",
 		"portfolio": "Portfolio",
 		"faq": "FAQ",
@@ -56,7 +56,7 @@
 			}
 		}
 	},
-	"aboutUs": {
+	"home": {
 		"hero": {
 			"top": "Stworzymy",
 			"bottom": "specjalnie dla Ciebie",
@@ -120,47 +120,6 @@
 					]
 				}
 			}
-		},
-		"faq": {
-			"title": "Częste pytania",
-			"whyUsImage": {
-				"src": "/about-us/why-us_pl-PL.webp",
-				"alt": "Dlaczego my?"
-			},
-			"items": [
-				{
-					"question": "Ile kosztuje stworzenie strony lub aplikacji?",
-					"answer": "Koszt zależy od zakresu projektu — jego funkcji, złożoności i potrzeb graficznych. Po krótkiej rozmowie przygotujemy darmową, indywidualną wycenę."
-				},
-				{
-					"question": "Ile trwa realizacja projektu?",
-					"answer": "Prosty projekt zajmuje około 2-3 tygodni; bardziej złożone wdrożenia od 4 tygodni wzwyż. Dokładny termin ustalamy indywidualnie."
-				},
-				{
-					"question": "Czy po realizacji mogę samodzielnie edytować treści na stronie?",
-					"answer": "Tak! Tworzymy strony w systemach umożliwiających łatwą edycję bez znajomości kodowania. Zapewniamy również krótkie szkolenie lub instrukcję."
-				},
-				{
-					"question": "Czy pomagacie w konfiguracji domeny i hostingu?",
-					"answer": "Tak — pomagamy na każdym etapie, w tym w wyborze i konfiguracji domeny, hostingu oraz firmowego adresu e-mail."
-				},
-				{
-					"question": "Czy oferujecie wsparcie po zakończeniu projektu?",
-					"answer": "Tak. Po wdrożeniu jesteśmy dostępni do aktualizacji, poprawek lub dalszego rozwoju — zawsze możesz na nas liczyć."
-				},
-				{
-					"question": "Czy mogę zlecić sam projekt graficzny bez kodowania?",
-					"answer": "Tak, oferujemy także samodzielne projekty graficzne — np. do przekazania Twojemu zespołowi developerskiemu."
-				},
-				{
-					"question": "Czy tworzycie sklepy internetowe i aplikacje mobilne?",
-					"answer": "Tak. Tworzymy sklepy internetowe, aplikacje webowe i mobilne — dopasowane do Twojej branży i klientów."
-				},
-				{
-					"question": "Czy pomagacie z SEO i marketingiem?",
-					"answer": "Tak. Wspieramy w optymalizacji SEO i podstawowych działaniach SEM, a także w zakresie identyfikacji wizualnej."
-				}
-			]
 		}
 	},
 	"services": {
@@ -276,8 +235,8 @@
 			"title": "ngx-meta-pixel",
 			"shortDescription": "Pakiet Angular stworzony, aby uprościć integrację Meta Pixel w projektach",
 			"description": [
-				"Ten pakiet integracyjny Meta Pixel upraszcza osadzanie Meta Pixel w aplikacjach Angular, obsługując wersje od 16 do 20. Dzięki prostej instalacji (npm install ngx-meta-pixel) możesz skonfigurować śledzenie poprzez import modułu w aplikacjach modułowych lub użycie provideNgxMetaPixel w architekturach opartych na komponentach standalone. Pakiet automatycznie obsługuje wstrzykiwanie skryptu, wymagając jedynie umieszczenia zmodyfikowanego kodu HTML Meta Pixel z przypisanymi atrybutami id w katalogu assets lub hostowanie go gdzie indziej. To rozwiązanie eliminuje powtarzalny boilerplate i minimalizuje błędy integracji, pozwalając Ci skupić się na tworzeniu aplikacji.",
-				"Po zintegrowaniu śledzenie staje się proste: użyj NgxMetaPixelService.track(eventName, properties) dla standardowych zdarzeń, takich jak \"PageView\", lub trackCustom(eventName, properties) dla zdarzeń niestandardowych. Piksel można także całkowicie wyłączyć za pomocą remove(), co jest szczególnie przydatne w procesach zgodnych z RODO — poprzez inicjalizację z enabled: false i aktywację dopiero po wyrażeniu zgody przez użytkownika. To sprawia, że pakiet jest wszechstronnym, wydajnym i niezawodnym rozwiązaniem dla nowoczesnego rozwoju w Angularze."
+				"Ten pakiet integracyjny Meta Pixel upraszcza osadzanie Meta Pixel w aplikacjach Angular, obsługując wersje od 16 do 20. Wystarczy dodać kilka znaczników do kodu HTML Meta Pixel dostarczonego przez Meta i to właściwie wszystko.",
+				"Pakiet zapewnia implementację wszystkich istniejących zdarzeń Meta Pixel, umożliwia dystrybucję zdarzeń specyficznych dla aplikacji, a także oferuje możliwość wdrożenia zgodności z RODO poprzez opcjonalny, szybki i uproszczony proces."
 			]
 		},
 		"zuzannaLucinska": {
@@ -285,5 +244,46 @@
 			"shortDescription": "Strona internetowa Zuzanny Lucińskiej, notariusza, pełniąca rolę strony-wizytówki",
 			"description": []
 		}
+	},
+	"faq": {
+		"title": "Często zadawane pytania",
+		"whyUsImage": {
+			"src": "/faq/why-us_pl-PL.webp",
+			"alt": "Dlaczego my?"
+		},
+		"items": [
+			{
+				"question": "Ile kosztuje stworzenie strony lub aplikacji?",
+				"answer": "Koszt zależy od zakresu projektu — jego funkcji, złożoności i potrzeb graficznych. Po krótkiej rozmowie przygotujemy <b>darmową, indywidualną wycenę.</b>"
+			},
+			{
+				"question": "Ile trwa realizacja projektu?",
+				"answer": "Prosty projekt zajmuje około <b>2-3 tygodni</b>; bardziej złożone wdrożenia od <b>4 tygodni wzwyż</b>. Dokładny termin ustalamy <b>indywidualnie.</b>"
+			},
+			{
+				"question": "Czy po realizacji mogę samodzielnie edytować treści na stronie?",
+				"answer": "<b>Tak!</b> Tworzymy strony w systemach umożliwiających łatwą edycję bez znajomości kodowania. Zapewniamy również krótkie szkolenie lub instrukcję."
+			},
+			{
+				"question": "Czy pomagacie w konfiguracji domeny i hostingu?",
+				"answer": "<b>Tak</b> — pomagamy na każdym etapie, w tym w wyborze i konfiguracji domeny, hostingu oraz firmowego adresu e-mail."
+			},
+			{
+				"question": "Czy oferujecie wsparcie po zakończeniu projektu?",
+				"answer": "<b>Tak.</b> Po wdrożeniu jesteśmy dostępni do aktualizacji, poprawek lub dalszego rozwoju — zawsze możesz na nas liczyć."
+			},
+			{
+				"question": "Czy mogę zlecić sam projekt graficzny bez kodowania?",
+				"answer": "<b>Tak</b>, oferujemy także samodzielne projekty graficzne — np. do przekazania Twojemu zespołowi developerskiemu."
+			},
+			{
+				"question": "Czy tworzycie sklepy internetowe i aplikacje mobilne?",
+				"answer": "<b>Tak.</b> Tworzymy sklepy internetowe, aplikacje webowe i mobilne — dopasowane do Twojej branży i klientów."
+			},
+			{
+				"question": "Czy pomagacie z SEO i marketingiem?",
+				"answer": "<b>Tak.</b> Wspieramy w optymalizacji SEO i podstawowych działaniach SEM, a także w zakresie identyfikacji wizualnej."
+			}
+		]
 	}
 }

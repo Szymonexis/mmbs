@@ -5,8 +5,6 @@
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
-	let { isStandalone = false }: { isStandalone?: boolean } = $props();
-
 	let faqContainer: HTMLDivElement;
 	let selectedFaqItemIndex = $state<number | null>(null);
 
@@ -26,15 +24,13 @@
 
 <svelte:window onclick={handleClickOutside} />
 
-{#if !isStandalone}
-	<div class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
-		{$translate('aboutUs.faq.title')}
-	</div>
+<div class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
+	{$translate('faq.title')}
+</div>
 
-	<hr class="mt-1 border-1 text-blue-800" />
-{/if}
+<hr class="mt-1 border-1 text-blue-800" />
 
-<div class={`my-6 block ${isStandalone || 'lg:grid lg:grid-cols-[2fr_1.5fr] lg:gap-6'}`}>
+<div class="my-6 flex flex-wrap gap-2 lg:grid lg:grid-cols-2">
 	<div class="flex flex-auto flex-col gap-4" bind:this={faqContainer}>
 		{#each FAQ_ITEMS as faqItem, i}
 			<div class="w-full">
@@ -52,24 +48,22 @@
 
 				{#if selectedFaqItemIndex === i}
 					<div
-						transition:slide={{ duration: 300, easing: quintOut }}
+						transition:slide={{ duration: 500, easing: quintOut }}
 						id={`faq-answer-${i}`}
 						class="rounded-b-md border-2 border-blue-800 px-4 py-2"
 					>
-						{$translate(faqItem.answer)}
+						{@html $translate(faqItem.answer)}
 					</div>
 				{/if}
 			</div>
 		{/each}
 	</div>
 
-	{#if !isStandalone}
-		<div class="flex items-center">
-			<img
-				class="hidden object-contain lg:block"
-				src={$translate('aboutUs.faq.whyUsImage.src')}
-				alt={$translate('aboutUs.faq.whyUsImage.alt')}
-			/>
-		</div>
-	{/if}
+	<div class="flex items-center">
+		<img
+			class="object-contain"
+			src={$translate('faq.whyUsImage.src')}
+			alt={$translate('faq.whyUsImage.alt')}
+		/>
+	</div>
 </div>

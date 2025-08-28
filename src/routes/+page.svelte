@@ -4,10 +4,10 @@
 	import { ContactForm, FAQ } from '$lib';
 	import { MEMBERS } from './model';
 
-	const wordsCarouselItems = new Array(6).fill(0).map((_, i) => `aboutUs.hero.carousel.${i}`);
-	const processItemPrefix = 'aboutUs.process.steps';
+	const wordsCarouselItems = new Array(6).fill(0).map((_, i) => `home.hero.carousel.${i}`);
+	const processItemPrefix = 'home.process.steps';
 	const processItems = new Array(4).fill(0).map((_, i) => ({
-		icon: `/about-us/process-${i}.webp`,
+		icon: `/home/process-${i}.webp`,
 		index: `${i + 1}`,
 		title: `${processItemPrefix}.${i}.title`,
 		description: `${processItemPrefix}.${i}.description`
@@ -52,21 +52,21 @@
 	<div
 		class="unbounded flex flex-col items-center justify-center text-center text-5xl leading-[135%] text-blue-800 max-sm:text-4xl"
 	>
-		<div>{$translate('aboutUs.hero.top')}</div>
+		<div>{$translate('home.hero.top')}</div>
 
 		<div>
 			{$translate(wordsCarouselItems[currentWordCarouselIndex])}
 		</div>
 
-		<div>{$translate('aboutUs.hero.bottom')}</div>
+		<div>{$translate('home.hero.bottom')}</div>
 	</div>
 
-	<img src="/about-us/hero.webp" alt="hero" width="535px" height="535px" />
+	<img src="/home/hero.webp" alt="hero" width="535px" height="535px" />
 </div>
 
 <div class="my-12">
 	<span class="unbounded text-4xl text-blue-800 max-sm:text-3xl"
-		>{$translate('aboutUs.process.title')}</span
+		>{$translate('home.process.title')}</span
 	>
 
 	<hr class="mt-1 border-1 text-blue-800" />
@@ -110,7 +110,7 @@
 <div class="my-12">
 	<div>
 		<div class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
-			{$translate('aboutUs.ourTeam.title')}
+			{$translate('home.ourTeam.title')}
 		</div>
 
 		<hr class="mt-1 border-1 text-blue-800" />
@@ -159,8 +159,4 @@
 			</div>
 		{/each}
 	</div>
-</div>
-
-<div class="my-12">
-	<FAQ />
 </div>

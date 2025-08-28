@@ -1,6 +1,6 @@
 {
 	"header": {
-		"aboutUs": "Home",
+		"home": "Home",
 		"services": "Services",
 		"portfolio": "Portfolio",
 		"faq": "FAQ",
@@ -56,7 +56,7 @@
 			}
 		}
 	},
-	"aboutUs": {
+	"home": {
 		"hero": {
 			"top": "We will create",
 			"bottom": "just for you",
@@ -120,47 +120,6 @@
 					]
 				}
 			}
-		},
-		"faq": {
-			"title": "Frequently asked questions",
-			"whyUsImage": {
-				"src": "/about-us/why-us_en-US.webp",
-				"alt": "Why us?"
-			},
-			"items": [
-				{
-					"question": "How much does it cost to build a website or app?",
-					"answer": "The cost depends on the project scope — its features, complexity, and graphic needs. After a brief conversation, we’ll prepare a free, tailored quote."
-				},
-				{
-					"question": "How long does it take to complete a project?",
-					"answer": "A simple project takes about 2-3 weeks; more complex implementations start from 4 weeks. The exact timeline is agreed individually."
-				},
-				{
-					"question": "Can I edit the content on the site myself after it's done?",
-					"answer": "Yes! We build sites on systems that allow easy content editing without coding knowledge. We also provide short training or instructions."
-				},
-				{
-					"question": "Do you help with domain and hosting setup?",
-					"answer": "Yes — we can assist at every stage, including selecting and configuring a domain, hosting, and company email."
-				},
-				{
-					"question": "Do you offer support after project completion?",
-					"answer": "Yes. After deployment, we’re available for updates, fixes, or further development — you can always count on us."
-				},
-				{
-					"question": "Can I commission only the design without coding?",
-					"answer": "Yes, we also offer standalone graphic designs — for example, to pass on to your own development team."
-				},
-				{
-					"question": "Do you also build online stores and mobile apps?",
-					"answer": "Yes. We create online stores, web apps, and mobile apps — tailored to your industry and customers."
-				},
-				{
-					"question": "Can you help with SEO and marketing?",
-					"answer": "Yes. We provide support in SEO optimization and basic SEM activities as well as visual identity."
-				}
-			]
 		}
 	},
 	"services": {
@@ -276,8 +235,8 @@
 			"title": "ngx-meta-pixel",
 			"shortDescription": "An Angular package designed to simplify the integration of Meta Pixel into projects",
 			"description": [
-				"This Meta Pixel integration package streamlines embedding Meta Pixel into Angular applications, supporting versions 16 through 20. With a simple install (npm install ngx-meta-pixel), you can configure tracking by importing the module for module-based apps or using provideNgxMetaPixel in standalone component architectures. The package handles script injection automatically, requiring only that you place the modified Meta Pixel HTML with designated id attributes in your assets directory or host it elsewhere. This setup removes repetitive boilerplate and minimizes integration errors, allowing you to focus on building your application.",
-				"Once integrated, tracking becomes straightforward: use NgxMetaPixelService.track(eventName, properties) for standard events like \"PageView\", or trackCustom(eventName, properties) for custom events. The pixel can also be disabled entirely with remove(), which is especially useful for GDPR-compliant flows—by initializing it with enabled: false and activating it only after user consent. This makes the package a versatile, efficient, and reliable solution for modern Angular development."
+				"This Meta Pixel integration package streamlines embedding Meta Pixel into Angular applications, supporting versions 16 through 20. Simply add some tags to the Meta Pixel html code provided by Meta and that's pretty much it.",
+				"Package provides implementation of all existing Meta Pixel events, provides a way to distribute app specific events as well as provides a way to make the implementation GDPR complient with an optional fast and streamlined flow."
 			]
 		},
 		"zuzannaLucinska": {
@@ -285,5 +244,46 @@
 			"shortDescription": "A site for Zuzanna Lucińska, a notary, serving as her business card website",
 			"description": []
 		}
+	},
+	"faq": {
+		"title": "Frequently asked questions",
+		"whyUsImage": {
+			"src": "/faq/why-us_en-US.webp",
+			"alt": "Why us?"
+		},
+		"items": [
+			{
+				"question": "How much does it cost to build a website or app?",
+				"answer": "The cost depends on the project scope — its features, complexity, and graphic needs. After a brief conversation, we’ll prepare a <b>free, tailored quote.</b>"
+			},
+			{
+				"question": "How long does it take to complete a project?",
+				"answer": "A simple project takes about <b>2-3 weeks</b>; more complex implementations <b>start from 4 weeks</b>. The exact timeline is agreed <b>individually.</b>"
+			},
+			{
+				"question": "Can I edit the content on the site myself after it's done?",
+				"answer": "<b>Yes!</b> We build sites on systems that allow easy content editing without coding knowledge. We also provide short training or instructions."
+			},
+			{
+				"question": "Do you help with domain and hosting setup?",
+				"answer": "<b>Yes</b> — we can assist at every stage, including selecting and configuring a domain, hosting, and company email."
+			},
+			{
+				"question": "Do you offer support after project completion?",
+				"answer": "<b>Yes.</b> After deployment, we’re available for updates, fixes, or further development — you can always count on us."
+			},
+			{
+				"question": "Can I commission only the design without coding?",
+				"answer": "<b>Yes</b>, we also offer standalone graphic designs — for example, to pass on to your own development team."
+			},
+			{
+				"question": "Do you also build online stores and mobile apps?",
+				"answer": "<b>Yes.</b> We create online stores, web apps, and mobile apps — tailored to your industry and customers."
+			},
+			{
+				"question": "Can you help with SEO and marketing?",
+				"answer": "<b>Yes.</b> We provide support in SEO optimization and basic SEM activities as well as visual identity."
+			}
+		]
 	}
 }

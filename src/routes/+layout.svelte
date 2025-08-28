@@ -49,9 +49,11 @@
 
 <Footer />
 
-<style lang="css">
+<style lang="scss">
 	/* TODO: Remember to change this value when footer height changes */
 	.content {
-		min-height: calc(100dvh - var(--spacing) * 38 - var(--carousel-image-size));
+		$minimalFooterSize: calc(var(--spacing) * 36 + var(--carousel-image-size));
+
+		min-height: calc(100dvh - #{$minimalFooterSize});
 	}
 </style>

@@ -3,5 +3,5 @@
 </script>
 
 <div class="my-6">
-	<FAQ isStandalone={true} />
+	<FAQ />
 </div>

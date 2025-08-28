@@ -10,7 +10,7 @@
 
 <div class="bg-blue-800">
 	<div
-		class="m-auto flex h-full min-h-24 max-w-7xl items-center gap-6 p-6 text-white max-sm:flex-wrap"
+		class="m-auto flex h-full min-h-24 max-w-7xl items-center justify-center gap-6 p-6 text-white max-sm:flex-wrap"
 	>
 		<img
 			class="h-12 object-contain brightness-[100] saturate-0 max-sm:hidden"
@@ -20,7 +20,7 @@
 			fetchpriority="low"
 		/>
 
-		<div class="flex flex-col justify-center">
+		<div class="flex flex-col justify-center text-nowrap">
 			<span class="text-xs">Innovio</span>
 			<span class="text-xs">NIP: 7272867774</span>
 			<span class="text-xs">REGON: 524884230</span>
@@ -28,13 +28,13 @@
 
 		<span class="flex-auto max-sm:hidden"></span>
 
-		<div class="flex flex-col justify-center">
+		<div class="flex flex-col justify-center text-nowrap">
 			<span class="text-xs">{$translate('footer.contact')}</span>
-			<a class="text-xs" href="tel:+48794030363"> Tel: +48 794 03 03 63</a>
+			<a class="text-xs" href="tel:+48794030363"> Tel: +48794030363</a>
 			<a class="text-xs" href="mailto:contact@mmbs.pl"> E-mail: contact@mmbs.pl </a>
 		</div>
 
-		<div class="grid grid-cols-2 grid-rows-2 gap-2">
+		<div class="flex flex-wrap gap-2">
 			{#each SOCIAL_MEDIA_LINKS as { href, src, alt }}
 				<a {href} class="cursor-pointer" target="_blank">
 					<img class="aspect-square w-6 brightness-0 invert" {src} {alt} />
