@@ -3,6 +3,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { HOW_IT_WORKS_STEPS, SERVICE_CARDS } from './model';
 	import { isNil } from 'lodash-es';
+	import { onMountLog, onDestroyLog } from '$shared/browser/log-functions';
 
 	let selectedIndex: number | null = $state(null);
 	let fastIntervalCleared = $state(false);
@@ -31,7 +32,7 @@
 		}
 	});
 
-	onMount(() => {
+	onMount(async () => {
 		timeoutRef = setTimeout(() => {
 			toggleCardSelection(0);
 
@@ -50,11 +51,15 @@
 				}
 			}, 500);
 		}, 250);
+
+		await onMountLog();
 	});
 
-	onDestroy(() => {
+	onDestroy(async () => {
 		if (!isNil(fastIntervalRef)) clearInterval(fastIntervalRef);
 		if (!isNil(timeoutRef)) clearTimeout(timeoutRef);
+
+		await onDestroyLog();
 	});
 </script>
 

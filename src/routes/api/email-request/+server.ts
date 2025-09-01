@@ -2,7 +2,7 @@ import { createTransport } from 'nodemailer';
 import { json } from '@sveltejs/kit';
 import { EMAIL_PASSWORD, EMAIL_RECIEVER, EMAIL_SENDER } from '$env/static/private';
 import { getEmailRequestContent } from '$shared/get-email-request-content';
-import { validateBody } from '$shared/server/validate-body.server.js';
+import { validateBody } from '$shared/server/validate-body.js';
 import { ContactFormRequest } from './model';
 import { HttpStatus } from '$shared/http-status';
 

@@ -1,5 +1,5 @@
 import { OpenGraphScraperRequest, OpenGraphScraperResponse } from './model';
-import { validateBody } from '$shared/server/validate-body.server';
+import { validateBody } from '$shared/server/validate-body';
 import ogs from 'open-graph-scraper';
 import { json } from '@sveltejs/kit';
 import { HttpStatus } from '$shared/http-status';

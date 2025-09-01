@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { translate } from '$i18n';
-	import { ContactForm, FAQ } from '$lib';
+	import { ContactForm } from '$lib';
 	import { MEMBERS } from './model';
+	import { onDestroyLog, onMountLog } from '$shared/browser/log-functions';
 
 	const wordsCarouselItems = new Array(6).fill(0).map((_, i) => `home.hero.carousel.${i}`);
 	const processItemPrefix = 'home.process.steps';
@@ -38,13 +39,17 @@
 		}, 150);
 	}
 
-	onMount(() => {
+	onMount(async () => {
 		startCarousel();
+
+		await onMountLog();
 	});
 
-	onDestroy(() => {
+	onDestroy(async () => {
 		if (wordsCrouselIntervalId) clearInterval(wordsCrouselIntervalId);
 		if (wrodsCarouselPauseTimeoutId) clearTimeout(wrodsCarouselPauseTimeoutId);
+
+		await onDestroyLog();
 	});
 </script>
 

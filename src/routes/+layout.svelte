@@ -5,10 +5,12 @@
 		readValueFromLocalStorage,
 		LocalStorageKey,
 		setValueInLocalStorage
-	} from '$shared/local-storage';
+	} from '$shared/browser/local-storage';
 	import { onDestroy, onMount } from 'svelte';
 	import '../app.css';
 	import type { Unsubscriber } from 'svelte/store';
+	import { page } from '$app/state';
+	import { LogRequest, LogType } from '$api/log/model';
 
 	let { children } = $props();
 
@@ -30,8 +32,23 @@
 		);
 	}
 
+	function unloadLog() {
+		const fn = function () {
+			const body: LogRequest = {
+				route: page.url.toString(),
+				type: LogType.UNLOAD,
+				userAgent: navigator.userAgent
+			};
+			navigator.sendBeacon('/api/log', JSON.stringify(body));
+			window.removeEventListener('unload', fn);
+		};
+
+		window.addEventListener('unload', fn);
+	}
+
 	onMount(async () => {
 		loadLocale();
+		unloadLog();
 	});
 
 	onDestroy(() => {
