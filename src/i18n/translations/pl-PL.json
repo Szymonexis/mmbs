@@ -91,7 +91,7 @@
 					"name": "Maja",
 					"position": "Projektant Graficzny",
 					"descriptionParts": [
-						"Jestem absolwentką kierunku grafika w Społecznej Akademii Nauk, z bogatym doświadczeniem w projektowaniu komunikacji wizualnej. Moje portfolio obejmuje realizacje dla renomowanych marek, takich jak 'Lola Bianka', 'Just Unique', 'Marylin', 'Qiosque' oraz 'Naoko'.",
+						"Jestem absolwentką kierunku Grafika w Społecznej Akademii Nauk, z bogatym doświadczeniem w projektowaniu komunikacji wizualnej",
 						"W MMBS odpowiadam za kreację projektów, które łączą w sobie wysoką estetykę, intuicyjność i pełną zgodność z celami strategicznymi klienta. Moim priorytetem jest tworzenie spójnych i funkcjonalnych rozwiązań wizualnych, które skutecznie angażują odbiorców i wzmacniają tożsamość marki."
 					]
 				},
@@ -99,24 +99,24 @@
 					"name": "Szymon",
 					"position": "Software Developer",
 					"descriptionParts": [
-						"Posiadam wieloletnie doświadczenie w branży IT, specjalizując się w technologiach takich jak TypeScript, Golang oraz w projektowaniu i optymalizacji baz danych SQL i NoSQL. Moją pasją jest tworzenie zaawansowanych i intuicyjnych rozwiązań, które precyzyjnie odpowiadają na potrzeby użytkowników i realizują cele biznesowe.",
-						"Jako absolwent Wydziału Matematyki i Informatyki Uniwersytetu Łódzkiego, nieustannie dążę do rozwoju swoich kompetencji i poszukuję nowych wyzwań technologicznych. Jestem gotów wykorzystać moje doświadczenie, aby wesprzeć realizację Państwa projektów."
+						"Programowanie to moja pasja. Tworzenie systemow, pisanie kodu sprawiaja ze czuje sie jak tworca wlasnego swiata. ",
+						"W MMBS zajmuje sie prowadzeniem projektow oraz dziedzinami takimi jak WebDev, DevOps, Cloud w polaczeniu z technologiami takimi jak Go, Typescript, SQL/No-SQL. Moje wieloletnie i roznorodne doswiadczenie sprawia ze jestem w stanie dobrac idealne technologie pod wymagania klientow, a jako absolwent Uniwersytetu Łódzkiego, nieustannie dążę do rozwoju swoich kompetencji."
 					]
 				},
 				"maciej": {
 					"name": "Maciej",
 					"position": "Software Developer",
 					"descriptionParts": [
-						"Moje zainteresowanie programowaniem, zapoczątkowane w liceum przez fascynację algorytmiką, ewoluowało w kierunku projektowania intuicyjnych interfejsów użytkownika oraz tworzenia złożonych aplikacji biznesowych. Łączę umiejętności analitycznego myślenia z dbałością o doświadczenia użytkownika końcowego.",
-						"Od lat specjalizuję się w tworzeniu i wdrażaniu systemów klasy ERP, dostarczając wydajne i niezawodne rozwiązania dla przedsiębiorstw. Programowanie to dla mnie nie tylko praca, ale przede wszystkim pasja, którą realizuję poprzez udział w różnorodnych i wymagających projektach."
+						"Jestem fascynatem algorytmiki oraz pasjonuję się tworzeniem intuicyjnych interfejsów użytkownika i rozwiązań informatycznych dopasowanych do klienta.",
+						"W MMBS tworzę oprogramowanie, które nie tylko spełnia wymagania techniczne, ale przede wszystkim odpowiada na realne potrzeby użytkowników i cele strategiczne organizacji. Moje doświadczenie zawodowe, poparte ukończonymi studiami informatycznymi na Wydziale atematyki i informatyki Uniwersytetu Łódzkiego, koncentruje się na projektowaniu i rozwijaniu systemów klasy ERP, CRM, CMS oraz aplikacji biznesowych, które zwiększają efektywność i niezawodność procesów w firmach."
 					]
 				},
 				"bartek": {
 					"name": "Bartek",
 					"position": "Project Manager & Analityk Biznesowy",
 					"descriptionParts": [
-						"Jako przedsiębiorca i strateg z pasją do innowacji, w MMBS odpowiadam za rozwój biznesu, budowanie relacji z kluczowymi klientami oraz opracowywanie strategii wzrostu. Równolegle, jako HR Business Partner w 'Wyciskarka Potencjału', zarządzam operacjami HR i rozwojem talentów.",
-						"Doświadczenie zdobyte podczas hackathonów, konferencji branżowych i w programach mentoringowych motywuje mnie do inicjowania przełomowych projektów oraz budowania trwałych i wartościowych partnerstw biznesowych."
+						"Rozmowy to mój żywioł. Lubię słuchać i zadawać pytania, które prowadzą do nowych pomysłów. Właśnie dzięki temu najlepiej rozumiem, co naprawdę jest ważne dla ludzi i projektów, nad którymi pracuję.",
+						"W MMBS koncentruję się na rozwoju biznesu i koordynowaniu kontaktu z klientami, tak aby każda współpraca była partnerska i transparentna. Poza światem stricte technologicznym działam w obszarach fundraisingu, HR i zarządzania w różnych organizacjach, które skupiają się na ludziach. Mam również doświadczenie w koordynowaniu i organizowaniu konferencji naukowych. Jestem studentem na Politechnice Łódzkiej na kierunku Aktuariat i Analiza Finansowa oraz Zarządzanie."
 					]
 				}
 			}

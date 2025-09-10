@@ -1,6 +1,11 @@
-import { sql } from '$shared/server/database';
+import { ENVIRONMENT } from '$env/static/private';
+import { DatabaseService } from '$shared/server/database';
 
 async function initiateSqlTables() {
+	if (ENVIRONMENT === 'development') return;
+
+	const sql = DatabaseService.init().sql;
+
 	await sql`
     CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
   `;

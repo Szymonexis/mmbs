@@ -91,32 +91,32 @@
 					"name": "Maja",
 					"position": "Graphic Designer",
 					"descriptionParts": [
-						"I am a graphic design graduate from the University of Social Sciences, with extensive experience in designing visual communication. My portfolio includes projects for renowned brands such as 'Lola Bianka', 'Just Unique', 'Marylin', 'Qiosque', and 'Naoko'.",
-						"At MMBS, I am responsible for creating designs that combine high aesthetics, intuitiveness, and full alignment with the client's strategic goals. My priority is to create coherent and functional visual solutions that effectively engage audiences and strengthen brand identity."
+						"I am a graduate of the Graphic Design program at the University of Social Sciences, with extensive experience in designing visual communication.",
+						"At MMBS, I am responsible for creating projects that combine high aesthetics, intuitiveness, and full alignment with the client’s strategic goals. My priority is to design cohesive and functional visual solutions that effectively engage audiences and strengthen brand identity."
 					]
 				},
 				"szymon": {
 					"name": "Szymon",
 					"position": "Software Developer",
 					"descriptionParts": [
-						"I have many years of experience in the IT industry, specializing in technologies such as TypeScript, Golang, and the design and optimization of SQL and NoSQL databases. I am passionate about creating advanced and intuitive solutions that precisely meet user needs and achieve business goals.",
-						"As a graduate of the Faculty of Mathematics and Computer Science at the University of Lodz, I constantly strive to develop my skills and seek new technological challenges. I am ready to leverage my experience to support the realization of your projects."
+						"Programming is my passion. Creating systems and writing code make me feel like the creator of my own world.",
+						"At MMBS, I manage projects and work in areas such as WebDev, DevOps, and Cloud, combined with technologies like Go, TypeScript, and SQL/No-SQL. My extensive and diverse experience enables me to select the ideal technologies to meet client requirements, and as a graduate of the University of Łódź, I continuously strive to develop my skills."
 					]
 				},
 				"maciej": {
 					"name": "Maciej",
 					"position": "Software Developer",
 					"descriptionParts": [
-						"My interest in programming, which began in high school with a fascination for algorithms, has evolved towards designing intuitive user interfaces and creating complex business applications. I combine analytical thinking skills with a focus on the end-user experience.",
-						"For years, I have specialized in creating and implementing ERP-class systems, delivering efficient and reliable solutions for businesses. For me, programming is not just a job but above all a passion, which I pursue by participating in diverse and challenging projects."
+						"I am an enthusiast of algorithmics and passionate about creating intuitive user interfaces and IT solutions tailored to the client.",
+						"At MMBS, I develop software that not only meets technical requirements but, above all, addresses real user needs and the strategic goals of organizations. My professional experience, supported by a degree in Computer Science from the Faculty of Mathematics and Computer Science at the University of Łódź, focuses on designing and developing ERP, CRM, and CMS systems, as well as business applications that enhance the efficiency and reliability of company processes."
 					]
 				},
 				"bartek": {
 					"name": "Bartek",
 					"position": "Project Manager & Business Analyst",
 					"descriptionParts": [
-						"As an entrepreneur and strategist with a passion for innovation, at MMBS I am responsible for business development, building relationships with key clients, and developing growth strategies. Concurrently, as an HR Business Partner at 'Wyciskarka Potencjału', I manage HR operations and talent development.",
-						"The experience gained from hackathons, industry conferences, and mentoring programs motivates me to initiate groundbreaking projects and build lasting and valuable business partnerships."
+						"Conversations are my element. I enjoy listening and asking questions that lead to new ideas. This is exactly what helps me truly understand what really matters to the people and projects I work on.",
+						"At MMBS, I focus on business development and coordinating client relations to ensure every collaboration is based on partnership and transparency. Beyond the strictly technological world, I am involved in fundraising, HR, and management within various organizations centered around people. I also have experience in coordinating and organizing scientific conferences. I am a student at Lodz University of Technology, pursuing Actuarial Science and Financial Analysis as well as Management."
 					]
 				}
 			}
