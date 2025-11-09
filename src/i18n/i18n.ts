@@ -21,7 +21,7 @@ function parseTranslation(locale: Locale, key: string, vars?: Record<string, str
 	}
 
 	const keys = key.split('.');
-	 
+
 	let text = translationFile as any;
 	for (const k of keys) {
 		try {
