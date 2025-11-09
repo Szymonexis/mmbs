@@ -69,7 +69,7 @@
 		<div
 			class="mb-12 auto-rows-fr gap-6 max-lg:max-w-190 max-sm:flex max-sm:flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3"
 		>
-			{#each SERVICE_CARDS as { title, description, image: { src, alt } }, index}
+			{#each SERVICE_CARDS as { title, description, image: { src, alt } }, index (index)}
 				<button
 					onclick={() => cardClick(index)}
 					class="perspective aspect-square h-full w-full cursor-pointer"
@@ -118,7 +118,7 @@
 
 	<!-- smaller than sm -->
 	<div class="flex w-full flex-col gap-8 sm:hidden">
-		{#each SERVICE_CARDS as { title, description, image: { src, alt } }, index}
+		{#each SERVICE_CARDS as { title, description, image: { src, alt } }, index (index)}
 			<div
 				class="flex items-center gap-4"
 				class:flex-row={index % 2 === 0}
@@ -151,7 +151,7 @@
 		</div>
 
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] gap-12">
-			{#each HOW_IT_WORKS_STEPS as { title, description }, index}
+			{#each HOW_IT_WORKS_STEPS as { title, description }, index (index)}
 				<div class="flex items-center gap-2">
 					<div
 						class="unbounded w-[1em] shrink-0 grow-0 basis-[1em] text-right text-7xl text-blue-800"

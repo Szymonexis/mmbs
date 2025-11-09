@@ -73,7 +73,7 @@
 		</button>
 
 		<div class="flex h-full flex-col items-center justify-center gap-6">
-			{#each HEADER_ITEMS as { href, label, inverted }}
+			{#each HEADER_ITEMS as { href, label, inverted }, i (i)}
 				{#if !inverted}
 					<a
 						class="text-lg decoration-blue-800 decoration-1 underline-offset-4 hover:underline"
@@ -106,7 +106,7 @@
 			{/each}
 
 			<select class="w-fit rounded-md border-2 border-blue-800" bind:value={$currentLocale}>
-				{#each Object.values(Locale) as locale}
+				{#each Object.values(Locale) as locale, i (i)}
 					<option value={locale}>
 						{$translate(LOCALES_MAP[locale].label)}
 						{LOCALES_MAP[locale].flag}
@@ -138,7 +138,7 @@
 		{/if}
 
 		{#if isBiggerThanBreakpoint}
-			{#each HEADER_ITEMS as { href, label, inverted, underline }}
+			{#each HEADER_ITEMS as { href, label, inverted, underline }, i (i)}
 				{#if !inverted}
 					<a
 						class="text-center decoration-blue-800 decoration-1 underline-offset-4 hover:underline"
@@ -163,7 +163,7 @@
 			{/each}
 
 			<select class="w-fit rounded-md border-2 border-blue-800" bind:value={$currentLocale}>
-				{#each Object.values(Locale) as locale}
+				{#each Object.values(Locale) as locale, i (i)}
 					<option value={locale}>
 						{$translate(LOCALES_MAP[locale].label)}
 						{LOCALES_MAP[locale].flag}

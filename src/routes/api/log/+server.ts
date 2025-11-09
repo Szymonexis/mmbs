@@ -8,21 +8,21 @@ import { DatabaseService } from '$shared/server/database';
 import { ENVIRONMENT } from '$env/static/private';
 
 export async function POST(event) {
+	if (ENVIRONMENT === 'development') return json({}, { status: HttpStatus.OK });
 
-  if(ENVIRONMENT === 'development') return json({}, { status: HttpStatus.OK }); 
+	try {
+		const ip = event.getClientAddress();
 
-	const ip = event.getClientAddress();
+		const body = await event.request.json();
+		const validationResult = await validateBody(body, LogRequest);
+		if (validationResult.type === 'error') {
+			return validationResult.response;
+		}
 
-	const body = await event.request.json();
-	const validationResult = await validateBody(body, LogRequest);
-	if (validationResult.type === 'error') {
-		return validationResult.response;
-	}
+		const { route, type, userAgent } = validationResult.dto;
+		const sql = DatabaseService.init().sql;
 
-	const { route, type, userAgent } = validationResult.dto;
-  const sql = DatabaseService.init().sql;
-  
-	await sql`
+		await sql`
     INSERT INTO "Visit" (
       "date", "ipAddress", "route", "type", "userAgent"
     ) VALUES (
@@ -30,5 +30,9 @@ export async function POST(event) {
     );
   `;
 
-	return json({}, { status: HttpStatus.OK });
+		return json({}, { status: HttpStatus.OK });
+	} catch (error) {
+		console.error('Error logging visit:', error);
+		return json({ message: 'Internal Server Error' }, { status: HttpStatus.INTERNAL_SERVER_ERROR });
+	}
 }

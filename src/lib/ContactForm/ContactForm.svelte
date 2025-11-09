@@ -62,7 +62,7 @@
 		{$translate('contactForm.title')}
 	</span>
 
-	{#each FORM_FIELDS as { key, type }}
+	{#each FORM_FIELDS as { key, type }, i (i)}
 		{#if type === 'input'}
 			<div class="relative my-6">
 				<input

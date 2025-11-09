@@ -5,9 +5,9 @@
 </script>
 
 <div class="footer__slider">
-	{#each sliderNames as sliderName}
+	{#each sliderNames as sliderName, i (i)}
 		<div class={`footer__slider__slide footer__slider__slide--${sliderName}`}>
-			{#each LOGOS as { href, src, alt }}
+			{#each LOGOS as { href, src, alt }, i (i)}
 				<a {href} target="_blank">
 					<img {src} {alt} loading="lazy" fetchpriority="low" />
 				</a>

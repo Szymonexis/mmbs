@@ -78,7 +78,7 @@
 
 	<div class="my-6 block grid-cols-[auto_1fr] gap-6 md:grid">
 		<div>
-			{#each processItems as { index, title, description, icon }}
+			{#each processItems as { index, title, description, icon }, index (index)}
 				<div class="my-6 flex items-center gap-4">
 					<img
 						class="aspect-square w-20 object-contain max-sm:hidden"
@@ -120,7 +120,7 @@
 
 		<hr class="mt-1 border-1 text-blue-800" />
 
-		{#each MEMBERS as member, i}
+		{#each MEMBERS as member, i (i)}
 			<div
 				class="my-6 flex items-stretch gap-6 max-sm:flex-col-reverse"
 				class:flex-row={i % 2 === 0}
@@ -135,12 +135,12 @@
 						{$translate(member.position)}
 					</div>
 
-					{#each member.descriptionParts as descriptionPart}
+					{#each member.descriptionParts as descriptionPart, index (index)}
 						<p>{$translate(descriptionPart)}</p>
 					{/each}
 
 					<div class="flex gap-4">
-						{#each member.links as { href, name, icon }}
+						{#each member.links as { href, name, icon }, index (index)}
 							<a class="cursor-pointer" {href} target="_blank">
 								<img
 									src={icon}

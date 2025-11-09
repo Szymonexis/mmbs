@@ -25,7 +25,7 @@
 </script>
 
 <div class="my-6">
-	{#each portfolioList as portfolioItem, index}
+	{#each portfolioList as portfolioItem, index (index)}
 		<div
 			class="flex items-center gap-6 max-[52rem]:flex-col"
 			class:flex-row={index % 2 === 0}
@@ -108,7 +108,7 @@
 					</div>
 
 					<div class="flex flex-wrap gap-2">
-						{#each awaitedportfolioItem.labels as label}
+						{#each awaitedportfolioItem.labels as label, index (index)}
 							<span
 								class={`rounded-full px-3 py-1 text-sm text-white ${LABEL_TO_PROPERTY_MAP[label].backgroundClass}`}
 							>
@@ -135,7 +135,7 @@
 			{#if openedIndex === index}
 				<div class="mt-4" transition:slide={{ duration: 500, easing: quintOut }}>
 					<div class="flex flex-col gap-4 rounded-lg border-2 border-blue-800 p-4">
-						{#each descriptionParts as part}
+						{#each descriptionParts as part, index (index)}
 							<p>{$translate(part)}</p>
 						{/each}
 
@@ -144,7 +144,7 @@
 								{$translate('portfolio.relatedAssets')}:
 							</span>
 
-							{#each mediaList as { url, label }}
+							{#each mediaList as { url, label }, index (index)}
 								<span class="decoration-black decoration-2 hover:underline">
 									<i class="fa-solid fa-link"></i>
 									<a href={url} target="_blank">{$translate(label)}</a>

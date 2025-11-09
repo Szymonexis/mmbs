@@ -35,7 +35,7 @@
 		</div>
 
 		<div class="flex flex-wrap gap-2">
-			{#each SOCIAL_MEDIA_LINKS as { href, src, alt }}
+			{#each SOCIAL_MEDIA_LINKS as { href, src, alt }, i (i)}
 				<a {href} class="cursor-pointer" target="_blank">
 					<img class="aspect-square w-6 brightness-0 invert" {src} {alt} />
 				</a>

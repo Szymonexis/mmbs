@@ -32,7 +32,7 @@
 
 <div class="my-6 flex flex-wrap gap-2 lg:grid lg:grid-cols-2">
 	<div class="flex flex-auto flex-col gap-4" bind:this={faqContainer}>
-		{#each FAQ_ITEMS as faqItem, i}
+		{#each FAQ_ITEMS as faqItem, i (i)}
 			<div class="w-full">
 				<button
 					onclick={() => toggleFaqItem(i)}
