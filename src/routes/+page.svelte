@@ -78,7 +78,7 @@
 
 	<div class="my-6 block grid-cols-[auto_1fr] gap-6 md:grid">
 		<div>
-			{#each processItems as { index, title, description, icon }, index (index)}
+			{#each processItems as { index, title, description, icon } (index)}
 				<div class="my-6 flex items-center gap-4">
 					<img
 						class="aspect-square w-20 object-contain max-sm:hidden"
