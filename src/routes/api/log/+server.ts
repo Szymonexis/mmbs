@@ -11,6 +11,11 @@ export async function POST(event) {
 	if (ENVIRONMENT === 'development') return json({}, { status: HttpStatus.OK });
 
 	try {
+		if (!DatabaseService.isReady()) {
+			console.warn('Database not ready, skipping log');
+			return json({}, { status: HttpStatus.OK });
+		}
+
 		const ip = event.getClientAddress();
 
 		const body = await event.request.json();
