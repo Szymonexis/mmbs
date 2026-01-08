@@ -3,7 +3,6 @@
 	import { translate } from '$i18n';
 	import { ContactForm } from '$lib';
 	import { MEMBERS } from './model';
-	import { onDestroyLog, onMountLog } from '$shared/browser/log-functions';
 
 	const wordsCarouselItems = new Array(6).fill(0).map((_, i) => `home.hero.carousel.${i}`);
 	const processItemPrefix = 'home.process.steps';
@@ -18,7 +17,7 @@
 	let wordsCarouselStopIndex = wordsCarouselItems.length - 1;
 
 	let wordsCrouselIntervalId: ReturnType<typeof setInterval> | null = null;
-	let wrodsCarouselPauseTimeoutId: ReturnType<typeof setTimeout> | null = null;
+	let wordsCarouselPauseTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
 	function startCarousel() {
 		wordsCrouselIntervalId = setInterval(() => {
@@ -28,7 +27,7 @@
 				clearInterval(wordsCrouselIntervalId!);
 				wordsCrouselIntervalId = null;
 
-				wrodsCarouselPauseTimeoutId = setTimeout(() => {
+				wordsCarouselPauseTimeoutId = setTimeout(() => {
 					wordsCarouselStopIndex--;
 					if (wordsCarouselStopIndex < 0) {
 						wordsCarouselStopIndex = wordsCarouselItems.length - 1;
@@ -39,17 +38,13 @@
 		}, 150);
 	}
 
-	onMount(async () => {
+	onMount(() => {
 		startCarousel();
-
-		await onMountLog();
 	});
 
-	onDestroy(async () => {
+	onDestroy(() => {
 		if (wordsCrouselIntervalId) clearInterval(wordsCrouselIntervalId);
-		if (wrodsCarouselPauseTimeoutId) clearTimeout(wrodsCarouselPauseTimeoutId);
-
-		await onDestroyLog();
+		if (wordsCarouselPauseTimeoutId) clearTimeout(wordsCarouselPauseTimeoutId);
 	});
 </script>
 
@@ -155,7 +150,7 @@
 				</div>
 
 				<img
-					class="w-full rounded-md object-cover max-sm:max-h-60 sm:max-w-60"
+					class="w-full rounded-md object-cover max-sm:aspect-square sm:max-w-60"
 					src={member.image}
 					alt={$translate(member.name)}
 					loading="lazy"

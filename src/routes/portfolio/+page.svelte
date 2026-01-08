@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { getCompletePortfolioItems, LABEL_TO_PROPERTY_MAP, type PortfolioList } from './model';
 	import { currentLocale, translate } from '$i18n';
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-	import { onMountLog, onDestroyLog } from '$shared/browser/log-functions';
 
 	let portfolioList = $state<PortfolioList>([]);
 	let openedIndex: number | null = $state(null);
@@ -15,12 +14,6 @@
 
 	onMount(async () => {
 		portfolioList = await getCompletePortfolioItems();
-
-		await onMountLog();
-	});
-
-	onDestroy(async () => {
-		await onDestroyLog();
 	});
 </script>
 

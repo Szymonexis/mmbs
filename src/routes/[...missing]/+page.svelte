@@ -1,16 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { translate } from '$i18n';
-	import { onDestroyLog, onMountLog } from '$shared/browser/log-functions';
-	import { onDestroy, onMount } from 'svelte';
-
-	onMount(async () => {
-		await onMountLog();
-	});
-
-	onDestroy(async () => {
-		await onDestroyLog();
-	});
 </script>
 
 <div class="my-6 flex h-full flex-col items-center justify-center gap-6">
