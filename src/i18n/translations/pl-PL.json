@@ -11,7 +11,12 @@
 		"cta": "Wróć"
 	},
 	"footer": {
-		"contact": "Kontakt"
+		"mmbsBrandInfo": "MMBS Studio jest marką",
+		"innovioName": "Innovio Szymon Kaszuba-Gałka",
+		"nip": "NIP: 7272867774",
+		"regon": "REGON: 524884230",
+		"addressLine1": "al. Adama Mickiewicza 4 m. 5",
+		"addressLine2": "90-050, Łódź, Poland"
 	},
 	"contactForm": {
 		"title": "Skontaktuj się z nami",

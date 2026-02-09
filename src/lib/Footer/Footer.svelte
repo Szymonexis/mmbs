@@ -21,18 +21,18 @@
 		/>
 
 		<div class="flex flex-col justify-center text-nowrap">
-			<span class="text-xs">Innovio</span>
-			<span class="text-xs">NIP: 7272867774</span>
-			<span class="text-xs">REGON: 524884230</span>
+			<span class="text-xs">{$translate('footer.mmbsBrandInfo')}</span>
+			<span class="text-xs">{$translate('footer.innovioName')}</span>
+			<span class="text-xs">{$translate('footer.nip')}</span>
+		</div>
+
+		<div class="flex flex-col justify-center text-nowrap">
+			<span class="text-xs">{$translate('footer.regon')}</span>
+			<span class="text-xs">{$translate('footer.addressLine1')}</span>
+			<span class="text-xs">{$translate('footer.addressLine2')}</span>
 		</div>
 
 		<span class="flex-auto max-sm:hidden"></span>
-
-		<div class="flex flex-col justify-center text-nowrap">
-			<span class="text-xs">{$translate('footer.contact')}</span>
-			<a class="text-xs" href="tel:+48794030363"> Tel: +48794030363</a>
-			<a class="text-xs" href="mailto:contact@mmbs.pl"> E-mail: contact@mmbs.pl </a>
-		</div>
 
 		<div class="flex flex-wrap gap-2">
 			{#each SOCIAL_MEDIA_LINKS as { href, src, alt }, i (i)}
