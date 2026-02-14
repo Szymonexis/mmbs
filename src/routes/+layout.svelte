@@ -9,6 +9,10 @@
 	import { onDestroy, onMount } from 'svelte';
 	import '../app.css';
 	import type { Unsubscriber } from 'svelte/store';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+	// Vercel Speed Insights
+	injectSpeedInsights();
 
 	let { children } = $props();
 
