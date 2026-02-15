@@ -10,9 +10,13 @@
 	import '../app.css';
 	import type { Unsubscriber } from 'svelte/store';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit'
 
 	// Vercel Speed Insights
 	injectSpeedInsights();
+
+	// Vercel Analytics
+	injectAnalytics()
 
 	let { children } = $props();
 
