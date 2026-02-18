@@ -2,6 +2,7 @@ import type {
 	OpenGraphScraperRequest,
 	OpenGraphScraperResponse
 } from '$api/open-graph-scraper/model';
+import { asset } from '$app/paths';
 import { getDefaultHeaders } from '$shared/get-default-headers';
 import { HttpStatus } from '$shared/http-status';
 
@@ -50,7 +51,7 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		descriptionLength: 4,
 		mediaList: [
 			{
-				url: '/portfolio/powerivanchukova/story.mp4',
+				url: asset('/portfolio/powerivanchukova/story.mp4'),
 				label: 'story'
 			}
 		]
@@ -70,7 +71,7 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		date: new Date(2025, 5, 1),
 		descriptionLength: 0,
 		mediaList: [],
-		ogImageReplacement: '/portfolio/zuzanna-lucinska/og-image-replacement.png'
+		ogImageReplacement: asset('/portfolio/zuzanna-lucinska/og-image-replacement.png')
 	}
 ];
 
