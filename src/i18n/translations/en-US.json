@@ -223,8 +223,8 @@
 			"inHouse": "In-House project",
 			"openSource": "Open Source"
 		},
-		"olesyahaiduk": {
-			"title": "Olesya Haiduk",
+		"bezstresowo": {
+			"title": "Bezstresowo",
 			"shortDescription": "A website for psychotherapist Olesya Haiduk. The service includes an e-commerce module, a therapy booking system, and functionality for publishing blog articles.",
 			"description": [
 				"The website was built using the SvelteKit framework, enabling the creation of a modern, high-performance, and well-optimized web application. The platform is hosted on Vercel, whose free tier offers highly favorable conditions while maintaining excellent stability and performance. The architectural decisions were driven primarily by cost optimization - one of the key project objectives was to ensure minimal operational expenses without compromising quality or reliability.",
