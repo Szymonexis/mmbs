@@ -44,6 +44,14 @@ export type PortfolioBaseItem = {
 
 const portfolioListBase: PortfolioBaseItem[] = [
 	{
+		url: 'https://bezstresowo.org/',
+		key: 'olesyahaiduk',
+		labels: [Label.CLIENT],
+		date: new Date(2026, 2, 21),
+		descriptionLength: 3,
+		mediaList: []
+	},
+	{
 		url: 'https://powerivanchukova.com',
 		key: 'powerivanchukova',
 		labels: [Label.CLIENT],

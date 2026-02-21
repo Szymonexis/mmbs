@@ -236,6 +236,15 @@
 				"Rozwiązanie zostało wdrożone na Netlify, co zapewnia darmowy hosting i minimalne koszty operacyjne, podczas gdy Google Cloud obsługuje integracje backendowe. Razem ten stack gwarantuje skalowalność, niezawodność i płynne dostarczanie zasobów. Już od pierwszego dnia po uruchomieniu platforma spotkała się z pozytywnym odbiorem klientki, potwierdzając zarówno jej efektywność techniczną, jak i wartość biznesową."
 			]
 		},
+		"olesyahaiduk": {
+			"title": "Olesya Haiduk",
+			"shortDescription": "Strona internetowa dla psychoterapeutki Olesyi Haiduk. Serwis obejmuje moduł sprzedażowy, system rejestracji na terapię oraz funkcjonalność publikowania artykułów blogowych.",
+			"description": [
+				"Strona internetowa została zbudowana w oparciu o framework SvelteKit, co pozwoliło na stworzenie nowoczesnej, wydajnej i dobrze zoptymalizowanej aplikacji webowej. Do hostingu wykorzystano platformę Vercel, której bezpłatny plan oferuje bardzo korzystne warunki przy zachowaniu wysokiej stabilności i szybkości działania. Wybór tej architektury był podyktowany przede wszystkim optymalizacją kosztów utrzymania - jednym z kluczowych założeń projektu było zapewnienie możliwie najniższych kosztów operacyjnych przy jednoczesnym zachowaniu wysokiej jakości i niezawodności.",
+				"System płatności został zintegrowany z usługą Stripe, która zapewnia szybki, bezpieczny i bezproblemowy dostęp do wielu bramek płatniczych. Platforma umożliwia sprawne zarządzanie produktami, obsługę transakcji oraz skalowanie systemu wraz z rozwojem projektu. Wybór Stripe gwarantuje wysoki poziom bezpieczeństwa, zgodność z obowiązującymi standardami branżowymi oraz wygodę zarówno dla administratora, jak i użytkowników końcowych.",
+				"Warstwa przechowywania danych została rozdzielona zgodnie z najlepszymi praktykami architektonicznymi. Pliki multimedialne wykorzystywane w artykułach blogowych przechowywane są w AWS S3, co zapewnia wysoką dostępność, skalowalność oraz niezawodność infrastruktury. Natomiast treści artykułów przechowywane są w bazie danych MongoDB, która dzięki swojej elastyczności doskonale sprawdza się w zarządzaniu dynamiczną i rozbudowaną strukturą treści. Takie połączenie technologii pozwala zachować równowagę między wydajnością, skalowalnością a kosztami utrzymania systemu."
+			]
+		},
 		"ngxMetaPixel": {
 			"title": "ngx-meta-pixel",
 			"shortDescription": "Pakiet Angular stworzony, aby uprościć integrację Meta Pixel w projektach",
