@@ -223,6 +223,15 @@
 			"inHouse": "In-House project",
 			"openSource": "Open Source"
 		},
+		"olesyahaiduk": {
+			"title": "Olesya Haiduk",
+			"shortDescription": "A website for psychotherapist Olesya Haiduk. The service includes an e-commerce module, a therapy booking system, and functionality for publishing blog articles.",
+			"description": [
+				"The website was built using the SvelteKit framework, enabling the creation of a modern, high-performance, and well-optimized web application. The platform is hosted on Vercel, whose free tier offers highly favorable conditions while maintaining excellent stability and performance. The architectural decisions were driven primarily by cost optimization - one of the key project objectives was to ensure minimal operational expenses without compromising quality or reliability.",
+				"The payment system is integrated with Stripe, providing fast, secure, and seamless access to multiple payment gateways. The platform enables efficient product management, transaction handling, and scalable growth as the project evolves. Choosing Stripe ensures a high level of security, compliance with industry standards, and convenience for both administrators and end users.",
+				"The data storage layer is structured in accordance with best architectural practices. Media files used in blog articles are stored in Amazon S3, ensuring high availability, scalability, and infrastructure reliability. Meanwhile, article content is stored in the MongoDB database, whose flexibility makes it well-suited for managing dynamic and complex content structures. This combination of technologies provides an optimal balance between performance, scalability, and cost efficiency."
+			]
+		},
 		"powerivanchukova": {
 			"title": "Power Ivanchukova",
 			"shortDescription": "A site for Yevheniia Ivanchukova, a fitness coach, with some light shop capabilities and automations",
