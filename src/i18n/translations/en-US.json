@@ -21,6 +21,7 @@
 	"contactForm": {
 		"title": "Contact Us",
 		"button": "Send",
+		"submitError": "Something went wrong. Please try again later.",
 		"form": {
 			"name": {
 				"label": "Your name",

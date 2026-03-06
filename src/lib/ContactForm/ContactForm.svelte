@@ -11,6 +11,7 @@
 
 	let isValid = $state(false);
 	let isLoading = $state(false);
+	let submitError = $state(false);
 
 	const formInitialValue: ContactFormValue = {
 		name: '',
@@ -32,22 +33,33 @@
 		validationSchema: SCHEMA,
 		onSubmit: async function (formValue) {
 			isLoading = true;
+			submitError = false;
 
 			grecaptcha.enterprise.ready(async () => {
-				const reCaptchaToken = await grecaptcha.enterprise.execute(PUBLIC_RECAPTCHA_SITE_KEY, {
-					action: RecaptchaAction.CONTACT_FORM_REQUEST
-				});
+				try {
+					const reCaptchaToken = await grecaptcha.enterprise.execute(PUBLIC_RECAPTCHA_SITE_KEY, {
+						action: RecaptchaAction.CONTACT_FORM_REQUEST
+					});
 
-				await fetch('/api/email-request', {
-					method: 'POST',
-					headers: getDefaultHeaders(),
-					body: JSON.stringify({ ...formValue, reCaptchaToken } satisfies ContactFormRequest)
-				});
-				isLoading = false;
+					const response = await fetch('/api/email-request', {
+						method: 'POST',
+						headers: getDefaultHeaders(),
+						body: JSON.stringify({ ...formValue, reCaptchaToken } satisfies ContactFormRequest)
+					});
 
-				form.set(formInitialValue);
-				touched.set({} as any);
-				errors.set({} as any);
+					if (!response.ok) {
+						submitError = true;
+						return;
+					}
+
+					form.set(formInitialValue);
+					touched.set({} as any);
+					errors.set({} as any);
+				} catch {
+					submitError = true;
+				} finally {
+					isLoading = false;
+				}
 			});
 		}
 	});
@@ -133,6 +145,12 @@
 			</div>
 		{/if}
 	{/each}
+
+	{#if submitError}
+		<p class="my-2 text-sm text-red-500">
+			{$translate('contactForm.submitError')}
+		</p>
+	{/if}
 
 	<div class="flex">
 		<span class="flex-auto"></span>

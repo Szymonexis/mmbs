@@ -21,6 +21,7 @@
 	"contactForm": {
 		"title": "Skontaktuj się z nami",
 		"button": "Wyślij",
+		"submitError": "Coś poszło nie tak. Spróbuj ponownie później.",
 		"form": {
 			"name": {
 				"label": "Twoje imię",

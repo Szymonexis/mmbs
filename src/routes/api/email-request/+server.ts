@@ -18,13 +18,19 @@ export async function POST({ request }) {
 
 	const { dto } = validationResult;
 
-	const score = await createAssessment({
-		token: dto.reCaptchaToken,
-		recaptchaAction: RecaptchaAction.CONTACT_FORM_REQUEST
-	});
+	let score: number | null = null;
+	try {
+		score = await createAssessment({
+			token: dto.reCaptchaToken,
+			recaptchaAction: RecaptchaAction.CONTACT_FORM_REQUEST
+		});
+	} catch (error) {
+		console.error('reCAPTCHA assessment failed:', error);
+		return json({ message: 'recaptcha assessment failed' }, { status: HttpStatus.INTERNAL_SERVER_ERROR });
+	}
 
-	if (score === null) {
-		return json({ message: 'recaptcha' }, { status: HttpStatus.INTERNAL_SERVER_ERROR });
+	if (score === null || score <= 0.5) {
+		return json({ message: 'recaptcha' }, { status: HttpStatus.FORBIDDEN });
 	}
 
 	const transporter = createTransport({
