@@ -4,9 +4,9 @@ import type { ImageObject } from 'open-graph-scraper/types';
 export class OpenGraphScraperRequest {
 	@IsUrl()
 	@IsDefined()
-	url: string;
+	declare url: string;
 }
 
 export class OpenGraphScraperResponse {
-	image: ImageObject;
+	declare image: ImageObject;
 }

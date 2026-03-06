@@ -3,8 +3,10 @@ import { json } from '@sveltejs/kit';
 import { EMAIL_PASSWORD, EMAIL_RECIEVER, EMAIL_SENDER } from '$env/static/private';
 import { getEmailRequestContent } from '$shared/get-email-request-content';
 import { validateBody } from '$shared/server/validate-body.js';
+import { createAssessment } from '$shared/server/grecaptcha';
 import { ContactFormRequest } from './model';
 import { HttpStatus } from '$shared/http-status';
+import { RecaptchaAction } from '$shared/recaptcha-action';
 
 export async function POST({ request }) {
 	const body = await request.json();
@@ -15,6 +17,15 @@ export async function POST({ request }) {
 	}
 
 	const { dto } = validationResult;
+
+	const score = await createAssessment({
+		token: dto.reCaptchaToken,
+		recaptchaAction: RecaptchaAction.CONTACT_FORM_REQUEST
+	});
+
+	if (score === null) {
+		return json({ message: 'recaptcha' }, { status: HttpStatus.INTERNAL_SERVER_ERROR });
+	}
 
 	const transporter = createTransport({
 		host: 'mail.mmbs.pl',

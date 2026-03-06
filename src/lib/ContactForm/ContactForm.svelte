@@ -5,6 +5,9 @@
 	import { isEmpty, isNil } from 'lodash-es';
 	import { onDestroy } from 'svelte';
 	import { getDefaultHeaders } from '$shared/get-default-headers';
+	import type { ContactFormRequest } from '$api/email-request/model';
+	import { PUBLIC_RECAPTCHA_SITE_KEY } from '$env/static/public';
+	import { RecaptchaAction } from '$shared/recaptcha-action';
 
 	let isValid = $state(false);
 	let isLoading = $state(false);
@@ -27,18 +30,25 @@
 	} = createForm({
 		initialValues: formInitialValue,
 		validationSchema: SCHEMA,
-		onSubmit: async function (value) {
+		onSubmit: async function (formValue) {
 			isLoading = true;
-			await fetch('/api/email-request', {
-				method: 'POST',
-				headers: getDefaultHeaders(),
-				body: JSON.stringify(value)
-			});
-			isLoading = false;
 
-			form.set(formInitialValue);
-			touched.set({} as any);
-			errors.set({} as any);
+			grecaptcha.enterprise.ready(async () => {
+				const reCaptchaToken = await grecaptcha.enterprise.execute(PUBLIC_RECAPTCHA_SITE_KEY, {
+					action: RecaptchaAction.CONTACT_FORM_REQUEST
+				});
+
+				await fetch('/api/email-request', {
+					method: 'POST',
+					headers: getDefaultHeaders(),
+					body: JSON.stringify({ ...formValue, reCaptchaToken } satisfies ContactFormRequest)
+				});
+				isLoading = false;
+
+				form.set(formInitialValue);
+				touched.set({} as any);
+				errors.set({} as any);
+			});
 		}
 	});
 
