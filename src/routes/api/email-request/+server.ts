@@ -26,7 +26,10 @@ export async function POST({ request }) {
 		});
 	} catch (error) {
 		console.error('reCAPTCHA assessment failed:', error);
-		return json({ message: 'recaptcha assessment failed' }, { status: HttpStatus.INTERNAL_SERVER_ERROR });
+		return json(
+			{ message: 'recaptcha assessment failed' },
+			{ status: HttpStatus.INTERNAL_SERVER_ERROR }
+		);
 	}
 
 	if (score === null || score <= 0.5) {
