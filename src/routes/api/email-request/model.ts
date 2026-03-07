@@ -4,21 +4,25 @@ import { IsDefined, IsEmail, IsString } from 'class-validator';
 export class ContactFormRequest implements ContactFormValue {
 	@IsString()
 	@IsDefined()
-	name: string;
+	declare name: string;
 
 	@IsString()
 	@IsDefined()
-	companyName: string;
+	declare companyName: string;
 
 	@IsEmail()
 	@IsDefined()
-	email: string;
+	declare email: string;
 
 	@IsString()
 	@IsDefined()
-	message: string;
+	declare message: string;
 
 	@IsString()
 	@IsDefined()
-	phone: string;
+	declare phone: string;
+
+	@IsString()
+	@IsDefined()
+	declare reCaptchaToken: string;
 }

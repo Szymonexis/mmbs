@@ -5,9 +5,13 @@
 	import { isEmpty, isNil } from 'lodash-es';
 	import { onDestroy } from 'svelte';
 	import { getDefaultHeaders } from '$shared/get-default-headers';
+	import type { ContactFormRequest } from '$api/email-request/model';
+	import { PUBLIC_RECAPTCHA_SITE_KEY } from '$env/static/public';
+	import { RecaptchaAction } from '$shared/recaptcha-action';
 
 	let isValid = $state(false);
 	let isLoading = $state(false);
+	let submitError = $state(false);
 
 	const formInitialValue: ContactFormValue = {
 		name: '',
@@ -27,18 +31,36 @@
 	} = createForm({
 		initialValues: formInitialValue,
 		validationSchema: SCHEMA,
-		onSubmit: async function (value) {
+		onSubmit: async function (formValue) {
 			isLoading = true;
-			await fetch('/api/email-request', {
-				method: 'POST',
-				headers: getDefaultHeaders(),
-				body: JSON.stringify(value)
-			});
-			isLoading = false;
+			submitError = false;
 
-			form.set(formInitialValue);
-			touched.set({} as any);
-			errors.set({} as any);
+			grecaptcha.enterprise.ready(async () => {
+				try {
+					const reCaptchaToken = await grecaptcha.enterprise.execute(PUBLIC_RECAPTCHA_SITE_KEY, {
+						action: RecaptchaAction.CONTACT_FORM_REQUEST
+					});
+
+					const response = await fetch('/api/email-request', {
+						method: 'POST',
+						headers: getDefaultHeaders(),
+						body: JSON.stringify({ ...formValue, reCaptchaToken } satisfies ContactFormRequest)
+					});
+
+					if (!response.ok) {
+						submitError = true;
+						return;
+					}
+
+					form.set(formInitialValue);
+					touched.set({} as any);
+					errors.set({} as any);
+				} catch {
+					submitError = true;
+				} finally {
+					isLoading = false;
+				}
+			});
 		}
 	});
 
@@ -123,6 +145,12 @@
 			</div>
 		{/if}
 	{/each}
+
+	{#if submitError}
+		<p class="my-2 text-sm text-red-500">
+			{$translate('contactForm.submitError')}
+		</p>
+	{/if}
 
 	<div class="flex">
 		<span class="flex-auto"></span>
