@@ -58,6 +58,11 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{$translate('meta.services.title')}</title>
+	<meta name="description" content={$translate('meta.services.description')} />
+</svelte:head>
+
 <div class="my-6">
 	<!-- bigger than or equal to sm -->
 	<div class="flex flex-col items-center max-sm:hidden">

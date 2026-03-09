@@ -1,4 +1,26 @@
 {
+	"meta": {
+		"home": {
+			"title": "Strona główna - MMBS Studio",
+			"description": "MMBS Studio - tworzymy aplikacje webowe i mobilne, projektujemy intuicyjne UI/UX oraz dostarczamy dedykowane rozwiązania programistyczne dopasowane do Twojego biznesu."
+		},
+		"404": {
+			"title": "404 - MMBS Studio",
+			"description": "Ups... Wygląda na to, że zawędrowałeś bardzo, bardzo daleko"
+		},
+		"faq": {
+			"title": "FAQ - MMBS Studio",
+			"description": "Najczęściej zadawane pytania dotyczące współpracy z MMBS Studio - poznaj nasz proces, technologie oraz model współpracy."
+		},
+		"portfolio": {
+			"title": "Portfolio - MMBS Studio",
+			"description": "Poznaj portfolio MMBS Studio - rzeczywiste projekty webowe i mobilne, które pomagają firmom osiągać ich cele cyfrowe."
+		},
+		"services": {
+			"title": "Usługi - MMBS Studio",
+			"description": "Poznaj usługi MMBS Studio: kompleksowe tworzenie aplikacji, projektowanie stron internetowych oraz wsparcie techniczne dopasowane do firm i startupów."
+		}
+	},
 	"header": {
 		"home": "Strona Główna",
 		"services": "Oferta",
@@ -132,7 +154,7 @@
 		"cards": [
 			{
 				"title": "Strony internetowe",
-				"description": "Tworzymy nowoczesne, responsywne strony internetowe dopasowane do Twoich potrzeb – estetyczne, intuicyjne i funkcjonalne, by klienci chętnie wracali.",
+				"description": "Tworzymy nowoczesne, responsywne strony internetowe dopasowane do Twoich potrzeb - estetyczne, intuicyjne i funkcjonalne, by klienci chętnie wracali.",
 				"image": {
 					"alt": "Strony internetowe"
 				}
@@ -231,7 +253,7 @@
 				"story": "Story ze strony Power Ivanchukova na Instagramie polecające MMBS Studio"
 			},
 			"description": [
-				"Zbudowana w oparciu o Svelte + Skeleton UI, platforma zapewnia szybkie, lekkie i wysoce responsywne doświadczenie z nowoczesnym designem. Położyliśmy duży nacisk na wydajność i dostępność – każdy plik multimedialny ładowany jest dynamicznie z placeholderami Skeleton, co gwarantuje płynne interakcje nawet przy wolniejszych łączach. Strona spełnia również standardy WCAG, dzięki czemu jest inkluzywna i przyjazna użytkownikom na różnych urządzeniach i dla różnych grup odbiorców.",
+				"Zbudowana w oparciu o Svelte + Skeleton UI, platforma zapewnia szybkie, lekkie i wysoce responsywne doświadczenie z nowoczesnym designem. Położyliśmy duży nacisk na wydajność i dostępność - każdy plik multimedialny ładowany jest dynamicznie z placeholderami Skeleton, co gwarantuje płynne interakcje nawet przy wolniejszych łączach. Strona spełnia również standardy WCAG, dzięki czemu jest inkluzywna i przyjazna użytkownikom na różnych urządzeniach i dla różnych grup odbiorców.",
 				"Zintegrowana ze Stripe jako bezpieczną i elastyczną bramką płatności, aplikacja automatyzuje kluczowe procesy dla klienta. Generuje faktury dla każdej transakcji, zarządza automatycznymi wypłatami, obsługuje podatki i przechowuje pełną historię zakupów użytkowników końcowych. Dzięki temu właścicielka biznesu może w pełni skupić się na treściach i aktualizacjach produktów, nie martwiąc się o stronę finansową czy administracyjną.",
 				"Aby dodatkowo poprawić użyteczność, aplikacja automatycznie wykrywa lokalizację użytkownika i dostosowuje język interfejsu, obsługując angielski, polski i ukraiński. Funkcja ta sprawia, że strona jest dostępna dla szerszej, wielojęzycznej grupy odbiorców, a jednocześnie zapewnia spersonalizowane doświadczenie.",
 				"Rozwiązanie zostało wdrożone na Netlify, co zapewnia darmowy hosting i minimalne koszty operacyjne, podczas gdy Google Cloud obsługuje integracje backendowe. Razem ten stack gwarantuje skalowalność, niezawodność i płynne dostarczanie zasobów. Już od pierwszego dnia po uruchomieniu platforma spotkała się z pozytywnym odbiorem klientki, potwierdzając zarówno jej efektywność techniczną, jak i wartość biznesową."

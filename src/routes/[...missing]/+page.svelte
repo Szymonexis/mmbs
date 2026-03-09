@@ -3,6 +3,11 @@
 	import { translate } from '$i18n';
 </script>
 
+<svelte:head>
+	<title>{$translate('meta.404.title')}</title>
+	<meta name="description" content={$translate('meta.404.description')} />
+</svelte:head>
+
 <div class="my-6 flex h-full flex-col items-center justify-center gap-6">
 	<div class="max-w-96 text-center text-3xl max-sm:text-2xl">
 		{$translate('404.message')}
