@@ -48,6 +48,11 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{$translate('meta.home.title')}</title>
+	<meta name="description" content={$translate('meta.home.description')} />
+</svelte:head>
+
 <div class="my-6 md:grid md:grid-cols-2">
 	<div
 		class="unbounded flex flex-col items-center justify-center text-center text-5xl leading-[135%] text-blue-800 max-sm:text-4xl"

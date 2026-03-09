@@ -17,6 +17,11 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{$translate('meta.portfolio.title')}</title>
+	<meta name="description" content={$translate('meta.portfolio.description')} />
+</svelte:head>
+
 <div class="my-6">
 	{#each portfolioList as portfolioItem, index (index)}
 		<div

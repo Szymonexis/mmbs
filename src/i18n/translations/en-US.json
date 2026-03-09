@@ -1,4 +1,26 @@
 {
+	"meta": {
+		"home": {
+			"title": "Home - MMBS Studio",
+			"description": "MMBS Studio - we build web and mobile applications, design intuitive UI/UX, and deliver custom software solutions tailored to your business."
+		},
+		"404": {
+			"title": "404 - MMBS Studio",
+			"description": "Oops... Seems like you have wondered far, far away"
+		},
+		"faq": {
+			"title": "FAQ - MMBS Studio",
+			"description": "Frequently asked questions about working with MMBS Studio - learn about our process, technologies, and collaboration model."
+		},
+		"portfolio": {
+			"title": "Portfolio - MMBS Studio",
+			"description": "Explore MMBS Studio portfolio - real-world web and mobile projects that help companies achieve their digital goals."
+		},
+		"services": {
+			"title": "Services - MMBS Studio",
+			"description": "Discover MMBS Studio services: full-cycle application development, website design, and technical support tailored for businesses and startups."
+		}
+	},
 	"header": {
 		"home": "Home",
 		"services": "Services",
