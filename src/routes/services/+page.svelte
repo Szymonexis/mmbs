@@ -104,7 +104,7 @@
 						>
 							<div class="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center">
 								<div class="p-6 text-center">
-									<div class="unbounded mb-4 text-xl">{$translate(title)}</div>
+									<h2 class="unbounded mb-4 text-xl">{$translate(title)}</h2>
 
 									<div class="text-md">{$translate(description)}</div>
 								</div>
@@ -146,9 +146,9 @@
 	</div>
 
 	<div class="my-12">
-		<div class="unbounded my-12 text-center text-4xl text-blue-800 max-sm:text-3xl">
+		<h1 class="unbounded my-12 text-center text-4xl text-blue-800 max-sm:text-3xl">
 			{$translate('services.howItWorks.title')}
-		</div>
+		</h1>
 
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] gap-12">
 			{#each HOW_IT_WORKS_STEPS as { title, description }, index (index)}

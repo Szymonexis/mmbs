@@ -79,9 +79,9 @@
 				/>
 
 				<div class="flex-auto">
-					<div class="unbounded mb-4 text-4xl text-blue-800">
+					<h1 class="unbounded mb-4 text-4xl text-blue-800">
 						{$translate(awaitedportfolioItem.title)}
-					</div>
+					</h1>
 
 					<div class="mb-4">
 						{$translate(awaitedportfolioItem.shortDescription)}
