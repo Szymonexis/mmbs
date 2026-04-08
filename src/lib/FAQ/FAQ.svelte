@@ -24,9 +24,9 @@
 
 <svelte:window onclick={handleClickOutside} />
 
-<div class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
+<h1 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
 	{$translate('faq.title')}
-</div>
+</h1>
 
 <hr class="mt-1 border-1 text-blue-800" />
 
