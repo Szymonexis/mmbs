@@ -127,9 +127,9 @@
 				class:flex-row-reverse={i % 2 === 1}
 			>
 				<div class="flex flex-auto flex-col gap-4">
-					<div class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
+					<h1 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
 						{$translate(member.name)}
-					</div>
+					</h1>
 
 					<div class="unbounded text-lg text-blue-800">
 						{$translate(member.position)}
