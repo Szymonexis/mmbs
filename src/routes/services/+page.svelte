@@ -104,7 +104,7 @@
 						>
 							<div class="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center">
 								<div class="p-6 text-center">
-									<h2 class="unbounded mb-4 text-xl">{$translate(title)}</h2>
+									<h1 class="unbounded mb-4 text-xl">{$translate(title)}</h1>
 
 									<div class="text-md">{$translate(description)}</div>
 								</div>
