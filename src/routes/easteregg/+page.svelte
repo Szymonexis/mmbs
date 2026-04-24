@@ -5,7 +5,12 @@
   let container: HTMLDivElement;
   let svg: d3.Selection<SVGSVGElement, unknown, null, undefined>;
 
+  // TODO: dobrze by bylo gdybysmy dokonali jakiejs normalizacji - np, zamiast rysowac ludzika w relatywnie, 
+  // z absolutnymi wartosciami dlugosci linii itd, fajnie by bylo stworzyc ludzika za 
+  // pomoca abstrakcyjnych dlugosci, ktore potem mapowalibysmy na dostepna przestrzen
   function drawPart(step: number) {
+    // fajnie ze korzystasz ze switch 
+    // case ale tutaj to az sie prosi o poprostu liste
     switch(step) {
       case 0:
         svg.append("line")
@@ -100,17 +105,7 @@
   });
 </script>
 
-<div class="ludzik">
+<div class="flex items-center justify-center h-[60dvh] w-full">
   <div bind:this={container}></div>
 </div>
-
-<style>
-  .ludzik {
-    display: flex;
-    justify-content: center; 
-    align-items: center;     
-    height: 60vh;
-    width: 100%;
-  }
-</style>
 
