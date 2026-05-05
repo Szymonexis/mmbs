@@ -55,6 +55,7 @@
 	onDestroy(() => {
 		if (!isNil(fastIntervalRef)) clearInterval(fastIntervalRef);
 		if (!isNil(timeoutRef)) clearTimeout(timeoutRef);
+		if (!isNil(slowIntervalRef)) clearInterval(slowIntervalRef);
 	});
 </script>
 
@@ -64,34 +65,37 @@
 </svelte:head>
 
 <div class="my-6">
-	<!-- bigger than or equal to sm -->
+	<!-- Desktop/Tablet View -->
 	<div class="flex flex-col items-center max-sm:hidden">
 		<div
-			class="mb-12 auto-rows-fr gap-6 max-lg:max-w-190 max-sm:flex max-sm:flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3"
+			class="mb-12 auto-rows-fr gap-6 max-lg:max-w-190 sm:grid sm:grid-cols-2 lg:grid-cols-3"
 		>
 			{#each SERVICE_CARDS as { title, description, image: { src, alt } }, index (index)}
 				<button
 					onclick={() => cardClick(index)}
-					class="perspective aspect-square h-full w-full cursor-pointer"
+					class="perspective relative block w-full border-none bg-transparent p-0 cursor-pointer text-left"
 				>
+					<!-- The "Sizer" Image: Defines the height of the button -->
 					<img
-						class="invisible aspect-square w-full object-contain select-none"
-						class:opacity-5={index === selectedIndex}
+						class="invisible block w-full aspect-square object-contain select-none"
 						{src}
-						alt={$translate(alt)}
+						alt=""
+						aria-hidden="true"
 						draggable="false"
-						fetchpriority="high"
 					/>
 
+					<!-- Flipping Container: Positioned absolutely to fill the space created by the sizer -->
 					<div
-						class="transform-style-preserve-3d relative aspect-square h-full w-full -translate-y-full duration-500"
+						class="transform-style-preserve-3d absolute inset-0 h-full w-full duration-500"
 						class:rotate-y-180={index === selectedIndex}
 					>
+						<!-- Front Side -->
 						<div
-							class="bg-light absolute flex h-full w-full items-center justify-center rounded-lg border-4 border-blue-800 shadow-lg backface-hidden"
+							class="bg-light absolute inset-0 flex h-full w-full items-center justify-center rounded-lg border-4 border-blue-800 shadow-lg backface-hidden"
 						>
 							<img
 								class="aspect-square w-full object-contain select-none"
+								class:opacity-5={index === selectedIndex}
 								{src}
 								alt={$translate(alt)}
 								draggable="false"
@@ -99,15 +103,13 @@
 							/>
 						</div>
 
+						<!-- Back Side -->
 						<div
-							class="absolute flex h-full w-full rotate-y-180 items-center justify-center rounded-lg bg-blue-800 text-white shadow-lg backface-hidden"
+							class="absolute inset-0 flex h-full w-full rotate-y-180 items-center justify-center rounded-lg bg-blue-800 text-white shadow-lg backface-hidden"
 						>
-							<div class="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center">
-								<div class="p-6 text-center">
-									<h2 class="unbounded mb-4 text-xl">{$translate(title)}</h2>
-
-									<div class="text-md">{$translate(description)}</div>
-								</div>
+							<div class="p-6 text-center">
+								<h2 class="unbounded mb-4 text-xl">{$translate(title)}</h2>
+								<div class="text-md">{$translate(description)}</div>
 							</div>
 						</div>
 					</div>
@@ -116,7 +118,7 @@
 		</div>
 	</div>
 
-	<!-- smaller than sm -->
+	<!-- Mobile View -->
 	<div class="flex w-full flex-col gap-8 sm:hidden">
 		{#each SERVICE_CARDS as { title, description, image: { src, alt } }, index (index)}
 			<div
@@ -145,6 +147,7 @@
 		{/each}
 	</div>
 
+	<!-- How it works section -->
 	<div class="my-12">
 		<h1 class="unbounded my-12 text-center text-4xl text-blue-800 max-sm:text-3xl">
 			{$translate('services.howItWorks.title')}
@@ -177,23 +180,26 @@
 <style>
 	.perspective {
 		perspective: 1000px;
-		-webkit-perspective: 1000px;
-		-moz-perspective: 1000px;
-		-ms-perspective: 1000px;
 	}
 
 	.transform-style-preserve-3d {
 		transform-style: preserve-3d;
-		-webkit-transform-style: preserve-3d;
-		-moz-transform-style: preserve-3d;
-		-ms-transform-style: preserve-3d;
+		/* Critical for Firefox stability in 3D contexts */
+		backface-visibility: hidden;
 	}
 
 	.rotate-y-180 {
 		transform: rotateY(180deg);
-		-webkit-transform: rotateY(180deg);
-		-moz-transform: rotateY(180deg);
-		-ms-transform: rotateY(180deg);
-		-o-transform: rotateY(180deg);
+	}
+
+	.backface-hidden {
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+	}
+
+	/* Removes default button spacing in Firefox */
+	button::-moz-focus-inner {
+		border: 0;
+		padding: 0;
 	}
 </style>
