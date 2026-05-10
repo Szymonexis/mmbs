@@ -3,101 +3,89 @@
   import { onMount } from 'svelte';
 
   let container: HTMLDivElement;
-  let svg: d3.Selection<SVGSVGElement, unknown, null, undefined>;
 
-  function drawPart(step: number) {
-    switch(step) {
-      case 0:
-        svg.append("line")
-          .attr("x1", 0).attr("y1", 280)
-          .attr("x2", 150).attr("y2", 280)
-          .attr("stroke", "black");
-        break;
+  let x = 0;
+  let y = 0;
+  let scaleX = 1;
+  let scaleY = 1;
 
-      case 1:
-        svg.append("line")
-          .attr("x1", 50).attr("y1", 280)
-          .attr("x2", 50).attr("y2", 50)
-          .attr("stroke", "black");
-        break;
+  function drawHangman(svg: d3.Selection<SVGSVGElement, unknown, null, undefined>) {
+    svg.selectAll("*").remove();
 
-      case 2:
-        svg.append("line")
-          .attr("x1", 50).attr("y1", 50)
-          .attr("x2", 150).attr("y2", 50)
-          .attr("stroke", "black");
-        break;
+    const centerX = 150 + x;
+    const centerY = 150 + y;
 
-      case 3:
-        svg.append("line")
-          .attr("x1", 150).attr("y1", 50)
-          .attr("x2", 150).attr("y2", 80)
-          .attr("stroke", "black");
-        break;
+    const g = svg.append("g")
+      .attr("transform", `translate(${centerX}, ${centerY}) scale(${scaleX}, ${scaleY})`);
 
-      case 4:
-        svg.append("circle")
-          .attr("cx", 150)
-          .attr("cy", 100)
-          .attr("r", 20)
-          .attr("stroke", "black")
-          .attr("fill", "none");
-        break;
+    g.append("line")
+      .attr("x1", -100).attr("y1", 110)
+      .attr("x2", 100).attr("y2", 110)
+      .attr("stroke", "black").attr("stroke-width", 3);
 
-      case 5:
-        svg.append("line")
-          .attr("x1", 150).attr("y1", 120)
-          .attr("x2", 150).attr("y2", 180)
-          .attr("stroke", "black");
-        break;
+    g.append("line")
+      .attr("x1", -70).attr("y1", 110)
+      .attr("x2", -70).attr("y2", -120)
+      .attr("stroke", "black").attr("stroke-width", 3);
 
-      case 6:
-        svg.append("line")
-          .attr("x1", 150).attr("y1", 140)
-          .attr("x2", 120).attr("y2", 160)
-          .attr("stroke", "black");
-        break;
+    g.append("line")
+      .attr("x1", -71.5).attr("y1", -120)
+      .attr("x2", 31.5).attr("y2", -120)
+      .attr("stroke", "black").attr("stroke-width", 3);
 
-      case 7:
-        svg.append("line")
-          .attr("x1", 150).attr("y1", 140)
-          .attr("x2", 180).attr("y2", 160)
-          .attr("stroke", "black");
-        break;
+    g.append("line")
+      .attr("x1", 30).attr("y1", -120)
+      .attr("x2", 30).attr("y2", -70)
+      .attr("stroke", "black").attr("stroke-width", 3);
 
-      case 8:
-        svg.append("line")
-          .attr("x1", 150).attr("y1", 180)
-          .attr("x2", 120).attr("y2", 220)
-          .attr("stroke", "black");
-        break;
+    g.append("circle")
+      .attr("cx", 30).attr("cy", -45)
+      .attr("r", 25)
+      .attr("stroke", "black").attr("stroke-width", 3).attr("fill", "none");
 
-      case 9:
-        svg.append("line")
-          .attr("x1", 150).attr("y1", 180)
-          .attr("x2", 180).attr("y2", 220)
-          .attr("stroke", "black");
-        break;
-    }
+    g.append("line")
+      .attr("x1", 30).attr("y1", -20)
+      .attr("x2", 30).attr("y2", 40)
+      .attr("stroke", "black").attr("stroke-width", 3);
+
+    g.append("line")
+      .attr("x1", 30).attr("y1", -5)
+      .attr("x2", -10).attr("y2", 25)
+      .attr("stroke", "black").attr("stroke-width", 3);
+
+    g.append("line")
+      .attr("x1", 30).attr("y1", -5)
+      .attr("x2", 70).attr("y2", 25)
+      .attr("stroke", "black").attr("stroke-width", 3);
+
+    g.append("line")
+      .attr("x1", 30).attr("y1", 40)
+      .attr("x2", 5).attr("y2", 75)
+      .attr("stroke", "black").attr("stroke-width", 3);
+
+    g.append("line")
+      .attr("x1", 30).attr("y1", 40)
+      .attr("x2", 55).attr("y2", 75)
+      .attr("stroke", "black").attr("stroke-width", 3);
   }
 
   onMount(() => {
-    svg = d3.select(container)
+    const svg = d3.select(container)
       .append("svg")
-      .attr("width", 300)
-      .attr("height", 300);
+      .attr("width", "100%")
+      .attr("height", "100%")
+      .attr("viewBox", "0 0 300 300")
+      .attr("preserveAspectRatio", "xMidYMid meet");
 
-    let step = 0;
-
-    const interval = setInterval(() => {
-      drawPart(step);
-      step++;
-
-      if (step > 9) {
-        clearInterval(interval);
-      }
-    }, 600); 
+    drawHangman(svg);
   });
+
+  $: if (x !== undefined || y !== undefined || scaleX !== undefined || scaleY !== undefined) {
+    const svgElement = d3.select(container).select<SVGSVGElement>("svg");
+    if (!svgElement.empty()) {
+      drawHangman(svgElement);
+    }
+  }
 </script>
 
 <div class="ludzik">
@@ -106,11 +94,18 @@
 
 <style>
   .ludzik {
-    display: flex;
-    justify-content: center; 
-    align-items: center;     
-    height: 60vh;
+    position: relative;
     width: 100%;
+    min-height: 70vh;
+  }
+
+  .ludzik > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 700px;
+    min-width: 200px;
+    aspect-ratio: 1 / 1;
   }
 </style>
-
