@@ -10,14 +10,13 @@
 
 	let words = ['PROGRAMOWANIE', 'WISIELEC'];
 
-	let word = $state(''); // wylosowane slowo
+	let word = $state('');
 	let guessedLetters = $state<string[]>([]);
 	let wrongLetters = $state<string[]>([]);
 	let inputLetter = $state('');
 
-	let maxMistakes = 10;
-
-	let step = $derived(wrongLetters.length); // liczba bledow
+	let maxMistakes = 11;
+	let step = $derived(wrongLetters.length);
 
 	let displayedWord = $derived(
 		word
@@ -27,19 +26,12 @@
 	);
 
 	let isWin = $derived(
-		word.length > 0 &&
-			word.split('').every((letter) => guessedLetters.includes(letter))
+		word.length > 0 && word.split('').every((letter) => guessedLetters.includes(letter))
 	);
 
 	let isLose = $derived(wrongLetters.length >= maxMistakes);
 
-	let message = $derived(
-		isWin
-			? 'you win'
-			: isLose
-				? `end game`
-				: ''
-	);
+	let message = $derived(isWin ? 'YOU WIN' : isLose ? 'END GAME' : '');
 
 	let svg: d3.Selection<SVGSVGElement, unknown, null, undefined>;
 
@@ -68,7 +60,7 @@
 	function guessLetter() {
 		if (isWin || isLose) return;
 
-		const letter = inputLetter.toUpperCase().trim(); 
+		const letter = inputLetter.toUpperCase().trim();
 
 		inputLetter = '';
 
@@ -119,32 +111,40 @@
 				}}
 			/>
 
-			<button onclick={guessLetter} disabled={isWin || isLose}>
-				check
-			</button>
+			<button onclick={guessLetter} disabled={isWin || isLose}>check</button>
 		</div>
 
-		<p>wrong letters: {wrongLetters.join(' ')}</p>
+		<div class="wrong-letters">
+			<p>Wrong letters:</p>
+
+			<div class="letters">
+				{#each wrongLetters as letter}
+					<span>{letter}</span>
+				{/each}
+			</div>
+		</div>
 
 		{#if message}
-			<h3>{message}</h3>
+			<h3 class:win={isWin} class:lose={isLose}>{message}</h3>
 
-			<button onclick={startGame}>
-				try again
-			</button>
+			<button onclick={startGame}>try again</button>
 		{/if}
 	</div>
 </div>
 
 <style>
 	.game {
-		width: 100%;
+		margin: 20px auto;
+		width: 80%;
 		min-height: 70vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 24px;
+		gap: 22px;
+		background-color: #fff8df;
+		border-radius: 20px;
+		padding: 20px;
 	}
 
 	.ludzik {
@@ -152,6 +152,9 @@
 		width: 100%;
 		max-width: 500px;
 		aspect-ratio: 1 / 1;
+		border: 2px solid #f4d98c;
+		border-radius: 15px;
+		background-color: #fffbea;
 	}
 
 	.ludzik > div {
@@ -164,7 +167,10 @@
 	}
 
 	.panel h2 {
-		font-size: 32px;
+		font-size: 40px;
+		letter-spacing: 12px;
+		margin: 0 0 20px;
+		color: #8e44ad;
 	}
 
 	.input-row {
@@ -175,14 +181,88 @@
 	}
 
 	input {
-		width: 50px;
-		height: 40px;
+		width: 60px;
+		height: 50px;
 		text-align: center;
 		font-size: 24px;
+		font-weight: bold;
+		border: 2px solid #f4a340;
+		border-radius: 10px;
+		background-color: white;
+		color: #333;
+	}
+
+	input:focus {
+		outline: none;
+		border-color: #ef476f;
 	}
 
 	button {
 		padding: 10px 18px;
-		background-color: #e2e2e2;
+		background-color: #f97316;
+		color: white;
+		border: none;
+		border-radius: 10px;
+		cursor: pointer;
+		font-weight: bold;
+	}
+
+	button:hover {
+		background-color: #ea580c;
+	}
+
+	button:disabled {
+		background-color: #ccc;
+		cursor: not-allowed;
+	}
+
+	p {
+		margin: 6px 0;
+		color: #444;
+	}
+
+	.wrong-letters {
+		margin-top: 20px;
+	}
+
+	.wrong-letters p {
+		margin-bottom: 10px;
+		font-size: 18px;
+		font-weight: 600;
+		color: #555;
+	}
+
+	.letters {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 8px;
+	}
+
+	.letters span {
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #ef4444;
+		color: white;
+		border-radius: 10px;
+		font-weight: bold;
+		font-size: 18px;
+	}
+
+	h3 {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		font-size: 24px;
+	}
+
+	.win {
+		color: #22c55e;
+	}
+
+	.lose {
+		color: #ef4444;
 	}
 </style>
