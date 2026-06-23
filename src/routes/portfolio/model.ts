@@ -10,7 +10,7 @@ export enum Label {
 	CLIENT,
 	IN_HOUSE,
 	OPEN_SOURCE,
-	PARTNER,
+	PARTNER
 }
 
 export const LABEL_TO_PROPERTY_MAP: Record<Label, { text: string; backgroundClass: string }> = {
@@ -28,7 +28,7 @@ export const LABEL_TO_PROPERTY_MAP: Record<Label, { text: string; backgroundClas
 	},
 	[Label.PARTNER]: {
 		text: 'portfolio.label.partner',
-		backgroundClass: 'bg-red-600'
+		backgroundClass: 'bg-sky-600'
 	}
 };
 
@@ -41,7 +41,8 @@ export type PortfolioBaseItem = {
 	url: string;
 	key: string;
 	labels: Label[];
-	date: Date;
+	endDate: Date | 'now';
+	startDate: Date;
 	descriptionLength: number;
 	mediaList: MediaItem[];
 	ogImageReplacement?: string;
@@ -49,10 +50,20 @@ export type PortfolioBaseItem = {
 
 const portfolioListBase: PortfolioBaseItem[] = [
 	{
+		url: "https://www.rk-wk.eu/2026/testy/en/home/",
+		key: 'rkwk',
+		labels: [Label.CLIENT],
+		endDate: 'now',
+		startDate: new Date(2026, 4, 20),
+		descriptionLength: 3,
+		mediaList: [],
+	},
+	{
 		url: 'https://www.viviena.pl/',
 		key: 'viviena',
 		labels: [Label.CLIENT, Label.PARTNER],
-		date: new Date(2026, 4, 30),
+		endDate: 'now',
+		startDate: new Date(2026, 4, 1),
 		descriptionLength: 3,
 		mediaList: [],
 		ogImageReplacement: asset('/portfolio/viviena/og-image-replacement.png')
@@ -61,7 +72,8 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		url: 'https://www.atexprint.pl/',
 		key: 'atexprint',
 		labels: [Label.CLIENT],
-		date: new Date(2026, 4, 1),
+		endDate: new Date(2026, 4, 1),
+		startDate: new Date(2026, 1, 15),
 		descriptionLength: 3,
 		mediaList: []
 	},
@@ -69,7 +81,8 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		url: 'https://bezstresowo.org/',
 		key: 'bezstresowo',
 		labels: [Label.CLIENT],
-		date: new Date(2026, 2, 21),
+		endDate: new Date(2026, 2, 21),
+		startDate: new Date(2025, 11, 1),
 		descriptionLength: 3,
 		mediaList: []
 	},
@@ -77,7 +90,8 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		url: 'https://powerivanchukova.com',
 		key: 'powerivanchukova',
 		labels: [Label.CLIENT],
-		date: new Date(2025, 7, 16),
+		endDate: new Date(2025, 7, 16),
+		startDate: new Date(2025, 5, 1),
 		descriptionLength: 4,
 		mediaList: [
 			{
@@ -90,7 +104,8 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		url: 'https://www.npmjs.com/package/ngx-meta-pixel',
 		key: 'ngxMetaPixel',
 		labels: [Label.IN_HOUSE, Label.OPEN_SOURCE],
-		date: new Date(2025, 1, 17),
+		endDate: 'now',
+		startDate: new Date(2025, 1, 17),
 		descriptionLength: 2,
 		mediaList: [],
 		ogImageReplacement: asset('/portfolio/ngx-meta-pixel/og-image-replacement.png')
@@ -99,7 +114,8 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		url: 'https://zuzannalucinska.pl/',
 		key: 'zuzannaLucinska',
 		labels: [Label.CLIENT],
-		date: new Date(2025, 5, 1),
+		endDate: new Date(2025, 5, 1),
+		startDate: new Date(2025, 4, 15),
 		descriptionLength: 0,
 		mediaList: [],
 		ogImageReplacement: asset('/portfolio/zuzanna-lucinska/og-image-replacement.png')
@@ -107,7 +123,7 @@ const portfolioListBase: PortfolioBaseItem[] = [
 ];
 
 const sortedPortfolioListBase = portfolioListBase.sort(
-	(a, b) => b.date.getTime() - a.date.getTime()
+	(a, b) => b.startDate.getTime() - a.startDate.getTime()
 );
 
 export async function getCompletePortfolioItems() {
