@@ -25,7 +25,7 @@
 <div class="my-6">
 	{#each portfolioList as portfolioItem, index (index)}
 		<div
-			class="flex items-center gap-6 max-[52rem]:flex-col"
+			class="flex items-start gap-6 max-[52rem]:flex-col"
 			class:flex-row={index % 2 === 0}
 			class:flex-row-reverse={index % 2 === 1}
 		>

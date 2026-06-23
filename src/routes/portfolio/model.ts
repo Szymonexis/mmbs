@@ -57,6 +57,7 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		startDate: new Date(2026, 4, 20),
 		descriptionLength: 3,
 		mediaList: [],
+		ogImageReplacement: asset('/portfolio/rkwk/og-image-replacement.svg')
 	},
 	{
 		url: 'https://www.viviena.pl/',
@@ -140,6 +141,10 @@ export async function getCompletePortfolioItems() {
 				label: `portfolio.${key}.mediaList.${label}`
 			}))
 		};
+
+		if (val.ogImageReplacement) {
+			return { ...newVal, ogImage: null };
+		}
 
 		const body = { url: val.url } satisfies OpenGraphScraperRequest;
 
