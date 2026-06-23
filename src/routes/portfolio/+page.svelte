@@ -97,10 +97,18 @@
 					<div class="mb-2">
 						<i class="fa-regular fa-calendar"></i>
 						<span>
-							{awaitedportfolioItem.date.toLocaleDateString($currentLocale, {
-								day: '2-digit',
-								month: 'short',
-								year: 'numeric'
+							{@html $translate('portfolio.dates.label', {
+								fromDate: awaitedportfolioItem.startDate.toLocaleDateString($currentLocale, {
+									month: 'numeric',
+									year: 'numeric'
+								}),
+								toDate:
+									awaitedportfolioItem.endDate === 'now'
+										? $translate('portfolio.dates.now')
+										: awaitedportfolioItem.endDate.toLocaleDateString($currentLocale, {
+												month: 'numeric',
+												year: 'numeric'
+											})
 							})}
 						</span>
 					</div>
