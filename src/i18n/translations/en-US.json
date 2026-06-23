@@ -95,7 +95,7 @@
 			"steps": [
 				{
 					"title": "Contact Us",
-					"description": "Send a message here, on Facebook, or give us a call — whatever suits you best. Describe your idea! Together we’ll consider the best solutions tailored to you. At this stage, you’ll also receive a preliminary estimate and timeline."
+					"description": "Send a message here, on Facebook, or give us a call - whatever suits you best. Describe your idea! Together we’ll consider the best solutions tailored to you. At this stage, you’ll also receive a preliminary estimate and timeline."
 				},
 				{
 					"title": "Design",
@@ -168,14 +168,14 @@
 			},
 			{
 				"title": "SEO / SEM",
-				"description": "We take care of your brand's visibility online. With effective SEO and SEM campaigns, you’ll attract more customers and boost sales—right where they’re looking for your offer.",
+				"description": "We take care of your brand's visibility online. With effective SEO and SEM campaigns, you’ll attract more customers and boost sales-right where they’re looking for your offer.",
 				"image": {
 					"alt": "SEO / SEM"
 				}
 			},
 			{
 				"title": "Logo and Visual Identity",
-				"description": "We create cohesive and memorable visual identities that reflect the character of your brand. From logo to colors and typography—everything refined with your audience in mind.",
+				"description": "We create cohesive and memorable visual identities that reflect the character of your brand. From logo to colors and typography-everything refined with your audience in mind.",
 				"image": {
 					"alt": "Logo and Visual Identity"
 				}
@@ -189,7 +189,7 @@
 			},
 			{
 				"title": "App Development",
-				"description": "We design and develop modern mobile and web applications—intuitive, efficient, and tailored to your business goals. From idea to deployment.",
+				"description": "We design and develop modern mobile and web applications-intuitive, efficient, and tailored to your business goals. From idea to deployment.",
 				"image": {
 					"alt": "App Development"
 				}
@@ -244,14 +244,15 @@
 		"label": {
 			"client": "Client project",
 			"inHouse": "In-House project",
-			"openSource": "Open Source"
+			"openSource": "Open Source",
+			"partner": "Partner"
 		},
 		"viviena": {
 			"title": "Viviena",
 			"shortDescription": "A website for the Viviena Association, a nonprofit focused on practical financial education for young people.",
 			"description": [
-				"The website was built for Stowarzyszenie Viviena — an organization dedicated to practical financial education for high school and university students. The platform presents the association's mission, core educational areas, and flagship event, Finance Academy, which brings together students and expert speakers from institutions such as PwC and PKO Bank Polski. The goal was to create a modern, clear, and informative digital presence that reflects the organization's values and helps reach its target audience.",
-				"A key component of the project is a privately accessible admin panel, unavailable to the general public. This panel allows the association's team to independently manage and update site content — including event information, articles, and other materials — without requiring developer involvement. This level of editorial independence ensures the site stays current and responsive to the organization's evolving activities.",
+				"The website was built for Stowarzyszenie Viviena - an organization dedicated to practical financial education for high school and university students. The platform presents the association's mission, core educational areas, and flagship event, Finance Academy, which brings together students and expert speakers from institutions such as PwC and PKO Bank Polski. The goal was to create a modern, clear, and informative digital presence that reflects the organization's values and helps reach its target audience.",
+				"A key component of the project is a privately accessible admin panel, unavailable to the general public. This panel allows the association's team to independently manage and update site content - including event information, articles, and other materials - without requiring developer involvement. This level of editorial independence ensures the site stays current and responsive to the organization's evolving activities.",
 				"Strong emphasis was placed on performance and search engine optimization to ensure the site is both fast and discoverable. The architecture was chosen to minimize operational costs while delivering a reliable and pleasant user experience across all devices, from desktops to mobile."
 			]
 		},
@@ -259,7 +260,7 @@
 			"title": "ATEX Print",
 			"shortDescription": "A promotional website for a textile printing company specializing in DTF, sublimation, and screen printing services.",
 			"description": [
-				"ATEX Print is a Polish textile printing company with over a decade of experience, based in Tuszyn. The website was built to serve as the company's primary digital showcase, presenting their full range of services — including sublimation printing, DTF (Direct to Film), and screen printing — to potential clients across the fashion, events, and corporate sectors.",
+				"ATEX Print is a Polish textile printing company with over a decade of experience, based in Tuszyn. The website was built to serve as the company's primary digital showcase, presenting their full range of services - including sublimation printing, DTF (Direct to Film), and screen printing - to potential clients across the fashion, events, and corporate sectors.",
 				"The site provides clear, structured information about each printing technology, outlining their advantages and ideal use cases. Visitors can easily request a quote or get in touch with the team directly through the site, lowering the barrier for new client inquiries and supporting the sales process.",
 				"Performance, clarity, and visual quality were key priorities in the design and development of the site, reflecting ATEX's own values of quality and professionalism. The result is a fast, responsive, and well-optimized platform that effectively communicates the company's expertise and makes a strong first impression on prospective clients."
 			]
@@ -309,7 +310,7 @@
 		"items": [
 			{
 				"question": "How much does it cost to build a website or app?",
-				"answer": "The cost depends on the project scope — its features, complexity, and graphic needs. After a brief conversation, we’ll prepare a <b>free, tailored quote.</b>"
+				"answer": "The cost depends on the project scope - its features, complexity, and graphic needs. After a brief conversation, we’ll prepare a <b>free, tailored quote.</b>"
 			},
 			{
 				"question": "How long does it take to complete a project?",
@@ -321,19 +322,19 @@
 			},
 			{
 				"question": "Do you help with domain and hosting setup?",
-				"answer": "<b>Yes</b> — we can assist at every stage, including selecting and configuring a domain, hosting, and company email."
+				"answer": "<b>Yes</b> - we can assist at every stage, including selecting and configuring a domain, hosting, and company email."
 			},
 			{
 				"question": "Do you offer support after project completion?",
-				"answer": "<b>Yes.</b> After deployment, we’re available for updates, fixes, or further development — you can always count on us."
+				"answer": "<b>Yes.</b> After deployment, we’re available for updates, fixes, or further development - you can always count on us."
 			},
 			{
 				"question": "Can I commission only the design without coding?",
-				"answer": "<b>Yes</b>, we also offer standalone graphic designs — for example, to pass on to your own development team."
+				"answer": "<b>Yes</b>, we also offer standalone graphic designs - for example, to pass on to your own development team."
 			},
 			{
 				"question": "Do you also build online stores and mobile apps?",
-				"answer": "<b>Yes.</b> We create online stores, web apps, and mobile apps — tailored to your industry and customers."
+				"answer": "<b>Yes.</b> We create online stores, web apps, and mobile apps - tailored to your industry and customers."
 			},
 			{
 				"question": "Can you help with SEO and marketing?",

@@ -9,7 +9,8 @@ import { HttpStatus } from '$shared/http-status';
 export enum Label {
 	CLIENT,
 	IN_HOUSE,
-	OPEN_SOURCE
+	OPEN_SOURCE,
+	PARTNER,
 }
 
 export const LABEL_TO_PROPERTY_MAP: Record<Label, { text: string; backgroundClass: string }> = {
@@ -24,6 +25,10 @@ export const LABEL_TO_PROPERTY_MAP: Record<Label, { text: string; backgroundClas
 	[Label.OPEN_SOURCE]: {
 		text: 'portfolio.label.openSource',
 		backgroundClass: 'bg-purple-600'
+	},
+	[Label.PARTNER]: {
+		text: 'portfolio.label.partner',
+		backgroundClass: 'bg-red-600'
 	}
 };
 
@@ -43,6 +48,23 @@ export type PortfolioBaseItem = {
 };
 
 const portfolioListBase: PortfolioBaseItem[] = [
+	{
+		url: 'https://www.viviena.pl/',
+		key: 'viviena',
+		labels: [Label.CLIENT, Label.PARTNER],
+		date: new Date(2026, 4, 30),
+		descriptionLength: 3,
+		mediaList: [],
+		ogImageReplacement: asset('/portfolio/viviena/og-image-replacement.png')
+	},
+	{
+		url: 'https://www.atexprint.pl/',
+		key: 'atexprint',
+		labels: [Label.CLIENT],
+		date: new Date(2026, 4, 1),
+		descriptionLength: 3,
+		mediaList: []
+	},
 	{
 		url: 'https://bezstresowo.org/',
 		key: 'bezstresowo',
@@ -70,7 +92,8 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		labels: [Label.IN_HOUSE, Label.OPEN_SOURCE],
 		date: new Date(2025, 1, 17),
 		descriptionLength: 2,
-		mediaList: []
+		mediaList: [],
+		ogImageReplacement: asset('/portfolio/ngx-meta-pixel/og-image-replacement.png')
 	},
 	{
 		url: 'https://zuzannalucinska.pl/',

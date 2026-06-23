@@ -95,7 +95,7 @@
 			"steps": [
 				{
 					"title": "Skontaktuj się z nami",
-					"description": "Napisz tutaj, na Facebooku lub zadzwoń — jak Ci wygodnie. Opisz swój pomysł! Razem rozważymy najlepsze rozwiązania dopasowane do Ciebie. Na tym etapie otrzymasz także wstępną wycenę i termin realizacji."
+					"description": "Napisz tutaj, na Facebooku lub zadzwoń - jak Ci wygodnie. Opisz swój pomysł! Razem rozważymy najlepsze rozwiązania dopasowane do Ciebie. Na tym etapie otrzymasz także wstępną wycenę i termin realizacji."
 				},
 				{
 					"title": "Projektowanie",
@@ -244,24 +244,25 @@
 		"label": {
 			"client": "Projekt dla klienta",
 			"inHouse": "Projekt wewnętrzny",
-			"openSource": "Open Source"
+			"openSource": "Open Source",
+			"partner": "Partner"
 		},
 		"viviena": {
 			"title": "Viviena",
 			"shortDescription": "Strona wizytówka stowarzyszenia zajmującego się szeroko pojętą edukacją finansową dla młodych.",
 			"description": [
-				"Strona internetowa została stworzona dla Stowarzyszenia Viviena — organizacji zajmującej się praktyczną edukacją finansową skierowaną do uczniów szkół średnich i studentów. Platforma prezentuje misję stowarzyszenia, kluczowe obszary edukacyjne oraz flagowe wydarzenie — Finance Academy, które skupia młodych ludzi i ekspertów z takich instytucji jak PwC czy PKO Bank Polski. Celem projektu było stworzenie nowoczesnej, przejrzystej i informacyjnej wizytówki cyfrowej, która odzwierciedla wartości organizacji i skutecznie dociera do jej grupy docelowej.",
-				"Kluczowym elementem projektu jest panel administracyjny dostępny wyłącznie dla wyznaczonych użytkowników — niedostępny publicznie. Panel ten umożliwia zespołowi stowarzyszenia samodzielne zarządzanie i aktualizowanie treści strony — w tym informacji o wydarzeniach, artykułów i innych materiałów — bez konieczności angażowania deweloperów. Taka niezależność redakcyjna sprawia, że strona pozostaje aktualna i na bieżąco odzwierciedla działalność organizacji.",
-				"Duży nacisk położono na wydajność i optymalizację pod kątem wyszukiwarek, aby strona była zarówno szybka, jak i łatwa do znalezienia w sieci. Architektura systemu została dobrana tak, aby minimalizować koszty operacyjne przy jednoczesnym zapewnieniu niezawodnego i przyjemnego doświadczenia użytkownika na wszystkich urządzeniach — od komputerów stacjonarnych po smartfony."
+				"Strona internetowa została stworzona dla Stowarzyszenia Viviena - organizacji zajmującej się praktyczną edukacją finansową skierowaną do uczniów szkół średnich i studentów. Platforma prezentuje misję stowarzyszenia, kluczowe obszary edukacyjne oraz flagowe wydarzenie - Finance Academy, które skupia młodych ludzi i ekspertów z takich instytucji jak PwC czy PKO Bank Polski. Celem projektu było stworzenie nowoczesnej, przejrzystej i informacyjnej wizytówki cyfrowej, która odzwierciedla wartości organizacji i skutecznie dociera do jej grupy docelowej.",
+				"Kluczowym elementem projektu jest panel administracyjny dostępny wyłącznie dla wyznaczonych użytkowników - niedostępny publicznie. Panel ten umożliwia zespołowi stowarzyszenia samodzielne zarządzanie i aktualizowanie treści strony - w tym informacji o wydarzeniach, artykułów i innych materiałów - bez konieczności angażowania deweloperów. Taka niezależność redakcyjna sprawia, że strona pozostaje aktualna i na bieżąco odzwierciedla działalność organizacji.",
+				"Duży nacisk położono na wydajność i optymalizację pod kątem wyszukiwarek, aby strona była zarówno szybka, jak i łatwa do znalezienia w sieci. Architektura systemu została dobrana tak, aby minimalizować koszty operacyjne przy jednoczesnym zapewnieniu niezawodnego i przyjemnego doświadczenia użytkownika na wszystkich urządzeniach - od komputerów stacjonarnych po smartfony."
 			]
 		},
 		"atexprint": {
 			"title": "ATEX Print",
 			"shortDescription": "Strona stworzona na cel promocji firmy prowadzącej usługi druku DTF oraz innych usług z dziedziny tekstyliów",
 			"description": [
-				"ATEX Print to polska firma z ponad dziesięcioletnim doświadczeniem w branży druku na tekstyliach, działająca w Tuszynie. Strona internetowa została stworzona jako główna wizytówka cyfrowa firmy, prezentująca pełną ofertę usług — w tym druk sublimacyjny, DTF (Direct to Film) oraz sitodruk — potencjalnym klientom z sektora modowego, eventowego i korporacyjnego.",
+				"ATEX Print to polska firma z ponad dziesięcioletnim doświadczeniem w branży druku na tekstyliach, działająca w Tuszynie. Strona internetowa została stworzona jako główna wizytówka cyfrowa firmy, prezentująca pełną ofertę usług - w tym druk sublimacyjny, DTF (Direct to Film) oraz sitodruk - potencjalnym klientom z sektora modowego, eventowego i korporacyjnego.",
 				"Serwis dostarcza przejrzystych, ustrukturyzowanych informacji o każdej z technologii druku, opisując ich zalety i optymalne zastosowania. Odwiedzający mogą łatwo poprosić o wycenę lub skontaktować się z zespołem bezpośrednio przez stronę, obniżając próg wejścia dla nowych zapytań klientów i wspierając proces sprzedażowy.",
-				"Wydajność, przejrzystość i wysoka jakość wizualna były kluczowymi priorytetami przy projektowaniu i tworzeniu strony, odzwierciedlając własne wartości ATEX — jakość i profesjonalizm. Efektem jest szybka, responsywna i dobrze zoptymalizowana platforma, która skutecznie komunikuje kompetencje firmy i robi mocne pierwsze wrażenie na potencjalnych klientach."
+				"Wydajność, przejrzystość i wysoka jakość wizualna były kluczowymi priorytetami przy projektowaniu i tworzeniu strony, odzwierciedlając własne wartości ATEX - jakość i profesjonalizm. Efektem jest szybka, responsywna i dobrze zoptymalizowana platforma, która skutecznie komunikuje kompetencje firmy i robi mocne pierwsze wrażenie na potencjalnych klientach."
 			]
 		},
 		"bezstresowo": {
@@ -309,7 +310,7 @@
 		"items": [
 			{
 				"question": "Ile kosztuje stworzenie strony lub aplikacji?",
-				"answer": "Koszt zależy od zakresu projektu — jego funkcji, złożoności i potrzeb graficznych. Po krótkiej rozmowie przygotujemy <b>darmową, indywidualną wycenę.</b>"
+				"answer": "Koszt zależy od zakresu projektu - jego funkcji, złożoności i potrzeb graficznych. Po krótkiej rozmowie przygotujemy <b>darmową, indywidualną wycenę.</b>"
 			},
 			{
 				"question": "Ile trwa realizacja projektu?",
@@ -321,19 +322,19 @@
 			},
 			{
 				"question": "Czy pomagacie w konfiguracji domeny i hostingu?",
-				"answer": "<b>Tak</b> — pomagamy na każdym etapie, w tym w wyborze i konfiguracji domeny, hostingu oraz firmowego adresu e-mail."
+				"answer": "<b>Tak</b> - pomagamy na każdym etapie, w tym w wyborze i konfiguracji domeny, hostingu oraz firmowego adresu e-mail."
 			},
 			{
 				"question": "Czy oferujecie wsparcie po zakończeniu projektu?",
-				"answer": "<b>Tak.</b> Po wdrożeniu jesteśmy dostępni do aktualizacji, poprawek lub dalszego rozwoju — zawsze możesz na nas liczyć."
+				"answer": "<b>Tak.</b> Po wdrożeniu jesteśmy dostępni do aktualizacji, poprawek lub dalszego rozwoju - zawsze możesz na nas liczyć."
 			},
 			{
 				"question": "Czy mogę zlecić sam projekt graficzny bez kodowania?",
-				"answer": "<b>Tak</b>, oferujemy także samodzielne projekty graficzne — np. do przekazania Twojemu zespołowi developerskiemu."
+				"answer": "<b>Tak</b>, oferujemy także samodzielne projekty graficzne - np. do przekazania Twojemu zespołowi developerskiemu."
 			},
 			{
 				"question": "Czy tworzycie sklepy internetowe i aplikacje mobilne?",
-				"answer": "<b>Tak.</b> Tworzymy sklepy internetowe, aplikacje webowe i mobilne — dopasowane do Twojej branży i klientów."
+				"answer": "<b>Tak.</b> Tworzymy sklepy internetowe, aplikacje webowe i mobilne - dopasowane do Twojej branży i klientów."
 			},
 			{
 				"question": "Czy pomagacie z SEO i marketingiem?",
