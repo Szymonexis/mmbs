@@ -5,6 +5,7 @@ import type {
 import { asset } from '$app/paths';
 import { getDefaultHeaders } from '$shared/get-default-headers';
 import { HttpStatus } from '$shared/http-status';
+import type { ImageObject } from 'open-graph-scraper/types';
 
 export enum Label {
 	CLIENT,
@@ -127,8 +128,21 @@ const sortedPortfolioListBase = portfolioListBase.sort(
 	(a, b) => b.startDate.getTime() - a.startDate.getTime()
 );
 
-export async function getCompletePortfolioItems() {
-	return sortedPortfolioListBase.map(async ({ descriptionLength, key, mediaList, ...val }) => {
+export type PortfolioItem = {
+	url: string;
+	labels: Label[];
+	endDate: Date | 'now';
+	startDate: Date;
+	descriptionParts: string[];
+	shortDescription: string;
+	title: string;
+	mediaList: { url: string; label: string }[];
+	ogImageReplacement?: string;
+	ogImagePromise: Promise<ImageObject | null>;
+};
+
+export function getCompletePortfolioItems(): PortfolioItem[] {
+	return sortedPortfolioListBase.map(({ descriptionLength, key, mediaList, ...val }) => {
 		const newVal = {
 			...val,
 			descriptionParts: Array.from({ length: descriptionLength }).map(
@@ -143,27 +157,24 @@ export async function getCompletePortfolioItems() {
 		};
 
 		if (val.ogImageReplacement) {
-			return { ...newVal, ogImage: null };
+			return { ...newVal, ogImagePromise: Promise.resolve(null) };
 		}
 
 		const body = { url: val.url } satisfies OpenGraphScraperRequest;
-
-		const response = await fetch('/api/open-graph-scraper', {
+		const ogImagePromise = fetch('/api/open-graph-scraper', {
 			method: 'POST',
 			headers: getDefaultHeaders(),
 			body: JSON.stringify(body)
-		});
+		})
+			.then(async (response) => {
+				if (response.status !== HttpStatus.OK) return null;
+				const { image } = (await response.json()) as OpenGraphScraperResponse;
+				return image;
+			})
+			.catch(() => null);
 
-		if (response.status !== HttpStatus.OK) {
-			return { ...newVal, ogImage: null };
-		}
-
-		const { image } = (await response.json()) as OpenGraphScraperResponse;
-
-		return { ...newVal, ogImage: image };
+		return { ...newVal, ogImagePromise };
 	});
 }
 
-export type PortfolioList = Awaited<ReturnType<typeof getCompletePortfolioItems>>;
-
-export type PortfolioItem = Awaited<PortfolioList[number]>;
+export type PortfolioList = ReturnType<typeof getCompletePortfolioItems>;

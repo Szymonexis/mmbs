@@ -251,6 +251,11 @@
 			"openSource": "Open Source",
 			"partner": "Partner"
 		},
+		"pagination": {
+			"previous": "Previous",
+			"next": "Next",
+			"page": "Page <b>{{ current }}</b> of <b>{{ total }}</b>"
+		},
 		"rkwk": {
 			"title": "Internal ERP System for RK Wasserkraft GmbH",
 			"shortDescription": "A custom-built internal ERP system for a Berlin-based building services engineering firm, covering employee management, tool and workwear tracking, work project coordination, and worker accommodation.",

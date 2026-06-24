@@ -251,6 +251,11 @@
 			"openSource": "Open Source",
 			"partner": "Partner"
 		},
+		"pagination": {
+			"previous": "Poprzednia",
+			"next": "Następna",
+			"page": "Strona <b>{{ current }}</b> z <b>{{ total }}</b>"
+		},
 		"rkwk": {
 			"title": "Wewnętrzny system ERP dla RK Wasserkraft GmbH",
 			"shortDescription": "Dedykowany system ERP dla berlińskiej firmy inżynieryjnej RK Wasserkraft GmbH, obejmujący zarządzanie pracownikami, śledzenie narzędzi i odzieży roboczej, koordynację projektów oraz zakwaterowanie pracowników.",
