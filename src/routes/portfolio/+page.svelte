@@ -1,20 +1,28 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { getCompletePortfolioItems, LABEL_TO_PROPERTY_MAP, type PortfolioList } from './model';
+	import { getCompletePortfolioItems, LABEL_TO_PROPERTY_MAP, type PortfolioItem } from './model';
 	import { currentLocale, translate } from '$i18n';
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
-	let portfolioList = $state<PortfolioList>([]);
+	const PAGE_SIZE = 10;
+
+	let portfolioList = $state<PortfolioItem[]>(getCompletePortfolioItems());
 	let openedIndex: number | null = $state(null);
+	let currentPage = $state(1);
+
+	let totalPages = $derived(Math.ceil(portfolioList.length / PAGE_SIZE));
+	let pagedList = $derived(
+		portfolioList.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)
+	);
 
 	function onOpenFullDescription(index: number) {
 		openedIndex = openedIndex === index ? null : index;
 	}
 
-	onMount(async () => {
-		portfolioList = await getCompletePortfolioItems();
-	});
+	function goToPage(page: number) {
+		currentPage = page;
+		openedIndex = null;
+	}
 </script>
 
 <svelte:head>
@@ -23,147 +31,144 @@
 </svelte:head>
 
 <div class="my-6">
-	{#each portfolioList as portfolioItem, index (index)}
+	{#each pagedList as portfolioItem, index (index)}
 		<div
 			class="flex items-start gap-6 max-[52rem]:flex-col"
 			class:flex-row={index % 2 === 0}
 			class:flex-row-reverse={index % 2 === 1}
 		>
-			{#await portfolioItem}
+			{#await portfolioItem.ogImagePromise}
 				<div
 					aria-hidden="true"
 					class="aspect-video animate-pulse rounded-xl bg-gray-200 object-cover select-none max-[52rem]:min-h-60 min-[52rem]:h-60"
 				></div>
-
-				<div class="flex-auto select-none" aria-hidden="true">
-					<div class="mb-4">
-						<span class="unbounded animate-pulse rounded-xl bg-gray-200 text-4xl text-transparent">
-							Placeholder
-						</span>
-					</div>
-
-					<div class="mb-4">
-						<span class="animate-pulse rounded-xl bg-gray-200 text-transparent">
-							Short Description Placeholder
-						</span>
-					</div>
-
-					<div class="mb-2">
-						<span class="animate-pulse rounded-xl bg-gray-200 text-transparent">
-							Link Placeholder
-						</span>
-					</div>
-
-					<div class="mb-2">
-						<span class="animate-pulse rounded-xl bg-gray-200 text-transparent"> DD MMM YYYY </span>
-					</div>
-
-					<div class="flex flex-wrap gap-2">
-						{#each Array.from({ length: 2 })}
-							<span
-								class="animate-pulse rounded-full bg-gray-200 px-3 py-1 text-sm text-transparent"
-							>
-								Label_Placeholder
-							</span>
-						{/each}
-					</div>
-				</div>
-			{:then awaitedportfolioItem}
+			{:then ogImage}
 				<img
-					src={awaitedportfolioItem?.ogImage?.url ??
-						awaitedportfolioItem?.ogImageReplacement ??
+					src={ogImage?.url ??
+						portfolioItem.ogImageReplacement ??
 						'https://placehold.co/1600x900?font=roboto&text=No%20Image%20Found'}
-					alt={awaitedportfolioItem?.ogImage?.alt ?? 'Placeholder'}
+					alt={ogImage?.alt ?? 'Placeholder'}
 					class="aspect-video rounded-xl bg-gray-200 object-cover max-[52rem]:min-h-60 min-[52rem]:h-60"
 					loading="lazy"
 				/>
-
-				<div class="flex-auto">
-					<h1 class="unbounded mb-4 text-4xl text-blue-800">
-						{$translate(awaitedportfolioItem.title)}
-					</h1>
-
-					<div class="mb-4">
-						{$translate(awaitedportfolioItem.shortDescription)}
-					</div>
-
-					<div class="mb-2 decoration-blue-800 decoration-1 hover:underline">
-						<i class="fa-solid fa-link text-blue-800"></i>
-						<a class="font-bold text-blue-800" href={awaitedportfolioItem.url} target="_blank">
-							{awaitedportfolioItem.url}
-						</a>
-					</div>
-
-					<div class="mb-2">
-						<i class="fa-regular fa-calendar"></i>
-						<span>
-							{@html $translate('portfolio.dates.label', {
-								fromDate: awaitedportfolioItem.startDate.toLocaleDateString($currentLocale, {
-									month: 'numeric',
-									year: 'numeric'
-								}),
-								toDate:
-									awaitedportfolioItem.endDate === 'now'
-										? $translate('portfolio.dates.now')
-										: awaitedportfolioItem.endDate.toLocaleDateString($currentLocale, {
-												month: 'numeric',
-												year: 'numeric'
-											})
-							})}
-						</span>
-					</div>
-
-					<div class="flex flex-wrap gap-2">
-						{#each awaitedportfolioItem.labels as label, index (index)}
-							<span
-								class={`rounded-full px-3 py-1 text-sm text-white ${LABEL_TO_PROPERTY_MAP[label].backgroundClass}`}
-							>
-								{$translate(LABEL_TO_PROPERTY_MAP[label].text)}
-							</span>
-						{/each}
-					</div>
-
-					{#if awaitedportfolioItem.descriptionParts.length > 0}
-						<button
-							class="mt-4 cursor-pointer rounded-md bg-blue-800 px-4 py-2 text-center font-bold text-white"
-							onclick={() => onOpenFullDescription(index)}
-						>
-							{openedIndex === index
-								? $translate('portfolio.readLess')
-								: $translate('portfolio.readMore')}
-						</button>
-					{/if}
-				</div>
 			{/await}
+
+			<div class="flex-auto">
+				<h1 class="unbounded mb-4 text-4xl text-blue-800">
+					{$translate(portfolioItem.title)}
+				</h1>
+
+				<div class="mb-4">
+					{$translate(portfolioItem.shortDescription)}
+				</div>
+
+				<div class="mb-2 decoration-blue-800 decoration-1 hover:underline">
+					<i class="fa-solid fa-link text-blue-800"></i>
+					<a class="font-bold text-blue-800" href={portfolioItem.url} target="_blank">
+						{portfolioItem.url}
+					</a>
+				</div>
+
+				<div class="mb-2">
+					<i class="fa-regular fa-calendar"></i>
+					<span>
+						{@html $translate('portfolio.dates.label', {
+							fromDate: portfolioItem.startDate.toLocaleDateString($currentLocale, {
+								month: 'numeric',
+								year: 'numeric'
+							}),
+							toDate:
+								portfolioItem.endDate === 'now'
+									? $translate('portfolio.dates.now')
+									: portfolioItem.endDate.toLocaleDateString($currentLocale, {
+											month: 'numeric',
+											year: 'numeric'
+										})
+						})}
+					</span>
+				</div>
+
+				<div class="flex flex-wrap gap-2">
+					{#each portfolioItem.labels as label, labelIndex (labelIndex)}
+						<span
+							class={`rounded-full px-3 py-1 text-sm text-white ${LABEL_TO_PROPERTY_MAP[label].backgroundClass}`}
+						>
+							{$translate(LABEL_TO_PROPERTY_MAP[label].text)}
+						</span>
+					{/each}
+				</div>
+
+				{#if portfolioItem.descriptionParts.length > 0}
+					<button
+						class="mt-4 cursor-pointer rounded-md bg-blue-800 px-4 py-2 text-center font-bold text-white"
+						onclick={() => onOpenFullDescription(index)}
+					>
+						{openedIndex === index
+							? $translate('portfolio.readLess')
+							: $translate('portfolio.readMore')}
+					</button>
+				{/if}
+			</div>
 		</div>
 
-		{#await portfolioItem then { descriptionParts, mediaList }}
-			{#if openedIndex === index}
-				<div class="mt-4" transition:slide={{ duration: 500, easing: quintOut }}>
-					<div class="flex flex-col gap-4 rounded-lg border-2 border-blue-800 p-4">
-						{#each descriptionParts as part, index (index)}
-							<p>{$translate(part)}</p>
-						{/each}
+		{#if openedIndex === index}
+			<div class="mt-4" transition:slide={{ duration: 500, easing: quintOut }}>
+				<div class="flex flex-col gap-4 rounded-lg border-2 border-blue-800 p-4">
+					{#each portfolioItem.descriptionParts as part, partIndex (partIndex)}
+						<p>{$translate(part)}</p>
+					{/each}
 
-						{#if mediaList.length > 0}
-							<span class="text-lg font-bold text-blue-800">
-								{$translate('portfolio.relatedAssets')}:
+					{#if portfolioItem.mediaList.length > 0}
+						<span class="text-lg font-bold text-blue-800">
+							{$translate('portfolio.relatedAssets')}:
+						</span>
+
+						{#each portfolioItem.mediaList as { url, label }, mediaIndex (mediaIndex)}
+							<span class="decoration-black decoration-2 hover:underline">
+								<i class="fa-solid fa-link"></i>
+								<a href={url} target="_blank">{$translate(label)}</a>
 							</span>
-
-							{#each mediaList as { url, label }, index (index)}
-								<span class="decoration-black decoration-2 hover:underline">
-									<i class="fa-solid fa-link"></i>
-									<a href={url} target="_blank">{$translate(label)}</a>
-								</span>
-							{/each}
-						{/if}
-					</div>
+						{/each}
+					{/if}
 				</div>
-			{/if}
-		{/await}
+			</div>
+		{/if}
 
-		{#if index < portfolioList.length - 1}
+		{#if index < pagedList.length - 1}
 			<div class="h-12"></div>
 		{/if}
 	{/each}
+
+	{#if totalPages > 1}
+		<div class="mt-12 flex items-center justify-center gap-4">
+			<button
+				class="cursor-pointer rounded-md px-4 py-2 font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
+				class:bg-blue-800={currentPage > 1}
+				class:text-white={currentPage > 1}
+				class:bg-gray-200={currentPage <= 1}
+				disabled={currentPage <= 1}
+				onclick={() => goToPage(currentPage - 1)}
+			>
+				{$translate('portfolio.pagination.previous')}
+			</button>
+
+			<span class="text-sm">
+				{@html $translate('portfolio.pagination.page', {
+					current: String(currentPage),
+					total: String(totalPages)
+				})}
+			</span>
+
+			<button
+				class="cursor-pointer rounded-md px-4 py-2 font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
+				class:bg-blue-800={currentPage < totalPages}
+				class:text-white={currentPage < totalPages}
+				class:bg-gray-200={currentPage >= totalPages}
+				disabled={currentPage >= totalPages}
+				onclick={() => goToPage(currentPage + 1)}
+			>
+				{$translate('portfolio.pagination.next')}
+			</button>
+		</div>
+	{/if}
 </div>
