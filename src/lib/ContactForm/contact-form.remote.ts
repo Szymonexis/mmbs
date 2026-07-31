@@ -1,51 +1,28 @@
-import { IsDefined, IsEmail, IsString } from 'class-validator';
-import { createTransport } from 'nodemailer';
-
 import { command } from '$app/server';
-import { error } from '@sveltejs/kit';
 import { EMAIL_PASSWORD, EMAIL_RECIEVER, EMAIL_SENDER } from '$env/static/private';
 import { getEmailRequestContent } from '$shared/get-email-request-content';
 import { HttpStatus } from '$shared/http-status';
 import { RecaptchaAction } from '$shared/recaptcha-action';
 import { createAssessment } from '$shared/server/grecaptcha';
-import { validateDto } from '$shared/server/validate-dto';
+import { omit } from 'lodash-es';
+import { createTransport } from 'nodemailer';
+import * as yup from 'yup';
 
-import type { ContactFormValue } from './model';
+import { error } from '@sveltejs/kit';
 
-// Not exported on purpose — remote files may only export remote functions.
-class ContactFormRequest implements ContactFormValue {
-	@IsString()
-	@IsDefined()
-	declare name: string;
+import { CONTACT_FORM_SCHEMA } from './model';
 
-	@IsString()
-	@IsDefined()
-	declare companyName: string;
+const sendEmailRequestSchema = CONTACT_FORM_SCHEMA.concat(
+	yup.object().shape({
+		reCaptchaToken: yup.string().required()
+	})
+);
 
-	@IsEmail()
-	@IsDefined()
-	declare email: string;
-
-	@IsString()
-	@IsDefined()
-	declare message: string;
-
-	@IsString()
-	@IsDefined()
-	declare phone: string;
-
-	@IsString()
-	@IsDefined()
-	declare reCaptchaToken: string;
-}
-
-export const sendEmailRequest = command('unchecked', async (data: ContactFormRequest) => {
-	const dto = await validateDto(data, ContactFormRequest);
-
+export const sendEmailRequest = command(sendEmailRequestSchema, async (data) => {
 	let score: number | null = null;
 	try {
 		score = await createAssessment({
-			token: dto.reCaptchaToken,
+			token: data.reCaptchaToken,
 			recaptchaAction: RecaptchaAction.CONTACT_FORM_REQUEST
 		});
 	} catch (err) {
@@ -67,7 +44,7 @@ export const sendEmailRequest = command('unchecked', async (data: ContactFormReq
 		}
 	});
 
-	const { name, message, ...rest } = dto;
+	const { name, message, ...rest } = omit(data, ['reCaptchaToken']);
 
 	await transporter.sendMail({
 		from: EMAIL_SENDER,

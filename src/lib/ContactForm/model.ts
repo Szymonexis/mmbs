@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 const prefix = 'contactForm.form';
 
-export const SCHEMA = yup.object().shape({
+export const CONTACT_FORM_SCHEMA = yup.object().shape({
 	name: yup.string().required(`${prefix}.name.errors.required`),
 	companyName: yup.string().required(`${prefix}.companyName.errors.required`),
 	email: yup
@@ -16,9 +16,9 @@ export const SCHEMA = yup.object().shape({
 	message: yup.string().required(`${prefix}.message.errors.required`)
 });
 
-export type ContactFormValue = yup.InferType<typeof SCHEMA>;
+export type ContactFormValue = yup.InferType<typeof CONTACT_FORM_SCHEMA>;
 
-export const FORM_FIELDS: {
+export const CONTACT_FORM_FIELDS: {
 	key: keyof ContactFormValue;
 	type: 'input' | 'textarea';
 }[] = [

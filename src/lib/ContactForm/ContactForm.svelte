@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from '$i18n';
 	import { createForm } from 'svelte-forms-lib';
-	import { FORM_FIELDS, SCHEMA, type ContactFormValue } from './model';
+	import { CONTACT_FORM_FIELDS, CONTACT_FORM_SCHEMA, type ContactFormValue } from './model';
 	import { isEmpty, isNil } from 'lodash-es';
 	import { onDestroy } from 'svelte';
 	import { PUBLIC_RECAPTCHA_SITE_KEY } from '$env/static/public';
@@ -29,7 +29,7 @@
 		handleSubmit
 	} = createForm({
 		initialValues: formInitialValue,
-		validationSchema: SCHEMA,
+		validationSchema: CONTACT_FORM_SCHEMA,
 		onSubmit: async function (formValue) {
 			isLoading = true;
 			submitError = false;
@@ -74,7 +74,7 @@
 		{$translate('contactForm.title')}
 	</span>
 
-	{#each FORM_FIELDS as { key, type }, i (i)}
+	{#each CONTACT_FORM_FIELDS as { key, type }, i (i)}
 		{#if type === 'input'}
 			<div class="relative my-6">
 				<input
