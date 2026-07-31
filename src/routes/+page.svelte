@@ -55,7 +55,7 @@
 
 <div class="my-6 md:grid md:grid-cols-2">
 	<h1
-		class="unbounded flex flex-col items-center justify-center text-center text-5xl leading-[135%] text-blue-800 max-sm:text-4xl" 
+		class="unbounded flex flex-col items-center justify-center text-center text-5xl leading-[135%] text-blue-800 max-sm:text-4xl"
 	>
 		<div>{$translate('home.hero.top')}</div>
 
@@ -70,9 +70,9 @@
 </div>
 
 <div class="my-12">
-	<h1 class="unbounded text-4xl text-blue-800 max-sm:text-3xl"
-		>{$translate('home.process.title')}</h1
-	>
+	<h1 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
+		{$translate('home.process.title')}
+	</h1>
 
 	<hr class="mt-1 border-1 text-blue-800" />
 

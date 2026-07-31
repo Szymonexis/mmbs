@@ -6,13 +6,22 @@ const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
+	compilerOptions: {
+		experimental: {
+			// Allows `await` at the top level of <script>, in $derived() and in markup.
+			async: true
+		}
+	},
 	kit: {
 		adapter: adapter(),
+		experimental: {
+			// Enables query()/command()/form() in *.remote.ts files.
+			remoteFunctions: true
+		},
 		alias: {
 			$services: './src/services',
 			$shared: './src/shared',
-			$i18n: './src/i18n',
-			$api: './src/routes/api'
+			$i18n: './src/i18n'
 		}
 	}
 };

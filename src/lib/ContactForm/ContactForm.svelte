@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { translate } from '$i18n';
 	import { createForm } from 'svelte-forms-lib';
-	import { FORM_FIELDS, SCHEMA, type ContactFormValue } from './model';
+	import { CONTACT_FORM_FIELDS, CONTACT_FORM_SCHEMA, type ContactFormValue } from './model';
 	import { isEmpty, isNil } from 'lodash-es';
 	import { onDestroy } from 'svelte';
-	import { getDefaultHeaders } from '$shared/get-default-headers';
-	import type { ContactFormRequest } from '$api/email-request/model';
 	import { PUBLIC_RECAPTCHA_SITE_KEY } from '$env/static/public';
 	import { RecaptchaAction } from '$shared/recaptcha-action';
+	import { sendEmailRequest } from './contact-form.remote';
 
 	let isValid = $state(false);
 	let isLoading = $state(false);
@@ -30,7 +29,7 @@
 		handleSubmit
 	} = createForm({
 		initialValues: formInitialValue,
-		validationSchema: SCHEMA,
+		validationSchema: CONTACT_FORM_SCHEMA,
 		onSubmit: async function (formValue) {
 			isLoading = true;
 			submitError = false;
@@ -41,16 +40,7 @@
 						action: RecaptchaAction.CONTACT_FORM_REQUEST
 					});
 
-					const response = await fetch('/api/email-request', {
-						method: 'POST',
-						headers: getDefaultHeaders(),
-						body: JSON.stringify({ ...formValue, reCaptchaToken } satisfies ContactFormRequest)
-					});
-
-					if (!response.ok) {
-						submitError = true;
-						return;
-					}
+					await sendEmailRequest({ ...formValue, reCaptchaToken });
 
 					form.set(formInitialValue);
 					touched.set({} as any);
@@ -84,7 +74,7 @@
 		{$translate('contactForm.title')}
 	</span>
 
-	{#each FORM_FIELDS as { key, type }, i (i)}
+	{#each CONTACT_FORM_FIELDS as { key, type }, i (i)}
 		{#if type === 'input'}
 			<div class="relative my-6">
 				<input

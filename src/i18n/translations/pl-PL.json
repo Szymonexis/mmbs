@@ -304,7 +304,7 @@
 				"Aby dodatkowo poprawić użyteczność, aplikacja automatycznie wykrywa lokalizację użytkownika i dostosowuje język interfejsu, obsługując angielski, polski i ukraiński. Funkcja ta sprawia, że strona jest dostępna dla szerszej, wielojęzycznej grupy odbiorców, a jednocześnie zapewnia spersonalizowane doświadczenie.",
 				"Rozwiązanie zostało wdrożone na Netlify, co zapewnia darmowy hosting i minimalne koszty operacyjne, podczas gdy Google Cloud obsługuje integracje backendowe. Razem ten stack gwarantuje skalowalność, niezawodność i płynne dostarczanie zasobów. Już od pierwszego dnia po uruchomieniu platforma spotkała się z pozytywnym odbiorem klientki, potwierdzając zarówno jej efektywność techniczną, jak i wartość biznesową."
 			]
-		},		
+		},
 		"ngxMetaPixel": {
 			"title": "ngx-meta-pixel",
 			"shortDescription": "Pakiet Angular stworzony, aby uprościć integrację Meta Pixel w projektach",
