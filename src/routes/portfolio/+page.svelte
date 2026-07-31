@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getCompletePortfolioItems, LABEL_TO_PROPERTY_MAP, type PortfolioItem } from './model';
+	import { getOgImage } from './portfolio.remote';
 	import { currentLocale, translate } from '$i18n';
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
@@ -37,21 +38,40 @@
 			class:flex-row={index % 2 === 0}
 			class:flex-row-reverse={index % 2 === 1}
 		>
-			{#await portfolioItem.ogImagePromise}
-				<div
-					aria-hidden="true"
-					class="aspect-video animate-pulse rounded-xl bg-gray-200 object-cover select-none max-[52rem]:min-h-60 min-[52rem]:h-60"
-				></div>
-			{:then ogImage}
+			{#if portfolioItem.ogImageReplacement}
 				<img
-					src={ogImage?.url ??
-						portfolioItem.ogImageReplacement ??
-						'https://placehold.co/1600x900?font=roboto&text=No%20Image%20Found'}
-					alt={ogImage?.alt ?? 'Placeholder'}
+					src={portfolioItem.ogImageReplacement}
+					alt="Placeholder"
 					class="aspect-video rounded-xl bg-gray-200 object-cover max-[52rem]:min-h-60 min-[52rem]:h-60"
 					loading="lazy"
 				/>
-			{/await}
+			{:else}
+				<svelte:boundary>
+					{#snippet pending()}
+						<div
+							aria-hidden="true"
+							class="aspect-video animate-pulse rounded-xl bg-gray-200 object-cover select-none max-[52rem]:min-h-60 min-[52rem]:h-60"
+						></div>
+					{/snippet}
+
+					{#snippet failed()}
+						<img
+							src="https://placehold.co/1600x900?font=roboto&text=No%20Image%20Found"
+							alt="Placeholder"
+							class="aspect-video rounded-xl bg-gray-200 object-cover max-[52rem]:min-h-60 min-[52rem]:h-60"
+							loading="lazy"
+						/>
+					{/snippet}
+
+					<img
+						src={(await getOgImage(portfolioItem.url))?.url ??
+							'https://placehold.co/1600x900?font=roboto&text=No%20Image%20Found'}
+						alt={(await getOgImage(portfolioItem.url))?.alt ?? 'Placeholder'}
+						class="aspect-video rounded-xl bg-gray-200 object-cover max-[52rem]:min-h-60 min-[52rem]:h-60"
+						loading="lazy"
+					/>
+				</svelte:boundary>
+			{/if}
 
 			<div class="flex-auto">
 				<h1 class="unbounded mb-4 text-4xl text-blue-800">

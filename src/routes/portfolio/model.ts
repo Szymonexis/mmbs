@@ -1,11 +1,4 @@
-import type {
-	OpenGraphScraperRequest,
-	OpenGraphScraperResponse
-} from '$api/open-graph-scraper/model';
 import { asset } from '$app/paths';
-import { getDefaultHeaders } from '$shared/get-default-headers';
-import { HttpStatus } from '$shared/http-status';
-import type { ImageObject } from 'open-graph-scraper/types';
 
 export enum Label {
 	CLIENT,
@@ -50,16 +43,17 @@ export type PortfolioBaseItem = {
 };
 
 const portfolioListBase: PortfolioBaseItem[] = [
-	{
-		url: "https://www.rk-wk.eu/2026/testy/en/home/",
-		key: 'rkwk',
-		labels: [Label.CLIENT],
-		endDate: 'now',
-		startDate: new Date(2026, 4, 20),
-		descriptionLength: 3,
-		mediaList: [],
-		ogImageReplacement: asset('/portfolio/rkwk/og-image-replacement.svg')
-	},
+	// NOTE: rkwk project has been paused (likely for good) — keep commented out unless it returns.
+	// {
+	// 	url: "https://www.rk-wk.eu/2026/testy/en/home/",
+	// 	key: 'rkwk',
+	// 	labels: [Label.CLIENT],
+	// 	endDate: 'now',
+	// 	startDate: new Date(2026, 4, 20),
+	// 	descriptionLength: 3,
+	// 	mediaList: [],
+	// 	ogImageReplacement: asset('/portfolio/rkwk/og-image-replacement.svg')
+	// },
 	{
 		url: 'https://www.viviena.pl/',
 		key: 'viviena',
@@ -138,43 +132,21 @@ export type PortfolioItem = {
 	title: string;
 	mediaList: { url: string; label: string }[];
 	ogImageReplacement?: string;
-	ogImagePromise: Promise<ImageObject | null>;
 };
 
 export function getCompletePortfolioItems(): PortfolioItem[] {
-	return sortedPortfolioListBase.map(({ descriptionLength, key, mediaList, ...val }) => {
-		const newVal = {
-			...val,
-			descriptionParts: Array.from({ length: descriptionLength }).map(
-				(_, i) => `portfolio.${key}.description.${i}`
-			),
-			shortDescription: `portfolio.${key}.shortDescription`,
-			title: `portfolio.${key}.title`,
-			mediaList: mediaList.map(({ url, label }) => ({
-				url,
-				label: `portfolio.${key}.mediaList.${label}`
-			}))
-		};
-
-		if (val.ogImageReplacement) {
-			return { ...newVal, ogImagePromise: Promise.resolve(null) };
-		}
-
-		const body = { url: val.url } satisfies OpenGraphScraperRequest;
-		const ogImagePromise = fetch('/api/open-graph-scraper', {
-			method: 'POST',
-			headers: getDefaultHeaders(),
-			body: JSON.stringify(body)
-		})
-			.then(async (response) => {
-				if (response.status !== HttpStatus.OK) return null;
-				const { image } = (await response.json()) as OpenGraphScraperResponse;
-				return image;
-			})
-			.catch(() => null);
-
-		return { ...newVal, ogImagePromise };
-	});
+	return sortedPortfolioListBase.map(({ descriptionLength, key, mediaList, ...val }) => ({
+		...val,
+		descriptionParts: Array.from({ length: descriptionLength }).map(
+			(_, i) => `portfolio.${key}.description.${i}`
+		),
+		shortDescription: `portfolio.${key}.shortDescription`,
+		title: `portfolio.${key}.title`,
+		mediaList: mediaList.map(({ url, label }) => ({
+			url,
+			label: `portfolio.${key}.mediaList.${label}`
+		}))
+	}));
 }
 
 export type PortfolioList = ReturnType<typeof getCompletePortfolioItems>;

@@ -67,17 +67,15 @@
 <div class="my-6">
 	<!-- Desktop/Tablet View -->
 	<div class="flex flex-col items-center max-sm:hidden">
-		<div
-			class="mb-12 auto-rows-fr gap-6 max-lg:max-w-190 sm:grid sm:grid-cols-2 lg:grid-cols-3"
-		>
+		<div class="mb-12 auto-rows-fr gap-6 max-lg:max-w-190 sm:grid sm:grid-cols-2 lg:grid-cols-3">
 			{#each SERVICE_CARDS as { title, description, image: { src, alt } }, index (index)}
 				<button
 					onclick={() => cardClick(index)}
-					class="perspective relative block w-full border-none bg-transparent p-0 cursor-pointer text-left"
+					class="perspective relative block w-full cursor-pointer border-none bg-transparent p-0 text-left"
 				>
 					<!-- The "Sizer" Image: Defines the height of the button -->
 					<img
-						class="invisible block w-full aspect-square object-contain select-none"
+						class="invisible block aspect-square w-full object-contain select-none"
 						{src}
 						alt=""
 						aria-hidden="true"

@@ -4,10 +4,9 @@
 	import { FORM_FIELDS, SCHEMA, type ContactFormValue } from './model';
 	import { isEmpty, isNil } from 'lodash-es';
 	import { onDestroy } from 'svelte';
-	import { getDefaultHeaders } from '$shared/get-default-headers';
-	import type { ContactFormRequest } from '$api/email-request/model';
 	import { PUBLIC_RECAPTCHA_SITE_KEY } from '$env/static/public';
 	import { RecaptchaAction } from '$shared/recaptcha-action';
+	import { sendEmailRequest } from './contact-form.remote';
 
 	let isValid = $state(false);
 	let isLoading = $state(false);
@@ -41,16 +40,7 @@
 						action: RecaptchaAction.CONTACT_FORM_REQUEST
 					});
 
-					const response = await fetch('/api/email-request', {
-						method: 'POST',
-						headers: getDefaultHeaders(),
-						body: JSON.stringify({ ...formValue, reCaptchaToken } satisfies ContactFormRequest)
-					});
-
-					if (!response.ok) {
-						submitError = true;
-						return;
-					}
+					await sendEmailRequest({ ...formValue, reCaptchaToken });
 
 					form.set(formInitialValue);
 					touched.set({} as any);
