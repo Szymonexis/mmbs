@@ -1,0 +1,399 @@
+import type { DeepWiden } from '../model';
+
+export const enUS = {
+	meta: {
+		home: {
+			title: 'Home - MMBS Studio',
+			description:
+				'MMBS Studio - we build web and mobile applications, design intuitive UI/UX, and deliver custom software solutions tailored to your business.'
+		},
+		'404': {
+			title: '404 - MMBS Studio',
+			description: 'Oops... Seems like you have wondered far, far away'
+		},
+		faq: {
+			title: 'FAQ - MMBS Studio',
+			description:
+				'Frequently asked questions about working with MMBS Studio - learn about our process, technologies, and collaboration model.'
+		},
+		portfolio: {
+			title: 'Portfolio - MMBS Studio',
+			description:
+				'Explore MMBS Studio portfolio - real-world web and mobile projects that help companies achieve their digital goals.'
+		},
+		services: {
+			title: 'Services - MMBS Studio',
+			description:
+				'Discover MMBS Studio services: full-cycle application development, website design, and technical support tailored for businesses and startups.'
+		}
+	},
+	header: {
+		home: 'Home',
+		services: 'Services',
+		portfolio: 'Portfolio',
+		faq: 'FAQ',
+		contactUs: 'Contact Us'
+	},
+	'404': {
+		message: 'Oops... Seems like you have wondered far, far away',
+		cta: 'Go back'
+	},
+	footer: {
+		mmbsBrandInfo: 'MMBS Studio is a brand of',
+		innovioName: 'Innovio Szymon Kaszuba-Gałka',
+		nip: 'NIP: 7272867774',
+		regon: 'REGON: 524884230',
+		addressLine1: 'al. Adama Mickiewicza 4 m. 5',
+		addressLine2: '90-050, Łódź, Poland'
+	},
+	contactForm: {
+		title: 'Contact Us',
+		button: 'Send',
+		submitError: 'Something went wrong. Please try again later.',
+		form: {
+			name: {
+				label: 'Your name',
+				placeholder: 'Jane Doe',
+				errors: {
+					required: 'Name is required.'
+				}
+			},
+			companyName: {
+				label: 'Your company name',
+				placeholder: 'Company Ltd.',
+				errors: {
+					required: 'Company name is required.'
+				}
+			},
+			email: {
+				label: 'Email',
+				placeholder: 'email@example.com',
+				errors: {
+					required: 'Email is required.',
+					invalid: 'Please enter a valid email address.'
+				}
+			},
+			phone: {
+				label: 'Phone Number',
+				placeholder: '(+XX) XXX XXX XXXX',
+				errors: {
+					required: 'Phone number is required.',
+					invalid: "Phone number can only contain numbers, spaces, '+' and '-'."
+				}
+			},
+			message: {
+				label: 'Your message',
+				placeholder: 'Describe what you need',
+				errors: {
+					required: 'Message is required.'
+				}
+			}
+		}
+	},
+	home: {
+		hero: {
+			top: 'We will create',
+			bottom: 'just for you',
+			carousel: ['Application', 'Store', 'Website', 'Logo', 'Design', 'SEO/SEM']
+		},
+		process: {
+			title: 'Free Consultation',
+			steps: [
+				{
+					title: 'Contact Us',
+					description:
+						'Send a message here, on Facebook, or give us a call - whatever suits you best. Describe your idea! Together we’ll consider the best solutions tailored to you. At this stage, you’ll also receive a preliminary estimate and timeline.'
+				},
+				{
+					title: 'Design',
+					description:
+						'Our graphic designer will shine at this stage, preparing concepts and visualizations that reflect your company’s character and your target audience’s preferences.'
+				},
+				{
+					title: 'Coding',
+					description:
+						'Time to bring your idea into the digital space. Our code masters will ensure your product is as functional and responsive as possible.'
+				},
+				{
+					title: 'Finished Product',
+					description: 'Now you can enjoy your completed product and count on our ongoing support.'
+				}
+			]
+		},
+		ourTeam: {
+			title: 'Our Team',
+			togetherPhotoAlt: 'MMBS team',
+			members: {
+				maja: {
+					name: 'Maja',
+					position: 'Graphic Designer',
+					descriptionParts: [
+						'I am a graduate of the Graphic Design program at the University of Social Sciences, with extensive experience in designing visual communication.',
+						'At MMBS, I am responsible for creating projects that combine high aesthetics, intuitiveness, and full alignment with the client’s strategic goals. My priority is to design cohesive and functional visual solutions that effectively engage audiences and strengthen brand identity.'
+					]
+				},
+				szymon: {
+					name: 'Szymon',
+					position: 'Software Developer',
+					descriptionParts: [
+						'Programming is my passion. Creating systems and writing code make me feel like the creator of my own world.',
+						'At MMBS, I manage projects and work in areas such as WebDev, DevOps, and Cloud, combined with technologies like Go, TypeScript, and SQL/No-SQL. My extensive and diverse experience enables me to select the ideal technologies to meet client requirements, and as a graduate of the University of Łódź, I continuously strive to develop my skills.'
+					]
+				},
+				maciej: {
+					name: 'Maciej',
+					position: 'Software Developer',
+					descriptionParts: [
+						'I am an enthusiast of algorithmics and passionate about creating intuitive user interfaces and IT solutions tailored to the client.',
+						'At MMBS, I develop software that not only meets technical requirements but, above all, addresses real user needs and the strategic goals of organizations. My professional experience, supported by a degree in Computer Science from the Faculty of Mathematics and Computer Science at the University of Łódź, focuses on designing and developing ERP, CRM, and CMS systems, as well as business applications that enhance the efficiency and reliability of company processes.'
+					]
+				},
+				bartek: {
+					name: 'Bartek',
+					position: 'Project Manager & Business Analyst',
+					descriptionParts: [
+						'Conversations are my element. I enjoy listening and asking questions that lead to new ideas. This is exactly what helps me truly understand what really matters to the people and projects I work on.',
+						'At MMBS, I focus on business development and coordinating client relations to ensure every collaboration is based on partnership and transparency. Beyond the strictly technological world, I am involved in fundraising, HR, and management within various organizations centered around people. I also have experience in coordinating and organizing scientific conferences. I am a student at Lodz University of Technology, pursuing Actuarial Science and Financial Analysis as well as Management.'
+					]
+				}
+			}
+		}
+	},
+	services: {
+		cards: [
+			{
+				title: 'Websites',
+				description:
+					'We create modern, responsive, and aesthetic websites tailored to your needs. We ensure intuitive navigation, clarity, and functionality so your clients will enjoy coming back to your site.',
+				image: {
+					alt: 'Websites'
+				}
+			},
+			{
+				title: 'Online Stores',
+				description:
+					'We design functional and easy-to-use online stores that support your sales and business growth. An intuitive interface, security, and full responsiveness are our standard.',
+				image: {
+					alt: 'Online Stores'
+				}
+			},
+			{
+				title: 'SEO / SEM',
+				description:
+					"We take care of your brand's visibility online. With effective SEO and SEM campaigns, you’ll attract more customers and boost sales-right where they’re looking for your offer.",
+				image: {
+					alt: 'SEO / SEM'
+				}
+			},
+			{
+				title: 'Logo and Visual Identity',
+				description:
+					'We create cohesive and memorable visual identities that reflect the character of your brand. From logo to colors and typography-everything refined with your audience in mind.',
+				image: {
+					alt: 'Logo and Visual Identity'
+				}
+			},
+			{
+				title: 'Design',
+				description:
+					'We design aesthetic and functional interfaces that grab attention and enhance usability. We focus on clarity, detail, and user experience.',
+				image: {
+					alt: 'Design'
+				}
+			},
+			{
+				title: 'App Development',
+				description:
+					'We design and develop modern mobile and web applications-intuitive, efficient, and tailored to your business goals. From idea to deployment.',
+				image: {
+					alt: 'App Development'
+				}
+			}
+		],
+		howItWorks: {
+			title: 'How It Works',
+			steps: [
+				{
+					title: 'Contact',
+					description: 'Write to us, tell us about your idea and needs.'
+				},
+				{
+					title: 'Brief',
+					description: 'Together we gather all the information needed for the project.'
+				},
+				{
+					title: 'Analysis',
+					description: 'We research the market, your industry, and your target audience.'
+				},
+				{
+					title: 'Concept',
+					description: 'We create an initial idea for the look and functionality.'
+				},
+				{
+					title: 'Graphic Design',
+					description: 'We develop a thoughtful and aesthetically pleasing design.'
+				},
+				{
+					title: 'Prototype',
+					description: 'We prepare a clickable preview you can test.'
+				},
+				{
+					title: 'Coding',
+					description: 'We develop the website or app according to the design.'
+				},
+				{
+					title: 'Testing and Revisions',
+					description: 'We check the functionality and make any necessary changes.'
+				},
+				{
+					title: 'Launch',
+					description: 'We publish the finished product and support you after launch.'
+				}
+			]
+		}
+	},
+	portfolio: {
+		readLess: 'Close full description',
+		readMore: 'Show full description',
+		relatedAssets: 'Related assets',
+		dates: {
+			label: ({ fromDate, toDate }: { fromDate: string; toDate: string }) =>
+				`From <b>${fromDate}</b> to <b>${toDate}</b>`,
+			now: 'Now'
+		},
+		label: {
+			client: 'Client project',
+			inHouse: 'In-House project',
+			openSource: 'Open Source',
+			partner: 'Partner'
+		},
+		pagination: {
+			previous: 'Previous',
+			next: 'Next',
+			page: ({ current, total }: { current: number; total: number }) =>
+				`Page <b>${current}</b> of <b>${total}</b>`
+		},
+		projects: {
+			rkwk: {
+				title: 'Internal ERP System for RK Wasserkraft GmbH',
+				shortDescription:
+					'A custom-built internal ERP system for a Berlin-based building services engineering firm, covering employee management, tool and workwear tracking, work project coordination, and worker accommodation.',
+				description: [
+					'RK Wasserkraft GmbH is a Berlin-based building services engineering company specializing in large-scale technical installations - from sanitary and ventilation systems to electrical engineering for major industrial and commercial facilities. Their client portfolio includes names like Würth, Bayer, and Zeiss, with projects spanning multiple locations across Germany. As the company grew, managing the operational complexity of a mobile, multi-project workforce required a purpose-built internal tool rather than an off-the-shelf solution.',
+					'The platform centralizes all core HR and operational workflows in one place: employee records including employment periods, documents, issued tools, and workwear; accommodation management for workers assigned to projects away from base; and a full work project module that links employees to client sites with detailed timetables. The timetable system supports configurable entry statuses - distinguishing paid from unpaid time, hourly versus flat-rate tracking - giving management granular visibility into how hours are distributed across every active project and employee.',
+					'Built on Next.js 16 with React Server Components, Prisma 7, and PostgreSQL, the system is designed for long-term reliability and maintainability. The interface supports English, Polish, and German to accommodate the multilingual team. The project is currently under active development, with additional modules and reporting capabilities planned as the system matures.'
+				]
+			},
+			viviena: {
+				title: 'Viviena',
+				shortDescription:
+					'A website for the Viviena Association, a nonprofit focused on practical financial education for young people.',
+				description: [
+					"The website was built for Stowarzyszenie Viviena - an organization dedicated to practical financial education for high school and university students. The platform presents the association's mission, core educational areas, and flagship event, Finance Academy, which brings together students and expert speakers from institutions such as PwC and PKO Bank Polski. The goal was to create a modern, clear, and informative digital presence that reflects the organization's values and helps reach its target audience.",
+					"A key component of the project is a privately accessible admin panel, unavailable to the general public. This panel allows the association's team to independently manage and update site content - including event information, articles, and other materials - without requiring developer involvement. This level of editorial independence ensures the site stays current and responsive to the organization's evolving activities.",
+					'Strong emphasis was placed on performance and search engine optimization to ensure the site is both fast and discoverable. The architecture was chosen to minimize operational costs while delivering a reliable and pleasant user experience across all devices, from desktops to mobile.'
+				]
+			},
+			atexprint: {
+				title: 'ATEX Print',
+				shortDescription:
+					'A promotional website for a textile printing company specializing in sublimation printing and other textile services.',
+				description: [
+					"ATEX Print is a Polish textile printing company with over a decade of experience, based in Tuszyn. The website was built to serve as the company's primary digital showcase, presenting their full range of services - including sublimation printing, DTF (Direct to Film), and screen printing - to potential clients across the fashion, events, and corporate sectors.",
+					'The site provides clear, structured information about each printing technology, outlining their advantages and ideal use cases. Visitors can easily request a quote or get in touch with the team directly through the site, lowering the barrier for new client inquiries and supporting the sales process.',
+					"Performance, clarity, and visual quality were key priorities in the design and development of the site, reflecting ATEX's own values of quality and professionalism. The result is a fast, responsive, and well-optimized platform that effectively communicates the company's expertise and makes a strong first impression on prospective clients."
+				]
+			},
+			bezstresowo: {
+				title: 'Bezstresowo',
+				shortDescription:
+					'A website for psychotherapist Olesya Haiduk. The service includes an e-commerce module, a therapy booking system, and functionality for publishing blog articles.',
+				description: [
+					'The website was built using the SvelteKit framework, enabling the creation of a modern, high-performance, and well-optimized web application. The platform is hosted on Vercel, whose free tier offers highly favorable conditions while maintaining excellent stability and performance. The architectural decisions were driven primarily by cost optimization - one of the key project objectives was to ensure minimal operational expenses without compromising quality or reliability.',
+					'The payment system is integrated with Stripe, providing fast, secure, and seamless access to multiple payment gateways. The platform enables efficient product management, transaction handling, and scalable growth as the project evolves. Choosing Stripe ensures a high level of security, compliance with industry standards, and convenience for both administrators and end users.',
+					'The data storage layer is structured in accordance with best architectural practices. Media files used in blog articles are stored in Amazon S3, ensuring high availability, scalability, and infrastructure reliability. Meanwhile, article content is stored in the MongoDB database, whose flexibility makes it well-suited for managing dynamic and complex content structures. This combination of technologies provides an optimal balance between performance, scalability, and cost efficiency.'
+				]
+			},
+			powerivanchukova: {
+				title: 'Power Ivanchukova',
+				shortDescription:
+					'A site for Yevheniia Ivanchukova, a fitness coach, with some light shop capabilities and automations',
+				mediaList: {
+					story: 'Story from Power Ivanchukova Instagram page, recommending MMBS Studio'
+				},
+				description: [
+					'Built with Svelte + Skeleton UI, the platform delivers a fast, lightweight, and highly responsive experience with a modern design. We placed strong emphasis on performance and accessibility – every media file is loaded dynamically with Skeleton placeholders, ensuring smooth interactions even on slower connections. The website also complies with WCAG standards, making it inclusive and user-friendly across different devices and audiences.',
+					'Integrated with Stripe as a secure and flexible payment gateway, the system automates critical processes for the client. It generates invoices for every transaction, manages automated paychecks, handles taxes, and keeps a complete purchase history for end users. This allows the business owner to focus entirely on content and product updates without worrying about the financial and administrative side.',
+					'To further improve usability, the application automatically detects a user’s location and adjusts the interface language accordingly, supporting English, Polish, and Ukrainian. This feature makes the website accessible to a broader, multilingual audience while maintaining a personalized experience.',
+					'The solution was deployed on Netlify, ensuring free hosting and minimal operating costs, while Google Cloud handles backend integrations. Together, this stack guarantees scalability, reliability, and smooth delivery of resources. From day one after launch, the platform received positive client feedback, proving both its technical efficiency and its business value.'
+				]
+			},
+			ngxMetaPixel: {
+				title: 'ngx-meta-pixel',
+				shortDescription:
+					'An Angular package designed to simplify the integration of Meta Pixel into projects',
+				description: [
+					"This Meta Pixel integration package streamlines embedding Meta Pixel into Angular applications, supporting versions 16 through 20. Simply add some tags to the Meta Pixel html code provided by Meta and that's pretty much it.",
+					'Package provides implementation of all existing Meta Pixel events, provides a way to distribute app specific events as well as provides a way to make the implementation GDPR complient with an optional fast and streamlined flow.'
+				]
+			},
+			zuzannaLucinska: {
+				title: 'Zuzanna Lucińska',
+				shortDescription:
+					'A site for Zuzanna Lucińska, a notary, serving as her business card website',
+				description: []
+			}
+		}
+	},
+	faq: {
+		title: 'Frequently asked questions',
+		whyUsImage: {
+			src: '/faq/why-us_en-US.webp',
+			alt: 'Why us?'
+		},
+		items: [
+			{
+				question: 'How much does it cost to build a website or app?',
+				answer:
+					'The cost depends on the project scope - its features, complexity, and graphic needs. After a brief conversation, we’ll prepare a <b>free, tailored quote.</b>'
+			},
+			{
+				question: 'How long does it take to complete a project?',
+				answer:
+					'A simple project takes about <b>2-3 weeks</b>; more complex implementations <b>start from 4 weeks</b>. The exact timeline is agreed <b>individually.</b>'
+			},
+			{
+				question: "Can I edit the content on the site myself after it's done?",
+				answer:
+					'<b>Yes!</b> We build sites on systems that allow easy content editing without coding knowledge. We also provide short training or instructions.'
+			},
+			{
+				question: 'Do you help with domain and hosting setup?',
+				answer:
+					'<b>Yes</b> - we can assist at every stage, including selecting and configuring a domain, hosting, and company email.'
+			},
+			{
+				question: 'Do you offer support after project completion?',
+				answer:
+					'<b>Yes.</b> After deployment, we’re available for updates, fixes, or further development - you can always count on us.'
+			},
+			{
+				question: 'Can I commission only the design without coding?',
+				answer:
+					'<b>Yes</b>, we also offer standalone graphic designs - for example, to pass on to your own development team.'
+			},
+			{
+				question: 'Do you also build online stores and mobile apps?',
+				answer:
+					'<b>Yes.</b> We create online stores, web apps, and mobile apps - tailored to your industry and customers.'
+			},
+			{
+				question: 'Can you help with SEO and marketing?',
+				answer:
+					'<b>Yes.</b> We provide support in SEO optimization and basic SEM activities as well as visual identity.'
+			}
+		]
+	}
+} as const;
+
+export type TranslationDictionary = DeepWiden<typeof enUS>;

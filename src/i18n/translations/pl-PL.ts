@@ -1,0 +1,396 @@
+import type { TranslationDictionary } from './en-US';
+
+export const plPL = {
+	meta: {
+		home: {
+			title: 'Strona główna - MMBS Studio',
+			description:
+				'MMBS Studio - tworzymy aplikacje webowe i mobilne, projektujemy intuicyjne UI/UX oraz dostarczamy dedykowane rozwiązania programistyczne dopasowane do Twojego biznesu.'
+		},
+		'404': {
+			title: '404 - MMBS Studio',
+			description: 'Ups... Wygląda na to, że zawędrowałeś bardzo, bardzo daleko'
+		},
+		faq: {
+			title: 'FAQ - MMBS Studio',
+			description:
+				'Najczęściej zadawane pytania dotyczące współpracy z MMBS Studio - poznaj nasz proces, technologie oraz model współpracy.'
+		},
+		portfolio: {
+			title: 'Portfolio - MMBS Studio',
+			description:
+				'Poznaj portfolio MMBS Studio - rzeczywiste projekty webowe i mobilne, które pomagają firmom osiągać ich cele cyfrowe.'
+		},
+		services: {
+			title: 'Usługi - MMBS Studio',
+			description:
+				'Poznaj usługi MMBS Studio: kompleksowe tworzenie aplikacji, projektowanie stron internetowych oraz wsparcie techniczne dopasowane do firm i startupów.'
+		}
+	},
+	header: {
+		home: 'Strona Główna',
+		services: 'Oferta',
+		portfolio: 'Portfolio',
+		faq: 'FAQ',
+		contactUs: 'Kontakt'
+	},
+	'404': {
+		message: 'Ups... Wygląda na to, że zbłądziłeś bardzo, bardzo daleko',
+		cta: 'Wróć'
+	},
+	footer: {
+		mmbsBrandInfo: 'MMBS Studio jest marką',
+		innovioName: 'Innovio Szymon Kaszuba-Gałka',
+		nip: 'NIP: 7272867774',
+		regon: 'REGON: 524884230',
+		addressLine1: 'al. Adama Mickiewicza 4 m. 5',
+		addressLine2: '90-050, Łódź, Poland'
+	},
+	contactForm: {
+		title: 'Skontaktuj się z nami',
+		button: 'Wyślij',
+		submitError: 'Coś poszło nie tak. Spróbuj ponownie później.',
+		form: {
+			name: {
+				label: 'Twoje imię',
+				placeholder: 'Joanna Kowalska',
+				errors: {
+					required: 'Imię jest wymagane.'
+				}
+			},
+			companyName: {
+				label: 'Nazwa twojej firmy',
+				placeholder: 'Firma sp. z o.o.',
+				errors: {
+					required: 'Nazwa firmy jest wymagana.'
+				}
+			},
+			email: {
+				label: 'Email',
+				placeholder: 'email@przyklad.com',
+				errors: {
+					required: 'Adres email jest wymagany.',
+					invalid: 'Wprowadź poprawny adres email.'
+				}
+			},
+			phone: {
+				label: 'Twój numer telefonu',
+				placeholder: '(+XX) XXX XXX XXX',
+				errors: {
+					required: 'Numer telefonu jest wymagany.',
+					invalid: "Numer telefonu może zawierać tylko cyfry, spacje, '+' i '-'."
+				}
+			},
+			message: {
+				label: 'Twoja wiadomość',
+				placeholder: 'Opisz, czego potrzebujesz',
+				errors: {
+					required: 'Wiadomość jest wymagana.'
+				}
+			}
+		}
+	},
+	home: {
+		hero: {
+			top: 'Stworzymy',
+			bottom: 'specjalnie dla Ciebie',
+			carousel: ['Aplikację', 'Sklep', 'Stronę www', 'Logo', 'Projekt', 'SEO/SEM']
+		},
+		process: {
+			title: 'Darmowa konsultacja',
+			steps: [
+				{
+					title: 'Skontaktuj się z nami',
+					description:
+						'Napisz tutaj, na Facebooku lub zadzwoń - jak Ci wygodnie. Opisz swój pomysł! Razem rozważymy najlepsze rozwiązania dopasowane do Ciebie. Na tym etapie otrzymasz także wstępną wycenę i termin realizacji.'
+				},
+				{
+					title: 'Projektowanie',
+					description:
+						'Nasz grafik zabłyśnie na tym etapie, przygotowując koncepcje i wizualizacje, które oddają charakter Twojej firmy i preferencje Twoich odbiorców.'
+				},
+				{
+					title: 'Kodowanie',
+					description:
+						'Czas przenieść Twój pomysł do świata cyfrowego. Nasi mistrzowie kodu zadbają o to, by produkt był funkcjonalny i responsywny.'
+				},
+				{
+					title: 'Gotowy produkt',
+					description:
+						'Teraz możesz cieszyć się gotowym produktem i liczyć na nasze dalsze wsparcie.'
+				}
+			]
+		},
+		ourTeam: {
+			title: 'Nasz zespół',
+			togetherPhotoAlt: 'Zespół MMBS',
+			members: {
+				maja: {
+					name: 'Maja',
+					position: 'Projektant Graficzny',
+					descriptionParts: [
+						'Jestem absolwentką kierunku Grafika w Społecznej Akademii Nauk, z bogatym doświadczeniem w projektowaniu komunikacji wizualnej.',
+						'W MMBS odpowiadam za kreację projektów, które łączą w sobie wysoką estetykę, intuicyjność i pełną zgodność z celami strategicznymi klienta. Moim priorytetem jest tworzenie spójnych i funkcjonalnych rozwiązań wizualnych, które skutecznie angażują odbiorców i wzmacniają tożsamość marki.'
+					]
+				},
+				szymon: {
+					name: 'Szymon',
+					position: 'Software Developer',
+					descriptionParts: [
+						'Programowanie to moja pasja. Tworzenie systemów, pisanie kodu sprawiają, że czuję się jak twórca własnego świata. ',
+						'W MMBS zajmuję się prowadzeniem projektów oraz dziedzinami takimi jak WebDev, DevOps, Cloud w połączeniu z technologiami takimi jak Go, Typescript, SQL/No-SQL. Moje wieloletnie i różnorodne doświadczenie sprawia, że jestem w stanie dobrać idealne technologie pod wymagania klientów, a jako absolwent Uniwersytetu Łódzkiego, nieustannie dążę do rozwoju swoich kompetencji.'
+					]
+				},
+				maciej: {
+					name: 'Maciej',
+					position: 'Software Developer',
+					descriptionParts: [
+						'Jestem fascynatem algorytmiki oraz pasjonuję się tworzeniem intuicyjnych interfejsów użytkownika i rozwiązań informatycznych dopasowanych do klienta.',
+						'W MMBS tworzę oprogramowanie, które nie tylko spełnia wymagania techniczne, ale przede wszystkim odpowiada na realne potrzeby użytkowników i cele strategiczne organizacji. Moje doświadczenie zawodowe, poparte ukończonymi studiami informatycznymi na Wydziale matematyki i informatyki Uniwersytetu Łódzkiego, koncentruje się na projektowaniu i rozwijaniu systemów klasy ERP, CRM, CMS oraz aplikacji biznesowych, które zwiększają efektywność i niezawodność procesów w firmach.'
+					]
+				},
+				bartek: {
+					name: 'Bartek',
+					position: 'Project Manager & Analityk Biznesowy',
+					descriptionParts: [
+						'Rozmowy to mój żywioł. Lubię słuchać i zadawać pytania, które prowadzą do nowych pomysłów. Właśnie dzięki temu najlepiej rozumiem, co naprawdę jest ważne dla ludzi i projektów, nad którymi pracuję.',
+						'W MMBS koncentruję się na rozwoju biznesu i koordynowaniu kontaktu z klientami, tak aby każda współpraca była partnerska i transparentna. Poza światem stricte technologicznym działam w obszarach fundraisingu, HR i zarządzania w różnych organizacjach, które skupiają się na ludziach. Mam również doświadczenie w koordynowaniu i organizowaniu konferencji naukowych. Jestem studentem na Politechnice Łódzkiej na kierunku Aktuariat i Analiza Finansowa oraz Zarządzanie.'
+					]
+				}
+			}
+		}
+	},
+	services: {
+		cards: [
+			{
+				title: 'Strony internetowe',
+				description:
+					'Tworzymy nowoczesne, responsywne strony internetowe dopasowane do Twoich potrzeb - estetyczne, intuicyjne i funkcjonalne, by klienci chętnie wracali.',
+				image: {
+					alt: 'Strony internetowe'
+				}
+			},
+			{
+				title: 'Sklepy internetowe',
+				description:
+					'Projektujemy wygodne, funkcjonalne sklepy online wspierające sprzedaż i rozwój biznesu. Intuicyjny interfejs, bezpieczeństwo i responsywność to standard.',
+				image: {
+					alt: 'Sklepy internetowe'
+				}
+			},
+			{
+				title: 'SEO / SEM',
+				description:
+					'Zadbamy o widoczność Twojej marki w internecie. Dzięki skutecznemu SEO i kampaniom SEM przyciągniesz więcej klientów i zwiększysz sprzedaż - dokładnie tam, gdzie szukają Twojej oferty.',
+				image: {
+					alt: 'SEO / SEM'
+				}
+			},
+			{
+				title: 'Logo i branding',
+				description:
+					'Tworzymy spójne i zapadające w pamięć identyfikacje wizualne, które oddają charakter Twojej marki. Od logotypu po kolory i typografię - wszystko dopracowane z myślą o Twoich odbiorcach.',
+				image: {
+					alt: 'Logo i branding'
+				}
+			},
+			{
+				title: 'Design',
+				description:
+					'Projektujemy estetyczne i funkcjonalne interfejsy, które przyciągają uwagę i ułatwiają korzystanie z produktu. Stawiamy na przejrzystość, detale i doświadczenie użytkownika.',
+				image: {
+					alt: 'Design'
+				}
+			},
+			{
+				title: 'Tworzenie aplikacji',
+				description:
+					'Projektujemy i rozwijamy nowoczesne aplikacje mobilne i webowe - intuicyjne, wydajne i dopasowane do Twoich celów biznesowych. Od pomysłu po wdrożenie.',
+				image: {
+					alt: 'Tworzenie aplikacji'
+				}
+			}
+		],
+		howItWorks: {
+			title: 'Jak to działa',
+			steps: [
+				{
+					title: 'Kontakt',
+					description: 'Napisz do nas, opowiedz o swoim pomyśle i potrzebach.'
+				},
+				{
+					title: 'Brief',
+					description: 'Wspólnie zbieramy wszystkie potrzebne informacje do realizacji projektu.'
+				},
+				{
+					title: 'Analiza',
+					description: 'Badamy rynek, Twoją branżę i grupę docelową.'
+				},
+				{
+					title: 'Koncepcja',
+					description: 'Tworzymy wstępny pomysł na wygląd i funkcjonalność.'
+				},
+				{
+					title: 'Projekt graficzny',
+					description: 'Przygotowujemy przemyślany i estetyczny projekt.'
+				},
+				{
+					title: 'Prototyp',
+					description: 'Tworzymy klikalny podgląd, który możesz przetestować.'
+				},
+				{
+					title: 'Kodowanie',
+					description: 'Wdrażamy stronę lub aplikację zgodnie z projektem.'
+				},
+				{
+					title: 'Testy i poprawki',
+					description: 'Sprawdzamy działanie i wprowadzamy ewentualne poprawki.'
+				},
+				{
+					title: 'Publikacja',
+					description: 'Publikujemy gotowy produkt i wspieramy Cię po wdrożeniu.'
+				}
+			]
+		}
+	},
+	portfolio: {
+		readLess: 'Zamknij pełny opis',
+		readMore: 'Pokaż pełny opis',
+		relatedAssets: 'Powiązane zasoby',
+		dates: {
+			label: ({ fromDate, toDate }) => `Od <b>${fromDate}</b> do <b>${toDate}</b>`,
+			now: 'Teraz'
+		},
+		label: {
+			client: 'Projekt dla klienta',
+			inHouse: 'Projekt wewnętrzny',
+			openSource: 'Open Source',
+			partner: 'Partner'
+		},
+		pagination: {
+			previous: 'Poprzednia',
+			next: 'Następna',
+			page: ({ current, total }) => `Strona <b>${current}</b> z <b>${total}</b>`
+		},
+		projects: {
+			rkwk: {
+				title: 'Wewnętrzny system ERP dla RK Wasserkraft GmbH',
+				shortDescription:
+					'Dedykowany system ERP dla berlińskiej firmy inżynieryjnej RK Wasserkraft GmbH, obejmujący zarządzanie pracownikami, śledzenie narzędzi i odzieży roboczej, koordynację projektów oraz zakwaterowanie pracowników.',
+				description: [
+					'RK Wasserkraft GmbH to berlińska firma specjalizująca się w instalacjach technicznych na dużą skalę - od systemów sanitarnych i wentylacyjnych po instalacje elektryczne dla dużych obiektów przemysłowych i komercyjnych. W portfelu klientów firmy znajdują się takie marki jak Würth, Bayer i Zeiss, a projekty realizowane są w wielu lokalizacjach na terenie Niemiec. W miarę rozwoju firmy zarządzanie złożonością operacyjną mobilnej, wieloprojektowej kadry pracowniczej wymagało dedykowanego narzędzia wewnętrznego zamiast gotowego rozwiązania z półki.',
+					'Platforma centralizuje wszystkie kluczowe procesy HR i operacyjne: ewidencję pracowników wraz z historią zatrudnienia, dokumentami, wydanymi narzędziami i odzieżą roboczą; zarządzanie zakwaterowaniem dla pracowników oddelegowanych do projektów poza miejscem zamieszkania; a także pełny moduł projektów budowlanych łączący pracowników z lokalizacjami klientów i szczegółowymi harmonogramami. System harmonogramów obsługuje konfigurowalne statusy wpisów - rozróżniając czas płatny od bezpłatnego oraz rozliczenie godzinowe od ryczałtowego - zapewniając zarządzaniu pełną widoczność sposobu wykorzystania czasu w każdym aktywnym projekcie i dla każdego pracownika.',
+					'Zbudowany na Next.js 16 z React Server Components, Prisma 7 i PostgreSQL, system został zaprojektowany z myślą o długoterminowej niezawodności i utrzymywalności. Interfejs obsługuje języki angielski, polski i niemiecki, aby sprostać potrzebom wielojęzycznego zespołu. Projekt jest aktualnie w trakcie aktywnego rozwoju - kolejne moduły i funkcje raportowania są planowane wraz z rozwojem systemu.'
+				]
+			},
+			viviena: {
+				title: 'Viviena',
+				shortDescription:
+					'Strona wizytówka stowarzyszenia zajmującego się szeroko pojętą edukacją finansową dla młodych.',
+				description: [
+					'Strona internetowa została stworzona dla Stowarzyszenia Viviena - organizacji zajmującej się praktyczną edukacją finansową skierowaną do uczniów szkół średnich i studentów. Platforma prezentuje misję stowarzyszenia, kluczowe obszary edukacyjne oraz flagowe wydarzenie - Finance Academy, które skupia młodych ludzi i ekspertów z takich instytucji jak PwC czy PKO Bank Polski. Celem projektu było stworzenie nowoczesnej, przejrzystej i informacyjnej wizytówki cyfrowej, która odzwierciedla wartości organizacji i skutecznie dociera do jej grupy docelowej.',
+					'Kluczowym elementem projektu jest panel administracyjny dostępny wyłącznie dla wyznaczonych użytkowników - niedostępny publicznie. Panel ten umożliwia zespołowi stowarzyszenia samodzielne zarządzanie i aktualizowanie treści strony - w tym informacji o wydarzeniach, artykułów i innych materiałów - bez konieczności angażowania deweloperów. Taka niezależność redakcyjna sprawia, że strona pozostaje aktualna i na bieżąco odzwierciedla działalność organizacji.',
+					'Duży nacisk położono na wydajność i optymalizację pod kątem wyszukiwarek, aby strona była zarówno szybka, jak i łatwa do znalezienia w sieci. Architektura systemu została dobrana tak, aby minimalizować koszty operacyjne przy jednoczesnym zapewnieniu niezawodnego i przyjemnego doświadczenia użytkownika na wszystkich urządzeniach - od komputerów stacjonarnych po smartfony.'
+				]
+			},
+			atexprint: {
+				title: 'ATEX Print',
+				shortDescription:
+					'Strona stworzona na cel promocji firmy prowadzącej usługi druku sublimacyjnego oraz innych usług z dziedziny tekstyliów',
+				description: [
+					'ATEX Print to polska firma z ponad dziesięcioletnim doświadczeniem w branży druku na tekstyliach, działająca w Tuszynie. Strona internetowa została stworzona jako główna wizytówka cyfrowa firmy, prezentująca pełną ofertę usług - w tym druk sublimacyjny, DTF (Direct to Film) oraz sitodruk - potencjalnym klientom z sektora modowego, eventowego i korporacyjnego.',
+					'Serwis dostarcza przejrzystych, ustrukturyzowanych informacji o każdej z technologii druku, opisując ich zalety i optymalne zastosowania. Odwiedzający mogą łatwo poprosić o wycenę lub skontaktować się z zespołem bezpośrednio przez stronę, obniżając próg wejścia dla nowych zapytań klientów i wspierając proces sprzedażowy.',
+					'Wydajność, przejrzystość i wysoka jakość wizualna były kluczowymi priorytetami przy projektowaniu i tworzeniu strony, odzwierciedlając własne wartości ATEX - jakość i profesjonalizm. Efektem jest szybka, responsywna i dobrze zoptymalizowana platforma, która skutecznie komunikuje kompetencje firmy i robi mocne pierwsze wrażenie na potencjalnych klientach.'
+				]
+			},
+			bezstresowo: {
+				title: 'Bezstresowo',
+				shortDescription:
+					'Strona internetowa dla psychoterapeutki Olesyi Haiduk. Serwis obejmuje moduł sprzedażowy, system rejestracji na terapię oraz funkcjonalność publikowania artykułów blogowych.',
+				description: [
+					'Strona internetowa została zbudowana w oparciu o framework SvelteKit, co pozwoliło na stworzenie nowoczesnej, wydajnej i dobrze zoptymalizowanej aplikacji webowej. Do hostingu wykorzystano platformę Vercel, której bezpłatny plan oferuje bardzo korzystne warunki przy zachowaniu wysokiej stabilności i szybkości działania. Wybór tej architektury był podyktowany przede wszystkim optymalizacją kosztów utrzymania - jednym z kluczowych założeń projektu było zapewnienie możliwie najniższych kosztów operacyjnych przy jednoczesnym zachowaniu wysokiej jakości i niezawodności.',
+					'System płatności został zintegrowany z usługą Stripe, która zapewnia szybki, bezpieczny i bezproblemowy dostęp do wielu bramek płatniczych. Platforma umożliwia sprawne zarządzanie produktami, obsługę transakcji oraz skalowanie systemu wraz z rozwojem projektu. Wybór Stripe gwarantuje wysoki poziom bezpieczeństwa, zgodność z obowiązującymi standardami branżowymi oraz wygodę zarówno dla administratora, jak i użytkowników końcowych.',
+					'Warstwa przechowywania danych została rozdzielona zgodnie z najlepszymi praktykami architektonicznymi. Pliki multimedialne wykorzystywane w artykułach blogowych przechowywane są w AWS S3, co zapewnia wysoką dostępność, skalowalność oraz niezawodność infrastruktury. Natomiast treści artykułów przechowywane są w bazie danych MongoDB, która dzięki swojej elastyczności doskonale sprawdza się w zarządzaniu dynamiczną i rozbudowaną strukturą treści. Takie połączenie technologii pozwala zachować równowagę między wydajnością, skalowalnością a kosztami utrzymania systemu.'
+				]
+			},
+			powerivanchukova: {
+				title: 'Power Ivanchukova',
+				shortDescription:
+					'Strona dla Yevhenii Ivanchukovej, trenerki fitness, z lekkimi funkcjami sklepu i automatyzacjami',
+				mediaList: {
+					story: 'Story ze strony Power Ivanchukova na Instagramie polecające MMBS Studio'
+				},
+				description: [
+					'Zbudowana w oparciu o Svelte + Skeleton UI, platforma zapewnia szybkie, lekkie i wysoce responsywne doświadczenie z nowoczesnym designem. Położyliśmy duży nacisk na wydajność i dostępność - każdy plik multimedialny ładowany jest dynamicznie z placeholderami Skeleton, co gwarantuje płynne interakcje nawet przy wolniejszych łączach. Strona spełnia również standardy WCAG, dzięki czemu jest inkluzywna i przyjazna użytkownikom na różnych urządzeniach i dla różnych grup odbiorców.',
+					'Zintegrowana ze Stripe jako bezpieczną i elastyczną bramką płatności, aplikacja automatyzuje kluczowe procesy dla klienta. Generuje faktury dla każdej transakcji, zarządza automatycznymi wypłatami, obsługuje podatki i przechowuje pełną historię zakupów użytkowników końcowych. Dzięki temu właścicielka biznesu może w pełni skupić się na treściach i aktualizacjach produktów, nie martwiąc się o stronę finansową czy administracyjną.',
+					'Aby dodatkowo poprawić użyteczność, aplikacja automatycznie wykrywa lokalizację użytkownika i dostosowuje język interfejsu, obsługując angielski, polski i ukraiński. Funkcja ta sprawia, że strona jest dostępna dla szerszej, wielojęzycznej grupy odbiorców, a jednocześnie zapewnia spersonalizowane doświadczenie.',
+					'Rozwiązanie zostało wdrożone na Netlify, co zapewnia darmowy hosting i minimalne koszty operacyjne, podczas gdy Google Cloud obsługuje integracje backendowe. Razem ten stack gwarantuje skalowalność, niezawodność i płynne dostarczanie zasobów. Już od pierwszego dnia po uruchomieniu platforma spotkała się z pozytywnym odbiorem klientki, potwierdzając zarówno jej efektywność techniczną, jak i wartość biznesową.'
+				]
+			},
+			ngxMetaPixel: {
+				title: 'ngx-meta-pixel',
+				shortDescription:
+					'Pakiet Angular stworzony, aby uprościć integrację Meta Pixel w projektach',
+				description: [
+					'Ten pakiet integracyjny Meta Pixel upraszcza osadzanie Meta Pixel w aplikacjach Angular, obsługując wersje od 16 do 20. Wystarczy dodać kilka znaczników do kodu HTML Meta Pixel dostarczonego przez Meta i to właściwie wszystko.',
+					'Pakiet zapewnia implementację wszystkich istniejących zdarzeń Meta Pixel, umożliwia dystrybucję zdarzeń specyficznych dla aplikacji, a także oferuje możliwość wdrożenia zgodności z RODO poprzez opcjonalny, szybki i uproszczony proces.'
+				]
+			},
+			zuzannaLucinska: {
+				title: 'Zuzanna Lucińska',
+				shortDescription:
+					'Strona internetowa Zuzanny Lucińskiej, notariusza, pełniąca rolę strony-wizytówki',
+				description: []
+			}
+		}
+	},
+	faq: {
+		title: 'Często zadawane pytania',
+		whyUsImage: {
+			src: '/faq/why-us_pl-PL.webp',
+			alt: 'Dlaczego my?'
+		},
+		items: [
+			{
+				question: 'Ile kosztuje stworzenie strony lub aplikacji?',
+				answer:
+					'Koszt zależy od zakresu projektu - jego funkcji, złożoności i potrzeb graficznych. Po krótkiej rozmowie przygotujemy <b>darmową, indywidualną wycenę.</b>'
+			},
+			{
+				question: 'Ile trwa realizacja projektu?',
+				answer:
+					'Prosty projekt zajmuje około <b>2-3 tygodni</b>; bardziej złożone wdrożenia od <b>4 tygodni wzwyż</b>. Dokładny termin ustalamy <b>indywidualnie.</b>'
+			},
+			{
+				question: 'Czy po realizacji mogę samodzielnie edytować treści na stronie?',
+				answer:
+					'<b>Tak!</b> Tworzymy strony w systemach umożliwiających łatwą edycję bez znajomości kodowania. Zapewniamy również krótkie szkolenie lub instrukcję.'
+			},
+			{
+				question: 'Czy pomagacie w konfiguracji domeny i hostingu?',
+				answer:
+					'<b>Tak</b> - pomagamy na każdym etapie, w tym w wyborze i konfiguracji domeny, hostingu oraz firmowego adresu e-mail.'
+			},
+			{
+				question: 'Czy oferujecie wsparcie po zakończeniu projektu?',
+				answer:
+					'<b>Tak.</b> Po wdrożeniu jesteśmy dostępni do aktualizacji, poprawek lub dalszego rozwoju - zawsze możesz na nas liczyć.'
+			},
+			{
+				question: 'Czy mogę zlecić sam projekt graficzny bez kodowania?',
+				answer:
+					'<b>Tak</b>, oferujemy także samodzielne projekty graficzne - np. do przekazania Twojemu zespołowi developerskiemu.'
+			},
+			{
+				question: 'Czy tworzycie sklepy internetowe i aplikacje mobilne?',
+				answer:
+					'<b>Tak.</b> Tworzymy sklepy internetowe, aplikacje webowe i mobilne - dopasowane do Twojej branży i klientów.'
+			},
+			{
+				question: 'Czy pomagacie z SEO i marketingiem?',
+				answer:
+					'<b>Tak.</b> Wspieramy w optymalizacji SEO i podstawowych działaniach SEM, a także w zakresie identyfikacji wizualnej.'
+			}
+		]
+	}
+} as const satisfies TranslationDictionary;

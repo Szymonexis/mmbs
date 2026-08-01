@@ -1,4 +1,5 @@
 import { asset } from '$app/paths';
+import type { TranslationDictionary } from '$i18n';
 
 export enum Label {
 	CLIENT,
@@ -7,21 +8,26 @@ export enum Label {
 	PARTNER
 }
 
-export const LABEL_TO_PROPERTY_MAP: Record<Label, { text: string; backgroundClass: string }> = {
+export type PortfolioKey = keyof TranslationDictionary['portfolio']['projects'];
+
+export const LABEL_TO_PROPERTY_MAP: Record<
+	Label,
+	{ key: keyof TranslationDictionary['portfolio']['label']; backgroundClass: string }
+> = {
 	[Label.CLIENT]: {
-		text: `portfolio.label.client`,
+		key: 'client',
 		backgroundClass: 'bg-green-600'
 	},
 	[Label.IN_HOUSE]: {
-		text: 'portfolio.label.inHouse',
+		key: 'inHouse',
 		backgroundClass: 'bg-amber-500'
 	},
 	[Label.OPEN_SOURCE]: {
-		text: 'portfolio.label.openSource',
+		key: 'openSource',
 		backgroundClass: 'bg-purple-600'
 	},
 	[Label.PARTNER]: {
-		text: 'portfolio.label.partner',
+		key: 'partner',
 		backgroundClass: 'bg-sky-600'
 	}
 };
@@ -31,18 +37,17 @@ export type MediaItem = {
 	label: string;
 };
 
-export type PortfolioBaseItem = {
+export type PortfolioItem = {
 	url: string;
-	key: string;
+	key: PortfolioKey;
 	labels: Label[];
 	endDate: Date | 'now';
 	startDate: Date;
-	descriptionLength: number;
 	mediaList: MediaItem[];
 	ogImageReplacement?: string;
 };
 
-const portfolioListBase: PortfolioBaseItem[] = [
+const portfolioListBase: PortfolioItem[] = [
 	// NOTE: rkwk project has been paused (likely for good) — keep commented out unless it returns.
 	// {
 	// 	url: "https://www.rk-wk.eu/2026/testy/en/home/",
@@ -50,7 +55,6 @@ const portfolioListBase: PortfolioBaseItem[] = [
 	// 	labels: [Label.CLIENT],
 	// 	endDate: 'now',
 	// 	startDate: new Date(2026, 4, 20),
-	// 	descriptionLength: 3,
 	// 	mediaList: [],
 	// 	ogImageReplacement: asset('/portfolio/rkwk/og-image-replacement.svg')
 	// },
@@ -60,7 +64,6 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		labels: [Label.CLIENT, Label.PARTNER],
 		endDate: 'now',
 		startDate: new Date(2026, 4, 1),
-		descriptionLength: 3,
 		mediaList: [],
 		ogImageReplacement: asset('/portfolio/viviena/og-image-replacement.png')
 	},
@@ -70,7 +73,6 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		labels: [Label.CLIENT],
 		endDate: new Date(2026, 4, 1),
 		startDate: new Date(2026, 1, 15),
-		descriptionLength: 3,
 		mediaList: []
 	},
 	{
@@ -79,7 +81,6 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		labels: [Label.CLIENT],
 		endDate: new Date(2026, 2, 21),
 		startDate: new Date(2025, 11, 1),
-		descriptionLength: 3,
 		mediaList: []
 	},
 	{
@@ -88,7 +89,6 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		labels: [Label.CLIENT],
 		endDate: new Date(2025, 7, 16),
 		startDate: new Date(2025, 5, 1),
-		descriptionLength: 4,
 		mediaList: [
 			{
 				url: asset('/portfolio/powerivanchukova/story.mp4'),
@@ -102,7 +102,6 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		labels: [Label.IN_HOUSE, Label.OPEN_SOURCE],
 		endDate: 'now',
 		startDate: new Date(2025, 1, 17),
-		descriptionLength: 2,
 		mediaList: [],
 		ogImageReplacement: asset('/portfolio/ngx-meta-pixel/og-image-replacement.png')
 	},
@@ -112,41 +111,13 @@ const portfolioListBase: PortfolioBaseItem[] = [
 		labels: [Label.CLIENT],
 		endDate: new Date(2025, 5, 1),
 		startDate: new Date(2025, 4, 15),
-		descriptionLength: 0,
 		mediaList: [],
 		ogImageReplacement: asset('/portfolio/zuzanna-lucinska/og-image-replacement.png')
 	}
 ];
 
-const sortedPortfolioListBase = portfolioListBase.sort(
-	(a, b) => b.startDate.getTime() - a.startDate.getTime()
-);
-
-export type PortfolioItem = {
-	url: string;
-	labels: Label[];
-	endDate: Date | 'now';
-	startDate: Date;
-	descriptionParts: string[];
-	shortDescription: string;
-	title: string;
-	mediaList: { url: string; label: string }[];
-	ogImageReplacement?: string;
-};
-
 export function getCompletePortfolioItems(): PortfolioItem[] {
-	return sortedPortfolioListBase.map(({ descriptionLength, key, mediaList, ...val }) => ({
-		...val,
-		descriptionParts: Array.from({ length: descriptionLength }).map(
-			(_, i) => `portfolio.${key}.description.${i}`
-		),
-		shortDescription: `portfolio.${key}.shortDescription`,
-		title: `portfolio.${key}.title`,
-		mediaList: mediaList.map(({ url, label }) => ({
-			url,
-			label: `portfolio.${key}.mediaList.${label}`
-		}))
-	}));
+	return [...portfolioListBase].sort((a, b) => b.startDate.getTime() - a.startDate.getTime());
 }
 
 export type PortfolioList = ReturnType<typeof getCompletePortfolioItems>;

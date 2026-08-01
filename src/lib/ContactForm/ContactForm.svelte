@@ -1,7 +1,12 @@
 <script lang="ts">
-	import { translate } from '$i18n';
+	import { t } from '$i18n';
 	import { createForm } from 'svelte-forms-lib';
 	import { CONTACT_FORM_FIELDS, CONTACT_FORM_SCHEMA, type ContactFormValue } from './model';
+
+	function getFieldError(key: keyof ContactFormValue, error: string): string {
+		const errors = $t.contactForm.form[key].errors as Record<string, string>;
+		return errors[error] ?? error;
+	}
 	import { isEmpty, isNil } from 'lodash-es';
 	import { onDestroy } from 'svelte';
 	import { PUBLIC_RECAPTCHA_SITE_KEY } from '$env/static/public';
@@ -71,7 +76,7 @@
 	onsubmit={handleSubmit}
 >
 	<span class="unbounded text-2xl text-blue-800 max-sm:text-xl">
-		{$translate('contactForm.title')}
+		{$t.contactForm.title}
 	</span>
 
 	{#each CONTACT_FORM_FIELDS as { key, type }, i (i)}
@@ -82,7 +87,7 @@
 					name={key}
 					type="text"
 					required
-					placeholder={$translate(`contactForm.form.${key}.placeholder`)}
+					placeholder={$t.contactForm.form[key].placeholder}
 					bind:value={$form[key]}
 					onchange={handleChange}
 					onblur={handleChange}
@@ -95,12 +100,12 @@
                        peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400
                        peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-blue-800"
 				>
-					{$translate(`contactForm.form.${key}.label`)}
+					{$t.contactForm.form[key].label}
 				</label>
 
 				{#if $errors[key] !== ''}
 					<small class="text-red-500">
-						{$translate($errors[key])}
+						{getFieldError(key, $errors[key])}
 					</small>
 				{/if}
 			</div>
@@ -111,7 +116,7 @@
 					name={key}
 					rows="5"
 					required
-					placeholder={$translate(`contactForm.form.${key}.placeholder`)}
+					placeholder={$t.contactForm.form[key].placeholder}
 					bind:value={$form[key]}
 					onchange={handleChange}
 					onblur={handleChange}
@@ -124,12 +129,12 @@
                        peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400
                        peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-blue-800"
 				>
-					{$translate(`contactForm.form.${key}.label`)}
+					{$t.contactForm.form[key].label}
 				</label>
 
 				{#if $errors[key] !== ''}
 					<small class="text-red-500">
-						{$translate($errors[key])}
+						{getFieldError(key, $errors[key])}
 					</small>
 				{/if}
 			</div>
@@ -138,7 +143,7 @@
 
 	{#if submitError}
 		<p class="my-2 text-sm text-red-500">
-			{$translate('contactForm.submitError')}
+			{$t.contactForm.submitError}
 		</p>
 	{/if}
 
@@ -158,7 +163,7 @@
 					class="mr-2 h-16 w-16 animate-spin rounded-full border-8 border-blue-800 border-t-transparent"
 				></div>
 			{:else}
-				<span>{$translate('contactForm.button')}</span>
+				<span>{$t.contactForm.button}</span>
 				<img
 					class="aspect-square w-16 object-contain"
 					src="/contact-form/send.webp"

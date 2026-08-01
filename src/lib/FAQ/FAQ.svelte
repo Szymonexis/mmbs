@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { translate } from '$i18n';
+	import { t } from '$i18n';
 	import { isNil } from 'lodash-es';
-	import { FAQ_ITEMS } from './model';
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
@@ -25,14 +24,14 @@
 <svelte:window onclick={handleClickOutside} />
 
 <h1 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
-	{$translate('faq.title')}
+	{$t.faq.title}
 </h1>
 
 <hr class="mt-1 border-1 text-blue-800" />
 
 <div class="my-6 flex flex-wrap gap-2 lg:grid lg:grid-cols-2">
 	<div class="flex flex-auto flex-col gap-4" bind:this={faqContainer}>
-		{#each FAQ_ITEMS as faqItem, i (i)}
+		{#each $t.faq.items as faqItem, i (i)}
 			<div class="w-full">
 				<button
 					onclick={() => toggleFaqItem(i)}
@@ -43,7 +42,7 @@
 					class:underline={i === selectedFaqItemIndex}
 					class:decoration-2={i === selectedFaqItemIndex}
 				>
-					{$translate(faqItem.question)}
+					{faqItem.question}
 				</button>
 
 				{#if selectedFaqItemIndex === i}
@@ -52,7 +51,7 @@
 						id={`faq-answer-${i}`}
 						class="rounded-b-md border-2 border-blue-800 px-4 py-2"
 					>
-						{@html $translate(faqItem.answer)}
+						{@html faqItem.answer}
 					</div>
 				{/if}
 			</div>
@@ -60,10 +59,6 @@
 	</div>
 
 	<div class="flex items-center">
-		<img
-			class="object-contain"
-			src={$translate('faq.whyUsImage.src')}
-			alt={$translate('faq.whyUsImage.alt')}
-		/>
+		<img class="object-contain" src={$t.faq.whyUsImage.src} alt={$t.faq.whyUsImage.alt} />
 	</div>
 </div>

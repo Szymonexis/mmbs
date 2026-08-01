@@ -34,20 +34,29 @@ form — no database, no auth.
 
 ## Conventions
 
+- **Comments: only when EXTREMELY necessary — code must document itself.** No comments
+  that restate what the code/types already say, no section banners, no change logs, no
+  commented-out code left "just in case". Prefer clear names, small functions and precise
+  types over a comment. A comment earns its place only when it captures something the code
+  cannot: a non-obvious _why_, a genuine gotcha, or an external constraint. When in doubt,
+  delete it. Architectural rationale belongs in `.claude/docs/`, not inline.
 - Nearly every route/component folder has a `model.ts` with its types, constants and pure
   data-shaping logic; the `.svelte` file consumes it.
-- UI text is never hardcoded — components pass i18n keys (e.g. `portfolio.rkwk.title`)
-  through the `$translate` derived store from `$i18n`. Translations live in
-  `src/i18n/translations/en-US.json` and `pl-PL.json`; `{{var}}` placeholders are
-  interpolated. Missing keys render the key itself — if literal keys show up in the UI,
-  the JSON entry is missing.
+- UI text is never hardcoded — components read the active locale's dictionary from the `$t`
+  store exported by `$i18n`, e.g. `$t.header.home` or, for dynamic text,
+  `$t.portfolio.pagination.page({ current, total })` (such fields are functions taking one
+  options object). Translations are typed `as const` objects; English defines the shape and
+  every other locale is `... as const satisfies TranslationDictionary`, so missing keys,
+  wrong list lengths or mismatched signatures are compile errors. See
+  [i18n.md](./i18n.md).
 - Locale is a Svelte store (`currentLocale`), persisted via `src/shared/browser/local-storage.ts`.
 
 ## Feature notes
 
 - **Portfolio** (`src/routes/portfolio/`): items are declared in `model.ts`
-  (`portfolioListBase`), sorted by start date, paginated client-side (10 per page). All
-  visible text comes from translation keys derived from each item's `key`. Preview images:
+  (`portfolioListBase`), sorted by start date, paginated client-side (10 per page). Each
+  item carries only structural data (url, dates, labels, media urls); its visible text
+  lives in the dictionary under `$t.portfolio.projects[item.key]`. Preview images:
   either a static `ogImageReplacement` asset or scraped live via the `getOgImage` remote
   query (`portfolio.remote.ts`) awaited directly in the template inside a
   `<svelte:boundary>` with a skeleton `pending` snippet.

@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { translate } from '$i18n';
+	import { t } from '$i18n';
 	import { onDestroy, onMount } from 'svelte';
-	import { HOW_IT_WORKS_STEPS, SERVICE_CARDS } from './model';
+	import { SERVICE_CARD_IMAGE_SRCS } from './model';
 	import { isNil } from 'lodash-es';
+
+	const cardCount = SERVICE_CARD_IMAGE_SRCS.length;
 
 	let selectedIndex: number | null = $state(null);
 	let fastIntervalCleared = $state(false);
@@ -25,7 +27,7 @@
 	$effect(() => {
 		if (fastIntervalCleared) {
 			slowIntervalRef = setInterval(() => {
-				const nextIndex = isNil(selectedIndex) ? 0 : (selectedIndex + 1) % SERVICE_CARDS.length;
+				const nextIndex = isNil(selectedIndex) ? 0 : (selectedIndex + 1) % cardCount;
 				toggleCardSelection(nextIndex);
 			}, 2500);
 		}
@@ -36,9 +38,9 @@
 			toggleCardSelection(0);
 
 			fastIntervalRef = setInterval(() => {
-				const nextIndex = isNil(selectedIndex) ? 0 : (selectedIndex + 1) % SERVICE_CARDS.length;
+				const nextIndex = isNil(selectedIndex) ? 0 : (selectedIndex + 1) % cardCount;
 				let markedForClear = false;
-				if (selectedIndex === SERVICE_CARDS.length - 1) {
+				if (selectedIndex === cardCount - 1) {
 					markedForClear = true;
 				}
 
@@ -60,15 +62,16 @@
 </script>
 
 <svelte:head>
-	<title>{$translate('meta.services.title')}</title>
-	<meta name="description" content={$translate('meta.services.description')} />
+	<title>{$t.meta.services.title}</title>
+	<meta name="description" content={$t.meta.services.description} />
 </svelte:head>
 
 <div class="my-6">
 	<!-- Desktop/Tablet View -->
 	<div class="flex flex-col items-center max-sm:hidden">
 		<div class="mb-12 auto-rows-fr gap-6 max-lg:max-w-190 sm:grid sm:grid-cols-2 lg:grid-cols-3">
-			{#each SERVICE_CARDS as { title, description, image: { src, alt } }, index (index)}
+			{#each $t.services.cards as card, index (index)}
+				{@const src = SERVICE_CARD_IMAGE_SRCS[index]}
 				<button
 					onclick={() => cardClick(index)}
 					class="perspective relative block w-full cursor-pointer border-none bg-transparent p-0 text-left"
@@ -95,7 +98,7 @@
 								class="aspect-square w-full object-contain select-none"
 								class:opacity-5={index === selectedIndex}
 								{src}
-								alt={$translate(alt)}
+								alt={card.image.alt}
 								draggable="false"
 								fetchpriority="high"
 							/>
@@ -106,8 +109,8 @@
 							class="absolute inset-0 flex h-full w-full rotate-y-180 items-center justify-center rounded-lg bg-blue-800 text-white shadow-lg backface-hidden"
 						>
 							<div class="p-6 text-center">
-								<h2 class="unbounded mb-4 text-xl">{$translate(title)}</h2>
-								<div class="text-md">{$translate(description)}</div>
+								<h2 class="unbounded mb-4 text-xl">{card.title}</h2>
+								<div class="text-md">{card.description}</div>
 							</div>
 						</div>
 					</div>
@@ -118,7 +121,8 @@
 
 	<!-- Mobile View -->
 	<div class="flex w-full flex-col gap-8 sm:hidden">
-		{#each SERVICE_CARDS as { title, description, image: { src, alt } }, index (index)}
+		{#each $t.services.cards as card, index (index)}
+			{@const src = SERVICE_CARD_IMAGE_SRCS[index]}
 			<div
 				class="flex items-center gap-4"
 				class:flex-row={index % 2 === 0}
@@ -127,18 +131,18 @@
 				<img
 					class="aspect-square h-full min-w-32 object-contain"
 					{src}
-					{alt}
+					alt={card.image.alt}
 					loading="lazy"
 					fetchpriority="low"
 				/>
 
 				<div class="flex flex-col gap-4">
 					<div class="unbounded text-xl text-blue-800">
-						{$translate(title)}
+						{card.title}
 					</div>
 
 					<div class="text-md">
-						{$translate(description)}
+						{card.description}
 					</div>
 				</div>
 			</div>
@@ -148,11 +152,11 @@
 	<!-- How it works section -->
 	<div class="my-12">
 		<h1 class="unbounded my-12 text-center text-4xl text-blue-800 max-sm:text-3xl">
-			{$translate('services.howItWorks.title')}
+			{$t.services.howItWorks.title}
 		</h1>
 
 		<div class="grid grid-cols-[repeat(auto-fit,minmax(18rem,1fr))] gap-12">
-			{#each HOW_IT_WORKS_STEPS as { title, description }, index (index)}
+			{#each $t.services.howItWorks.steps as { title, description }, index (index)}
 				<div class="flex items-center gap-2">
 					<div
 						class="unbounded w-[1em] shrink-0 grow-0 basis-[1em] text-right text-7xl text-blue-800"
@@ -162,11 +166,11 @@
 
 					<div>
 						<div class="font-bold">
-							{$translate(title)}
+							{title}
 						</div>
 
 						<div>
-							{$translate(description)}
+							{description}
 						</div>
 					</div>
 				</div>

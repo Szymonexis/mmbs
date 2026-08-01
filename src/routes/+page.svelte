@@ -1,27 +1,20 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { translate } from '$i18n';
+	import { t } from '$i18n';
 	import { ContactForm } from '$lib';
 	import { MEMBERS } from './model';
 
-	const wordsCarouselItems = new Array(6).fill(0).map((_, i) => `home.hero.carousel.${i}`);
-	const processItemPrefix = 'home.process.steps';
-	const processItems = new Array(4).fill(0).map((_, i) => ({
-		icon: `/home/process-${i}.webp`,
-		index: `${i + 1}`,
-		title: `${processItemPrefix}.${i}.title`,
-		description: `${processItemPrefix}.${i}.description`
-	}));
+	const wordsCarouselCount = $t.home.hero.carousel.length;
 
 	let currentWordCarouselIndex = 0;
-	let wordsCarouselStopIndex = wordsCarouselItems.length - 1;
+	let wordsCarouselStopIndex = wordsCarouselCount - 1;
 
 	let wordsCrouselIntervalId: ReturnType<typeof setInterval> | null = null;
 	let wordsCarouselPauseTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
 	function startCarousel() {
 		wordsCrouselIntervalId = setInterval(() => {
-			currentWordCarouselIndex = (currentWordCarouselIndex + 1) % wordsCarouselItems.length;
+			currentWordCarouselIndex = (currentWordCarouselIndex + 1) % wordsCarouselCount;
 
 			if (currentWordCarouselIndex === wordsCarouselStopIndex) {
 				clearInterval(wordsCrouselIntervalId!);
@@ -30,7 +23,7 @@
 				wordsCarouselPauseTimeoutId = setTimeout(() => {
 					wordsCarouselStopIndex--;
 					if (wordsCarouselStopIndex < 0) {
-						wordsCarouselStopIndex = wordsCarouselItems.length - 1;
+						wordsCarouselStopIndex = wordsCarouselCount - 1;
 					}
 					startCarousel();
 				}, 2000);
@@ -49,21 +42,21 @@
 </script>
 
 <svelte:head>
-	<title>{$translate('meta.home.title')}</title>
-	<meta name="description" content={$translate('meta.home.description')} />
+	<title>{$t.meta.home.title}</title>
+	<meta name="description" content={$t.meta.home.description} />
 </svelte:head>
 
 <div class="my-6 md:grid md:grid-cols-2">
 	<h1
 		class="unbounded flex flex-col items-center justify-center text-center text-5xl leading-[135%] text-blue-800 max-sm:text-4xl"
 	>
-		<div>{$translate('home.hero.top')}</div>
+		<div>{$t.home.hero.top}</div>
 
 		<div>
-			{$translate(wordsCarouselItems[currentWordCarouselIndex])}
+			{$t.home.hero.carousel[currentWordCarouselIndex]}
 		</div>
 
-		<div>{$translate('home.hero.bottom')}</div>
+		<div>{$t.home.hero.bottom}</div>
 	</h1>
 
 	<img src="/home/hero.webp" alt="hero" width="535px" height="535px" />
@@ -71,19 +64,19 @@
 
 <div class="my-12">
 	<h1 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
-		{$translate('home.process.title')}
+		{$t.home.process.title}
 	</h1>
 
 	<hr class="mt-1 border-1 text-blue-800" />
 
 	<div class="my-6 block grid-cols-[auto_1fr] gap-6 md:grid">
 		<div>
-			{#each processItems as { index, title, description, icon } (index)}
+			{#each $t.home.process.steps as { title, description }, i (i)}
 				<div class="my-6 flex items-center gap-4">
 					<img
 						class="aspect-square w-20 object-contain max-sm:hidden"
-						src={icon}
-						alt={$translate(title) + ' icon'}
+						src={`/home/process-${i}.webp`}
+						alt={title + ' icon'}
 						loading="lazy"
 						fetchpriority="low"
 					/>
@@ -93,13 +86,13 @@
 							<div
 								class="flex aspect-square w-8 items-center justify-center rounded-full border-2 border-blue-800 text-blue-800"
 							>
-								{index}
+								{i + 1}
 							</div>
-							{$translate(title)}
+							{title}
 						</div>
 
 						<p class="ml-2 max-sm:ml-0">
-							{$translate(description)}
+							{description}
 						</p>
 					</div>
 				</div>
@@ -115,12 +108,13 @@
 <div class="my-12">
 	<div>
 		<h1 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
-			{$translate('home.ourTeam.title')}
+			{$t.home.ourTeam.title}
 		</h1>
 
 		<hr class="mt-1 border-1 text-blue-800" />
 
 		{#each MEMBERS as member, i (i)}
+			{@const memberText = $t.home.ourTeam.members[member.key]}
 			<div
 				class="my-6 flex items-stretch gap-6 max-sm:flex-col-reverse"
 				class:flex-row={i % 2 === 0}
@@ -128,15 +122,15 @@
 			>
 				<div class="flex flex-auto flex-col gap-4">
 					<h1 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
-						{$translate(member.name)}
+						{memberText.name}
 					</h1>
 
 					<div class="unbounded text-lg text-blue-800">
-						{$translate(member.position)}
+						{memberText.position}
 					</div>
 
-					{#each member.descriptionParts as descriptionPart, index (index)}
-						<p>{$translate(descriptionPart)}</p>
+					{#each memberText.descriptionParts as descriptionPart, index (index)}
+						<p>{descriptionPart}</p>
 					{/each}
 
 					<div class="flex gap-4">
@@ -157,7 +151,7 @@
 				<img
 					class="w-full rounded-md object-cover max-sm:aspect-square sm:max-w-60"
 					src={member.image}
-					alt={$translate(member.name)}
+					alt={memberText.name}
 					loading="lazy"
 					fetchpriority="low"
 				/>

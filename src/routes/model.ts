@@ -1,9 +1,15 @@
-const memberTranslationPrefix = 'home.ourTeam.members';
-const membersOrder = [
+import type { TranslationDictionary } from '$i18n';
+
+type MemberKey = keyof TranslationDictionary['home']['ourTeam']['members'];
+
+export const MEMBERS: {
+	key: MemberKey;
+	image: string;
+	links: { name: string; icon: string; href: string }[];
+}[] = [
 	{
 		key: 'maciej',
-		image: 'maciej.webp',
-		descriptionPartsAmount: 2,
+		image: '/people/maciej.webp',
 		links: [
 			{
 				name: 'LinkedIn',
@@ -19,8 +25,7 @@ const membersOrder = [
 	},
 	{
 		key: 'maja',
-		image: 'maja.webp',
-		descriptionPartsAmount: 2,
+		image: '/people/maja.webp',
 		links: [
 			{
 				name: 'LinkedIn',
@@ -36,8 +41,7 @@ const membersOrder = [
 	},
 	{
 		key: 'bartek',
-		image: 'bartek.webp',
-		descriptionPartsAmount: 2,
+		image: '/people/bartek.webp',
 		links: [
 			{
 				name: 'LinkedIn',
@@ -48,8 +52,7 @@ const membersOrder = [
 	},
 	{
 		key: 'szymon',
-		image: 'szymon.webp',
-		descriptionPartsAmount: 2,
+		image: '/people/szymon.webp',
 		links: [
 			{
 				name: 'LinkedIn',
@@ -69,13 +72,3 @@ const membersOrder = [
 		]
 	}
 ];
-
-export const MEMBERS = membersOrder.map(({ key, image, links, descriptionPartsAmount }) => ({
-	name: `${memberTranslationPrefix}.${key}.name`,
-	position: `${memberTranslationPrefix}.${key}.position`,
-	descriptionParts: new Array(descriptionPartsAmount)
-		.fill(0)
-		.map((_, i) => `${memberTranslationPrefix}.${key}.descriptionParts.${i}`),
-	image: `/people/${image}`,
-	links
-}));

@@ -1,19 +1,15 @@
 import * as yup from 'yup';
 
-const prefix = 'contactForm.form';
-
+// Messages are dictionary error keys (contactForm.form.<field>.errors.*), resolved per locale in the component.
 export const CONTACT_FORM_SCHEMA = yup.object().shape({
-	name: yup.string().required(`${prefix}.name.errors.required`),
-	companyName: yup.string().required(`${prefix}.companyName.errors.required`),
-	email: yup
-		.string()
-		.email(`${prefix}.email.errors.invalid`)
-		.required(`${prefix}.email.errors.required`),
+	name: yup.string().required('required'),
+	companyName: yup.string().required('required'),
+	email: yup.string().email('invalid').required('required'),
 	phone: yup
 		.string()
-		.matches(/^[\d+\-\s]+$/, `${prefix}.phone.errors.invalid`)
-		.required(`${prefix}.phone.errors.required`),
-	message: yup.string().required(`${prefix}.message.errors.required`)
+		.matches(/^[\d+\-\s]+$/, 'invalid')
+		.required('required'),
+	message: yup.string().required('required')
 });
 
 export type ContactFormValue = yup.InferType<typeof CONTACT_FORM_SCHEMA>;

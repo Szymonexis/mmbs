@@ -1,5 +1,7 @@
+import type { TranslationDictionary } from '$i18n';
+
 export const HEADER_ITEMS: {
-	label: string;
+	label: keyof TranslationDictionary['header'];
 	href: string;
 	inverted?: boolean;
 	underline?: boolean;

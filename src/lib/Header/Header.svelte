@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { currentLocale, Locale, LOCALES_MAP, translate } from '$i18n';
+	import { t } from '$i18n';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { onDestroy, onMount } from 'svelte';
 	import { isNil } from 'lodash-es';
 	import { HEADER_ITEMS } from './model';
+	import LocaleSwitcher from './LocaleSwitcher.svelte';
 
 	let disconnectObserver: () => void;
 
@@ -85,7 +86,7 @@
 						}}
 						{href}
 					>
-						{$translate(`header.${label}`)}
+						{$t.header[label]}
 					</a>
 				{/if}
 
@@ -100,19 +101,12 @@
 						}}
 						{href}
 					>
-						{$translate('header.contactUs')}
+						{$t.header[label]}
 					</a>
 				{/if}
 			{/each}
 
-			<select class="w-fit rounded-md border-2 border-blue-800" bind:value={$currentLocale}>
-				{#each Object.values(Locale) as locale, i (i)}
-					<option value={locale}>
-						{$translate(LOCALES_MAP[locale].label)}
-						{LOCALES_MAP[locale].flag}
-					</option>
-				{/each}
-			</select>
+			<LocaleSwitcher />
 		</div>
 	</div>
 {/if}
@@ -146,7 +140,7 @@
 						class:decoration-2={underline && page.url.pathname === href}
 						{href}
 					>
-						{$translate(`header.${label}`)}
+						{$t.header[label]}
 					</a>
 				{/if}
 
@@ -157,19 +151,12 @@
 						class:decoration-2={underline && page.url.pathname === href}
 						{href}
 					>
-						{$translate(`header.${label}`)}
+						{$t.header[label]}
 					</a>
 				{/if}
 			{/each}
 
-			<select class="w-fit rounded-md border-2 border-blue-800" bind:value={$currentLocale}>
-				{#each Object.values(Locale) as locale, i (i)}
-					<option value={locale}>
-						{$translate(LOCALES_MAP[locale].label)}
-						{LOCALES_MAP[locale].flag}
-					</option>
-				{/each}
-			</select>
+			<LocaleSwitcher />
 		{/if}
 	</div>
 </div>

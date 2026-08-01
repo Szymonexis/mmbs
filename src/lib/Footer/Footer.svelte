@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { translate } from '$i18n';
+	import { t } from '$i18n';
 	import { TechnologiesCarousel } from '$lib';
 	import { SOCIAL_MEDIA_LINKS } from './model';
 </script>
@@ -21,15 +21,15 @@
 		/>
 
 		<div class="flex flex-col justify-center text-nowrap">
-			<span class="text-xs">{$translate('footer.mmbsBrandInfo')}</span>
-			<span class="text-xs">{$translate('footer.innovioName')}</span>
-			<span class="text-xs">{$translate('footer.nip')}</span>
+			<span class="text-xs">{$t.footer.mmbsBrandInfo}</span>
+			<span class="text-xs">{$t.footer.innovioName}</span>
+			<span class="text-xs">{$t.footer.nip}</span>
 		</div>
 
 		<div class="flex flex-col justify-center text-nowrap">
-			<span class="text-xs">{$translate('footer.regon')}</span>
-			<span class="text-xs">{$translate('footer.addressLine1')}</span>
-			<span class="text-xs">{$translate('footer.addressLine2')}</span>
+			<span class="text-xs">{$t.footer.regon}</span>
+			<span class="text-xs">{$t.footer.addressLine1}</span>
+			<span class="text-xs">{$t.footer.addressLine2}</span>
 		</div>
 
 		<span class="flex-auto max-sm:hidden"></span>
