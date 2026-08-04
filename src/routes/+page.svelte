@@ -60,9 +60,9 @@
 </div>
 
 <div class="my-12">
-	<h1 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
+	<h2 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
 		{$t.home.process.title}
-	</h1>
+	</h2>
 
 	<hr class="mt-1 border-1 text-blue-800" />
 
@@ -104,9 +104,9 @@
 
 <div class="my-12">
 	<div>
-		<h1 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
+		<h2 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
 			{$t.home.ourTeam.title}
-		</h1>
+		</h2>
 
 		<hr class="mt-1 border-1 text-blue-800" />
 
@@ -118,9 +118,9 @@
 				class:flex-row-reverse={i % 2 === 1}
 			>
 				<div class="flex flex-auto flex-col gap-4">
-					<h1 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
+					<h3 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
 						{memberText.name}
-					</h1>
+					</h3>
 
 					<div class="unbounded text-lg text-blue-800">
 						{memberText.position}

@@ -61,7 +61,12 @@ form — no database, no auth.
   logo PNG in `src/lib/server/og/assets/`, using the **English** dictionary (URLs carry
   no locale, so crawlers get the default locale). Every page renders
   `<PageMeta page="…" />` instead of a hand-written `<svelte:head>`; it emits the
-  title/description plus OG/Twitter tags with absolute URLs based on `SITE_ORIGIN`.
+  title/description, canonical link and OG/Twitter tags (site_name, locale +
+  alternates, image dimensions/alt) with absolute URLs based on `SITE_ORIGIN`.
+  All pages are **fully prerendered** (`prerender = true` in `src/routes/+layout.ts`;
+  the `[...missing]` 404 catch-all opts out) and served as static HTML from the CDN —
+  keep new pages prerenderable or opt them out explicitly. Heading rule: exactly one
+  `<h1>` per page (portfolio uses an `sr-only` one; project/member names are `h2`/`h3`).
 
 - **Portfolio** (`src/routes/portfolio/`): items are declared in `model.ts`
   (`portfolioListBase`), sorted by start date, paginated client-side (10 per page). Each

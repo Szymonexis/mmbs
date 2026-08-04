@@ -41,6 +41,8 @@
 <PageMeta page="portfolio" />
 
 <div class="my-6">
+	<h1 class="sr-only">{$t.header.portfolio}</h1>
+
 	{#each pagedList as portfolioItem, index (index)}
 		{@const project = $t.portfolio.projects[portfolioItem.key]}
 		<div
@@ -84,9 +86,9 @@
 			{/if}
 
 			<div class="flex-auto">
-				<h1 class="unbounded mb-4 text-4xl text-blue-800">
+				<h2 class="unbounded mb-4 text-4xl text-blue-800">
 					{project.title}
-				</h1>
+				</h2>
 
 				<div class="mb-4">
 					{project.shortDescription}
