@@ -6,6 +6,12 @@ to the Vercel adapter during Vercel builds. A local `npm run build` prints
 harmless; the build output itself is still fully checked.
 
 - Default branch: `master` (deploys from it).
+- **Primary domain is `www.mmbs.pl`** — Vercel redirects the apex `mmbs.pl` to it.
+  `SITE_ORIGIN` in `src/shared/seo.ts` (canonical/OG URLs, sitemap) and the
+  `Sitemap:` line in `static/robots.txt` must match the primary domain; update both
+  together if the redirect direction ever changes. The redirect currently responds
+  **307** — prefer 308 (permanent) in the Vercel domain settings so search engines
+  transfer ranking signals.
 - `@vercel/analytics` and `@vercel/speed-insights` are injected in
   `src/routes/+layout.svelte`.
 - Remote functions (`*.remote.ts`) compile to `/_app/remote/*` endpoints handled by the

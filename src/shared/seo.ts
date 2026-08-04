@@ -1,6 +1,6 @@
 import type { TranslationDictionary } from '$i18n';
 
-export const SITE_ORIGIN = 'https://mmbs.pl';
+export const SITE_ORIGIN = 'https://www.mmbs.pl';
 export const SITE_NAME = 'MMBS Studio';
 
 export type PageMetaKey = keyof TranslationDictionary['meta'];
