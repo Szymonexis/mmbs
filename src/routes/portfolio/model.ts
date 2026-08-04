@@ -62,7 +62,7 @@ const portfolioListBase: PortfolioItem[] = [
 		url: 'https://www.viviena.pl/',
 		key: 'viviena',
 		labels: [Label.CLIENT, Label.PARTNER],
-		endDate: 'now',
+		endDate: new Date(2026, 7, 3),
 		startDate: new Date(2026, 4, 1),
 		mediaList: [],
 		ogImageReplacement: asset('/portfolio/viviena/og-image-replacement.png')
