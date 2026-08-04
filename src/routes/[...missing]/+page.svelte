@@ -1,12 +1,10 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { t } from '$i18n';
+	import { PageMeta } from '$lib';
 </script>
 
-<svelte:head>
-	<title>{$t.meta['404'].title}</title>
-	<meta name="description" content={$t.meta['404'].description} />
-</svelte:head>
+<PageMeta page="404" />
 
 <div class="my-6 flex h-full flex-col items-center justify-center gap-6">
 	<div class="max-w-96 text-center text-3xl max-sm:text-2xl">

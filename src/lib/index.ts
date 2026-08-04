@@ -4,3 +4,4 @@ export { default as Footer } from './Footer/Footer.svelte';
 export { default as ContactForm } from './ContactForm/ContactForm.svelte';
 export { default as TechnologiesCarousel } from './TechnologiesCarousel/TechnologiesCarousel.svelte';
 export { default as FAQ } from './FAQ/FAQ.svelte';
+export { default as PageMeta } from './PageMeta/PageMeta.svelte';
