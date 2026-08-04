@@ -48,7 +48,7 @@ export type PortfolioItem = {
 };
 
 const portfolioListBase: PortfolioItem[] = [
-	// NOTE: rkwk project has been paused (likely for good) — keep commented out unless it returns.
+	// NOTE: rkwk project has been paused (likely for good) - keep commented out unless it returns.
 	// {
 	// 	url: "https://www.rk-wk.eu/2026/testy/en/home/",
 	// 	key: 'rkwk',
@@ -65,6 +65,7 @@ const portfolioListBase: PortfolioItem[] = [
 		endDate: new Date(2026, 7, 3),
 		startDate: new Date(2026, 4, 1),
 		mediaList: [],
+		ogImageReplacement: asset('/portfolio/viviena/og-image-replacement.png')
 	},
 	{
 		url: 'https://www.atexprint.pl/',
