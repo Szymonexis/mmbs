@@ -53,6 +53,16 @@ form — no database, no auth.
 
 ## Feature notes
 
+- **SEO** (`src/shared/seo.ts`, `src/lib/PageMeta/`, `src/lib/server/og/`): `PAGES` in
+  `seo.ts` lists the indexable routes. `/sitemap.xml` and `/og/[page].png` are
+  `+server.ts` endpoints with `prerender = true`, so both regenerate on every build —
+  there is no static sitemap and no external OG-image service. OG images are rendered
+  with satori + `@resvg/resvg-js` (devDependencies) from the vendored brand fonts and
+  logo PNG in `src/lib/server/og/assets/`, using the **English** dictionary (URLs carry
+  no locale, so crawlers get the default locale). Every page renders
+  `<PageMeta page="…" />` instead of a hand-written `<svelte:head>`; it emits the
+  title/description plus OG/Twitter tags with absolute URLs based on `SITE_ORIGIN`.
+
 - **Portfolio** (`src/routes/portfolio/`): items are declared in `model.ts`
   (`portfolioListBase`), sorted by start date, paginated client-side (10 per page). Each
   item carries only structural data (url, dates, labels, media urls); its visible text

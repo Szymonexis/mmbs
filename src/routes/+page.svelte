@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { t } from '$i18n';
-	import { ContactForm } from '$lib';
+	import { ContactForm, PageMeta } from '$lib';
 	import { MEMBERS } from './model';
 
 	const wordsCarouselCount = $t.home.hero.carousel.length;
@@ -41,10 +41,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>{$t.meta.home.title}</title>
-	<meta name="description" content={$t.meta.home.description} />
-</svelte:head>
+<PageMeta page="home" />
 
 <div class="my-6 md:grid md:grid-cols-2">
 	<h1

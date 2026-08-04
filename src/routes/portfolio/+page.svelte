@@ -7,6 +7,7 @@
 	} from './model';
 	import { getOgImage } from './portfolio.remote';
 	import { currentLocale, t } from '$i18n';
+	import { PageMeta } from '$lib';
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
@@ -37,10 +38,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{$t.meta.portfolio.title}</title>
-	<meta name="description" content={$t.meta.portfolio.description} />
-</svelte:head>
+<PageMeta page="portfolio" />
 
 <div class="my-6">
 	{#each pagedList as portfolioItem, index (index)}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { t } from '$i18n';
+	import { PageMeta } from '$lib';
 	import { onDestroy, onMount } from 'svelte';
 	import { SERVICE_CARD_IMAGE_SRCS } from './model';
 	import { isNil } from 'lodash-es';
@@ -61,10 +62,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>{$t.meta.services.title}</title>
-	<meta name="description" content={$t.meta.services.description} />
-</svelte:head>
+<PageMeta page="services" />
 
 <div class="my-6">
 	<!-- Desktop/Tablet View -->
