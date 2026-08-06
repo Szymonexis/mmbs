@@ -17,7 +17,7 @@ export const getOgImage = query(
 
 			return result.ogImage?.[0] ?? null;
 		} catch {
-			// Scrape failures are not exceptional — the UI falls back to a placeholder image.
+			// Scrape failures are not exceptional - the UI falls back to a placeholder image.
 			return null;
 		}
 	}
