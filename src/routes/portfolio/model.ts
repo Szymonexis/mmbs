@@ -64,8 +64,7 @@ const portfolioListBase: PortfolioItem[] = [
 		labels: [Label.CLIENT, Label.PARTNER],
 		endDate: new Date(2026, 7, 3),
 		startDate: new Date(2026, 4, 1),
-		mediaList: [],
-		ogImageReplacement: asset('/portfolio/viviena/og-image-replacement.png')
+		mediaList: []
 	},
 	{
 		url: 'https://www.atexprint.pl/',
