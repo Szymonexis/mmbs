@@ -109,4 +109,8 @@ export function getCompletePortfolioItems(): PortfolioItem[] {
 	return [...portfolioListBase].sort((a, b) => b.startDate.getTime() - a.startDate.getTime());
 }
 
+export function getScrapedOgImageUrls(): string[] {
+	return portfolioListBase.filter((item) => !item.ogImageReplacement).map((item) => item.url);
+}
+
 export type PortfolioList = ReturnType<typeof getCompletePortfolioItems>;

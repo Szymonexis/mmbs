@@ -23,7 +23,8 @@ form - no database, no auth.
 ## Structure
 
 - `src/routes/` - pages: `/` (home, team, contact form), `/services`, `/portfolio`, `/faq`,
-  `[...missing]` (404 catch-all)
+  `[...missing]` (404 catch-all); `/portfolio/refresh-og-images` is the cron-only endpoint
+  that refreshes the OG image cache
 - `src/lib/` - components, re-exported from `src/lib/index.ts` (`Header`, `Footer`,
   `ContactForm`, `TechnologiesCarousel`, `FAQ`)
 - `src/shared/` - cross-cutting helpers; `src/shared/server/` holds server-only code
@@ -71,10 +72,17 @@ form - no database, no auth.
 - **Portfolio** (`src/routes/portfolio/`): items are declared in `model.ts`
   (`portfolioListBase`), sorted by start date, paginated client-side (10 per page). Each
   item carries only structural data (url, dates, labels, media urls); its visible text
-  lives in the dictionary under `$t.portfolio.projects[item.key]`. Preview images:
-  either a static `ogImageReplacement` asset or scraped live via the `getOgImage` remote
-  query (`portfolio.remote.ts`) awaited directly in the template inside a
-  `<svelte:boundary>` with a skeleton `pending` snippet.
+  lives in the dictionary under `$t.portfolio.projects[item.key]`.
+  - **Preview images**:
+    either a static `ogImageReplacement` asset or the site's Open Graph image, resolved by
+    the `getOgImage` remote query (`portfolio.remote.ts`) awaited in the template inside a
+    `<svelte:boundary>` with a skeleton `pending` snippet. A site without an `og:image`
+    needs an `ogImageReplacement`.
+  - **OG image cache** (`og-image.server.ts`): scrape results are kept in the Vercel
+    Runtime Cache for 48 h, so visitors do not trigger a scrape. A daily Vercel cron
+    (`vercel.json`) calls `/portfolio/refresh-og-images`, which re-scrapes every item
+    without an `ogImageReplacement`; a failed scrape keeps the previous entry. See
+    [deployment.md](./deployment.md).
   - **rkwk** has no entry in `portfolioListBase` - that client project was paused in 2026
     and is not expected to return. Its texts (`projects.rkwk`) and image
     (`static/portfolio/rkwk/`) are kept; do not re-add the entry unless told otherwise.

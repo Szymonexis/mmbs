@@ -20,9 +20,13 @@ kit: { experimental: { remoteFunctions: true } }
 
 - `src/lib/ContactForm/contact-form.remote.ts` - `sendEmailRequest` **command**
   (validates payload, scores reCAPTCHA, sends the email).
-- `src/routes/portfolio/portfolio.remote.ts` - `getOgImage(url)` **query** (scrapes the
-  Open Graph image server-side, returns `ImageObject | null`; never throws on scrape
-  failure - the UI falls back to a placeholder).
+- `src/routes/portfolio/portfolio.remote.ts` - `getOgImage(url)` **query** (returns the
+  site's Open Graph image as `ImageObject | null`, read from the Vercel Runtime Cache and
+  scraped server-side only on a cache miss; never throws on scrape or cache failure - the
+  UI falls back to a placeholder). The yup schema accepts only the urls of portfolio items
+  without an `ogImageReplacement`, so the endpoint cannot be used to scrape or cache
+  arbitrary sites. The scrape + cache logic lives in `og-image.server.ts` because the
+  cron endpoint shares it.
 
 ## Rules & gotchas
 
