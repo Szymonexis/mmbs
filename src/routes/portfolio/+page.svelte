@@ -5,13 +5,15 @@
 		type PortfolioItem,
 		type PortfolioKey
 	} from './model';
-	import { getOgImage } from './portfolio.remote';
+	import ProjectImage from './ProjectImage.svelte';
 	import { currentLocale, t } from '$i18n';
 	import { PageMeta } from '$lib';
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
 	const PAGE_SIZE = 10;
+	const IMAGE_CLASS =
+		'aspect-video rounded-xl bg-gray-200 object-cover max-[52rem]:min-h-60 min-[52rem]:h-60';
 
 	let portfolioList = $state<PortfolioItem[]>(getCompletePortfolioItems());
 	let openedIndex: number | null = $state(null);
@@ -50,40 +52,7 @@
 			class:flex-row={index % 2 === 0}
 			class:flex-row-reverse={index % 2 === 1}
 		>
-			{#if portfolioItem.ogImageReplacement}
-				<img
-					src={portfolioItem.ogImageReplacement}
-					alt="Placeholder"
-					class="aspect-video rounded-xl bg-gray-200 object-cover max-[52rem]:min-h-60 min-[52rem]:h-60"
-					loading="lazy"
-				/>
-			{:else}
-				<svelte:boundary>
-					{#snippet pending()}
-						<div
-							aria-hidden="true"
-							class="aspect-video animate-pulse rounded-xl bg-gray-200 object-cover select-none max-[52rem]:min-h-60 min-[52rem]:h-60"
-						></div>
-					{/snippet}
-
-					{#snippet failed()}
-						<img
-							src="https://placehold.co/1600x900?font=roboto&text=No%20Image%20Found"
-							alt="Placeholder"
-							class="aspect-video rounded-xl bg-gray-200 object-cover max-[52rem]:min-h-60 min-[52rem]:h-60"
-							loading="lazy"
-						/>
-					{/snippet}
-
-					<img
-						src={(await getOgImage(portfolioItem.url))?.url ??
-							'https://placehold.co/1600x900?font=roboto&text=No%20Image%20Found'}
-						alt={(await getOgImage(portfolioItem.url))?.alt ?? 'Placeholder'}
-						class="aspect-video rounded-xl bg-gray-200 object-cover max-[52rem]:min-h-60 min-[52rem]:h-60"
-						loading="lazy"
-					/>
-				</svelte:boundary>
-			{/if}
+			<ProjectImage item={portfolioItem} class={IMAGE_CLASS} />
 
 			<div class="flex-auto">
 				<h2 class="unbounded mb-4 text-4xl text-blue-800">

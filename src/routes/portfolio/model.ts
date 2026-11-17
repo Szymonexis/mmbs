@@ -47,6 +47,9 @@ export type PortfolioItem = {
 	ogImageReplacement?: string;
 };
 
+export const MISSING_IMAGE_URL =
+	'https://placehold.co/1600x900?font=roboto&text=No%20Image%20Found';
+
 const portfolioListBase: PortfolioItem[] = [
 	{
 		url: 'https://www.viviena.pl/',

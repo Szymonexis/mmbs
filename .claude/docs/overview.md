@@ -73,7 +73,7 @@ form - no database, no auth.
   (`portfolioListBase`), sorted by start date, paginated client-side (10 per page). Each
   item carries only structural data (url, dates, labels, media urls); its visible text
   lives in the dictionary under `$t.portfolio.projects[item.key]`.
-  - **Preview images**:
+  - **Preview images** are rendered by `ProjectImage.svelte`:
     either a static `ogImageReplacement` asset or the site's Open Graph image, resolved by
     the `getOgImage` remote query (`portfolio.remote.ts`) awaited in the template inside a
     `<svelte:boundary>` with a skeleton `pending` snippet. A site without an `og:image`
