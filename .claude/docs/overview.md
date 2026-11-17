@@ -22,9 +22,9 @@ form - no database, no auth.
 
 ## Structure
 
-- `src/routes/` - pages: `/` (home, team, contact form), `/services`, `/portfolio`, `/faq`,
-  `[...missing]` (404 catch-all); `/portfolio/refresh-og-images` is the cron-only endpoint
-  that refreshes the OG image cache
+- `src/routes/` - pages: `/` (home, featured projects, team, contact form), `/services`,
+  `/portfolio`, `/faq`, `[...missing]` (404 catch-all); `/portfolio/refresh-og-images` is
+  the cron-only endpoint that refreshes the OG image cache
 - `src/lib/` - components, re-exported from `src/lib/index.ts` (`Header`, `Footer`,
   `ContactForm`, `TechnologiesCarousel`, `FAQ`)
 - `src/shared/` - cross-cutting helpers; `src/shared/server/` holds server-only code
@@ -71,9 +71,9 @@ form - no database, no auth.
 
 - **Portfolio** (`src/routes/portfolio/`): items are declared in `model.ts`
   (`portfolioListBase`), sorted by start date, paginated client-side (10 per page). Each
-  item carries only structural data (url, dates, labels, media urls); its visible text
-  lives in the dictionary under `$t.portfolio.projects[item.key]`.
-  - **Preview images** are rendered by `ProjectImage.svelte`:
+  item carries only structural data (url, dates, labels, priority, media urls); its
+  visible text lives in the dictionary under `$t.portfolio.projects[item.key]`.
+  - **Preview images** are rendered by `ProjectImage.svelte` (shared with the home page):
     either a static `ogImageReplacement` asset or the site's Open Graph image, resolved by
     the `getOgImage` remote query (`portfolio.remote.ts`) awaited in the template inside a
     `<svelte:boundary>` with a skeleton `pending` snippet. A site without an `og:image`
@@ -83,9 +83,13 @@ form - no database, no auth.
     (`vercel.json`) calls `/portfolio/refresh-og-images`, which re-scrapes every item
     without an `ogImageReplacement`; a failed scrape keeps the previous entry. See
     [deployment.md](./deployment.md).
-  - **Deep links**: every item on the portfolio page has `id={key}`, so `/portfolio#<key>`
-    links straight to it. On mount the page switches to the linked item's page, opens its
-    description and scrolls to it.
+  - **Home page section** ("Our Projects", right under the hero): `getHomePortfolioItems()`
+    returns at most `HOME_PORTFOLIO_LIMIT` items sorted by `priority` (higher first), then
+    by start date. `priority` affects only this section - the portfolio page ignores it.
+    The first item is the large featured tile.
+  - **Deep links**: every item on the portfolio page has `id={key}`, and the home tiles
+    link to `/portfolio#<key>`. On mount the page switches to the linked item's page,
+    opens its description and scrolls to it.
   - **rkwk** has no entry in `portfolioListBase` - that client project was paused in 2026
     and is not expected to return. Its texts (`projects.rkwk`) and image
     (`static/portfolio/rkwk/`) are kept; do not re-add the entry unless told otherwise.

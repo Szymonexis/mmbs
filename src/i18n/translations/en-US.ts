@@ -96,6 +96,9 @@ export const enUS = {
 			bottom: 'just for you',
 			carousel: ['Application', 'Store', 'Website', 'Logo', 'Design', 'SEO/SEM']
 		},
+		ourProjects: {
+			title: 'Our Projects'
+		},
 		process: {
 			title: 'Free Consultation',
 			steps: [

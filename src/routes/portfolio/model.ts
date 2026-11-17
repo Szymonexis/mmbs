@@ -43,9 +43,12 @@ export type PortfolioItem = {
 	labels: Label[];
 	endDate: Date | 'now';
 	startDate: Date;
+	priority: number;
 	mediaList: MediaItem[];
 	ogImageReplacement?: string;
 };
+
+const HOME_PORTFOLIO_LIMIT = 5;
 
 export const MISSING_IMAGE_URL =
 	'https://placehold.co/1600x900?font=roboto&text=No%20Image%20Found';
@@ -57,6 +60,7 @@ const portfolioListBase: PortfolioItem[] = [
 		labels: [Label.CLIENT, Label.PARTNER],
 		endDate: new Date(2026, 7, 3),
 		startDate: new Date(2026, 4, 1),
+		priority: 0,
 		mediaList: []
 	},
 	{
@@ -65,6 +69,7 @@ const portfolioListBase: PortfolioItem[] = [
 		labels: [Label.CLIENT],
 		endDate: new Date(2026, 4, 1),
 		startDate: new Date(2026, 1, 15),
+		priority: 0,
 		mediaList: []
 	},
 	{
@@ -73,6 +78,7 @@ const portfolioListBase: PortfolioItem[] = [
 		labels: [Label.CLIENT],
 		endDate: new Date(2026, 2, 21),
 		startDate: new Date(2025, 11, 1),
+		priority: 0,
 		mediaList: []
 	},
 	{
@@ -81,6 +87,7 @@ const portfolioListBase: PortfolioItem[] = [
 		labels: [Label.CLIENT],
 		endDate: new Date(2025, 7, 16),
 		startDate: new Date(2025, 5, 1),
+		priority: 0,
 		mediaList: [
 			{
 				url: asset('/portfolio/powerivanchukova/story.mp4'),
@@ -94,6 +101,7 @@ const portfolioListBase: PortfolioItem[] = [
 		labels: [Label.IN_HOUSE, Label.OPEN_SOURCE],
 		endDate: 'now',
 		startDate: new Date(2025, 1, 17),
+		priority: 0,
 		mediaList: [],
 		ogImageReplacement: asset('/portfolio/ngx-meta-pixel/og-image-replacement.png')
 	},
@@ -103,13 +111,24 @@ const portfolioListBase: PortfolioItem[] = [
 		labels: [Label.CLIENT],
 		endDate: new Date(2025, 5, 1),
 		startDate: new Date(2025, 4, 15),
+		priority: 0,
 		mediaList: [],
 		ogImageReplacement: asset('/portfolio/zuzanna-lucinska/og-image-replacement.png')
 	}
 ];
 
+function byNewestStart(a: PortfolioItem, b: PortfolioItem): number {
+	return b.startDate.getTime() - a.startDate.getTime();
+}
+
 export function getCompletePortfolioItems(): PortfolioItem[] {
-	return [...portfolioListBase].sort((a, b) => b.startDate.getTime() - a.startDate.getTime());
+	return [...portfolioListBase].sort(byNewestStart);
+}
+
+export function getHomePortfolioItems(): PortfolioItem[] {
+	return [...portfolioListBase]
+		.sort((a, b) => b.priority - a.priority || byNewestStart(a, b))
+		.slice(0, HOME_PORTFOLIO_LIMIT);
 }
 
 export function getScrapedOgImageUrls(): string[] {

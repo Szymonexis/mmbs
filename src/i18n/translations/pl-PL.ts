@@ -96,6 +96,9 @@ export const plPL = {
 			bottom: 'specjalnie dla Ciebie',
 			carousel: ['Aplikację', 'Sklep', 'Stronę www', 'Logo', 'Projekt', 'SEO/SEM']
 		},
+		ourProjects: {
+			title: 'Nasze projekty'
+		},
 		process: {
 			title: 'Darmowa konsultacja',
 			steps: [

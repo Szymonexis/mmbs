@@ -3,6 +3,10 @@
 	import { t } from '$i18n';
 	import { ContactForm, PageMeta } from '$lib';
 	import { MEMBERS } from './model';
+	import { getHomePortfolioItems } from './portfolio/model';
+	import ProjectImage from './portfolio/ProjectImage.svelte';
+
+	const homeProjects = getHomePortfolioItems();
 
 	const wordsCarouselCount = $t.home.hero.carousel.length;
 
@@ -57,6 +61,45 @@
 	</h1>
 
 	<img src="/home/hero.webp" alt="hero" width="535px" height="535px" />
+</div>
+
+<div class="my-12">
+	<h2 class="unbounded text-4xl text-blue-800 max-sm:text-3xl">
+		{$t.home.ourProjects.title}
+	</h2>
+
+	<hr class="mt-1 border-1 text-blue-800" />
+
+	<!-- 2.37fr: the featured tile spans two rows plus the gap, so only this ratio keeps its image at the 1200:630 of the small ones. -->
+	<div class="my-6 grid grid-cols-2 gap-4 lg:grid-cols-[2.37fr_1fr_1fr]">
+		{#each homeProjects as project, i (project.key)}
+			{@const featured = i === 0}
+			<a
+				href={`/portfolio#${project.key}`}
+				class={[
+					'group flex min-w-0 flex-col overflow-hidden rounded-xl border-2 border-blue-800 bg-white transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-800',
+					featured && 'col-span-2 lg:col-span-1 lg:row-span-2'
+				]}
+			>
+				<div class="relative aspect-[1200/630] min-h-0 flex-auto overflow-hidden bg-gray-200">
+					<ProjectImage
+						item={project}
+						alt=""
+						class="absolute inset-0 h-full w-full bg-gray-200 object-cover motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:scale-105"
+					/>
+				</div>
+
+				<h3
+					class={[
+						'unbounded px-4 py-3 text-blue-800',
+						featured ? 'text-xl sm:text-2xl' : 'text-sm sm:text-base'
+					]}
+				>
+					{$t.portfolio.projects[project.key].title}
+				</h3>
+			</a>
+		{/each}
+	</div>
 </div>
 
 <div class="my-12">
