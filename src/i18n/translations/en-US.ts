@@ -277,6 +277,16 @@ export const enUS = {
 				`Page <b>${current}</b> of <b>${total}</b>`
 		},
 		projects: {
+			oddamButelki: {
+				title: 'Oddam butelki',
+				shortDescription:
+					'A mobile app for Android and iOS that connects people who want to give away deposit bottles with collectors, complete with a backend and an admin panel for the platform owner.',
+				description: [
+					'Oddam butelki (Polish for "bottles to give away") is a platform that connects two groups of users: givers, who want to hand over deposit bottles and cans, and collectors, who pick them up. A giver posts a listing with the number of containers, the address, and a preferred pickup time, and a collector finds it on the map or in the list, reserves it, and confirms the pickup. We are delivering the project for the client end to end: from the functional specification, through the mobile app and the API, to the admin panel.',
+					'The app guides both sides through the whole process. Before reserving, a collector sees only the approximate location of a listing and learns the full address once the reservation is made; the two sides communicate solely through the built-in chat, without revealing a phone number or email address. Reservations are valid for a limited time, push notifications announce new listings nearby and status changes, and a pickup can also be arranged as contactless. Accounts are created with an email address or through Google, Facebook, or Apple.',
+					'The platform owner oversees everything in the admin panel: managing users, listings, and pickups, handling abuse reports, and exporting data. The mobile app is built with Expo and React Native, the API with NestJS and a PostgreSQL database, and the panel with React and Tailwind CSS - all parts share a common design system and API clients generated from an OpenAPI specification. The project is under active development and being prepared for launch.'
+				]
+			},
 			rkwk: {
 				title: 'Internal ERP System for RK Wasserkraft GmbH',
 				shortDescription:
@@ -305,6 +315,16 @@ export const enUS = {
 					"ATEX Print is a Polish textile printing company with over a decade of experience, based in Tuszyn. The website was built to serve as the company's primary digital showcase, presenting their full range of services - including sublimation printing, DTF (Direct to Film), and screen printing - to potential clients across the fashion, events, and corporate sectors.",
 					'The site provides clear, structured information about each printing technology, outlining their advantages and ideal use cases. Visitors can easily request a quote or get in touch with the team directly through the site, lowering the barrier for new client inquiries and supporting the sales process.',
 					"Performance, clarity, and visual quality were key priorities in the design and development of the site, reflecting ATEX's own values of quality and professionalism. The result is a fast, responsive, and well-optimized platform that effectively communicates the company's expertise and makes a strong first impression on prospective clients."
+				]
+			},
+			hyzo: {
+				title: 'Hyzo',
+				shortDescription:
+					'A project management SaaS for freelancers and small teams, where AI turns client emails, documents, and briefs into ready-to-do tasks.',
+				description: [
+					'Hyzo is a workspace for freelancers, founders, and small teams who juggle several clients at once. The product was built around one specific problem: arrangements with clients are scattered across emails, documents, and notes, and pulling a to-do list out of them takes time. As a partner, we have been co-creating Hyzo since the first work on the application began and are responsible for its development.',
+					'The user picks an email from Gmail or uploads a document or brief, and Hyzo proposes tasks with deadlines and priorities based on it. Nothing lands on the list automatically - every suggestion can be approved, edited, or skipped, and each task keeps a link back to the source it came from. It is all tied together by projects kept separately for each client, board, grid, table, and timeline views, teams with roles, and a "My day" view that gathers the most important tasks from every project.',
+					'The application is built on Next.js 16 and React 19, with Prisma and PostgreSQL on the data side and S3-compatible file storage, and runs on Vercel. Notifications reach the user in real time, and the interface is available in English and Polish. Hyzo is currently ahead of its public launch - sign-ups for the beta are open on the website.'
 				]
 			},
 			bezstresowo: {

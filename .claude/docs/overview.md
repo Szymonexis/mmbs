@@ -93,6 +93,14 @@ form - no database, no auth.
   - **rkwk** has no entry in `portfolioListBase` - that client project was paused in 2026
     and is not expected to return. Its texts (`projects.rkwk`) and image
     (`static/portfolio/rkwk/`) are kept; do not re-add the entry unless told otherwise.
+  - **hyzo** and **oddamButelki** were added before their public launches. Neither site
+    exposes an `og:image`, so both use a screenshot as `ogImageReplacement` (Hyzo: the
+    landing hero; Oddam butelki: the "coming soon" page). `hyzo` has `priority: 1` because
+    it is the only one of the two with a live site, which makes it the featured home
+    tile. When Oddam butelki launches, replace its screenshot, refresh its description
+    (it says the app is being prepared for launch and leaves out payments at the client's
+    request) and reconsider the priorities; once a site gains an `og:image`, drop its
+    replacement so the scraper takes over.
 - **Hash links across pages** (`/#contactUs`, `/portfolio#<key>`): `app.css` sets
   `scroll-behavior: smooth` site-wide, but SvelteKit records the scroll position right
   after jumping to a hash and restores it a moment later, which rolls a smooth scroll back

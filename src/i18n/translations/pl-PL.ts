@@ -276,6 +276,16 @@ export const plPL = {
 			page: ({ current, total }) => `Strona <b>${current}</b> z <b>${total}</b>`
 		},
 		projects: {
+			oddamButelki: {
+				title: 'Oddam butelki',
+				shortDescription:
+					'Aplikacja mobilna na Androida i iOS, która łączy osoby chcące oddać butelki kaucyjne ze zbieraczami, wraz z backendem i panelem administratora dla właściciela platformy.',
+				description: [
+					'Oddam butelki to platforma, która łączy dwie grupy użytkowników: oddających, czyli osoby chcące oddać butelki i puszki kaucyjne, oraz zbieraczy, którzy je odbierają. Oddający wystawia ogłoszenie z liczbą opakowań, adresem i preferowanym terminem odbioru, a zbieracz znajduje je na mapie lub liście, rezerwuje i potwierdza odbiór. Projekt realizujemy dla klienta kompleksowo: od specyfikacji funkcjonalnej, przez aplikację mobilną i API, po panel administratora.',
+					'Aplikacja prowadzi obie strony przez cały proces. Przed rezerwacją zbieracz widzi jedynie przybliżoną lokalizację ogłoszenia, a pełny adres poznaje dopiero po jej dokonaniu; strony kontaktują się wyłącznie przez wbudowany czat, bez ujawniania numeru telefonu czy adresu e-mail. Rezerwacje mają ograniczony czas ważności, powiadomienia push informują o nowych ogłoszeniach w okolicy i zmianach statusu, a odbiór można umówić także w trybie bezkontaktowym. Konto zakłada się adresem e-mail albo przez Google, Facebooka lub Apple.',
+					'Właściciel platformy nadzoruje całość w panelu administratora: zarządza użytkownikami, ogłoszeniami i odbiorami, rozpatruje zgłoszenia nadużyć oraz eksportuje dane. Aplikacja mobilna powstała w Expo i React Native, API w NestJS z bazą PostgreSQL, a panel w React z Tailwind CSS - wszystkie części korzystają ze wspólnego systemu projektowego i klientów API generowanych ze specyfikacji OpenAPI. Projekt jest w trakcie aktywnego rozwoju i przygotowań do premiery.'
+				]
+			},
 			rkwk: {
 				title: 'Wewnętrzny system ERP dla RK Wasserkraft GmbH',
 				shortDescription:
@@ -304,6 +314,16 @@ export const plPL = {
 					'ATEX Print to polska firma z ponad dziesięcioletnim doświadczeniem w branży druku na tekstyliach, działająca w Tuszynie. Strona internetowa została stworzona jako główna wizytówka cyfrowa firmy, prezentująca pełną ofertę usług - w tym druk sublimacyjny, DTF (Direct to Film) oraz sitodruk - potencjalnym klientom z sektora modowego, eventowego i korporacyjnego.',
 					'Serwis dostarcza przejrzystych, ustrukturyzowanych informacji o każdej z technologii druku, opisując ich zalety i optymalne zastosowania. Odwiedzający mogą łatwo poprosić o wycenę lub skontaktować się z zespołem bezpośrednio przez stronę, obniżając próg wejścia dla nowych zapytań klientów i wspierając proces sprzedażowy.',
 					'Wydajność, przejrzystość i wysoka jakość wizualna były kluczowymi priorytetami przy projektowaniu i tworzeniu strony, odzwierciedlając własne wartości ATEX - jakość i profesjonalizm. Efektem jest szybka, responsywna i dobrze zoptymalizowana platforma, która skutecznie komunikuje kompetencje firmy i robi mocne pierwsze wrażenie na potencjalnych klientach.'
+				]
+			},
+			hyzo: {
+				title: 'Hyzo',
+				shortDescription:
+					'Aplikacja SaaS do zarządzania projektami dla freelancerów i małych zespołów, w której AI zamienia maile od klientów, dokumenty i briefy w gotowe zadania.',
+				description: [
+					'Hyzo to przestrzeń pracy dla freelancerów, założycieli firm i małych zespołów, którzy prowadzą kilku klientów jednocześnie. Produkt powstał z myślą o konkretnym problemie: ustalenia z klientami są rozproszone po mailach, dokumentach i notatkach, a wyłuskanie z nich listy rzeczy do zrobienia zajmuje czas. Jako partner współtworzymy Hyzo od pierwszych prac nad aplikacją i odpowiadamy za jej rozwój.',
+					'Użytkownik wskazuje maila z Gmaila albo wgrywa dokument lub brief, a Hyzo proponuje na tej podstawie zadania z terminami i priorytetami. Nic nie trafia na listę automatycznie - każdą propozycję można zatwierdzić, poprawić albo pominąć, a gotowe zadanie zachowuje link do źródła, z którego powstało. Całość spinają projekty prowadzone osobno dla każdego klienta, widoki tablicy, siatki, tabeli i osi czasu, zespoły z rolami oraz widok „Mój dzień”, który zbiera najważniejsze zadania ze wszystkich projektów.',
+					'Aplikacja jest zbudowana na Next.js 16 i React 19, z Prisma i PostgreSQL po stronie danych oraz magazynem plików zgodnym z S3, i działa na platformie Vercel. Powiadomienia docierają do użytkownika na żywo, a interfejs jest dostępny po polsku i angielsku. Hyzo jest obecnie przed publiczną premierą - na stronie trwają zapisy do bety.'
 				]
 			},
 			bezstresowo: {

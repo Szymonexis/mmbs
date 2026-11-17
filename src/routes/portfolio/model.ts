@@ -55,6 +55,16 @@ export const MISSING_IMAGE_URL =
 
 const portfolioListBase: PortfolioItem[] = [
 	{
+		url: 'https://oddambutelki.pl/',
+		key: 'oddamButelki',
+		labels: [Label.CLIENT],
+		endDate: 'now',
+		startDate: new Date(2026, 9, 11),
+		priority: 0,
+		mediaList: [],
+		ogImageReplacement: asset('/portfolio/oddam-butelki/og-image-replacement.webp')
+	},
+	{
 		url: 'https://www.viviena.pl/',
 		key: 'viviena',
 		labels: [Label.CLIENT, Label.PARTNER],
@@ -71,6 +81,16 @@ const portfolioListBase: PortfolioItem[] = [
 		startDate: new Date(2026, 1, 15),
 		priority: 0,
 		mediaList: []
+	},
+	{
+		url: 'https://hyzo.io/',
+		key: 'hyzo',
+		labels: [Label.PARTNER],
+		endDate: 'now',
+		startDate: new Date(2026, 0, 9),
+		priority: 1,
+		mediaList: [],
+		ogImageReplacement: asset('/portfolio/hyzo/og-image-replacement.webp')
 	},
 	{
 		url: 'https://bezstresowo.org/',
