@@ -119,7 +119,7 @@ const portfolioListBase: PortfolioItem[] = [
 		url: 'https://www.npmjs.com/package/ngx-meta-pixel',
 		key: 'ngxMetaPixel',
 		labels: [Label.IN_HOUSE, Label.OPEN_SOURCE],
-		endDate: 'now',
+		endDate: new Date(2026, 2, 28),
 		startDate: new Date(2025, 1, 17),
 		priority: 0,
 		mediaList: [],
