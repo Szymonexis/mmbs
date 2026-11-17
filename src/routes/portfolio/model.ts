@@ -137,17 +137,21 @@ const portfolioListBase: PortfolioItem[] = [
 	}
 ];
 
-function byNewestStart(a: PortfolioItem, b: PortfolioItem): number {
-	return b.startDate.getTime() - a.startDate.getTime();
+function endTime({ endDate }: PortfolioItem): number {
+	return endDate === 'now' ? Number.MAX_SAFE_INTEGER : endDate.getTime();
+}
+
+function byMostRecent(a: PortfolioItem, b: PortfolioItem): number {
+	return endTime(b) - endTime(a) || b.startDate.getTime() - a.startDate.getTime();
 }
 
 export function getCompletePortfolioItems(): PortfolioItem[] {
-	return [...portfolioListBase].sort(byNewestStart);
+	return [...portfolioListBase].sort(byMostRecent);
 }
 
 export function getHomePortfolioItems(): PortfolioItem[] {
 	return [...portfolioListBase]
-		.sort((a, b) => b.priority - a.priority || byNewestStart(a, b))
+		.sort((a, b) => b.priority - a.priority || byMostRecent(a, b))
 		.slice(0, HOME_PORTFOLIO_LIMIT);
 }
 

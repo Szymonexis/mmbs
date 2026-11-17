@@ -70,7 +70,8 @@ form - no database, no auth.
   `<h1>` per page (portfolio uses an `sr-only` one; project/member names are `h2`/`h3`).
 
 - **Portfolio** (`src/routes/portfolio/`): items are declared in `model.ts`
-  (`portfolioListBase`), sorted by start date, paginated client-side (10 per page). Each
+  (`portfolioListBase`), sorted most recent first (`byMostRecent`: by end date, ongoing
+  `'now'` items on top, then by start date), paginated client-side (10 per page). Each
   item carries only structural data (url, dates, labels, priority, media urls); its
   visible text lives in the dictionary under `$t.portfolio.projects[item.key]`.
   - **Preview images** are rendered by `ProjectImage.svelte` (shared with the home page):
@@ -85,7 +86,7 @@ form - no database, no auth.
     [deployment.md](./deployment.md).
   - **Home page section** ("Our Projects", right under the hero): `getHomePortfolioItems()`
     returns at most `HOME_PORTFOLIO_LIMIT` items sorted by `priority` (higher first), then
-    by start date. `priority` affects only this section - the portfolio page ignores it.
+    most recent first. `priority` affects only this section - the portfolio page ignores it.
     The first item is the large featured tile.
   - **Deep links**: every item on the portfolio page has `id={key}`, and the home tiles
     link to `/portfolio#<key>`. On mount the page switches to the linked item's page,
