@@ -83,6 +83,9 @@ form - no database, no auth.
     (`vercel.json`) calls `/portfolio/refresh-og-images`, which re-scrapes every item
     without an `ogImageReplacement`; a failed scrape keeps the previous entry. See
     [deployment.md](./deployment.md).
+  - **Deep links**: every item on the portfolio page has `id={key}`, so `/portfolio#<key>`
+    links straight to it. On mount the page switches to the linked item's page, opens its
+    description and scrolls to it.
   - **rkwk** has no entry in `portfolioListBase` - that client project was paused in 2026
     and is not expected to return. Its texts (`projects.rkwk`) and image
     (`static/portfolio/rkwk/`) are kept; do not re-add the entry unless told otherwise.

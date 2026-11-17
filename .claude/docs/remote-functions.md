@@ -51,6 +51,10 @@ kit: { experimental: { remoteFunctions: true } }
   server-renders skeletons and resolves the queries client-side - no slow scraping in
   SSR). Add a `failed` snippet for errors; without any boundary an error would crash to
   the nearest (nonexistent) boundary.
+- With `experimental.async` on, an `afterNavigate` callback registered in a page does
+  **not** run for the initial page load (kit 2.36 fires the `enter` callbacks before the
+  page's `onMount` has registered them). Use `onMount` for work that must also happen on
+  a hard load - see the deep-link handling in `src/routes/portfolio/+page.svelte`.
 - At runtime remote functions become generated `/_app/remote/<hash>/<name>` endpoints -
   nothing to configure on Vercel.
 - `npm run check` (svelte-check) validates all of this; run it after touching remote

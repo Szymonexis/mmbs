@@ -8,6 +8,7 @@
 	import ProjectImage from './ProjectImage.svelte';
 	import { currentLocale, t } from '$i18n';
 	import { PageMeta } from '$lib';
+	import { onMount, tick } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
@@ -16,7 +17,7 @@
 		'aspect-video rounded-xl bg-gray-200 object-cover max-[52rem]:min-h-60 min-[52rem]:h-60';
 
 	let portfolioList = $state<PortfolioItem[]>(getCompletePortfolioItems());
-	let openedIndex: number | null = $state(null);
+	let openedKey: PortfolioKey | null = $state(null);
 	let currentPage = $state(1);
 
 	// mediaList exists only on some projects, hence the cast.
@@ -30,14 +31,32 @@
 		portfolioList.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)
 	);
 
-	function onOpenFullDescription(index: number) {
-		openedIndex = openedIndex === index ? null : index;
+	function onOpenFullDescription(key: PortfolioKey) {
+		openedKey = openedKey === key ? null : key;
 	}
 
 	function goToPage(page: number) {
 		currentPage = page;
-		openedIndex = null;
+		openedKey = null;
 	}
+
+	async function openLinkedProject() {
+		const linkedIndex = portfolioList.findIndex(({ key }) => key === location.hash.slice(1));
+
+		if (linkedIndex === -1) {
+			return;
+		}
+
+		const { key } = portfolioList[linkedIndex];
+
+		currentPage = Math.floor(linkedIndex / PAGE_SIZE) + 1;
+		openedKey = $t.portfolio.projects[key].description.length > 0 ? key : null;
+
+		await tick();
+		document.getElementById(key)?.scrollIntoView();
+	}
+
+	onMount(openLinkedProject);
 </script>
 
 <PageMeta page="portfolio" />
@@ -45,10 +64,11 @@
 <div class="my-6">
 	<h1 class="sr-only">{$t.header.portfolio}</h1>
 
-	{#each pagedList as portfolioItem, index (index)}
+	{#each pagedList as portfolioItem, index (portfolioItem.key)}
 		{@const project = $t.portfolio.projects[portfolioItem.key]}
 		<div
-			class="flex items-start gap-6 max-[52rem]:flex-col"
+			id={portfolioItem.key}
+			class="flex scroll-mt-30 items-start gap-6 max-[52rem]:flex-col"
 			class:flex-row={index % 2 === 0}
 			class:flex-row-reverse={index % 2 === 1}
 		>
@@ -102,15 +122,15 @@
 				{#if project.description.length > 0}
 					<button
 						class="mt-4 cursor-pointer rounded-md bg-blue-800 px-4 py-2 text-center font-bold text-white"
-						onclick={() => onOpenFullDescription(index)}
+						onclick={() => onOpenFullDescription(portfolioItem.key)}
 					>
-						{openedIndex === index ? $t.portfolio.readLess : $t.portfolio.readMore}
+						{openedKey === portfolioItem.key ? $t.portfolio.readLess : $t.portfolio.readMore}
 					</button>
 				{/if}
 			</div>
 		</div>
 
-		{#if openedIndex === index}
+		{#if openedKey === portfolioItem.key}
 			<div class="mt-4" transition:slide={{ duration: 500, easing: quintOut }}>
 				<div class="flex flex-col gap-4 rounded-lg border-2 border-blue-800 p-4">
 					{#each project.description as part, partIndex (partIndex)}
