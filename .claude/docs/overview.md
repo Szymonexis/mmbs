@@ -75,8 +75,9 @@ form - no database, no auth.
   either a static `ogImageReplacement` asset or scraped live via the `getOgImage` remote
   query (`portfolio.remote.ts`) awaited directly in the template inside a
   `<svelte:boundary>` with a skeleton `pending` snippet.
-  - The **rkwk** entry is commented out in `portfolioListBase` - that client project was
-    paused in 2026 and is not expected to return. Leave it commented unless told otherwise.
+  - **rkwk** has no entry in `portfolioListBase` - that client project was paused in 2026
+    and is not expected to return. Its texts (`projects.rkwk`) and image
+    (`static/portfolio/rkwk/`) are kept; do not re-add the entry unless told otherwise.
 - **Contact form** (`src/lib/ContactForm/`): svelte-forms-lib + yup for client-side
   validation (`model.ts`), reCAPTCHA Enterprise token fetched in the browser, then the
   `sendEmailRequest` remote command (`contact-form.remote.ts`) re-validates the payload

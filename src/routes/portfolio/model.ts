@@ -48,16 +48,6 @@ export type PortfolioItem = {
 };
 
 const portfolioListBase: PortfolioItem[] = [
-	// NOTE: rkwk project has been paused (likely for good) - keep commented out unless it returns.
-	// {
-	// 	url: "https://www.rk-wk.eu/2026/testy/en/home/",
-	// 	key: 'rkwk',
-	// 	labels: [Label.CLIENT],
-	// 	endDate: 'now',
-	// 	startDate: new Date(2026, 4, 20),
-	// 	mediaList: [],
-	// 	ogImageReplacement: asset('/portfolio/rkwk/og-image-replacement.svg')
-	// },
 	{
 		url: 'https://www.viviena.pl/',
 		key: 'viviena',
