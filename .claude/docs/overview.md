@@ -89,6 +89,12 @@ form - no database, no auth.
   - **rkwk** has no entry in `portfolioListBase` - that client project was paused in 2026
     and is not expected to return. Its texts (`projects.rkwk`) and image
     (`static/portfolio/rkwk/`) are kept; do not re-add the entry unless told otherwise.
+- **Hash links across pages** (`/#contactUs`, `/portfolio#<key>`): `app.css` sets
+  `scroll-behavior: smooth` site-wide, but SvelteKit records the scroll position right
+  after jumping to a hash and restores it a moment later, which rolls a smooth scroll back
+  to where it started. `onNavigate` in `src/routes/+layout.svelte` therefore switches to
+  instant scrolling for navigations whose target has a hash. Same-page hash links stay
+  smooth.
 - **Contact form** (`src/lib/ContactForm/`): svelte-forms-lib + yup for client-side
   validation (`model.ts`), reCAPTCHA Enterprise token fetched in the browser, then the
   `sendEmailRequest` remote command (`contact-form.remote.ts`) re-validates the payload

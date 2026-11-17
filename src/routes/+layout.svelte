@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onNavigate } from '$app/navigation';
 	import { Locale, currentLocale } from '$i18n';
 	import { Footer, Header } from '$lib';
 	import {
@@ -21,6 +22,20 @@
 	let { children } = $props();
 
 	const unsubs: Unsubscriber[] = [];
+
+	// SvelteKit records the scroll position right after jumping to a hash and restores it a
+	// moment later, so the site-wide smooth scroll would be rolled back to where it started.
+	onNavigate(({ to }) => {
+		if (!to?.url.hash) {
+			return;
+		}
+
+		document.documentElement.style.scrollBehavior = 'auto';
+
+		return () => {
+			document.documentElement.style.scrollBehavior = '';
+		};
+	});
 
 	function loadLocale() {
 		const prevCurrentLocale = $currentLocale;
