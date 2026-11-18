@@ -57,7 +57,7 @@ export const MEMBERS: {
 			{
 				name: 'LinkedIn',
 				icon: '/links/linkedin.svg',
-				href: 'https://www.linkedin.com/in/szymon-kaszuba-ga%C5%82ka/'
+				href: 'https://www.linkedin.com/in/skg1998'
 			},
 			{
 				name: 'GitHub',
