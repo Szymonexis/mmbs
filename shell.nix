@@ -6,7 +6,7 @@ in
 pkgs.mkShell {
   packages = [
     pkgs.zsh
-    pkgs.nodejs_24
+    pkgs.nodejs_26
   ];
 
   shellHook = ''
