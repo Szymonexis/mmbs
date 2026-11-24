@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { t } from '$i18n';
 	import { PageMeta } from '$lib';
 </script>
@@ -13,7 +14,7 @@
 
 	<button
 		class="w-fit cursor-pointer rounded-md bg-blue-800 px-4 py-2 font-bold text-white decoration-1 underline-offset-4 hover:underline"
-		onclick={() => goto('/')}
+		onclick={() => goto(resolve('/'))}
 	>
 		{$t['404'].cta}
 	</button>

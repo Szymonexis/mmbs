@@ -33,7 +33,7 @@
 		"globals": "^16.0.0",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
-		"prettier-plugin-tailwindcss": "^0.6.11",
+		"prettier-plugin-tailwindcss": "^0.8.1",
 		"sass-embedded": "^1.91.0",
 		"satori": "^0.29.0",
 		"svelte": "^5.0.0",

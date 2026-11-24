@@ -51,5 +51,6 @@ which is read through `$env/dynamic/private` and is optional at build time.
   (note the intentional `RECIEVER` spelling)
 - `RECAPTCHA_PROJECT_ID` / `RECAPTCHA_SERVICE_ACCOUNT_KEY` (base64-encoded service
   account JSON) / `RECAPTCHA_SECRET_KEY` - Google Cloud reCAPTCHA Enterprise
-- `ENVIRONMENT` - environment name
+- `NODE_ENV` - `production` in `.env.example`; not read by app code (Vite/Vercel set it
+  themselves during builds)
 - `CRON_SECRET` - random string that authorises the daily OG image refresh (see above)

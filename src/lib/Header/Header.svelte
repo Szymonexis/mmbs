@@ -2,6 +2,7 @@
 	import { t } from '$i18n';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { onDestroy, onMount } from 'svelte';
 	import { isNil } from 'lodash-es';
 	import { HEADER_ITEMS } from './model';
@@ -113,7 +114,7 @@
 
 <div class="bg-light fixed z-1000 flex h-24 w-full justify-center shadow-md">
 	<div class="flex h-full w-full max-w-7xl items-center gap-6 p-6">
-		<a href="/">
+		<a href={resolve('/')}>
 			<img
 				class="h-full object-contain"
 				src="/mmbs-logo.webp"

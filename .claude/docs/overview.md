@@ -14,6 +14,7 @@ form - no database, no auth.
 
 ## Commands
 
+- `nix-shell shell.nix` - optional dev shell with Node.js 26
 - `npm run dev` - dev server
 - `npm run build` - production build
 - `npm run check` - `svelte-kit sync` + `svelte-check` (type checking)

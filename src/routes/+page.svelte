@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import { resolve } from '$app/paths';
 	import { t } from '$i18n';
 	import { ContactForm, PageMeta } from '$lib';
 	import { MEMBERS } from './model';
@@ -75,7 +76,7 @@
 		{#each homeProjects as project, i (project.key)}
 			{@const featured = i === 0}
 			<a
-				href={`/portfolio#${project.key}`}
+				href={resolve(`/portfolio#${project.key}`)}
 				class={[
 					'group flex min-w-0 flex-col overflow-hidden rounded-xl border-2 border-blue-800 bg-white transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-800',
 					featured && 'col-span-2 lg:col-span-1 lg:row-span-2'
@@ -175,7 +176,7 @@
 
 					<div class="flex gap-4">
 						{#each member.links as { href, name, icon }, index (index)}
-							<a class="cursor-pointer" {href} target="_blank">
+							<a class="cursor-pointer" {href} target="_blank" rel="external">
 								<img
 									src={icon}
 									alt={name}
