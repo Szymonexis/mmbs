@@ -24,8 +24,9 @@ form - no database, no auth.
 ## Structure
 
 - `src/routes/` - pages: `/` (home, featured projects, team, contact form), `/services`,
-  `/portfolio`, `/faq`, `[...missing]` (404 catch-all); `/portfolio/refresh-og-images` is
-  the cron-only endpoint that refreshes the OG image cache
+  `/portfolio`, `/faq`, `[...missing]` (404 catch-all), `/cgol` (Game of Life easter egg,
+  not linked anywhere yet); `/portfolio/refresh-og-images` is the cron-only endpoint that
+  refreshes the OG image cache
 - `src/lib/` - components, re-exported from `src/lib/index.ts` (`Header`, `Footer`,
   `ContactForm`, `TechnologiesCarousel`, `FAQ`)
 - `src/shared/` - cross-cutting helpers; `src/shared/server/` holds server-only code
@@ -114,3 +115,19 @@ form - no database, no auth.
   `sendEmailRequest` remote command (`contact-form.remote.ts`) re-validates the payload
   (class-validator), scores the token server-side and sends the email with nodemailer via
   `mail.mmbs.pl`.
+- **Game of Life easter egg** (`src/routes/cgol/`): a full-screen canvas overlay. The root
+  layout renders no Header/Footer on this route, so nothing focusable sits under it.
+  - **Controls** (`game/gestures.ts`): left click / tap adds a cell, left drag / one-finger
+    drag paints a line of cells, right drag / two-finger drag pans, wheel / pinch zooms
+    around the cursor or finger midpoint. A touch only starts painting after moving past a
+    small slop, so a two-finger gesture never leaves a stray cell. Esc or the close button
+    exits: `history.back()` when the previous entry is known to be the page the user came
+    from, otherwise `/`.
+  - **Sim loop** (`+page.svelte`, `model.ts`): fixed-step accumulator with an interval of
+    10 ms - 10 s on a logarithmic slider. Work per frame is capped both by tick count and
+    by an 8 ms budget, so a large world lowers the tick rate (visible as tps) instead of
+    the frame rate.
+  - **Presets** (`consts/patterns.ts`): plaintext rows, x = column, y = row (down). Each
+    was verified by simulation (periods and displacements; R-pentomino 116 cells at gen
+    1103, acorn 633 at gen 5206, diehard dies at gen 130). Re-verify any pattern you edit.
+    Loading a preset replaces the world and recenters the camera.

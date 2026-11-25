@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
+	import { page } from '$app/state';
 	import { Locale, currentLocale } from '$i18n';
 	import { Footer, Header } from '$lib';
 	import {
@@ -20,6 +21,8 @@
 	injectAnalytics();
 
 	let { children } = $props();
+
+	const isFullscreenGame = $derived(page.route.id === '/cgol');
 
 	const unsubs: Unsubscriber[] = [];
 
@@ -62,15 +65,19 @@
 	});
 </script>
 
-<Header />
+{#if isFullscreenGame}
+	{@render children()}
+{:else}
+	<Header />
 
-<div class="content flex flex-col items-center p-6 pt-24 pb-0">
-	<div class="w-full max-w-7xl">
-		{@render children()}
+	<div class="content flex flex-col items-center p-6 pt-24 pb-0">
+		<div class="w-full max-w-7xl">
+			{@render children()}
+		</div>
 	</div>
-</div>
 
-<Footer />
+	<Footer />
+{/if}
 
 <style lang="scss">
 	/* TODO: Remember to change this value when footer height changes */

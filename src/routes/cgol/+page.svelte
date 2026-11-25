@@ -13,6 +13,7 @@
 		GRID_COLOR,
 		GRID_MIN_CELL_PX,
 		MAX_CATCHUP_TICKS,
+		SIM_BUDGET_MS,
 		SPEED_STEPS,
 		STATS_REFRESH_MS,
 		TPS_WINDOW_MS,
@@ -21,7 +22,7 @@
 	} from './model';
 
 	const CONTROL_CLASS =
-		'cursor-pointer rounded-md bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white';
+		'cursor-pointer rounded-md bg-white/10 backdrop-blur-sm hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white';
 
 	let tickCount = 0;
 	let accumulatedMs = 0;
@@ -39,8 +40,8 @@
 	const gameState = new GameState([{ pattern: 'Diamond', offset: [-2, -2] }]);
 	const gameView = new GameView();
 
-	afterNavigate(({ from }) => {
-		cameFromApp = from !== null;
+	afterNavigate(({ from, type, delta }) => {
+		cameFromApp = from !== null && (type !== 'popstate' || (delta ?? 0) > 0);
 	});
 
 	function exit() {
@@ -122,14 +123,17 @@
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
 
+		let appliedDpr = 0;
+
 		const resize = () => {
-			const dpr = window.devicePixelRatio || 1;
+			appliedDpr = window.devicePixelRatio || 1;
 			const width = canvas.clientWidth;
 			const height = canvas.clientHeight;
-			canvas.width = Math.round(width * dpr);
-			canvas.height = Math.round(height * dpr);
-			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			canvas.width = Math.round(width * appliedDpr);
+			canvas.height = Math.round(height * appliedDpr);
+			ctx.setTransform(appliedDpr, 0, 0, appliedDpr, 0, 0);
 			gameView.resize([width, height]);
+			render(ctx);
 		};
 
 		resize();
@@ -150,22 +154,37 @@
 		let last = performance.now();
 		let frames = 0;
 		let statsTimer = last;
+		let appliedIntervalMs = intervalMs;
 		const recentTickTimes: number[] = [];
 
 		const frame = (now: number) => {
 			raf = requestAnimationFrame(frame);
 
+			if ((window.devicePixelRatio || 1) !== appliedDpr) {
+				resize();
+			}
+
 			const elapsed = Math.max(0, now - last);
 			last = now;
 
 			if (running) {
+				if (intervalMs !== appliedIntervalMs) {
+					accumulatedMs = Math.min(accumulatedMs, intervalMs);
+					appliedIntervalMs = intervalMs;
+				}
 				accumulatedMs = Math.min(accumulatedMs + elapsed, intervalMs * MAX_CATCHUP_TICKS);
 
+				const simDeadline = performance.now() + SIM_BUDGET_MS;
 				while (accumulatedMs >= intervalMs) {
 					gameState.nextIteration();
 					tickCount++;
 					recentTickTimes.push(now);
 					accumulatedMs -= intervalMs;
+
+					if (performance.now() >= simDeadline) {
+						accumulatedMs = Math.min(accumulatedMs, intervalMs);
+						break;
+					}
 				}
 			}
 
@@ -198,7 +217,7 @@
 
 <svelte:window onkeydown={onKeyDown} />
 
-<div class="fixed inset-0 z-1000 overflow-hidden bg-black select-none">
+<div class="fixed inset-0 z-1000 overflow-hidden bg-black text-white select-none">
 	<canvas bind:this={canvas} aria-label={$t.cgol.board} class="block h-full w-full touch-none"
 	></canvas>
 
@@ -272,6 +291,7 @@
 					min="0"
 					max={SPEED_STEPS}
 					bind:value={speed}
+					aria-valuetext={$t.cgol.interval({ ms: intervalMs })}
 					class="w-28 cursor-pointer accent-white sm:w-44"
 				/>
 				<span class="w-16 text-right font-mono tabular-nums">

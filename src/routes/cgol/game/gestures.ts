@@ -3,6 +3,7 @@ import type { Point } from './game-view';
 const DRAW_SLOP_PX = 6;
 const WHEEL_ZOOM_PER_PX = 0.0015;
 const PINCH_WHEEL_ZOOM_PER_PX = 0.01;
+const PINCH_WHEEL_MAX_STEP_PX = 12;
 const WHEEL_LINE_PX = 16;
 
 const PRIMARY_BUTTON = 0;
@@ -152,10 +153,15 @@ export function attachGestures(element: HTMLElement, handlers: GestureHandlers):
 				: event.deltaMode === WheelEvent.DOM_DELTA_PAGE
 					? element.clientHeight
 					: 1;
-		// Trackpad pinches arrive as ctrl+wheel with much smaller deltas than a mouse wheel.
-		const zoomPerPx = event.ctrlKey ? PINCH_WHEEL_ZOOM_PER_PX : WHEEL_ZOOM_PER_PX;
+		const deltaPx = event.deltaY * unitPx;
+		// Trackpad pinches arrive as ctrl+wheel with small deltas, but so does a ctrl+mouse-wheel
+		// notch (~100px), which is capped so it cannot jump several zoom levels at once.
+		const zoomExponent = event.ctrlKey
+			? Math.min(Math.max(deltaPx, -PINCH_WHEEL_MAX_STEP_PX), PINCH_WHEEL_MAX_STEP_PX) *
+				PINCH_WHEEL_ZOOM_PER_PX
+			: deltaPx * WHEEL_ZOOM_PER_PX;
 
-		handlers.zoom(Math.exp(-event.deltaY * unitPx * zoomPerPx), toLocal(event));
+		handlers.zoom(Math.exp(-zoomExponent), toLocal(event));
 	};
 
 	const preventDefault = (event: Event) => event.preventDefault();

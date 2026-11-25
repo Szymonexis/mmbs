@@ -2,6 +2,7 @@ export const MIN_INTERVAL_MS = 10;
 export const MAX_INTERVAL_MS = 10_000;
 export const DEFAULT_INTERVAL_MS = 200;
 export const MAX_CATCHUP_TICKS = 5;
+export const SIM_BUDGET_MS = 8;
 export const TPS_WINDOW_MS = 1000;
 export const STATS_REFRESH_MS = 500;
 
