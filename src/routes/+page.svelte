@@ -1,12 +1,17 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import { resolve } from '$app/paths';
 	import { t } from '$i18n';
 	import { ContactForm, PageMeta } from '$lib';
 	import { MEMBERS } from './model';
 	import { getHomePortfolioItems } from './portfolio/model';
 	import ProjectImage from './portfolio/ProjectImage.svelte';
+	import { EasterEgg } from './cgol/trigger/easter-egg.svelte';
+	import GameEntrance from './cgol/trigger/GameEntrance.svelte';
+	import MemberPhoto from './cgol/trigger/MemberPhoto.svelte';
 
 	const homeProjects = getHomePortfolioItems();
+	const easterEgg = new EasterEgg();
 
 	const wordsCarouselCount = $t.home.hero.carousel.length;
 
@@ -42,6 +47,7 @@
 	onDestroy(() => {
 		if (wordsCrouselIntervalId) clearInterval(wordsCrouselIntervalId);
 		if (wordsCarouselPauseTimeoutId) clearTimeout(wordsCarouselPauseTimeoutId);
+		easterEgg.dispose();
 	});
 </script>
 
@@ -68,20 +74,20 @@
 		{$t.home.ourProjects.title}
 	</h2>
 
-	<hr class="mt-1 border-1 text-blue-800" />
+	<hr class="mt-1 border text-blue-800" />
 
 	<!-- 2.37fr: the featured tile spans two rows plus the gap, so only this ratio keeps its image at the 1200:630 of the small ones. -->
 	<div class="my-6 grid grid-cols-2 gap-4 lg:grid-cols-[2.37fr_1fr_1fr]">
 		{#each homeProjects as project, i (project.key)}
 			{@const featured = i === 0}
 			<a
-				href={`/portfolio#${project.key}`}
+				href={resolve(`/portfolio#${project.key}`)}
 				class={[
 					'group flex min-w-0 flex-col overflow-hidden rounded-xl border-2 border-blue-800 bg-white transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-800',
 					featured && 'col-span-2 lg:col-span-1 lg:row-span-2'
 				]}
 			>
-				<div class="relative aspect-[1200/630] min-h-0 flex-auto overflow-hidden bg-gray-200">
+				<div class="relative aspect-1200/630 min-h-0 flex-auto overflow-hidden bg-gray-200">
 					<ProjectImage
 						item={project}
 						alt=""
@@ -107,7 +113,7 @@
 		{$t.home.process.title}
 	</h2>
 
-	<hr class="mt-1 border-1 text-blue-800" />
+	<hr class="mt-1 border text-blue-800" />
 
 	<div class="my-6 block grid-cols-[auto_1fr] gap-6 md:grid">
 		<div>
@@ -151,7 +157,7 @@
 			{$t.home.ourTeam.title}
 		</h2>
 
-		<hr class="mt-1 border-1 text-blue-800" />
+		<hr class="mt-1 border text-blue-800" />
 
 		{#each MEMBERS as member, i (i)}
 			{@const memberText = $t.home.ourTeam.members[member.key]}
@@ -175,7 +181,7 @@
 
 					<div class="flex gap-4">
 						{#each member.links as { href, name, icon }, index (index)}
-							<a class="cursor-pointer" {href} target="_blank">
+							<a class="cursor-pointer" {href} target="_blank" rel="external">
 								<img
 									src={icon}
 									alt={name}
@@ -188,14 +194,15 @@
 					</div>
 				</div>
 
-				<img
-					class="w-full rounded-md object-cover max-sm:aspect-square sm:max-w-60"
-					src={member.image}
+				<MemberPhoto
+					memberKey={member.key}
+					image={member.image}
 					alt={memberText.name}
-					loading="lazy"
-					fetchpriority="low"
+					{easterEgg}
 				/>
 			</div>
 		{/each}
 	</div>
 </div>
+
+<GameEntrance {easterEgg} />

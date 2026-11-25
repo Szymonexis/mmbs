@@ -14,6 +14,7 @@ form - no database, no auth.
 
 ## Commands
 
+- `nix-shell shell.nix` - optional dev shell with Node.js 26
 - `npm run dev` - dev server
 - `npm run build` - production build
 - `npm run check` - `svelte-kit sync` + `svelte-check` (type checking)
@@ -23,8 +24,9 @@ form - no database, no auth.
 ## Structure
 
 - `src/routes/` - pages: `/` (home, featured projects, team, contact form), `/services`,
-  `/portfolio`, `/faq`, `[...missing]` (404 catch-all); `/portfolio/refresh-og-images` is
-  the cron-only endpoint that refreshes the OG image cache
+  `/portfolio`, `/faq`, `[...missing]` (404 catch-all), `/cgol` (Game of Life easter egg,
+  not linked anywhere yet); `/portfolio/refresh-og-images` is the cron-only endpoint that
+  refreshes the OG image cache
 - `src/lib/` - components, re-exported from `src/lib/index.ts` (`Header`, `Footer`,
   `ContactForm`, `TechnologiesCarousel`, `FAQ`)
 - `src/shared/` - cross-cutting helpers; `src/shared/server/` holds server-only code
@@ -113,3 +115,50 @@ form - no database, no auth.
   `sendEmailRequest` remote command (`contact-form.remote.ts`) re-validates the payload
   (class-validator), scores the token server-side and sends the email with nodemailer via
   `mail.mmbs.pl`.
+- **Game of Life easter egg** (`src/routes/cgol/`): a full-screen canvas overlay. The root
+  layout renders no Header/Footer on this route, so nothing focusable sits under it.
+  - **Trigger** (`trigger/`, used by the home page's "Our Team" section): clicking the team
+    photos in the order Maja, Maciej, Bartek, Szymon (not the page order) flips each photo
+    (`rotateX`, `MemberPhoto.svelte`) to a running oscillator from `consts/oscillators.ts`,
+    four distinct ones per run. A wrong click flips everything back (clicking Maja restarts
+    the sequence). After the last flip the page fades to black (`GameEntrance.svelte`),
+    `easter-egg-found` is saved in **sessionStorage** (`src/shared/browser/session-storage.ts`,
+    prefixed like the localStorage keys) and the app navigates to `/cgol`. The helpers fail
+    soft; if the browser blocks storage the flag is kept in memory for the current visit,
+    so the client-side navigation still unlocks the game. The photos are
+    deliberately undiscoverable: default cursor, not focusable, back face `aria-hidden`, and
+    the click handler carries a `svelte-ignore` for the keyboard/role a11y warnings.
+  - **Gate** (`+page.svelte`, `+page.ts`): the route has `ssr = false`, so the prerendered
+    `cgol.html` is an empty shell. Its `load` returns `unlocked` from the session flag: the
+    game (`Game.svelte`) renders only when it is set, otherwise the page shows the same
+    `NotFound` component (`src/lib/NotFound/`) as the `[...missing]` catch-all. The root
+    layout drops Header/Footer only for an unlocked `/cgol` (`page.data.unlocked`), so the
+    locked route looks exactly like any other missing page.
+  - **Oscillators** (`consts/oscillators.ts`) were verified by simulation like the presets
+    (exact period, never dies or emits, fits 16x16); pulsar and pentadecathlon reuse the
+    preset rows. The cards size each pattern to the union of its phases over 60 generations.
+  - **Controls** (`game/gestures.ts`): left click / tap adds a cell, left drag / one-finger
+    drag paints a line of cells, right drag / two-finger drag pans, wheel / pinch zooms
+    around the cursor or finger midpoint. A touch only starts painting after moving past a
+    small slop, so a two-finger gesture never leaves a stray cell. Esc or the close button
+    exits: `history.back()` when the previous entry is known to be the page the user came
+    from, otherwise `/`.
+  - **Sim loop** (`+page.svelte`, `model.ts`): fixed-step accumulator with an interval of
+    10 ms - 10 s, set in a number input that applies on Enter / blur / arrow keys (not
+    per keystroke, so typing 2000 never briefly runs at 2 or 20 ms) and clamps to the
+    range. Work per frame is capped both by tick count and
+    by an 8 ms budget, so a large world lowers the tick rate (visible as tps) instead of
+    the frame rate.
+  - **Presets** (`consts/patterns.ts`): plaintext rows, x = column, y = row (down). Each
+    was verified by simulation (periods and displacements; R-pentomino 116 cells at gen
+    1103, acorn 633 at gen 5206, diehard dies at gen 130). Re-verify any pattern you edit.
+    Loading a preset replaces the world and recenters the camera. A random preset is loaded
+    in `onMount` (client-only, so the prerendered page does not bake in one choice).
+  - **Mobile layout**: below `sm` the preset buttons stack in a column above play/pause and
+    the interval field stretches across the row. Button size follows the pointer type, not
+    the width: compact sizes are `sm:pointer-fine:*` only, so touch screens (including
+    phones in landscape and tablets) keep 36-44 px targets. The same rule decides when the
+    arrow button that hides the presets exists: everywhere except `sm:pointer-fine`
+    (desktop with a mouse always shows them). The whole overlay is `touch-none`, so
+    double-tap or pinch over the controls cannot zoom the page; the interval input is
+    `select-text` because an inherited `user-select: none` blocks typing in iOS Safari.

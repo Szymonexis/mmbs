@@ -85,7 +85,12 @@
 
 				<div class="mb-2 decoration-blue-800 decoration-1 hover:underline">
 					<i class="fa-solid fa-link text-blue-800"></i>
-					<a class="font-bold text-blue-800" href={portfolioItem.url} target="_blank">
+					<a
+						class="font-bold text-blue-800"
+						href={portfolioItem.url}
+						target="_blank"
+						rel="external"
+					>
 						{portfolioItem.url}
 					</a>
 				</div>
@@ -145,7 +150,9 @@
 						{#each portfolioItem.mediaList as { url, label }, mediaIndex (mediaIndex)}
 							<span class="decoration-black decoration-2 hover:underline">
 								<i class="fa-solid fa-link"></i>
-								<a href={url} target="_blank">{getMediaLabel(portfolioItem.key, label)}</a>
+								<a href={url} target="_blank" rel="external"
+									>{getMediaLabel(portfolioItem.key, label)}</a
+								>
 							</span>
 						{/each}
 					{/if}

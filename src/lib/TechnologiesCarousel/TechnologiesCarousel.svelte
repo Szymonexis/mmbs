@@ -8,7 +8,7 @@
 	{#each sliderNames as sliderName, i (i)}
 		<div class={`footer__slider__slide footer__slider__slide--${sliderName}`}>
 			{#each LOGOS as { href, src, alt }, i (i)}
-				<a {href} target="_blank">
+				<a {href} target="_blank" rel="external">
 					<img {src} {alt} loading="lazy" fetchpriority="low" />
 				</a>
 			{/each}
