@@ -131,3 +131,8 @@ form - no database, no auth.
     was verified by simulation (periods and displacements; R-pentomino 116 cells at gen
     1103, acorn 633 at gen 5206, diehard dies at gen 130). Re-verify any pattern you edit.
     Loading a preset replaces the world and recenters the camera.
+  - **Mobile layout**: below `sm` the preset buttons stack in a column above play/pause and
+    the speed slider stretches across the row. Button size follows the pointer type, not
+    the width: compact sizes are `sm:pointer-fine:*` only, so touch screens (including
+    phones in landscape and tablets) keep 36-44 px targets. The whole overlay is
+    `touch-none`, so double-tap or pinch over the controls cannot zoom the page.

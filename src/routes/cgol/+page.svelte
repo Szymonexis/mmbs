@@ -217,7 +217,7 @@
 
 <svelte:window onkeydown={onKeyDown} />
 
-<div class="fixed inset-0 z-1000 overflow-hidden bg-black text-white select-none">
+<div class="fixed inset-0 z-1000 touch-none overflow-hidden bg-black text-white select-none">
 	<canvas bind:this={canvas} aria-label={$t.cgol.board} class="block h-full w-full touch-none"
 	></canvas>
 
@@ -229,7 +229,7 @@
 
 	<button
 		type="button"
-		class="{CONTROL_CLASS} absolute top-2 right-2 flex size-9 items-center justify-center"
+		class="{CONTROL_CLASS} absolute top-2 right-2 flex size-11 items-center justify-center sm:pointer-fine:size-9"
 		aria-label={$t.cgol.exit}
 		title={$t.cgol.exit}
 		onclick={exit}
@@ -246,11 +246,11 @@
 	</button>
 
 	<div class="pointer-events-none absolute inset-x-2 bottom-2 flex flex-col items-start gap-2">
-		<div class="pointer-events-auto flex flex-wrap gap-1">
+		<div class="pointer-events-auto flex flex-col gap-1 sm:flex-row sm:flex-wrap">
 			{#each PATTERN_KEYS as key (key)}
 				<button
 					type="button"
-					class="{CONTROL_CLASS} px-2 py-1 text-xs"
+					class="{CONTROL_CLASS} px-3 py-2 text-sm sm:pointer-fine:px-2 sm:pointer-fine:py-1 sm:pointer-fine:text-xs"
 					onclick={() => loadPattern(key)}
 				>
 					{$t.cgol.patterns[key]}
@@ -258,17 +258,17 @@
 			{/each}
 			<button
 				type="button"
-				class="{CONTROL_CLASS} px-2 py-1 text-xs text-red-300"
+				class="{CONTROL_CLASS} px-3 py-2 text-sm text-red-300 sm:pointer-fine:px-2 sm:pointer-fine:py-1 sm:pointer-fine:text-xs"
 				onclick={clearWorld}
 			>
 				{$t.cgol.clear}
 			</button>
 		</div>
 
-		<div class="pointer-events-auto flex items-center gap-3">
+		<div class="pointer-events-auto flex w-full items-center gap-3 sm:w-auto">
 			<button
 				type="button"
-				class="{CONTROL_CLASS} flex size-9 items-center justify-center"
+				class="{CONTROL_CLASS} flex size-11 shrink-0 items-center justify-center sm:pointer-fine:size-9"
 				aria-label={running ? $t.cgol.pause : $t.cgol.play}
 				title={running ? $t.cgol.pause : $t.cgol.play}
 				onclick={() => (running = !running)}
@@ -283,7 +283,7 @@
 			</button>
 
 			<label
-				class="flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-xs text-white/80 backdrop-blur-sm"
+				class="flex h-11 min-w-0 flex-1 items-center gap-2 rounded-md bg-white/10 px-3 text-xs text-white/80 backdrop-blur-sm sm:flex-none sm:pointer-fine:h-9"
 			>
 				<span>{$t.cgol.speed}</span>
 				<input
@@ -292,9 +292,9 @@
 					max={SPEED_STEPS}
 					bind:value={speed}
 					aria-valuetext={$t.cgol.interval({ ms: intervalMs })}
-					class="w-28 cursor-pointer accent-white sm:w-44"
+					class="min-w-0 flex-1 cursor-pointer accent-white sm:w-44 sm:flex-none"
 				/>
-				<span class="w-16 text-right font-mono tabular-nums">
+				<span class="w-16 shrink-0 text-right font-mono tabular-nums">
 					{$t.cgol.interval({ ms: intervalMs })}
 				</span>
 			</label>
