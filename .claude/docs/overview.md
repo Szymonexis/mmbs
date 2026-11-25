@@ -123,7 +123,9 @@ form - no database, no auth.
     four distinct ones per run. A wrong click flips everything back (clicking Maja restarts
     the sequence). After the last flip the page fades to black (`GameEntrance.svelte`),
     `easter-egg-found` is saved in **sessionStorage** (`src/shared/browser/session-storage.ts`,
-    prefixed like the localStorage keys) and the app navigates to `/cgol`. The photos are
+    prefixed like the localStorage keys) and the app navigates to `/cgol`. The helpers fail
+    soft; if the browser blocks storage the flag is kept in memory for the current visit,
+    so the client-side navigation still unlocks the game. The photos are
     deliberately undiscoverable: default cursor, not focusable, back face `aria-hidden`, and
     the click handler carries a `svelte-ignore` for the keyboard/role a11y warnings.
   - **Gate** (`+page.svelte`, `+page.ts`): the route has `ssr = false`, so the prerendered

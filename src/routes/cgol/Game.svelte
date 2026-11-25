@@ -49,7 +49,8 @@
 	const gameView = new GameView();
 
 	afterNavigate(({ from, type, delta }) => {
-		cameFromApp = from !== null && (type !== 'popstate' || (delta ?? 0) > 0);
+		cameFromApp =
+			type !== 'enter' && from?.url != null && (type !== 'popstate' || (delta ?? 0) > 0);
 	});
 
 	function exit() {

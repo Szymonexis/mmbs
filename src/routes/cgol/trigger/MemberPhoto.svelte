@@ -11,18 +11,19 @@
 		easterEgg
 	}: { memberKey: MemberKey; image: string; alt: string; easterEgg: EasterEgg } = $props();
 
-	const pattern = $derived(easterEgg.revealed[memberKey]);
+	const revealed = $derived(easterEgg.revealed[memberKey] !== undefined);
+	const pattern = $derived(easterEgg.lastShown[memberKey]);
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 <div
-	class="w-full select-none perspective-distant max-sm:aspect-square sm:max-w-60"
+	class="w-full shrink-0 select-none perspective-[2000px] max-sm:aspect-square sm:max-w-60"
 	onclick={() => easterEgg.click(memberKey)}
 >
 	<div
 		class={[
 			'relative h-full w-full transition-transform transform-3d motion-reduce:transition-none',
-			pattern && 'rotate-x-180'
+			revealed && 'rotate-x-180'
 		]}
 		style:transition-duration="{FLIP_MS}ms"
 	>

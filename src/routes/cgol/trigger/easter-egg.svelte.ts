@@ -12,6 +12,7 @@ function pickOscillator(taken: RevealedOscillators): OscillatorKey {
 
 export class EasterEgg {
 	revealed: RevealedOscillators = $state({});
+	lastShown: RevealedOscillators = $state({});
 	solved = $state(false);
 
 	private progress = 0;
@@ -27,6 +28,7 @@ export class EasterEgg {
 			revealed[key] = this.revealed[key] ?? pickOscillator(revealed);
 		}
 		this.revealed = revealed;
+		this.lastShown = { ...this.lastShown, ...revealed };
 
 		if (this.progress === EASTER_EGG_SEQUENCE.length) {
 			this.solveTimeout = setTimeout(() => (this.solved = true), FLIP_MS + ADMIRE_MS);

@@ -24,12 +24,17 @@ export function nextProgress(progress: number, clicked: MemberKey): number {
 	return clicked === EASTER_EGG_SEQUENCE[0] ? 1 : 0;
 }
 
+let foundWithoutStorage = false;
+
 export function hasFoundEasterEgg(): boolean {
-	return readValueFromSessionStorage(SessionStorageKey.EASTER_EGG_FOUND) === 'true';
+	return (
+		foundWithoutStorage ||
+		readValueFromSessionStorage(SessionStorageKey.EASTER_EGG_FOUND) === 'true'
+	);
 }
 
 export function markEasterEggFound(): void {
-	setValueInSessionStorage(SessionStorageKey.EASTER_EGG_FOUND, 'true');
+	foundWithoutStorage = !setValueInSessionStorage(SessionStorageKey.EASTER_EGG_FOUND, 'true');
 }
 
 export function oscillatorBounds(cells: Point[]): [min: Point, max: Point] {
