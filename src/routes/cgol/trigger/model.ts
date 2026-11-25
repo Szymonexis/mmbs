@@ -7,11 +7,11 @@ import type { MemberKey } from '../../model';
 import { GameState } from '../game/game-state';
 import type { Point } from '../game/game-view';
 
-export const EASTER_EGG_SEQUENCE: readonly MemberKey[] = ['maja', 'maciej', 'bartek', 'szymon'];
+export const EASTER_EGG_SEQUENCE: readonly MemberKey[] = ['maciej', 'maja', 'bartek', 'szymon'];
 
 export const FLIP_MS = 700;
-export const ADMIRE_MS = 1500;
-export const FADE_MS = 1200;
+export const ADMIRE_MS = 1000;
+export const FADE_MS = 500;
 export const OSCILLATOR_TICK_MS = 300;
 export const OSCILLATOR_MARGIN_CELLS = 2;
 
