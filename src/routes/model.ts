@@ -1,6 +1,6 @@
 import type { TranslationDictionary } from '$i18n';
 
-type MemberKey = keyof TranslationDictionary['home']['ourTeam']['members'];
+export type MemberKey = keyof TranslationDictionary['home']['ourTeam']['members'];
 
 export const MEMBERS: {
 	key: MemberKey;

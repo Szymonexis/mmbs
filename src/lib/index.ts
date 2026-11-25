@@ -5,3 +5,4 @@ export { default as ContactForm } from './ContactForm/ContactForm.svelte';
 export { default as TechnologiesCarousel } from './TechnologiesCarousel/TechnologiesCarousel.svelte';
 export { default as FAQ } from './FAQ/FAQ.svelte';
 export { default as PageMeta } from './PageMeta/PageMeta.svelte';
+export { default as NotFound } from './NotFound/NotFound.svelte';

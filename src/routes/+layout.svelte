@@ -22,7 +22,7 @@
 
 	let { children } = $props();
 
-	const isFullscreenGame = $derived(page.route.id === '/cgol');
+	const isFullscreenGame = $derived(page.route.id === '/cgol' && page.data.unlocked === true);
 
 	const unsubs: Unsubscriber[] = [];
 

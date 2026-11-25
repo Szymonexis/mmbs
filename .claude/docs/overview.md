@@ -117,6 +117,24 @@ form - no database, no auth.
   `mail.mmbs.pl`.
 - **Game of Life easter egg** (`src/routes/cgol/`): a full-screen canvas overlay. The root
   layout renders no Header/Footer on this route, so nothing focusable sits under it.
+  - **Trigger** (`trigger/`, used by the home page's "Our Team" section): clicking the team
+    photos in the order Maja, Maciej, Bartek, Szymon (not the page order) flips each photo
+    (`rotateX`, `MemberPhoto.svelte`) to a running oscillator from `consts/oscillators.ts`,
+    four distinct ones per run. A wrong click flips everything back (clicking Maja restarts
+    the sequence). After the last flip the page fades to black (`GameEntrance.svelte`),
+    `easter-egg-found` is saved in **sessionStorage** (`src/shared/browser/session-storage.ts`,
+    prefixed like the localStorage keys) and the app navigates to `/cgol`. The photos are
+    deliberately undiscoverable: default cursor, not focusable, back face `aria-hidden`, and
+    the click handler carries a `svelte-ignore` for the keyboard/role a11y warnings.
+  - **Gate** (`+page.svelte`, `+page.ts`): the route has `ssr = false`, so the prerendered
+    `cgol.html` is an empty shell. Its `load` returns `unlocked` from the session flag: the
+    game (`Game.svelte`) renders only when it is set, otherwise the page shows the same
+    `NotFound` component (`src/lib/NotFound/`) as the `[...missing]` catch-all. The root
+    layout drops Header/Footer only for an unlocked `/cgol` (`page.data.unlocked`), so the
+    locked route looks exactly like any other missing page.
+  - **Oscillators** (`consts/oscillators.ts`) were verified by simulation like the presets
+    (exact period, never dies or emits, fits 16x16); pulsar and pentadecathlon reuse the
+    preset rows. The cards size each pattern to the union of its phases over 60 generations.
   - **Controls** (`game/gestures.ts`): left click / tap adds a cell, left drag / one-finger
     drag paints a line of cells, right drag / two-finger drag pans, wheel / pinch zooms
     around the cursor or finger midpoint. A touch only starts painting after moving past a

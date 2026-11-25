@@ -6,8 +6,12 @@
 	import { MEMBERS } from './model';
 	import { getHomePortfolioItems } from './portfolio/model';
 	import ProjectImage from './portfolio/ProjectImage.svelte';
+	import { EasterEgg } from './cgol/trigger/easter-egg.svelte';
+	import GameEntrance from './cgol/trigger/GameEntrance.svelte';
+	import MemberPhoto from './cgol/trigger/MemberPhoto.svelte';
 
 	const homeProjects = getHomePortfolioItems();
+	const easterEgg = new EasterEgg();
 
 	const wordsCarouselCount = $t.home.hero.carousel.length;
 
@@ -43,6 +47,7 @@
 	onDestroy(() => {
 		if (wordsCrouselIntervalId) clearInterval(wordsCrouselIntervalId);
 		if (wordsCarouselPauseTimeoutId) clearTimeout(wordsCarouselPauseTimeoutId);
+		easterEgg.dispose();
 	});
 </script>
 
@@ -189,14 +194,15 @@
 					</div>
 				</div>
 
-				<img
-					class="w-full rounded-md object-cover max-sm:aspect-square sm:max-w-60"
-					src={member.image}
+				<MemberPhoto
+					memberKey={member.key}
+					image={member.image}
 					alt={memberText.name}
-					loading="lazy"
-					fetchpriority="low"
+					{easterEgg}
 				/>
 			</div>
 		{/each}
 	</div>
 </div>
+
+<GameEntrance {easterEgg} />
