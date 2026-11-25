@@ -80,7 +80,16 @@ export function attachGestures(element: HTMLElement, handlers: GestureHandlers):
 		}
 	};
 
+	const releaseAll = () => {
+		for (const pointerId of [...pointers.keys()]) {
+			release(pointerId);
+		}
+	};
+
 	const onPointerDown = (event: PointerEvent) => {
+		if (pointers.has(event.pointerId)) {
+			release(event.pointerId);
+		}
 		if (activePointerType !== null && activePointerType !== event.pointerType) return;
 
 		if (event.pointerType === 'touch') {
@@ -93,6 +102,11 @@ export function attachGestures(element: HTMLElement, handlers: GestureHandlers):
 	const onPointerMove = (event: PointerEvent) => {
 		const previous = pointers.get(event.pointerId);
 		if (!previous) return;
+
+		if (event.pointerType !== 'touch' && event.buttons === 0) {
+			release(event.pointerId);
+			return;
+		}
 
 		const current = toLocal(event);
 		pointers.set(event.pointerId, current);
@@ -174,6 +188,7 @@ export function attachGestures(element: HTMLElement, handlers: GestureHandlers):
 	element.addEventListener('wheel', onWheel, { passive: false });
 	element.addEventListener('contextmenu', preventDefault);
 	element.addEventListener('gesturestart', preventDefault);
+	window.addEventListener('blur', releaseAll);
 
 	return () => {
 		element.removeEventListener('pointerdown', onPointerDown);
@@ -184,5 +199,6 @@ export function attachGestures(element: HTMLElement, handlers: GestureHandlers):
 		element.removeEventListener('wheel', onWheel);
 		element.removeEventListener('contextmenu', preventDefault);
 		element.removeEventListener('gesturestart', preventDefault);
+		window.removeEventListener('blur', releaseAll);
 	};
 }
