@@ -415,5 +415,25 @@ export const plPL = {
 					'<b>Tak.</b> Wspieramy w optymalizacji SEO i podstawowych działaniach SEM, a także w zakresie identyfikacji wizualnej.'
 			}
 		]
+	},
+	cgol: {
+		board: 'Plansza Gry w życie Conwaya',
+		stats: ({ fps, tps, ticks }) => `${fps} fps | ${tps} tps | kroki: ${ticks}`,
+		play: 'Start',
+		pause: 'Pauza',
+		speed: 'Prędkość',
+		interval: ({ ms }) => `${ms} ms`,
+		clear: 'Wyczyść',
+		exit: 'Wyjdź (Esc)',
+		patterns: {
+			glider: 'Szybowiec',
+			lwss: 'Statek',
+			pulsar: 'Pulsar',
+			pentadecathlon: 'Pentadekathlon',
+			gosperGliderGun: 'Działo Gospera',
+			rPentomino: 'R-pentomino',
+			acorn: 'Żołądź',
+			diehard: 'Diehard'
+		}
 	}
 } as const satisfies TranslationDictionary;

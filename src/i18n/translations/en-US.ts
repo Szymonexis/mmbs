@@ -416,6 +416,27 @@ export const enUS = {
 					'<b>Yes.</b> We provide support in SEO optimization and basic SEM activities as well as visual identity.'
 			}
 		]
+	},
+	cgol: {
+		board: "Conway's Game of Life board",
+		stats: ({ fps, tps, ticks }: { fps: number; tps: number; ticks: number }) =>
+			`${fps} fps | ${tps} tps | ${ticks} ticks`,
+		play: 'Play',
+		pause: 'Pause',
+		speed: 'Speed',
+		interval: ({ ms }: { ms: number }) => `${ms} ms`,
+		clear: 'Clear',
+		exit: 'Exit (Esc)',
+		patterns: {
+			glider: 'Glider',
+			lwss: 'Spaceship',
+			pulsar: 'Pulsar',
+			pentadecathlon: 'Pentadecathlon',
+			gosperGliderGun: 'Glider gun',
+			rPentomino: 'R-pentomino',
+			acorn: 'Acorn',
+			diehard: 'Diehard'
+		}
 	}
 } as const;
 

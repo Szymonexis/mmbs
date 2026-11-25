@@ -17,10 +17,10 @@ export class GameState {
 		} of patterns) {
 			const rows = COOL_CELLS[pattern];
 
-			for (let x = 0; x < rows.length; x++) {
-				const row = rows[x];
-				for (let y = 0; y < row.length; y++) {
-					const isAlive = row[y];
+			for (let y = 0; y < rows.length; y++) {
+				const row = rows[y];
+				for (let x = 0; x < row.length; x++) {
+					const isAlive = row[x];
 
 					if (isAlive) {
 						this.__world.add(new Cell([x + off_x, y + off_y]));
@@ -28,6 +28,46 @@ export class GameState {
 				}
 			}
 		}
+	}
+
+	add(pos: [number, number]): void {
+		this.__world.add(new Cell(pos));
+	}
+
+	addLine([from_x, from_y]: [number, number], [to_x, to_y]: [number, number]): void {
+		const distance_x = Math.abs(to_x - from_x);
+		const distance_y = -Math.abs(to_y - from_y);
+		const step_x = from_x < to_x ? 1 : -1;
+		const step_y = from_y < to_y ? 1 : -1;
+		let error = distance_x + distance_y;
+		let x = from_x;
+		let y = from_y;
+
+		for (;;) {
+			this.add([x, y]);
+			if (x === to_x && y === to_y) return;
+
+			const doubledError = 2 * error;
+			if (doubledError >= distance_y) {
+				error += distance_y;
+				x += step_x;
+			}
+			if (doubledError <= distance_x) {
+				error += distance_x;
+				y += step_y;
+			}
+		}
+	}
+
+	load(positions: Iterable<[number, number]>): void {
+		this.clear();
+		for (const pos of positions) {
+			this.add(pos);
+		}
+	}
+
+	clear(): void {
+		this.__world = new HashSet<Cell>();
 	}
 
 	nextIteration(): void {
