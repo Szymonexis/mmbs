@@ -10,7 +10,10 @@
 	let width = 0;
 	let height = 0;
 
+	const TPS_WINDOW_MS = 1000;
+
 	let fps = $state(0);
+	let tps = $state(0);
 	let ticks = $state(0);
 
 	let canvas: HTMLCanvasElement;
@@ -68,6 +71,7 @@
 		let acc = 0;
 		let frames = 0;
 		let fpsTimer = last;
+		const recentTickTimes: number[] = [];
 
 		const frame = (now: number) => {
 			raf = requestAnimationFrame(frame);
@@ -78,7 +82,12 @@
 			while (acc >= SIM_MS) {
 				step(SIM_MS / 1000);
 				tickCount++;
+				recentTickTimes.push(now);
 				acc -= SIM_MS;
+			}
+
+			while (recentTickTimes.length > 0 && recentTickTimes[0] <= now - TPS_WINDOW_MS) {
+				recentTickTimes.shift();
 			}
 
 			render(ctx, acc / SIM_MS);
@@ -86,6 +95,7 @@
 			frames++;
 			if (now - fpsTimer >= 500) {
 				fps = Math.round((frames * 1000) / (now - fpsTimer));
+				tps = Math.round((recentTickTimes.length * 1000) / TPS_WINDOW_MS);
 				ticks = tickCount;
 				frames = 0;
 				fpsTimer = now;
@@ -104,5 +114,5 @@
 <canvas bind:this={canvas} class="absolute top-0 left-0 z-1000 h-full w-full bg-black"></canvas>
 
 <div class="pointer-events-none absolute top-2 left-2 z-1001 font-mono text-xs text-white/70">
-	{fps} fps · {ticks} ticks
+	{fps} fps · {tps} tps · {ticks} ticks
 </div>
