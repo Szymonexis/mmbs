@@ -186,8 +186,10 @@ export function attachGestures(element: HTMLElement, handlers: GestureHandlers):
 	element.addEventListener('pointercancel', onPointerCancel);
 	element.addEventListener('lostpointercapture', onPointerCancel);
 	element.addEventListener('wheel', onWheel, { passive: false });
-	element.addEventListener('contextmenu', preventDefault);
 	element.addEventListener('gesturestart', preventDefault);
+	// Windows opens the context menu on mouse-up, after capture is released, so a right-drag pan
+	// ending over a control would open it there instead of on the canvas.
+	window.addEventListener('contextmenu', preventDefault);
 	window.addEventListener('blur', releaseAll);
 
 	return () => {
@@ -197,8 +199,8 @@ export function attachGestures(element: HTMLElement, handlers: GestureHandlers):
 		element.removeEventListener('pointercancel', onPointerCancel);
 		element.removeEventListener('lostpointercapture', onPointerCancel);
 		element.removeEventListener('wheel', onWheel);
-		element.removeEventListener('contextmenu', preventDefault);
 		element.removeEventListener('gesturestart', preventDefault);
+		window.removeEventListener('contextmenu', preventDefault);
 		window.removeEventListener('blur', releaseAll);
 	};
 }
