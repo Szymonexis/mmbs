@@ -69,7 +69,7 @@
 		{$t.home.ourProjects.title}
 	</h2>
 
-	<hr class="mt-1 border-1 text-blue-800" />
+	<hr class="mt-1 border text-blue-800" />
 
 	<!-- 2.37fr: the featured tile spans two rows plus the gap, so only this ratio keeps its image at the 1200:630 of the small ones. -->
 	<div class="my-6 grid grid-cols-2 gap-4 lg:grid-cols-[2.37fr_1fr_1fr]">
@@ -82,7 +82,7 @@
 					featured && 'col-span-2 lg:col-span-1 lg:row-span-2'
 				]}
 			>
-				<div class="relative aspect-[1200/630] min-h-0 flex-auto overflow-hidden bg-gray-200">
+				<div class="relative aspect-1200/630 min-h-0 flex-auto overflow-hidden bg-gray-200">
 					<ProjectImage
 						item={project}
 						alt=""
@@ -108,7 +108,7 @@
 		{$t.home.process.title}
 	</h2>
 
-	<hr class="mt-1 border-1 text-blue-800" />
+	<hr class="mt-1 border text-blue-800" />
 
 	<div class="my-6 block grid-cols-[auto_1fr] gap-6 md:grid">
 		<div>
@@ -152,7 +152,7 @@
 			{$t.home.ourTeam.title}
 		</h2>
 
-		<hr class="mt-1 border-1 text-blue-800" />
+		<hr class="mt-1 border text-blue-800" />
 
 		{#each MEMBERS as member, i (i)}
 			{@const memberText = $t.home.ourTeam.members[member.key]}
