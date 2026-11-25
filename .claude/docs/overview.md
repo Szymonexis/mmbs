@@ -124,15 +124,21 @@ form - no database, no auth.
     exits: `history.back()` when the previous entry is known to be the page the user came
     from, otherwise `/`.
   - **Sim loop** (`+page.svelte`, `model.ts`): fixed-step accumulator with an interval of
-    10 ms - 10 s on a logarithmic slider. Work per frame is capped both by tick count and
+    10 ms - 10 s, set in a number input that applies on Enter / blur / arrow keys (not
+    per keystroke, so typing 2000 never briefly runs at 2 or 20 ms) and clamps to the
+    range. Work per frame is capped both by tick count and
     by an 8 ms budget, so a large world lowers the tick rate (visible as tps) instead of
     the frame rate.
   - **Presets** (`consts/patterns.ts`): plaintext rows, x = column, y = row (down). Each
     was verified by simulation (periods and displacements; R-pentomino 116 cells at gen
     1103, acorn 633 at gen 5206, diehard dies at gen 130). Re-verify any pattern you edit.
-    Loading a preset replaces the world and recenters the camera.
+    Loading a preset replaces the world and recenters the camera. A random preset is loaded
+    in `onMount` (client-only, so the prerendered page does not bake in one choice).
   - **Mobile layout**: below `sm` the preset buttons stack in a column above play/pause and
-    the speed slider stretches across the row. Button size follows the pointer type, not
+    the interval field stretches across the row. Button size follows the pointer type, not
     the width: compact sizes are `sm:pointer-fine:*` only, so touch screens (including
-    phones in landscape and tablets) keep 36-44 px targets. The whole overlay is
-    `touch-none`, so double-tap or pinch over the controls cannot zoom the page.
+    phones in landscape and tablets) keep 36-44 px targets. The same rule decides when the
+    arrow button that hides the presets exists: everywhere except `sm:pointer-fine`
+    (desktop with a mouse always shows them). The whole overlay is `touch-none`, so
+    double-tap or pinch over the controls cannot zoom the page; the interval input is
+    `select-text` because an inherited `user-select: none` blocks typing in iOS Safari.

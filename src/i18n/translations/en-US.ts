@@ -423,8 +423,10 @@ export const enUS = {
 			`${fps} fps | ${tps} tps | ${ticks} ticks`,
 		play: 'Play',
 		pause: 'Pause',
-		speed: 'Speed',
-		interval: ({ ms }: { ms: number }) => `${ms} ms`,
+		interval: 'Interval',
+		intervalUnit: 'ms',
+		showPatterns: 'Show patterns',
+		hidePatterns: 'Hide patterns',
 		clear: 'Clear',
 		exit: 'Exit (Esc)',
 		patterns: {

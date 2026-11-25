@@ -6,23 +6,31 @@
 	import { GameState } from './game/game-state';
 	import { GameView } from './game/game-view';
 	import { attachGestures } from './game/gestures';
-	import { PATTERNS, PATTERN_KEYS, patternCells, type PatternKey } from './consts/patterns';
+	import {
+		PATTERNS,
+		PATTERN_KEYS,
+		patternCells,
+		randomPatternKey,
+		type PatternKey
+	} from './consts/patterns';
 	import {
 		CELL_COLOR,
 		DEFAULT_INTERVAL_MS,
 		GRID_COLOR,
 		GRID_MIN_CELL_PX,
+		INTERVAL_INPUT_STEP_MS,
 		MAX_CATCHUP_TICKS,
+		MAX_INTERVAL_MS,
+		MIN_INTERVAL_MS,
 		SIM_BUDGET_MS,
-		SPEED_STEPS,
 		STATS_REFRESH_MS,
 		TPS_WINDOW_MS,
-		intervalFromSpeed,
-		speedFromInterval
+		clampInterval
 	} from './model';
 
 	const CONTROL_CLASS =
 		'cursor-pointer rounded-md bg-white/10 backdrop-blur-sm hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white';
+	const PATTERNS_PANEL_ID = 'cgol-patterns';
 
 	let tickCount = 0;
 	let accumulatedMs = 0;
@@ -32,12 +40,12 @@
 	let tps = $state(0);
 	let ticks = $state(0);
 	let running = $state(true);
-	let speed = $state(speedFromInterval(DEFAULT_INTERVAL_MS));
-	const intervalMs = $derived(intervalFromSpeed(speed));
+	let intervalMs = $state(DEFAULT_INTERVAL_MS);
+	let patternsOpen = $state(true);
 
 	let canvas: HTMLCanvasElement;
 
-	const gameState = new GameState([{ pattern: 'Diamond', offset: [-2, -2] }]);
+	const gameState = new GameState();
 	const gameView = new GameView();
 
 	afterNavigate(({ from, type, delta }) => {
@@ -55,6 +63,20 @@
 	function onKeyDown(event: KeyboardEvent) {
 		if (event.key === 'Escape') {
 			exit();
+		}
+	}
+
+	function commitInterval(event: Event & { currentTarget: HTMLInputElement }) {
+		const input = event.currentTarget;
+		if (Number.isFinite(input.valueAsNumber)) {
+			intervalMs = clampInterval(input.valueAsNumber);
+		}
+		input.value = String(intervalMs);
+	}
+
+	function blurOnEnter(event: KeyboardEvent & { currentTarget: HTMLInputElement }) {
+		if (event.key === 'Enter') {
+			event.currentTarget.blur();
 		}
 	}
 
@@ -120,6 +142,8 @@
 	}
 
 	onMount(() => {
+		loadPattern(randomPatternKey());
+
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
 
@@ -246,7 +270,13 @@
 	</button>
 
 	<div class="pointer-events-none absolute inset-x-2 bottom-2 flex flex-col items-start gap-2">
-		<div class="pointer-events-auto flex flex-col gap-1 sm:flex-row sm:flex-wrap">
+		<div
+			id={PATTERNS_PANEL_ID}
+			class={[
+				'pointer-events-auto flex-col gap-1 sm:flex-row sm:flex-wrap sm:pointer-fine:flex',
+				patternsOpen ? 'flex' : 'hidden'
+			]}
+		>
 			{#each PATTERN_KEYS as key (key)}
 				<button
 					type="button"
@@ -282,21 +312,47 @@
 				</svg>
 			</button>
 
+			<button
+				type="button"
+				class="{CONTROL_CLASS} flex size-11 shrink-0 items-center justify-center sm:pointer-fine:hidden"
+				aria-label={patternsOpen ? $t.cgol.hidePatterns : $t.cgol.showPatterns}
+				title={patternsOpen ? $t.cgol.hidePatterns : $t.cgol.showPatterns}
+				aria-expanded={patternsOpen}
+				aria-controls={PATTERNS_PANEL_ID}
+				onclick={() => (patternsOpen = !patternsOpen)}
+			>
+				<svg
+					viewBox="0 0 24 24"
+					class={['size-4 transition-transform', !patternsOpen && 'rotate-180']}
+					aria-hidden="true"
+				>
+					<path
+						d="M6 9l6 6 6-6"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
+			</button>
+
 			<label
 				class="flex h-11 min-w-0 flex-1 items-center gap-2 rounded-md bg-white/10 px-3 text-xs text-white/80 backdrop-blur-sm sm:flex-none sm:pointer-fine:h-9"
 			>
-				<span>{$t.cgol.speed}</span>
+				<span>{$t.cgol.interval}</span>
 				<input
-					type="range"
-					min="0"
-					max={SPEED_STEPS}
-					bind:value={speed}
-					aria-valuetext={$t.cgol.interval({ ms: intervalMs })}
-					class="min-w-0 flex-1 cursor-pointer accent-white sm:w-44 sm:flex-none"
+					type="number"
+					inputmode="numeric"
+					min={MIN_INTERVAL_MS}
+					max={MAX_INTERVAL_MS}
+					step={INTERVAL_INPUT_STEP_MS}
+					value={intervalMs}
+					onchange={commitInterval}
+					onkeydown={blurOnEnter}
+					class="h-8 w-20 min-w-0 rounded border-0 bg-black/40 px-2 py-0 text-right font-mono text-sm text-white tabular-nums select-text focus:ring-2 focus:ring-white/60 sm:pointer-fine:h-7 sm:pointer-fine:text-xs"
 				/>
-				<span class="w-16 shrink-0 text-right font-mono tabular-nums">
-					{$t.cgol.interval({ ms: intervalMs })}
-				</span>
+				<span>{$t.cgol.intervalUnit}</span>
 			</label>
 		</div>
 	</div>

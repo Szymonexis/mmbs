@@ -421,8 +421,10 @@ export const plPL = {
 		stats: ({ fps, tps, ticks }) => `${fps} fps | ${tps} tps | kroki: ${ticks}`,
 		play: 'Start',
 		pause: 'Pauza',
-		speed: 'Prędkość',
-		interval: ({ ms }) => `${ms} ms`,
+		interval: 'Interwał',
+		intervalUnit: 'ms',
+		showPatterns: 'Pokaż wzorce',
+		hidePatterns: 'Ukryj wzorce',
 		clear: 'Wyczyść',
 		exit: 'Wyjdź (Esc)',
 		patterns: {

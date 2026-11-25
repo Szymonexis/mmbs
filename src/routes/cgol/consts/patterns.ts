@@ -42,6 +42,10 @@ export const PATTERNS = {
 
 export const PATTERN_KEYS = Object.keys(PATTERNS) as PatternKey[];
 
+export function randomPatternKey(): PatternKey {
+	return PATTERN_KEYS[Math.floor(Math.random() * PATTERN_KEYS.length)];
+}
+
 export function patternCells(rows: readonly string[]): Point[] {
 	const width = Math.max(...rows.map((row) => row.length));
 	const offset_x = Math.floor(width / 2);
