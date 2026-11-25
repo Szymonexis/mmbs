@@ -31,7 +31,7 @@
 			zoom,
 			pos: [pos_x, pos_y]
 		} = gameView.config;
-		ctx.clearRect(0, 0, cellSize, cellSize);
+		ctx.clearRect(0, 0, width, height);
 
 		for (const cell of gameState.world) {
 			ctx.fillStyle = 'white';
@@ -103,6 +103,6 @@
 
 <canvas bind:this={canvas} class="absolute top-0 left-0 z-1000 h-full w-full bg-black"></canvas>
 
-<div class="pointer-events-none absolute top-2 left-2 font-mono text-xs text-white/70">
+<div class="pointer-events-none absolute top-2 left-2 z-1001 font-mono text-xs text-white/70">
 	{fps} fps · {ticks} ticks
 </div>
